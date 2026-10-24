@@ -37,9 +37,9 @@ Digimon pictures are renders of the disc's battle models made with
 
 ## Credits
 
-* [ReGame-Labs / dw3_decomp](https://github.com/ReGame-Labs/dw3_decomp) (MIT) — the decompilation all of this reads.
-* [Feerdus95 / dw3-model-viewer](https://github.com/Feerdus95/dw3-model-viewer) — used to render the Digimon models.
-* [Feerdus95 / dw3-native-port](https://github.com/Feerdus95/dw3-native-port) — the PC port.
+* [ReGame-Labs / dw3_decomp](https://github.com/ReGame-Labs/dw3_decomp) (MIT) — the decompiled code all the formulas and data come from.
+* [Feerdus95 / dw3-model-viewer](https://github.com/Feerdus95/dw3-model-viewer) — the Digimon renders.
+* [Feerdus95 / dw3-native-port](https://github.com/Feerdus95/dw3-native-port) — the native PC port of the same game.
 * Pages and scripts written with the help of Claude (Anthropic).
 
 
@@ -47,5 +47,4 @@ Digimon pictures are renders of the disc's battle models made with
 
 A non-commercial fan project with no affiliation with Bandai Namco. Digimon and Digimon World 2003 are © Bandai /
 Bandai Namco, Akiyoshi Hongo and Toei Animation; the Digimon images are renders of the game's models and belong to
-them. This repository contains **no game image, BIOS, or files extracted from the disc**: only facts about the game,
-documentation and renders.
+them.
