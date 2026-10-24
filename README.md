@@ -22,9 +22,7 @@ SLES-03936), taken directly from the game's code instead of from play-testing.
 
 The [dw3_decomp](https://github.com/ReGame-Labs/dw3_decomp) project has rewritten the game's executable as C that
 compiles back to the exact same bytes. Its tables (`TECHS`, `DIGIMON_DATA`, `STFGTREP_evolutionLists`) and battle
-code are the source of the numbers here. Names and descriptions come from the disc's own English text files, and the
-Digimon pictures are renders of the disc's battle models made with
-[dw3-model-viewer](https://github.com/Feerdus95/dw3-model-viewer).
+code are the source of the numbers here.
 
 ## Things to know
 
