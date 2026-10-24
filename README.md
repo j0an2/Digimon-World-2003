@@ -40,6 +40,8 @@ Digimon pictures are renders of the disc's battle models made with
 * [ReGame-Labs / dw3_decomp](https://github.com/ReGame-Labs/dw3_decomp) (MIT) — the decompilation all of this reads.
 * [Feerdus95 / dw3-model-viewer](https://github.com/Feerdus95/dw3-model-viewer) — used to render the Digimon models.
 * [Feerdus95 / dw3-native-port](https://github.com/Feerdus95/dw3-native-port) — the PC port.
+* Pages and scripts written with the help of Claude (Anthropic).
+
 
 ## Legal
 
