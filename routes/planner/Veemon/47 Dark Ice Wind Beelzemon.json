@@ -1,0 +1,80 @@
+{
+  "name": "47 Dark Ice Wind Beelzemon",
+  "partner": "Veemon",
+  "steps": [
+    {
+      "f": "Veemon",
+      "lv": 5
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 37
+    },
+    {
+      "f": "Paildramon",
+      "lv": 60,
+      "note": "Load Mega Tornado"
+    },
+    {
+      "f": "Devimon",
+      "lv": 40
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "Growlmon",
+      "lv": 50
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 50
+    },
+    {
+      "f": "Taomon",
+      "lv": 99
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 1
+    },
+    {
+      "f": "Angemon",
+      "lv": 50
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 99
+    },
+    {
+      "f": "Seraphimon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

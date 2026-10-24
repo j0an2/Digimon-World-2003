@@ -1,0 +1,82 @@
+{
+  "name": "54 Fast IDramon",
+  "partner": "Agumon",
+  "steps": [
+    {
+      "f": "Agumon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "Growlmon",
+      "lv": 25,
+      "note": "Learn Picking Claw "
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 30
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Growlmon",
+      "lv": 40,
+      "note": "Train until Agumon is Lvl 40"
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 90,
+      "note": "Train until Agumon is Lvl 40"
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

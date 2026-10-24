@@ -1,0 +1,90 @@
+{
+  "name": "54 IDramon, GuardiAngemon with Hammer Rush Load",
+  "partner": "Kotemon",
+  "steps": [
+    {
+      "f": "Kotemon",
+      "lv": 5
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 20
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 30,
+      "note": "Load Frost Cutter"
+    },
+    {
+      "f": "Greymon",
+      "lv": 10
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 35
+    },
+    {
+      "f": "Kyukimon",
+      "lv": 20
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 70,
+      "note": "Train until Kotemon is lvl 40"
+    },
+    {
+      "f": "GuardiAngemon",
+      "lv": 75,
+      "note": "Load Hammer Rush + Burn/Cold Slash"
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": "GuardiAngemon Hammer Rush + Elemental Techniques."
+}

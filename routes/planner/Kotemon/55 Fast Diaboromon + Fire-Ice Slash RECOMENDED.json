@@ -1,0 +1,77 @@
+{
+  "name": "55 Fast Diaboromon + Fire-Ice Slash Recomended",
+  "partner": "Kotemon",
+  "steps": [
+    {
+      "f": "Kotemon",
+      "lv": 5
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 20
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 30,
+      "note": "Load Frost Cutter"
+    },
+    {
+      "f": "Greymon",
+      "lv": 10
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 25
+    },
+    {
+      "f": "Kyukimon",
+      "lv": 80,
+      "note": "Load Heat/Frost Cutter"
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "GuardiAngemon",
+      "lv": 10
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": "Fast Diaboromon Impact Rush + Kyukimon 80: Burn/Cold Slash "
+}

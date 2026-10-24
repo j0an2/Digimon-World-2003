@@ -1,0 +1,96 @@
+{
+  "name": "59 IDramon Wind Fire Thunder Ice",
+  "partner": "Renamon",
+  "steps": [
+    {
+      "f": "Renamon",
+      "lv": 5
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 35
+    },
+    {
+      "f": "Stingmon",
+      "lv": 20
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 75,
+      "note": "Train until Renamon is level 20"
+    },
+    {
+      "f": "Taomon",
+      "lv": 20
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Taomon",
+      "lv": 30
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 10
+    },
+    {
+      "f": "Devimon",
+      "lv": 50
+    },
+    {
+      "f": "Myotismon",
+      "lv": 20
+    },
+    {
+      "f": "Grizzmon",
+      "lv": 30
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    },
+    {
+      "f": "Omnimon",
+      "lv": 85
+    }
+  ],
+  "notes": "Load Inferno"
+}

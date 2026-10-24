@@ -1,0 +1,111 @@
+{
+  "name": "57 Fast IDramon NOT Recomended",
+  "partner": "Patamon",
+  "steps": [
+    {
+      "f": "Patamon",
+      "lv": 5
+    },
+    {
+      "f": "Angemon",
+      "lv": 30
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 30,
+      "note": "Load Grand Wave"
+    },
+    {
+      "f": "Rosemon",
+      "lv": 50,
+      "note": "Train until Patamon is level 20"
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 30
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 60,
+      "note": "Load MegaTornado"
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5
+    },
+    {
+      "f": "Rosemon",
+      "lv": 99,
+      "note": "Train until Patamon is 40"
+    },
+    {
+      "f": "Phoenixmon",
+      "lv": 2
+    },
+    {
+      "f": "Seraphimon",
+      "lv": 10
+    },
+    {
+      "f": "Hookmon",
+      "lv": 50
+    },
+    {
+      "f": "Armormon",
+      "lv": 20
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 50
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Growlmon",
+      "lv": 30
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

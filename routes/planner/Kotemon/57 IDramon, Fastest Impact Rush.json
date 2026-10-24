@@ -1,0 +1,123 @@
+{
+  "name": "57 IDramon, Fastest Impact Rush",
+  "partner": "Kotemon",
+  "steps": [
+    {
+      "f": "Kotemon",
+      "lv": 5
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 20
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 30,
+      "note": "Load Frost Cutter"
+    },
+    {
+      "f": "Greymon",
+      "lv": 10,
+      "note": ""
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5,
+      "note": ""
+    },
+    {
+      "f": "Greymon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 35,
+      "note": ""
+    },
+    {
+      "f": "Kyukimon",
+      "lv": 20,
+      "note": ""
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99,
+      "note": ""
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Greymon",
+      "lv": 50,
+      "note": "Future Diaboromon."
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 40,
+      "note": "Future Diaboromon."
+    },
+    {
+      "f": "GuardiAngemon",
+      "lv": 10
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5,
+      "note": ""
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40,
+      "note": ""
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 85,
+      "note": "Load Impact Rush"
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": "Fastest Impact Rush"
+}

@@ -1,0 +1,98 @@
+{
+  "name": "57 Diaboromon Water + Wind + Fire + Dark",
+  "partner": "Patamon",
+  "steps": [
+    {
+      "f": "Patamon",
+      "lv": 5
+    },
+    {
+      "f": "Angemon",
+      "lv": 30
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 30,
+      "note": "Load Grand Wave"
+    },
+    {
+      "f": "Rosemon",
+      "lv": 50,
+      "note": "Train until Patamon is level 20"
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 30
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 60,
+      "note": "Load MegaTornado"
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "Seraphimon",
+      "lv": 10
+    },
+    {
+      "f": "Hookmon",
+      "lv": 50
+    },
+    {
+      "f": "Armormon",
+      "lv": 20
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 30
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

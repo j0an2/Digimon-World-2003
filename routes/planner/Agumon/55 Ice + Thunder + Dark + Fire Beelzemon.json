@@ -1,0 +1,105 @@
+{
+  "name": "55 Ice + Thunder + Dark + Fire Beelzemon",
+  "partner": "Agumon",
+  "steps": [
+    {
+      "f": "Agumon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 41
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 58
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 20
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 40
+    },
+    {
+      "f": "Taomon",
+      "lv": 99
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 75
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 90,
+      "note": "Load Lightning Bolt / Giga Freeze"
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 30
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40,
+      "note": "Load Flame Breath + Omnimon"
+    },
+    {
+      "f": "Stingmon",
+      "lv": 50
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 20
+    },
+    {
+      "f": "Angemon",
+      "lv": 50
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 30
+    },
+    {
+      "f": "Devimon",
+      "lv": 40
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 85
+    }
+  ],
+  "notes": "Before Taomon, it's a no-damage build"
+}

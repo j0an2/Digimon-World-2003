@@ -1,0 +1,444 @@
+﻿ID,Name,Type,MP,Power,Accuracy,Element,Element strength,Family (+50%),Effect,Effect chance,Effect strength,Hits,Category,Learned by,Amount,Description
+1,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Kotemon,,
+2,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Monmon,,
+3,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Kumamon,,
+4,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Agumon,,
+5,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Veemon,,
+6,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Guilmon,,
+7,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Renamon,,
+8,Basic attack,Physical,0,60,110,-,,-,-,,,1,Basic attack,Patamon,,
+9,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Dinohumon,,
+10,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Hookmon,,
+11,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Grizzmon,,
+12,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Greymon,,
+13,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,ExVeemon,,
+14,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Growlmon,,
+15,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Kyubimon,,
+16,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Angemon,,
+17,Basic attack,Physical,0,130,110,-,,-,-,,,1,Basic attack,Devimon,,
+18,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Stingmon,,
+19,Basic attack,Physical,0,100,110,-,,-,-,,,1,Basic attack,Angewomon,,
+20,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Kyukimon,,
+21,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Armormon,,
+22,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,GrapLeomon,,
+23,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,MetalGreymon,,
+24,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,SkullGreymon,,
+25,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Paildramon,,
+26,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,WarGrowlmon,,
+27,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Taomon,,
+28,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,MagnaAngemon,,
+29,Basic attack,Physical,0,200,110,-,,-,-,,,1,Basic attack,Myotismon,,
+30,Basic attack,Physical,0,130,110,-,,-,-,,,1,Basic attack,MetalMamemon,,
+31,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Kabuterimon,,
+32,Basic attack,Physical,0,160,110,-,,-,-,,,1,Basic attack,Digitamamon,,
+33,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,GuardiAngemon,,
+34,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Cannondramon,,
+35,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Marsmon,,
+36,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,WarGreymon,,
+37,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Imperialdramon,,
+38,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Gallantmon,,
+39,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Sakuyamon,,
+40,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Seraphimon,,
+41,Basic attack,Physical,0,200,110,-,,-,-,,,1,Basic attack,MetalGarurumon,,
+42,Basic attack,Physical,0,200,110,-,,-,-,,,1,Basic attack,Rosemon,,
+43,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,BK WarGreymon,,
+44,Basic attack,Physical,0,320,110,-,,-,-,,,1,Basic attack,Imperialdramon FM,,
+45,Basic attack,Physical,0,320,110,-,,-,-,,,1,Basic attack,MaloMyotismon,,
+46,Basic attack,Physical,0,320,110,-,,-,-,,,1,Basic attack,MegaGargomon,,
+47,Basic attack,Physical,0,320,110,-,,-,-,,,1,Basic attack,GranKuwagamon,,
+48,Basic attack,Physical,0,240,110,-,,-,-,,,1,Basic attack,Phoenixmon,,
+49,Basic attack,Physical,0,320,110,-,,-,-,,,1,Basic attack,Omnimon,,
+50,Basic attack,Physical,0,400,110,-,,-,-,,,1,Basic attack,Imperialdramon PM,,
+51,Basic attack,Physical,0,400,110,-,,-,-,,,1,Basic attack,Beelzemon,,
+52,Basic attack,Physical,0,400,110,-,,-,-,,,1,Basic attack,Diaboromon,,
+53,Hot Head,Physical,20,75,127,Fire,48,-,-,,,1,Own technique,Kotemon (start),,Slash with sword and fire attack.
+54,Swing Swing,Physical,20,80,100,-,,-,Higher critical,,60,1,Own technique,Monmon (start),Critical chance 50% (normally 3.1%); a critical does +50% to +148% damage,Aim for weak point with slingshot.
+55,Bear Fist,Physical,20,100,127,-,,-,-,,,1,Own technique,Kumamon (start),,Punch the enemy in the chest.
+56,Pepper Breath,Magic,30,100,127,Fire,32,-,-,,,1,Own technique,Agumon (start),,Shoot small fire balls.
+57,Vee Head Butt,Physical,22,120,127,-,,-,-,,,1,Own technique,Veemon (start),,Strong head butt.
+58,Pyrosphere,Magic,30,100,127,Fire,32,-,-,,,1,Own technique,Guilmon (start),,Shoot fire balls at the enemy.
+59,Diamond Storm,Magic,30,100,127,Ice,32,-,-,,,1,Own technique,Renamon (start),,Create ice leaves and shoot.
+60,Boom Bubble,Magic,30,100,127,Wind,32,-,-,,,1,Own technique,Patamon (start),,Shoot inhaled air at once.
+61,Lizard Dance,Physical,40,100,100,-,,-,Multi-hit,,1,4,Own technique,Dinohumon (Lv 60),Up to 4 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Slash the enemy multiple times.
+62,Captain Cannon,Physical,38,200,100,-,,-,Higher critical,,60,1,Own technique,Hookmon (Lv 60),Critical chance 50% (normally 3.1%); a critical does +50% to +148% damage,Shoot the arm cannon.
+63,Maul Attack,Physical,40,200,127,-,,-,Enemy only,,40,1,Own technique,Grizzmon (Lv 60),,If attacked first counter.
+64,Nova Blast,Magic,60,300,127,Fire,48,-,-,,,1,Own technique,Greymon (Lv 60),,Shoot a fire ball from the mouth.
+65,Veelaser,Magic,60,300,127,Fire,48,-,-,,,1,Own technique,ExVeemon (Lv 60),,Shoot a laser from the chest.
+66,Plasma Blade,Physical,40,180,127,Thunder,48,-,-,,,1,Own technique,Growlmon (Lv 60),,Slash with electrified blade.
+67,Dragon Wheel,Magic,60,300,127,Fire,48,-,-,,,1,Own technique,Kyubimon (Lv 60),,Shoot fire balls from 9 tails.
+68,Hand of Fate,Physical,42,180,127,Wind,48,-,-,,,1,Own technique,Angemon (Lv 60),,Punch the enemy with wind attacks.
+69,Touch of Evil,Physical,40,240,127,-,,-,Drain HP,80,80,1,Own technique,Devimon (Lv 70),Heals 62.5% of the damage dealt,Drain enemy's HP with the claw.
+70,Spiking Strike,Physical,36,200,127,-,,-,-,,,1,Own technique,Stingmon (Lv 60),,Stab the enemy with the spike.
+71,Celestial Arrow,Physical,44,180,127,Thunder,48,-,-,,,1,Own technique,Angewomon (Lv 70),,Divine arrow with thunder attack.
+72,Blade Twister,Physical,80,120,100,Wind,64,-,Multi-hit,,1,3,Own technique,Kyukimon (Lv 70),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Slash multiple times with wind.
+73,Justice Strike,Physical,78,140,100,-,,-,Multi-hit,,1,3,Own technique,Armormon (Lv 70),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Shoot all firearms.
+74,Cyclone Turbine,Physical,80,140,100,-,,-,Multi-hit,,1,3,Own technique,GrapLeomon (Lv 70),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Multiple round house kicks.
+75,Giga Destroyer,Magic,90,500,127,Machine,64,-,-,,,1,Own technique,MetalGreymon (Lv 70),,Launch organic missiles.
+76,Dark Shot,Magic,90,500,127,Machine,64,-,-,,,1,Own technique,SkullGreymon (Lv 70),,Launch organic missiles.
+77,DesperadoBlaster,Physical,84,140,100,-,,-,Multi-hit,,1,3,Own technique,Paildramon (Lv 70),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Rapid-fire 2 energy waves.
+78,Atomic Blaster,Magic,90,500,127,Fire,64,-,-,,,1,Own technique,WarGrowlmon (Lv 70),,Burn the enemy with fire laser.
+79,Bonhitsusen,Physical,80,300,127,-,,Ghost,-,,,1,Own technique,Taomon (Lv 70),,Huge damage to ghouls.
+80,Gate of Destiny,Magic,112,250,127,-,,-,Instant KO,88,1,1,Own technique,MagnaAngemon (Lv 70),,Open a gate and discard enemies.
+81,Grisly Wing,Magic,90,300,127,Dark,64,-,Attack down,,32,1,Own technique,Myotismon (Lv 85),"−25% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Decrease enemy's attack power.
+82,Energetic Bomb,Physical,78,240,127,Machine,64,-,-,,,1,Own technique,MetalMamemon (Lv 70),,Fire machine energy balls.
+83,Electro Shocker,Magic,90,500,127,Thunder,64,-,-,,,1,Own technique,Kabuterimon (Lv 70),,Fire thunder balls from the mouth.
+84,NM Syndromer,Magic,90,500,127,Dark,64,-,-,,,1,Own technique,Digitamamon (Lv 85),,Dark attack by firing dark balls.
+85,Golden Ripper,Physical,140,400,127,-,,Evil,-,,,1,Own technique,GuardiAngemon (Lv 85),,Slash enemies with swords.
+86,DynamoCannon,Physical,136,400,127,-,,Machine,-,,,1,Own technique,Cannondramon (Lv 85),,Huge damage against machines.
+87,Mugenhadou,Physical,148,320,127,-,,-,Sleep,127,127,1,Own technique,Marsmon (Lv 85),,Blast a wave to knock out enemy.
+88,Terra Force,Physical,140,480,127,-,,-,-,,,1,Own technique,WarGreymon (Lv 85),,Throw a huge energy ball.
+89,Mega Crusher,Physical,150,500,127,-,,-,-,,,1,Own technique,Imperialdramon (Lv 85),,Fire a massive ball.
+90,Final Purification,Physical,140,320,127,-,,-,Enemy only,,96,1,Own technique,Gallantmon (Lv 85),,Beam counterattack from shield.
+91,KongouKaimandara,Magic,150,480,127,-,,Ghost,-,,,1,Own technique,Sakuyamon (Lv 85),,Magic attack against ghouls.
+92,Seven Heavens,Physical,140,400,127,-,,Evil,-,,,1,Own technique,Seraphimon (Lv 85),,Fire 7 balls against evil Digimon.
+93,Metal Wolf Claw,Magic,150,600,127,Ice,72,-,-,,,1,Own technique,MetalGarurumon (Lv 85),,Ice breath. Magic attack.
+94,Thorn Whipping,Physical,130,340,127,-,,-,Poison,127,127,1,Own technique,Rosemon (Lv 85),,Poison enemy with thorn whip.
+95,Terra Destroyer,Physical,140,420,127,Dark,64,-,-,,,1,Own technique,BK WarGreymon (Lv 85),,Throw massive dark matter.
+96,Giga Crusher,Physical,180,640,127,-,,-,-,,,1,Own technique,Imperialdramon FM (Lv 90),,Fire the ultimate laser cannon.
+97,Melting Blood,Magic,210,700,127,Dark,72,-,-,,,1,Own technique,MaloMyotismon (Lv 90),,Unleash dark energy.
+98,Giant Missile,Physical,200,480,127,Machine,64,-,-,,,1,Own technique,MegaGargomon (Lv 90),,Fire all body missiles.
+99,Dimension Scissors,Physical,200,400,110,-,,-,Instant KO,104,1,1,Own technique,GranKuwagamon (Lv 90),,Slash thru space and destroy.
+100,Crimson Flame,On allies,200,0,100,-,,-,Revive allies,,1,1,Own technique,Phoenixmon (Lv 90),,Revive all allies with max HP.
+101,T-Sword,Physical,250,400,127,-,,-,Paralysis,104,104,1,Own technique,Omnimon (Lv 99),,Paralyze with Grey Sword.
+102,Omega Blade,Physical,280,500,127,-,,Evil,-,,,1,Own technique,Imperialdramon PM (Lv 99),,Sword move destroys evil.
+103,Blast Mode,Physical,250,300,100,-,,-,Multi-hit,,1,3,Own technique,Beelzemon (Lv 99),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Multiple shots to the enemy.
+104,Cable Crusher,Magic,270,800,127,Dark,72,-,-,,,1,Own technique,Diaboromon (Lv 99),,Powerful and evil magic attack.
+105,Heat Cutter,Physical,18,90,110,Fire,32,-,-,,,1,Shared technique,"Dinohumon (Lv 5), Kyukimon (Lv 5)",,Slash and fire damage.
+106,Burn Slash,Physical,32,130,110,Fire,64,-,-,,,1,Shared technique,"Kyukimon (Lv 25), GuardiAngemon (Lv 15)",,Slash with a flame blade.
+107,Frost Cutter,Physical,18,90,110,Ice,32,-,-,,,1,Shared technique,"Dinohumon (Lv 10), Kyukimon (Lv 10)",,Slash with ice damage.
+108,Cold Slash,Physical,32,130,110,Ice,64,-,-,,,1,Shared technique,"Kyukimon (Lv 40), GuardiAngemon (Lv 30)",,Slash with an ice blade.
+109,Whirlwind,Physical,18,90,110,Wind,32,-,-,,,1,Shared technique,"Grizzmon (Lv 10), GrapLeomon (Lv 10)",,Wind damage.
+110,Vacuum Cannon,Physical,48,160,110,Wind,64,-,-,,,1,Shared technique,Marsmon (Lv 25),,Strong wind damage.
+111,Lightning Slash,Physical,18,90,110,Thunder,32,-,-,,,1,Shared technique,"Grizzmon (Lv 5), GrapLeomon (Lv 5)",,Thunder damage.
+112,Heaven Hit,Physical,32,160,110,Thunder,64,-,-,,,1,Shared technique,"Marsmon (Lv 15), Imperialdramon FM (Lv 10)",,Strong thunder damage.
+113,Metal Attack,Physical,26,140,110,Machine,32,-,-,,,1,Shared technique,"Paildramon (Lv 5), MetalMamemon (Lv 5)",,Machine damage.
+114,Mechanical Bash,Physical,48,160,110,Machine,64,-,-,,,1,Shared technique,"MetalMamemon (Lv 35), Imperialdramon (Lv 25), MetalGarurumon (Lv 10), MegaGargomon (Lv 5)",,Strong machine damage.
+115,Poison Bites,Physical,18,75,110,-,,-,Poison,72,80,1,Shared technique,Stingmon (Lv 10),,Poison damage.
+116,Venom Stab,Physical,36,200,110,-,,-,Poison,80,96,1,Shared technique,"Stingmon (Lv 55), Kabuterimon (Lv 15), GranKuwagamon (Lv 10)",,Deadly poison damage.
+117,Spinal Tap,Physical,18,75,110,-,,-,Paralysis,80,80,1,Shared technique,Grizzmon (Lv 40),,Sometimes paralyzes the enemy.
+118,Brain Freeze,Physical,52,180,110,-,,-,Paralysis,96,96,1,Shared technique,Marsmon (Lv 40),,Paralyzes the enemy.
+119,Panic Bites,Physical,18,75,110,-,,-,Confusion,80,80,1,Shared technique,Stingmon (Lv 35),,Confusion damage.
+120,Confuse Stab,Physical,64,240,110,-,,-,Confusion,127,127,1,Shared technique,GranKuwagamon (Lv 50),,Massive confusion damage.
+121,Counter Alert,Physical,48,100,110,-,,-,Enemy only,,40,1,Shared technique,"Growlmon (Lv 45), WarGrowlmon (Lv 10)",,Counterattack during pose.
+122,Counter Strike,Physical,96,240,110,-,,-,Enemy only,,64,1,Shared technique,"Gallantmon (Lv 25), Imperialdramon FM (Lv 60)",,Strong counterattack during pose.
+123,Hammer Rush,Physical,30,100,100,-,,-,Multi-hit,,1,3,Shared technique,"Grizzmon (Lv 25), Kabuterimon (Lv 35), GuardiAngemon (Lv 50)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Damage from rapid blows.
+124,Impact Rush,Physical,60,240,100,-,,-,Multi-hit,,1,3,Shared technique,"GranKuwagamon (Lv 65), Imperialdramon PM (Lv 20)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Huge damage from rapid blows.
+125,Big Shot,Physical,20,140,100,-,,-,Higher critical,,40,1,Shared technique,"Hookmon (Lv 25), Kyukimon (Lv 60), Armormon (Lv 10)",Critical chance 34.4% (normally 3.1%); a critical does +50% to +148% damage,Big damage if it hits.
+126,Pinpoint Shot,Physical,54,220,100,-,,-,Higher critical,,64,1,Shared technique,"GuardiAngemon (Lv 70), Cannondramon (Lv 60)",Critical chance 53.1% (normally 3.1%); a critical does +50% to +148% damage,Huge damage if it hits.
+127,Picking Claw,Physical,18,60,110,-,,-,Steal item,64,1,1,Shared technique,"Growlmon (Lv 25), WarGrowlmon (Lv 5)",,Attack and steal items.
+128,Snapping Claw,Physical,54,240,110,-,,-,Steal item,96,1,1,Shared technique,Gallantmon (Lv 50),,Attack and quickly steal items.
+129,(unnamed: enemy-only or unused),Physical,0,100,100,-,,-,Drain HP,100,64,1,Enemy / unused,,Heals 50% of the damage dealt,
+130,(unnamed: enemy-only or unused),Physical,0,100,100,-,,-,Drain HP,100,64,1,Enemy / unused,,Heals 50% of the damage dealt,
+131,Bug Buster,Physical,24,130,110,-,,Insect,-,,,1,Shared technique,"Hookmon (Lv 10), Armormon (Lv 5)",,Huge damage vs. insectoid Digimon.
+132,Wing Buster,Physical,18,100,110,-,,Bird,-,,,1,Shared technique,Hookmon (Lv 5),,Huge damage vs. bird Digimon.
+133,Fish Buster,Physical,30,160,110,-,,Aquatic,-,,,1,Shared technique,"Hookmon (Lv 40), Armormon (Lv 25), Cannondramon (Lv 15)",,Huge damage vs. marine Digimon.
+134,Dino Buster,Physical,40,200,110,-,,Dinosaur,-,,,1,Shared technique,"Armormon (Lv 45), Cannondramon (Lv 25)",,Huge damage vs. dinosaur Digimon.
+135,Dramon Buster,Physical,48,210,110,-,,Dragon,-,,,1,Shared technique,"Armormon (Lv 60), Cannondramon (Lv 40)",,Huge damage vs. dragon Digimon.
+136,Devil Buster,Physical,56,220,110,-,,Evil,-,,,1,Shared technique,Cannondramon (Lv 80),,Huge damage vs. evil Digimon.
+137,Flame Ball,Magic,20,100,110,Fire,16,-,-,,,1,Shared technique,"Greymon (Lv 5), MetalGreymon (Lv 5), SkullGreymon (Lv 5)",,Shoot small fire balls.
+138,Flame Lance,Magic,48,300,110,Fire,32,-,-,,,1,Shared technique,"Greymon (Lv 45), MetalGreymon (Lv 10), WarGreymon (Lv 5)",,Launch fire beam.
+139,Flame Breath,Magic,72,500,110,Fire,48,-,-,,,1,Shared technique,"WarGreymon (Lv 35), BK WarGreymon (Lv 10), Omnimon (Lv 10)",,Engulf the enemy with fire breath.
+140,Flame Sphere,Magic,180,700,110,Fire,64,-,-,,,1,Shared technique,Omnimon (Lv 30),,Magic that creates huge flames.
+141,Triple Fire,Magic,25,50,100,Fire,16,-,Multi-hit,,1,3,Shared technique,"Greymon (Lv 15), MetalGreymon (Lv 15), SkullGreymon (Lv 35)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Shoot three fire balls.
+142,Rising Fire,Magic,60,150,100,Fire,32,-,Multi-hit,,1,3,Shared technique,"MetalGreymon (Lv 60), WarGreymon (Lv 45)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Column of fire on the enemy.
+143,Giga Fire,Magic,90,250,100,Fire,48,-,Multi-hit,,1,3,Shared technique,"WarGreymon (Lv 80), BK WarGreymon (Lv 35), Omnimon (Lv 35)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Magic attack shoots 3 fire balls.
+144,Inferno,Magic,200,350,100,Fire,64,-,Multi-hit,,1,3,Shared technique,Omnimon (Lv 60),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Continuous fire columns.
+145,Divine Rain,Magic,30,150,110,Water,24,-,-,,,1,Shared technique,Angewomon (Lv 20),,Water damage from magical rain.
+146,Hard Rain,Magic,0,300,110,Water,40,-,-,,,1,Shared technique,,,
+147,Grand Wave,Magic,72,300,110,Water,48,-,-,,,1,Shared technique,Rosemon (Lv 10),,Magical tidal wave against enemy.
+148,Titanic Wave,Magic,0,500,110,Water,64,-,-,,,1,Shared technique,,,
+149,Ice Blow,Magic,20,100,110,Ice,16,-,-,,,1,Shared technique,"ExVeemon (Lv 20), Kyubimon (Lv 15)",,Shoot icicles with ice damage.
+150,Ice Shower,Magic,48,200,110,Ice,32,-,-,,,1,Shared technique,"Kyubimon (Lv 55), Paildramon (Lv 10), Taomon (Lv 10)",,Shoot numerous icicles.
+151,Snowstorm,Magic,60,250,110,Ice,40,-,-,,,1,Shared technique,"Taomon (Lv 45), Imperialdramon (Lv 50), Sakuyamon (Lv 15)",,Snow spirit inflicts ice damage.
+152,Giga Freeze,Magic,72,300,110,Ice,48,-,-,,,1,Shared technique,Sakuyamon (Lv 50),,Engulf the enemy with huge ice.
+153,Air Blast,Magic,20,100,110,Wind,16,-,-,,,1,Shared technique,"ExVeemon (Lv 10), Angemon (Lv 5), MagnaAngemon (Lv 5)",,Shoot air balls.
+154,Mega Tornado,Magic,30,200,110,Wind,24,-,-,,,1,Shared technique,"Angemon (Lv 45), Paildramon (Lv 25), MagnaAngemon (Lv 25), Seraphimon (Lv 5)",,Tornado against an enemy.
+155,Sylph Storm,Magic,72,500,110,Wind,48,-,-,,,1,Shared technique,"Imperialdramon (Lv 70), Seraphimon (Lv 35)",,Powerful gust of wind.
+156,Thunder Bolt,Magic,20,100,110,Thunder,16,-,-,,,1,Shared technique,Kyubimon (Lv 5),,Create a thunder ball and fire.
+157,Thunder Gemini,Magic,30,200,110,Thunder,24,-,-,,,1,Shared technique,"Kyubimon (Lv 25), Taomon (Lv 5)",,Create two thunder balls and fire.
+158,Electro Bolt,Magic,48,300,110,Thunder,32,-,-,,,1,Shared technique,"Taomon (Lv 25), Sakuyamon (Lv 5)",,Large thunder ball against enemy.
+159,Lightning Bolt,Magic,72,500,110,Thunder,48,-,-,,,1,Shared technique,Sakuyamon (Lv 40),,Huge thunder ball against enemy.
+160,Magic Missile,Magic,56,400,110,Machine,32,-,-,,,1,Shared technique,"MetalGreymon (Lv 35), MetalMamemon (Lv 15)",,Shoot missiles with magic.
+161,Twin Missile,Magic,64,450,110,Machine,40,-,-,,,1,Shared technique,"MetalMamemon (Lv 60), WarGreymon (Lv 60), MetalGarurumon (Lv 15)",,Shoot two missiles with magic.
+162,Magical Cannon,Magic,72,500,110,Machine,48,-,-,,,1,Shared technique,"MetalGarurumon (Lv 45), MegaGargomon (Lv 20)",,Shoot giant missiles with magic.
+163,God Bombard,Magic,120,600,110,Machine,64,-,-,,,1,Shared technique,MegaGargomon (Lv 50),,Most powerful missile magic.
+164,Dark Matter,Magic,20,100,110,Dark,16,-,-,,,1,Shared technique,"Devimon (Lv 10), SkullGreymon (Lv 15)",,Evil fireball with dark damage.
+165,Dark Fear,Magic,48,300,110,Dark,32,-,-,,,1,Shared technique,"Myotismon (Lv 10), BK WarGreymon (Lv 20)",,Throw evil flame against enemy.
+166,Dark Elemental,Magic,120,600,110,Dark,64,-,-,,,1,Shared technique,"MaloMyotismon (Lv 10), Beelzemon (Lv 5)",,Engulf with evil fire column.
+167,Darkness Chaos,Magic,180,700,110,Dark,72,-,-,,,1,Shared technique,Beelzemon (Lv 20),,Huge damage with evil flame.
+168,Black Thorn,Magic,60,150,100,Dark,32,-,Multi-hit,,1,3,Shared technique,SkullGreymon (Lv 45),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Dark damage with evil thorns.
+169,Black Dart,Magic,70,200,100,Dark,40,-,Multi-hit,,1,3,Shared technique,"Myotismon (Lv 25), BK WarGreymon (Lv 50)",Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Fire numerous evil thorns.
+170,Crimson Cloud,Magic,150,300,100,Dark,64,-,Multi-hit,,1,3,Shared technique,MaloMyotismon (Lv 20),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Fire numerous evil flames.
+171,Black Scewer,Magic,200,350,100,Dark,72,-,Multi-hit,,1,3,Shared technique,Beelzemon (Lv 35),Up to 3 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),Pierce with numerous dark matter.
+172,Evil Poison,Magic,18,60,110,-,,-,Poison,72,80,1,Shared technique,Devimon (Lv 20),,Magic with damage and poison.
+173,Deadly Poison,Magic,90,360,110,-,,-,Poison,112,127,1,Shared technique,"MaloMyotismon (Lv 30), Diaboromon (Lv 10)",,Fire venomous foam with magic.
+174,Stun Shock,Magic,18,60,110,-,,-,Paralysis,80,80,1,Shared technique,Devimon (Lv 55),,Magic with damage and paralysis.
+175,Paralyze Shock,Magic,90,300,110,-,,-,Paralysis,96,96,1,Shared technique,"MaloMyotismon (Lv 45), Diaboromon (Lv 20)",,Magic that completely paralyzes.
+176,Confuse Gas,Magic,40,180,110,-,,-,Confusion,80,80,1,Shared technique,Myotismon (Lv 65),,Magic that confuses the enemy.
+177,Confuse Nebula,Magic,90,360,110,-,,-,Confusion,127,127,1,Shared technique,"Beelzemon (Lv 50), Diaboromon (Lv 40)",,Massive confusion magic blow.
+178,Hypno Gas,Magic,40,180,110,-,,-,Sleep,80,80,1,Shared technique,Digitamamon (Lv 10),,Magic puts the enemy to sleep.
+179,Hypno Nebula,Magic,60,240,110,-,,-,Sleep,96,96,1,Shared technique,"Digitamamon (Lv 55), Diaboromon (Lv 55)",,Magic puts enemy to deep sleep.
+180,Soul Snatcher,Magic,50,150,110,-,,-,Instant KO,72,1,1,Shared technique,"Myotismon (Lv 80), Digitamamon (Lv 30)",,Magically drain the soul.
+181,Soul Plunder,Magic,160,350,110,-,,-,Instant KO,96,1,1,Shared technique,"Imperialdramon PM (Lv 50), Beelzemon (Lv 60)",,Destroy enemy with a spell.
+182,Energy Leech,Magic,18,100,110,-,,-,Drain HP,80,64,1,Shared technique,"Stingmon (Lv 15), Kabuterimon (Lv 5)",Heals 50% of the damage dealt,Magic that drains HP.
+183,Energy Drain,Magic,72,500,110,-,,-,Drain HP,100,127,1,Shared technique,"Kabuterimon (Lv 60), GranKuwagamon (Lv 30)",Heals 99.2% of the damage dealt,Magic that drains many HP.
+184,Small Heal,On self,16,8,100,-,,-,Heal HP,,8,1,Support,"Dinohumon (Lv 25), ExVeemon (Lv 40), Angemon (Lv 10), MagnaAngemon (Lv 10)",512 HP + Wisdom × 1 (max 9999),Heal some of your HP.
+185,Mega Heal,On self,74,32,100,-,,-,Heal HP,,32,1,Support,"MagnaAngemon (Lv 40), GuardiAngemon (Lv 40), Imperialdramon (Lv 5), Seraphimon (Lv 20)",2048 HP + Wisdom × 4 (max 9999),Heal much of your HP.
+186,Full Heal,On self,120,127,100,-,,-,Heal HP,,127,1,Support,"Imperialdramon FM (Lv 45), Phoenixmon (Lv 10)",8128 HP + Wisdom × 15.9 (max 9999),Heal almost all of your HP.
+187,Giga Heal,On allies,188,32,100,-,,-,Heal HP,,32,1,Support,"Seraphimon (Lv 55), Imperialdramon FM (Lv 75)",2048 HP + Wisdom × 4 (max 9999),Heal much of allies HP.
+188,Final Heal,On allies,240,64,100,-,,-,Heal HP,,64,1,Support,"Phoenixmon (Lv 40), Imperialdramon PM (Lv 65)",4096 HP + Wisdom × 8 (max 9999),Heal almost all of allies HP.
+189,Auto Recover,On self,82,1,100,-,,-,Regeneration,,1,1,Support,"Phoenixmon (Lv 75), Imperialdramon PM (Lv 10)",,Gradually heal your HP.
+190,Antidote,On self,8,0,100,-,,-,Cure poison,,1,1,Support,"ExVeemon (Lv 50), Angewomon (Lv 15)",,Cure poison on yourself.
+191,Erase Poison,On allies,12,0,100,-,,-,Cure poison,,1,1,Support,Rosemon (Lv 20),,Cure all poison on allies.
+192,Anti-Paralysis,On self,8,0,100,-,,-,Cure paralysis,,1,1,Support,"Angewomon (Lv 30), Paildramon (Lv 65)",,Cure paralysis on yourself.
+193,Erase Paralysis,On allies,12,0,100,-,,-,Cure paralysis,,1,1,Support,Rosemon (Lv 25),,Cure all paralysis on allies.
+194,Anti-Confuse,On self,15,0,100,-,,-,Cure confusion,,1,1,Support,,,Cure confusion on yourself.
+195,Erase Confuse,On allies,25,0,100,-,,-,Cure confusion,,1,1,Support,,,Cure all confusion on allies.
+196,Anti-Magic,On self,20,0,100,-,,-,Cure all ailments,,1,1,Support,Rosemon (Lv 70),,Cure all ailments on yourself.
+197,Erase Magic,On allies,37,0,100,-,,-,Cure all ailments,,1,1,Support,"Phoenixmon (Lv 60), Imperialdramon PM (Lv 30)",,Cure all ailments on allies.
+198,Double Power,On self,42,0,100,-,,-,Attack up,,48,1,Support,"Dinohumon (Lv 40), Greymon (Lv 30), Growlmon (Lv 5)","+37.5% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase your attack power.
+199,Mega Strength,Buff / status,84,0,100,-,,-,Attack up,,64,1,Support,WarGrowlmon (Lv 45),"+50% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase allies' attack powers.
+200,Double Guard,On self,42,0,100,-,,-,Defense up,,48,1,Support,"Growlmon (Lv 10), Angemon (Lv 15)","+37.5% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase your defense power.
+201,Mega Protection,Buff / status,84,0,100,-,,-,Defense up,,64,1,Support,"WarGrowlmon (Lv 25), MagnaAngemon (Lv 50)","+50% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase allies' defense powers.
+202,Speed Up,On self,48,0,100,-,,-,Speed up,,32,1,Support,"GrapLeomon (Lv 40), Paildramon (Lv 55), WarGrowlmon (Lv 60), Gallantmon (Lv 15)","+25% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase your speed.
+203,Mega Boost,Buff / status,96,0,100,-,,-,Speed up,,48,1,Support,"Gallantmon (Lv 75), Imperialdramon FM (Lv 20)","+37.5% of the stat (stacks up to +100%); lasts ≈2–4 turns, +1 per 100 Spirit",Increase allies' speed.
+204,Lovely Charm,Buff / status,0,0,100,-,,-,Attack down,,24,1,Shared technique,,"−18.8% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Decrease enemy's attack.
+205,Armor Break,Buff / status,39,0,100,-,,-,Defense down,,24,1,Support,Devimon (Lv 35),"−18.8% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Decrease enemy's defense.
+206,Armor Off,Buff / status,78,0,100,-,,-,Defense down,,48,1,Support,Myotismon (Lv 40),"−37.5% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Large decrease in enemy's defense.
+207,Slow Down,Buff / status,41,0,100,-,,-,Speed down,,16,1,Support,MetalMamemon (Lv 45),"−12.5% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Decrease enemy's speed.
+208,Mega Break,Buff / status,82,0,100,-,,-,Speed down,,32,1,Support,MegaGargomon (Lv 75),"−25% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",Large decrease in enemy's speed.
+209,Soul Charge,On self,19,0,100,-,,-,Charge next blow,,80,1,Support,GrapLeomon (Lv 25),+125% damage on the next attack,Save Chi to power up next blow.
+210,Misshukikou,On self,49,0,100,-,,-,Charge next blow,,127,1,Support,Marsmon (Lv 65),+198% damage on the next attack,Save Chi to maximum for next blow.
+211,Capture Beam,Buff / status,0,0,100,-,,-,Can't switch/flee,80,24,1,Support,,,The enemy can't switch Digimon or flee for a while.
+212,Hold Beam,Buff / status,0,0,100,-,,-,Can't digivolve,80,24,1,Shared technique,,,The enemy can't digivolve for a while.
+213,Fire Field,Elemental field,100,0,100,Fire,0,-,-,,,1,Field,BK WarGreymon (Lv 70),"Fire +50% (+0.8% per 10 Spirit, max +99%); Water −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen fire, weaken ice."
+214,Water Field,Elemental field,100,0,100,Water,0,-,-,,,1,Field,Rosemon (Lv 50),"Water +50% (+0.8% per 10 Spirit, max +99%); Wind −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen water, weaken fire."
+215,Ice Field,Elemental field,100,0,100,Ice,0,-,-,,,1,Field,Sakuyamon (Lv 65),"Ice +50% (+0.8% per 10 Spirit, max +99%); Fire −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen ice, weaken wind."
+216,Wind Field,Elemental field,100,0,100,Wind,0,-,-,,,1,Field,Seraphimon (Lv 75),"Wind +50% (+0.8% per 10 Spirit, max +99%); Ice −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen wind, weaken water."
+217,Thunder Field,Elemental field,100,0,100,Thunder,0,-,-,,,1,Field,Taomon (Lv 55),"Thunder +50% (+0.8% per 10 Spirit, max +99%); Dark −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen thunder, weaken metal."
+218,Metal Field,Elemental field,100,0,100,Machine,0,-,-,,,1,Field,MetalGarurumon (Lv 70),"Machine +50% (+0.8% per 10 Spirit, max +99%); Thunder −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen metal, weaken dark."
+219,Dark Field,Elemental field,100,0,100,Dark,0,-,-,,,1,Field,MaloMyotismon (Lv 75),"Dark +50% (+0.8% per 10 Spirit, max +99%); Machine −25% (max −50%). Lasts ≈1 turn, +1 per 83 Spirit. In the original game every field boosts Thunder instead (a bug Harmony fixes)","Strengthen dark, weaken thunder."
+220,(unnamed: enemy-only or unused),Physical,0,50,110,-,,-,-,,,1,Enemy / unused,,,
+221,(unnamed: enemy-only or unused),Physical,0,50,110,-,,-,-,,,1,Enemy / unused,,,
+222,(unnamed: enemy-only or unused),Physical,0,53,110,Water,32,-,-,,,1,Enemy / unused,,,
+223,(unnamed: enemy-only or unused),Physical,0,60,110,Water,32,-,-,,,1,Enemy / unused,,,
+224,(unnamed: enemy-only or unused),Physical,0,130,110,-,,-,-,,,1,Enemy / unused,,,
+225,(unnamed: enemy-only or unused),Physical,0,45,110,Thunder,32,-,-,,,1,Enemy / unused,,,
+226,(unnamed: enemy-only or unused),Physical,0,80,110,-,,-,-,,,1,Enemy / unused,,,
+227,(unnamed: enemy-only or unused),Physical,0,60,110,-,,-,-,,,1,Enemy / unused,,,
+228,(unnamed: enemy-only or unused),Physical,0,53,110,Thunder,32,-,-,,,1,Enemy / unused,,,
+229,(unnamed: enemy-only or unused),Physical,0,70,110,-,,-,-,,,1,Enemy / unused,,,
+230,(unnamed: enemy-only or unused),Physical,0,48,110,-,,-,Poison,72,80,1,Enemy / unused,,,
+231,(unnamed: enemy-only or unused),Physical,0,80,110,-,,-,-,,,1,Enemy / unused,,,
+232,(unnamed: enemy-only or unused),Physical,0,158,110,Dark,36,-,-,,,1,Enemy / unused,,,
+233,(unnamed: enemy-only or unused),Physical,0,100,110,-,,-,-,,,1,Enemy / unused,,,
+234,(unnamed: enemy-only or unused),Physical,0,180,110,-,,-,-,,,1,Enemy / unused,,,
+235,(unnamed: enemy-only or unused),Physical,0,100,110,-,,-,-,,,1,Enemy / unused,,,
+236,(unnamed: enemy-only or unused),Physical,0,83,110,Fire,32,-,-,,,1,Enemy / unused,,,
+237,(unnamed: enemy-only or unused),Physical,0,83,110,Fire,32,-,-,,,1,Enemy / unused,,,
+238,(unnamed: enemy-only or unused),Physical,0,110,110,-,,-,-,,,1,Enemy / unused,,,
+239,(unnamed: enemy-only or unused),Physical,0,130,110,-,,-,-,,,1,Enemy / unused,,,
+240,(unnamed: enemy-only or unused),Physical,0,98,110,Water,32,-,-,,,1,Enemy / unused,,,
+241,(unnamed: enemy-only or unused),Physical,0,105,110,Dark,32,-,-,,,1,Enemy / unused,,,
+242,(unnamed: enemy-only or unused),Physical,0,270,110,Dark,48,-,-,,,1,Enemy / unused,,,
+243,(unnamed: enemy-only or unused),Physical,0,180,110,-,,-,-,,,1,Enemy / unused,,,
+244,(unnamed: enemy-only or unused),Physical,0,150,110,-,,-,-,,,1,Enemy / unused,,,
+245,(unnamed: enemy-only or unused),Physical,0,173,110,Water,36,-,-,,,1,Enemy / unused,,,
+246,(unnamed: enemy-only or unused),Physical,0,340,110,-,,-,-,,,1,Enemy / unused,,,
+247,(unnamed: enemy-only or unused),Physical,0,250,110,-,,-,-,,,1,Enemy / unused,,,
+248,(unnamed: enemy-only or unused),Physical,0,240,110,Water,40,-,-,,,1,Enemy / unused,,,
+249,(unnamed: enemy-only or unused),Physical,0,338,110,Water,64,-,-,,,1,Enemy / unused,,,
+250,(unnamed: enemy-only or unused),Physical,0,290,110,-,,-,-,,,1,Enemy / unused,,,
+251,(unnamed: enemy-only or unused),Physical,0,250,110,-,,-,-,,,1,Enemy / unused,,,
+252,(unnamed: enemy-only or unused),Physical,0,128,110,Water,36,-,-,,,1,Enemy / unused,,,
+253,(unnamed: enemy-only or unused),Physical,0,280,110,-,,-,-,,,1,Enemy / unused,,,
+254,(unnamed: enemy-only or unused),Physical,0,250,110,-,,-,-,,,1,Enemy / unused,,,
+255,(unnamed: enemy-only or unused),Physical,0,250,110,-,,-,-,,,1,Enemy / unused,,,
+256,(unnamed: enemy-only or unused),Physical,0,270,110,-,,-,-,,,1,Enemy / unused,,,
+257,(unnamed: enemy-only or unused),Physical,0,490,110,-,,-,-,,,1,Enemy / unused,,,
+258,(unnamed: enemy-only or unused),Physical,0,300,110,-,,-,Poison,80,127,1,Enemy / unused,,,
+259,(unnamed: enemy-only or unused),Physical,0,122,110,Thunder,40,-,Sleep,80,64,1,Enemy / unused,,,
+260,(unnamed: enemy-only or unused),Physical,0,270,110,-,,-,-,,,1,Enemy / unused,,,
+261,(unnamed: enemy-only or unused),Physical,0,225,110,Machine,40,-,Paralysis,80,96,1,Enemy / unused,,,
+262,(unnamed: enemy-only or unused),Physical,0,255,110,Machine,64,-,-,,,1,Enemy / unused,,,
+263,(unnamed: enemy-only or unused),Physical,0,210,110,Thunder,40,-,-,,,1,Enemy / unused,,,
+264,(unnamed: enemy-only or unused),Physical,0,210,110,Machine,40,-,-,,,1,Enemy / unused,,,
+265,(unnamed: enemy-only or unused),Physical,0,290,110,-,,-,-,,,1,Enemy / unused,,,
+266,(unnamed: enemy-only or unused),Physical,0,131,110,Thunder,40,-,Paralysis,80,96,1,Enemy / unused,,,
+267,(unnamed: enemy-only or unused),Physical,0,225,110,Dark,40,-,-,,,1,Enemy / unused,,,
+268,(unnamed: enemy-only or unused),Physical,0,233,110,Dark,40,-,-,,,1,Enemy / unused,,,
+269,(unnamed: enemy-only or unused),Physical,0,390,110,Dark,64,-,-,,,1,Enemy / unused,,,
+270,(unnamed: enemy-only or unused),Physical,0,390,110,Dark,64,-,-,,,1,Enemy / unused,,,
+271,(unnamed: enemy-only or unused),Physical,0,320,110,-,,-,-,,,1,Enemy / unused,,,
+272,(unnamed: enemy-only or unused),Physical,0,320,110,-,,-,-,,,1,Enemy / unused,,,
+273,(unnamed: enemy-only or unused),Physical,0,383,110,Machine,64,-,-,,,1,Enemy / unused,,,
+274,(unnamed: enemy-only or unused),Physical,0,340,110,-,,-,-,,,1,Enemy / unused,,,
+275,(unnamed: enemy-only or unused),Physical,0,263,110,Machine,64,-,-,,,1,Enemy / unused,,,
+276,(unnamed: enemy-only or unused),Physical,0,340,110,-,,-,-,,,1,Enemy / unused,,,
+277,(unnamed: enemy-only or unused),Physical,0,270,110,Dark,48,-,-,,,1,Enemy / unused,,,
+278,(unnamed: enemy-only or unused),Physical,0,410,110,-,,-,-,,,1,Enemy / unused,,,
+279,(unnamed: enemy-only or unused),Physical,0,480,110,-,,-,-,,,1,Enemy / unused,,,
+280,(unnamed: enemy-only or unused),Physical,0,390,110,-,,-,-,,,1,Enemy / unused,,,
+281,(unnamed: enemy-only or unused),Physical,0,430,110,-,,-,-,,,1,Enemy / unused,,,
+282,(unnamed: enemy-only or unused),Physical,0,400,110,-,,-,-,,,1,Enemy / unused,,,
+283,(unnamed: enemy-only or unused),Physical,0,400,110,-,,-,-,,,1,Enemy / unused,,,
+284,(unnamed: enemy-only or unused),Physical,0,300,110,-,,-,Poison,96,96,1,Enemy / unused,,,
+285,(unnamed: enemy-only or unused),Physical,0,390,110,-,,-,-,,,1,Enemy / unused,,,
+286,(unnamed: enemy-only or unused),Physical,0,308,110,Machine,56,-,-,,,1,Enemy / unused,,,
+287,(unnamed: enemy-only or unused),Physical,0,410,110,-,,-,-,,,1,Enemy / unused,,,
+288,(unnamed: enemy-only or unused),Physical,0,500,110,-,,-,-,,,1,Enemy / unused,,,
+289,(unnamed: enemy-only or unused),Physical,0,236,100,Water,56,-,Multi-hit,,1,2,Enemy / unused,,Up to 2 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+290,(unnamed: enemy-only or unused),Physical,0,368,110,Water,64,-,-,,,1,Enemy / unused,,,
+291,(unnamed: enemy-only or unused),Physical,0,300,110,Thunder,56,-,-,,,1,Enemy / unused,,,
+292,(unnamed: enemy-only or unused),Physical,0,293,110,Water,56,-,-,,,1,Enemy / unused,,,
+293,(unnamed: enemy-only or unused),Physical,0,308,110,Fire,56,-,-,,,1,Enemy / unused,,,
+294,(unnamed: enemy-only or unused),Physical,0,330,110,Dark,56,-,-,,,1,Enemy / unused,,,
+295,(unnamed: enemy-only or unused),Physical,0,410,110,-,,-,-,,,1,Enemy / unused,,,
+296,(unnamed: enemy-only or unused),Physical,0,345,110,Machine,64,-,-,,,1,Enemy / unused,,,
+297,(unnamed: enemy-only or unused),Physical,0,345,110,Fire,64,-,-,,,1,Enemy / unused,,,
+298,(unnamed: enemy-only or unused),Physical,0,345,110,Fire,64,-,-,,,1,Enemy / unused,,,
+299,(unnamed: enemy-only or unused),Physical,0,460,110,-,,-,-,,,1,Enemy / unused,,,
+300,(unnamed: enemy-only or unused),Physical,0,345,110,Ice,64,-,-,,,1,Enemy / unused,,,
+301,(unnamed: enemy-only or unused),Physical,0,360,110,Ice,64,-,-,,,1,Enemy / unused,,,
+302,(unnamed: enemy-only or unused),Physical,0,510,127,Machine,64,-,Enemy only,,64,1,Enemy / unused,,,
+303,(unnamed: enemy-only or unused),Physical,0,480,110,Ice,64,-,Enemy only,,64,1,Enemy / unused,,,
+304,(unnamed: enemy-only or unused),Physical,0,405,110,Fire,72,-,-,,,1,Enemy / unused,,,
+305,(unnamed: enemy-only or unused),Physical,0,480,110,-,,-,-,,,1,Enemy / unused,,,
+306,(unnamed: enemy-only or unused),Physical,0,480,110,-,,-,-,,,1,Enemy / unused,,,
+307,(unnamed: enemy-only or unused),Physical,0,294,110,-,,-,Sleep,80,96,1,Enemy / unused,,,
+308,(unnamed: enemy-only or unused),Physical,0,368,110,Machine,64,-,-,,,1,Enemy / unused,,,
+309,(unnamed: enemy-only or unused),Physical,0,490,110,-,,-,-,,,1,Enemy / unused,,,
+310,(unnamed: enemy-only or unused),Physical,0,360,110,Water,64,-,-,,,1,Enemy / unused,,,
+311,(unnamed: enemy-only or unused),Physical,0,480,110,-,,-,-,,,1,Enemy / unused,,,
+312,(unnamed: enemy-only or unused),Physical,0,490,110,-,,-,-,,,1,Enemy / unused,,,
+313,(unnamed: enemy-only or unused),Physical,0,490,110,-,,-,-,,,1,Enemy / unused,,,
+314,(unnamed: enemy-only or unused),Physical,0,443,110,Machine,96,-,-,,,1,Enemy / unused,,,
+315,(unnamed: enemy-only or unused),Physical,0,540,110,-,,-,-,,,1,Enemy / unused,,,
+316,(unnamed: enemy-only or unused),Physical,0,500,127,-,,-,-,,,1,Enemy / unused,,,
+317,(unnamed: enemy-only or unused),Physical,0,500,110,-,,-,-,,,1,Enemy / unused,,,
+318,(unnamed: enemy-only or unused),Physical,0,490,110,-,,-,-,,,1,Enemy / unused,,,
+319,(unnamed: enemy-only or unused),Physical,0,500,110,-,,-,-,,,1,Enemy / unused,,,
+320,(unnamed: enemy-only or unused),Physical,0,500,110,-,,-,-,,,1,Enemy / unused,,,
+321,(unnamed: enemy-only or unused),Physical,0,600,110,-,,-,-,,,1,Enemy / unused,,,
+322,(unnamed: enemy-only or unused),Physical,0,390,110,Fire,72,-,-,,,1,Enemy / unused,,,
+323,(unnamed: enemy-only or unused),Physical,0,398,110,Thunder,72,-,-,,,1,Enemy / unused,,,
+324,(unnamed: enemy-only or unused),Physical,0,458,110,Dark,96,-,-,,,1,Enemy / unused,,,
+325,(unnamed: enemy-only or unused),Physical,0,293,100,Machine,72,-,Multi-hit,,1,2,Enemy / unused,,Up to 2 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+326,(unnamed: enemy-only or unused),Physical,0,600,110,-,,-,-,,,1,Enemy / unused,,,
+327,(unnamed: enemy-only or unused),Physical,0,610,110,-,,-,-,,,1,Enemy / unused,,,
+328,(unnamed: enemy-only or unused),Physical,0,540,110,-,,-,-,,,1,Enemy / unused,,,
+329,(unnamed: enemy-only or unused),Physical,0,450,110,Fire,96,-,-,,,1,Enemy / unused,,,
+330,(unnamed: enemy-only or unused),Physical,0,458,110,Dark,96,-,-,,,1,Enemy / unused,,,
+331,(unnamed: enemy-only or unused),Physical,0,140,110,-,,-,-,,,1,Enemy / unused,,,
+332,(unnamed: enemy-only or unused),Physical,0,350,110,-,,-,-,,,1,Enemy / unused,,,
+333,(unnamed: enemy-only or unused),Physical,0,130,110,-,,-,-,,,1,Enemy / unused,,,
+334,(unnamed: enemy-only or unused),Physical,0,156,110,-,,-,Poison,72,96,1,Enemy / unused,,,
+335,(unnamed: enemy-only or unused),Physical,0,270,110,-,,-,Enemy only,,64,1,Enemy / unused,,,
+336,(unnamed: enemy-only or unused),Physical,0,380,110,-,,-,-,,,1,Enemy / unused,,,
+337,(unnamed: enemy-only or unused),Physical,0,380,110,-,,-,-,,,1,Enemy / unused,,,
+338,(unnamed: enemy-only or unused),Physical,0,240,110,-,,-,Drain HP,80,80,1,Enemy / unused,,Heals 62.5% of the damage dealt,
+339,(unnamed: enemy-only or unused),Physical,0,345,110,Fire,64,-,-,,,1,Enemy / unused,,,
+340,(unnamed: enemy-only or unused),Physical,0,260,110,-,,-,-,,,1,Enemy / unused,,,
+341,(unnamed: enemy-only or unused),Physical,0,315,110,Dark,56,-,-,,,1,Enemy / unused,,,
+342,(unnamed: enemy-only or unused),Physical,0,270,110,-,,-,-,,,1,Enemy / unused,,,
+343,(unnamed: enemy-only or unused),Physical,0,410,110,-,,-,-,,,1,Enemy / unused,,,
+344,(unnamed: enemy-only or unused),Physical,0,420,110,-,,-,-,,,1,Enemy / unused,,,
+345,(unnamed: enemy-only or unused),Physical,0,400,110,-,,-,-,,,1,Enemy / unused,,,
+346,(unnamed: enemy-only or unused),Physical,0,520,110,-,,-,-,,,1,Enemy / unused,,,
+347,(unnamed: enemy-only or unused),Physical,0,470,110,-,,-,-,,,1,Enemy / unused,,,
+348,(unnamed: enemy-only or unused),Physical,0,383,110,Thunder,64,-,-,,,1,Enemy / unused,,,
+349,(unnamed: enemy-only or unused),Physical,0,530,110,-,,-,-,,,1,Enemy / unused,,,
+350,(unnamed: enemy-only or unused),Physical,0,383,110,Machine,64,-,-,,,1,Enemy / unused,,,
+351,(unnamed: enemy-only or unused),Physical,0,216,110,-,,-,Defense down,,16,1,Enemy / unused,,"−12.5% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",
+352,(unnamed: enemy-only or unused),Physical,0,440,110,-,,-,-,,,1,Enemy / unused,,,
+353,(unnamed: enemy-only or unused),Physical,0,360,110,Ice,64,-,-,,,1,Enemy / unused,,,
+354,(unnamed: enemy-only or unused),Physical,0,360,110,Fire,64,-,-,,,1,Enemy / unused,,,
+355,(unnamed: enemy-only or unused),Physical,0,294,110,-,,-,Defense down,,16,1,Enemy / unused,,"−12.5% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",
+356,(unnamed: enemy-only or unused),Physical,0,450,110,-,,-,-,,,1,Enemy / unused,,,
+357,(unnamed: enemy-only or unused),Physical,0,360,110,Dark,64,-,-,,,1,Enemy / unused,,,
+358,(unnamed: enemy-only or unused),Physical,0,375,110,Machine,64,-,-,,,1,Enemy / unused,,,
+359,(unnamed: enemy-only or unused),Physical,0,370,110,-,,-,-,,,1,Enemy / unused,,,
+360,(unnamed: enemy-only or unused),Physical,0,450,110,-,,-,-,,,1,Enemy / unused,,,
+361,(unnamed: enemy-only or unused),Physical,0,530,110,-,,-,-,,,1,Enemy / unused,,,
+362,(unnamed: enemy-only or unused),Physical,0,410,110,-,,-,-,,,1,Enemy / unused,,,
+363,(unnamed: enemy-only or unused),Physical,0,460,110,-,,-,Drain HP,96,96,1,Enemy / unused,,Heals 75% of the damage dealt,
+364,(unnamed: enemy-only or unused),Physical,0,520,110,-,,-,-,,,1,Enemy / unused,,,
+365,(unnamed: enemy-only or unused),Physical,0,368,110,Thunder,64,-,-,,,1,Enemy / unused,,,
+366,(unnamed: enemy-only or unused),Physical,0,398,110,Water,64,-,-,,,1,Enemy / unused,,,
+367,(unnamed: enemy-only or unused),Physical,0,398,110,Fire,72,-,-,,,1,Enemy / unused,,,
+368,(unnamed: enemy-only or unused),Physical,0,368,110,Machine,64,-,-,,,1,Enemy / unused,,,
+369,(unnamed: enemy-only or unused),Physical,0,398,110,Fire,72,-,-,,,1,Enemy / unused,,,
+370,(unnamed: enemy-only or unused),Physical,0,390,110,Ice,72,-,-,,,1,Enemy / unused,,,
+371,(unnamed: enemy-only or unused),Physical,0,590,110,-,,-,-,,,1,Enemy / unused,,,
+372,(unnamed: enemy-only or unused),Physical,0,590,110,-,,-,-,,,1,Enemy / unused,,,
+373,(unnamed: enemy-only or unused),Physical,0,540,110,-,,-,-,,,1,Enemy / unused,,,
+374,Paildramon,Physical,100,500,127,-,,-,-,,,1,Pair technique,"ExVeemon (pair technique), Stingmon (pair technique)",,Pair technique: calls Paildramon.
+375,Phoenixmon,On allies,200,0,127,-,,-,Other (36),,127,1,Pair technique,"Taomon (pair technique), MagnaAngemon (pair technique)",,"Pair technique: calls Phoenixmon, who aids the allies."
+376,MegaGargomon,Physical,160,360,127,Machine,48,-,-,,,1,Pair technique,"WarGrowlmon (pair technique), Digitamamon (pair technique)",,Pair technique: calls MegaGargomon.
+377,Omnimon,Physical,240,850,127,-,,-,-,,,1,Pair technique,"WarGreymon (pair technique), MetalGarurumon (pair technique)",,Pair technique: calls Omnimon.
+378,ImperialdramonPM,Physical,250,580,127,-,,Evil,-,,,1,Pair technique,"Imperialdramon (pair technique), Seraphimon (pair technique)",,Pair technique: calls Imperialdramon Paladin Mode.
+379,Beelzemon,Magic,320,600,127,Fire,72,-,-,,,1,Pair technique,"Gallantmon (pair technique), MaloMyotismon (pair technique)",,Pair technique: calls Beelzemon.
+380,Diabolomon,Physical,260,999,127,-,,-,-,,,1,Pair technique,"BK WarGreymon (pair technique), GranKuwagamon (pair technique)",,Pair technique: calls Diaboromon.
+381,(unnamed: enemy-only or unused),Physical,0,170,110,-,,-,-,,,1,Enemy / unused,,,
+382,Necro Mist,Physical,0,102,110,-,,-,Poison,80,88,1,Shared technique,,,
+383,(unnamed: enemy-only or unused),Physical,0,133,100,-,,-,Higher critical,,48,1,Enemy / unused,,Critical chance 40.6% (normally 3.1%); a critical does +50% to +148% damage,
+384,Master Fire,Magic,0,190,110,Fire,32,-,-,,,1,Shared technique,,,
+385,(unnamed: enemy-only or unused),Physical,0,278,110,Machine,56,-,-,,,1,Enemy / unused,,,
+386,Atomic Ray,Magic,70,185,100,Machine,40,-,Instant KO,64,1,1,Shared technique,,,
+387,(unnamed: enemy-only or unused),Physical,0,278,110,Dark,64,-,-,,,1,Enemy / unused,,,
+388,HeartBreakAttack,Magic,0,222,110,-,,-,Attack down,,24,1,Shared technique,,"−18.8% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit",
+389,(unnamed: enemy-only or unused),Physical,0,115,100,Machine,56,-,Multi-hit,,1,4,Enemy / unused,,Up to 4 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+390,(unnamed: enemy-only or unused),Physical,0,161,100,-,,-,Multi-hit,,1,4,Enemy / unused,,Up to 4 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+391,Helter Skelter,Buff / status,20,0,127,-,,-,Other (7),,1,1,Shared technique,,,
+392,Vampire Jewel,Buff / status,0,0,127,-,,-,Drain MP,,8,1,Support,,Drains 6.2% of max MP,
+393,Cross Slash,Physical,0,338,127,Dark,64,-,Ends the battle,,1,1,Enemy / unused,,,
+394,Hunting Knife,Physical,0,169,110,Dark,64,-,Instant KO,72,1,1,Shared technique,,,
+395,(unnamed: enemy-only or unused),Physical,0,368,110,Machine,64,-,-,,,1,Enemy / unused,,,
+396,Mad Pump,Physical,0,368,110,Water,64,-,-,,,1,Shared technique,,,
+397,(unnamed: enemy-only or unused),Physical,0,580,110,-,,-,-,,,1,Enemy / unused,,,
+398,Berserk Sword,Physical,0,435,80,-,,-,Multi-hit,,1,2,Own technique,,Up to 2 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+399,(unnamed: enemy-only or unused),Physical,0,488,110,Machine,96,-,-,,,1,Enemy / unused,,,
+400,Gilead Plant,On self,0,8,100,-,,-,Other (30),,8,1,Support,,,
+401,Big Charge Bomb,Physical,0,650,127,Thunder,64,-,Enemy only,,96,1,Shared technique,,,
+402,(unnamed: enemy-only or unused),Physical,0,620,110,-,,-,-,,,1,Enemy / unused,,,
+403,Maltcyclone,Physical,0,326,110,Wind,64,-,Higher critical,,60,1,Shared technique,,Critical chance 50% (normally 3.1%); a critical does +50% to +148% damage,
+404,(unnamed: enemy-only or unused),Physical,0,620,110,-,,-,-,,,1,Enemy / unused,,,
+405,Electro Ball,Magic,0,620,127,Thunder,72,-,-,,,1,Shared technique,,,
+406,Back Storm,Magic,0,310,127,-,,-,Double magic,,1,1,Support,,,
+407,Mugen Cannon,Physical,0,174,80,Machine,96,-,Multi-hit,,1,4,Enemy / unused,,Up to 4 full-damage hits: total = damage × hits landed (each hit after the first rolls accuracy; one critical roll for all),
+408,(unnamed: enemy-only or unused),Physical,0,500,110,-,,-,-,,,1,Enemy / unused,,,
+409,(unnamed: enemy-only or unused),Physical,0,510,110,-,,-,-,,,1,Enemy / unused,,,
+410,(unnamed: enemy-only or unused),Physical,0,600,110,-,,-,-,,,1,Enemy / unused,,,
+411,(unnamed: enemy-only or unused),Physical,0,580,110,-,,-,-,,,1,Enemy / unused,,,
+412,(unnamed: enemy-only or unused),Physical,0,520,110,-,,-,-,,,1,Enemy / unused,,,
+413,(unnamed: enemy-only or unused),Physical,0,330,110,-,,-,-,,,1,Enemy / unused,,,
+414,(unnamed: enemy-only or unused),Physical,0,220,110,-,,-,-,,,1,Enemy / unused,,,
+415,(unnamed: enemy-only or unused),Physical,0,240,110,-,,-,-,,,1,Enemy / unused,,,
+416,(unnamed: enemy-only or unused),Physical,0,310,110,-,,-,-,,,1,Enemy / unused,,,
+417,(unnamed: enemy-only or unused),Physical,0,330,110,-,,-,-,,,1,Enemy / unused,,,
+418,(unnamed: enemy-only or unused),Physical,0,330,110,-,,-,-,,,1,Enemy / unused,,,
+419,(unnamed: enemy-only or unused),Physical,0,340,110,-,,-,-,,,1,Enemy / unused,,,
+420,(unnamed: enemy-only or unused),Physical,0,330,110,-,,-,-,,,1,Enemy / unused,,,
+421,(unnamed: enemy-only or unused),Physical,0,120,110,-,,-,Raise one stat,48,2,1,Enemy / unused,,,
+422,(unnamed: enemy-only or unused),Physical,0,170,110,-,,-,Raise one stat,48,2,1,Enemy / unused,,,
+423,(unnamed: enemy-only or unused),Physical,0,220,110,-,,-,Raise stats,56,3,1,Enemy / unused,,,
+424,(unnamed: enemy-only or unused),Physical,0,320,110,-,,-,Raise stats,56,3,1,Enemy / unused,,,
+425,(unnamed: enemy-only or unused),Physical,0,420,110,-,,-,Raise stats,64,6,1,Enemy / unused,,,
+426,(unnamed: enemy-only or unused),Physical,0,470,110,-,,-,Raise stats,64,6,1,Enemy / unused,,,
+427,(unnamed: enemy-only or unused),Physical,0,520,110,-,,-,Raise all stats,72,8,1,Enemy / unused,,,
+428,(unnamed: enemy-only or unused),Physical,0,520,110,-,,-,Raise all stats,72,8,1,Enemy / unused,,,
+429,(unnamed: enemy-only or unused),Physical,0,372,100,-,,-,Paralysis,64,127,1,Enemy / unused,,,
+430,Dark Pupil,Magic,0,372,110,-,,-,Can't switch/flee,64,32,1,Shared technique,,,
+431,(unnamed: enemy-only or unused),Physical,0,198,127,-,,-,Drain MP,,8,1,Enemy / unused,,Drains 6.2% of max MP,
+432,Agunimon,Magic,80,160,127,Fire,64,-,-,,,1,Pair technique,"Dinohumon (pair technique), Hookmon (pair technique), Greymon (pair technique), Kyubimon (pair technique)",,Pair technique: calls Agunimon.
+433,BladeGarurumon,Magic,80,160,127,Machine,64,-,-,,,1,Pair technique,"Grizzmon (pair technique), Growlmon (pair technique)",,Pair technique: calls BladeGarurumon.
+434,AncientGreymon,Magic,480,800,127,Fire,127,-,Attack down,,127,1,Pair technique,"Imperialdramon PM (pair technique), Diaboromon (pair technique)","−50% of the stat, always on a hit (down to −50% in total; some battles are immune); lasts ≈2–4 turns, +1 per 100 of the target's Spirit. The technique's value is higher, but the game caps it at −50%: one hit takes the target to the minimum",Pair technique: calls AncientGreymon; also lowers attack.
+435,(unnamed: enemy-only or unused),Physical,0,700,127,-,,-,-,,,1,Enemy / unused,,,
+436,Attack,Physical,0,900,100,-,,-,-,,,1,Enemy / unused,,,
+437,Ragnarok Cannon,Physical,0,750,127,-,,-,-,,,1,Shared technique,,,
+438,(unnamed: enemy-only or unused),Magic,0,750,127,Wind,127,-,-,,,1,Enemy / unused,,,
+439,Counter,Physical,0,750,127,-,,-,-,,,1,Shared technique,,,
+440,(unnamed: enemy-only or unused),Magic,0,750,127,-,,-,-,,,1,Enemy / unused,,,
+441,None,Magic,0,310,127,Water,72,-,-,,,1,Enemy / unused,,,
+442,None,Magic,0,310,127,Thunder,72,-,-,,,1,Enemy / unused,,,
+443,(unnamed: enemy-only or unused),Magic,0,750,127,-,,-,-,,,1,Enemy / unused,,,

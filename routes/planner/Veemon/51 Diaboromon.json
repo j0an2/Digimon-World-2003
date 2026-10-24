@@ -1,0 +1,60 @@
+{
+  "name": "51 Diaboromon",
+  "partner": "Veemon",
+  "steps": [
+    {
+      "f": "Veemon",
+      "lv": 5
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 90,
+      "note": "Load Hammer Rush if you want"
+    },
+    {
+      "f": "Paildramon",
+      "lv": 35
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

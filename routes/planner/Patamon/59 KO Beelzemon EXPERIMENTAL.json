@@ -1,0 +1,75 @@
+{
+  "name": "59 KO Beelzemon EXPERIMENTAL",
+  "partner": "Patamon",
+  "steps": [
+    {
+      "f": "Patamon",
+      "lv": 5
+    },
+    {
+      "f": "Angemon",
+      "lv": 30
+    },
+    {
+      "f": "Digitamamon",
+      "lv": 99
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 99
+    },
+    {
+      "f": "Phoenixmon",
+      "lv": 90
+    },
+    {
+      "f": "Seraphimon",
+      "lv": 10
+    },
+    {
+      "f": "Hookmon",
+      "lv": 50
+    },
+    {
+      "f": "Armormon",
+      "lv": 30
+    },
+    {
+      "f": "Devimon",
+      "lv": 50
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 50
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    }
+  ],
+  "notes": "Patamon at level 50 has ~336 Wisdom"
+}

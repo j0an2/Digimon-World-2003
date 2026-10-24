@@ -1,0 +1,115 @@
+{
+  "name": "68 Beelzemon KO Build EXPERIMENTAL",
+  "partner": "Monmon",
+  "steps": [
+    {
+      "f": "Monmon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 20
+    },
+    {
+      "f": "Hookmon",
+      "lv": 40,
+      "note": "Load Bug Buster"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 75,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 7,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "Armormon",
+      "lv": 20
+    },
+    {
+      "f": "Armormon",
+      "lv": 30
+    },
+    {
+      "f": "Digitamamon",
+      "lv": 80,
+      "note": "Load Soul Snatcher"
+    },
+    {
+      "f": "Armormon",
+      "lv": 40
+    },
+    {
+      "f": "Angemon",
+      "lv": 50
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 30
+    },
+    {
+      "f": "Angewomon",
+      "lv": 37
+    },
+    {
+      "f": "Cannondramon",
+      "lv": 10
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 20
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 20
+    },
+    {
+      "f": "Devimon",
+      "lv": 40
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 50
+    },
+    {
+      "f": "Kyukimon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 50
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    }
+  ],
+  "notes": "Monmon Wisdom at lvl 50 is ~315. Train wisdom (rise KO chance) until ~500-600 points."
+}

@@ -1,0 +1,65 @@
+{
+  "name": "55 Thunder Ice Dark Beelzemon",
+  "partner": "Renamon",
+  "steps": [
+    {
+      "f": "Renamon",
+      "lv": 5
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 35
+    },
+    {
+      "f": "Stingmon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 40
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 30,
+      "note": "Load Grand Wave"
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 77
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 90,
+      "note": "Load Lightning Bolt + Giga Freeze"
+    },
+    {
+      "f": "Devimon",
+      "lv": 50
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

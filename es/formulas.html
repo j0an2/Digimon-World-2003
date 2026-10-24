@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fórmulas de combate de DW2003</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono&display=swap">
+<style>
+:root { --ground:#0b1424; --panel:#12203a; --panel-2:#182a4a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --amber:#ffbf47;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--ground); color:var(--ink); font:16px/1.6 var(--body); }
+.wrap { max-width:860px; margin:0 auto; padding:40px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px)); }
+a { color:var(--cyan); } .back { font-family:var(--display); font-size:14px; text-decoration:none; }
+h1 { font-family:var(--display); font-size:clamp(28px,4.5vw,40px); line-height:1.1; margin:16px 0 12px; text-wrap:balance; }
+h2 { font-family:var(--display); font-size:23px; margin:40px 0 8px; color:var(--cyan); padding-top:16px; border-top:1px solid var(--line); }
+p, li { color:var(--ink); } p { margin:10px 0; }
+code { font-family:var(--mono); font-size:.88em; background:var(--panel-2); padding:1px 5px; border-radius:4px; color:var(--amber); }
+pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
+pre code { background:none; padding:0; color:var(--ink); font-size:14px; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; font-variant-numeric:tabular-nums; }
+.tbl { overflow-x:auto; }
+th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--soft); font-weight:400; font-size:13px; }
+blockquote { margin:16px 0; padding:10px 16px; background:color-mix(in srgb, var(--amber) 10%, var(--panel)); border:1px solid color-mix(in srgb, var(--amber) 45%, transparent); border-radius:10px; }
+blockquote p { margin:4px 0; }
+</style></head><body><a href="../formulas.html" lang="en" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="English">EN</a><div class="wrap"><a class="back" href="index.html">← Digimon World 2003: datos</a>
+<h1 id="digimon-world-2003-formulas-de-combate">Digimon World 2003: fórmulas de combate</h1>
+<p>Cómo calcula la versión europea original (SLES-03936) el daño, la curación, las mejoras y los campos, leído de su
+código C descompilado (<a href="https://github.com/ReGame-Labs/dw3_decomp">dw3_decomp</a>). Cada sección dice la función y el
+archivo de los que sale, para que lo puedas comprobar tú.</p>
+<p>La división entera redondea siempre hacia abajo, como en la PlayStation. Muchos valores se guardan en 128avos o
+64avos: un valor de 64 en 128avos es un 50 %.</p>
+<h2 id="que-hace-cada-estadistica">Qué hace cada estadística</h2>
+<p>Dónde lee el código de combate cada estadística:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Estadística</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fuerza</strong> (Ataque)</td>
+<td>El daño físico que haces</td>
+</tr>
+<tr>
+<td><strong>Defensa</strong></td>
+<td>Reduce el daño físico que recibes, y solo eso</td>
+</tr>
+<tr>
+<td><strong>Espíritu</strong></td>
+<td>El daño mágico que haces <strong>y</strong> que recibes · la fuerza de los campos elementales que pones · lo que duran tus mejoras (y las debilitaciones que te ponen) · lo que duran los estados alterados que provocas</td>
+</tr>
+<tr>
+<td><strong>Sabiduría</strong></td>
+<td>Acierto y esquiva de la magia · provocar estados alterados y resistirlos · los PV que cura tu curación · resistir que el enemigo se suba estadísticas</td>
+</tr>
+<tr>
+<td><strong>Velocidad</strong></td>
+<td>Acierto y esquiva físicos · cada cuánto actúa un Digimon · huir</td>
+</tr>
+<tr>
+<td><strong>Carisma</strong></td>
+<td>No se usa en combate: es un requisito de algunas digievoluciones</td>
+</tr>
+</tbody>
+</table></div>
+<p>Defensa, Espíritu y Sabiduría son tres defensas distintas: la Defensa contra el daño físico, el Espíritu contra el
+daño mágico, y la Sabiduría contra que te acierte la magia y contra los estados alterados.</p>
+<p>Qué hace la Sabiduría, en detalle:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>La tuya (al atacar)</th>
+<th>La del objetivo (al defender)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acierto de la magia</td>
+<td>+ Sabiduría / 8</td>
+<td>− Sabiduría / 8</td>
+</tr>
+<tr>
+<td>Provocar un estado alterado</td>
+<td>+ Sabiduría / 8</td>
+<td>− Sabiduría / 16</td>
+</tr>
+<tr>
+<td>Curación</td>
+<td>+ Sabiduría × Potencia / 8 PV</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dano-fisico">Daño físico</h2>
+<p><code>FIGHTSTG_computeDamage</code>, <code>FIGHTSTG_adjustDamage</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>base = Potencia × Ataque(usuario) / Defensa(objetivo)
+</code></pre>
+<h3 id="ejemplo-kotemon-de-nivel-5-contra-el-primer-kunemon">Ejemplo: Kotemon de nivel 5 contra el primer Kunemon</h3>
+<p>El ataque básico de Kotemon (técnica 1: potencia 60, precisión 110, sin elemento) contra el Kunemon de las primeras
+zonas (nivel 1, 120 PV, fuerza 16/16, de <code>src/fieldstg/data/fieldstg.c</code>). Kotemon no lleva equipo.</p>
+<p><strong>El Ataque de Kotemon a nivel 5.</strong> Una partida nueva lo empieza con 48 de Fuerza (<code>DIGIMON_DATA</code>, <code>initNewGameData</code> en
+<code>src/main/game/party.c</code>). Cada nivel suma <code>STFGTREP_statGains[tramo][crecimiento + azar(0–4)]</code>
+(<code>STFGTREP_raiseStats</code>, <code>src/stfgtrep/growth.c</code>): con el crecimiento de Fuerza 4 de Kotemon, de +8 a +14 en los niveles
+2–4 y de +6 a +11 en el nivel 5. Así que a nivel 5 su Ataque es <strong>de 78 a 101, 91 de media</strong>.</p>
+<p><strong>La Defensa de Kunemon.</strong> 42 en la tabla de enemigos, × fuerza 16 / 16 = <strong>42</strong>.</p>
+<pre><code>daño = Potencia × Ataque(usuario) / Defensa(objetivo)
+     = 60 × 91 / 42 = 130
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ataque de Kotemon</th>
+<th>Daño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>78 (subidas de nivel con mala suerte)</td>
+<td>111</td>
+</tr>
+<tr>
+<td>91 (media)</td>
+<td>130</td>
+</tr>
+<tr>
+<td>101 (subidas de nivel con buena suerte)</td>
+<td>144</td>
+</tr>
+</tbody>
+</table></div>
+<p>No se aplica ninguno de los otros pasos: ni campo, ni familia, ni carga, ni elemento.</p>
+<p><strong>Probabilidad de acierto</strong>: <code>110 + 110 × (DifVelocidad / 8 + DifNivel) / 128</code> en 128avos (<code>FIGHTSTG_rollHit</code>). Con la
+Velocidad de Kotemon en torno a 63 contra 48 y 4 niveles más: <code>110 + 110 × (1 + 4) / 128 = 114</code> → <strong>89 %</strong>.</p>
+<p><strong>Crítico</strong>: 4/128 = <strong>3,1 %</strong>, de ×1,5 a ×2,5.</p>
+<p>Kunemon tiene 120 PV, así que el ataque básico de un Kotemon de nivel 5 <strong>lo mata de un golpe el 96 % de las veces</strong>
+que acierta.</p>
+<h3 id="ejemplo-una-tecnica-fisica-con-elemento">Ejemplo: una técnica física con elemento</h3>
+<p>El mismo Kotemon de nivel 5 (Ataque 91) y Kunemon (Defensa 42), ahora con la técnica propia de Kotemon <strong>Hot Head</strong>
+(técnica 53: potencia 75, Fuego, fuerza de elemento 48, precisión 127, 20 PM). La resistencia al Fuego de Kunemon es 90.</p>
+<pre><code>base = Potencia × Ataque(usuario) / Defensa(objetivo)
+daño = base + base × 2 × FuerzaElemento / Resistencia(objetivo, elemento)
+     = base × (1 + 2 × FuerzaElemento / Resistencia)
+
+base = 75 × 91 / 42                = 162
+daño = 162 × (1 + 2 × 48 / 90)     = 334
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Ataque básico</th>
+<th>Hot Head</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>130</td>
+<td>162</td>
+</tr>
+<tr>
+<td>Elemento</td>
+<td>–</td>
+<td>×2,07</td>
+</tr>
+<tr>
+<td><strong>Daño</strong></td>
+<td><strong>130</strong></td>
+<td><strong>334</strong></td>
+</tr>
+<tr>
+<td>Probabilidad de acierto</td>
+<td>89 % (precisión 110)</td>
+<td>100 % (precisión 127, ver <a href="#probabilidad-de-acierto">Probabilidad de acierto</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>El multiplicador del elemento es <code>1 + 2 × FuerzaElemento / Resistencia</code>, así que con los 48 de Hot Head:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Resistencia al Fuego del objetivo</th>
+<th>Multiplicador</th>
+<th>Daño a este Kunemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>×2,92</td>
+<td>473</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>×2,07</td>
+<td>334</td>
+</tr>
+<tr>
+<td>160</td>
+<td>×1,60</td>
+<td>259</td>
+</tr>
+<tr>
+<td>300</td>
+<td>×1,32</td>
+<td>213</td>
+</tr>
+</tbody>
+</table></div>
+<p>El elemento de una técnica física solo suma daño; una resistencia alta simplemente suma menos. (La magia es distinta:
+una resistencia alta la puede dejar en la mitad).</p>
+<h3 id="ejemplo-un-fire-field">Ejemplo: un Fire Field</h3>
+<p>El mismo Kotemon (Ataque 91) y Kunemon (Defensa 42, resistencia al Fuego y al Agua 90) con un <strong>Fire Field</strong> puesto por
+un Digimon con 80 de Espíritu. El campo actúa <strong>antes</strong> que el elemento, sobre el valor base
+(<code>FIGHTSTG_getElementBoost</code>, ver <a href="#campos-elementales">Campos elementales</a>):</p>
+<pre><code>MejoraCampo = 64 + Espíritu(de quien puso el campo) / 10          (como máximo 127)
+
+técnica del elemento del campo:   mejorado  = base × (1 + MejoraCampo / 128)
+técnica que el campo debilita:    debilitado = base × (1 − MejoraCampo / 256)
+técnica sin elemento:             sin cambios
+después el paso del elemento:     daño      = mejorado × (1 + 2 × FuerzaElemento / Resistencia)
+</code></pre>
+<pre><code>MejoraCampo = 64 + 80 / 10 = 72
+base        = 75 × 91 / 42  = 162          (la potencia de Hot Head; la base del ataque básico es 130)
+
+Ataque de Fuego (Hot Head):   162 × (1 + 72 / 128) = 253  →  253 × (1 + 2 × 48 / 90) = 522
+Ataque de Agua (debilitado):  162 × (1 − 72 / 256) = 117  →  117 × (1 + 2 × 48 / 90) = 241
+Ataque básico:                sin elemento, así que el campo no hace nada  →  130
+</code></pre>
+<p>Con más Espíritu el campo es más fuerte, pero el código limita MejoraCampo a 127 (<code>if (element &gt;= 0x80) element = 0x7F</code>
+en <code>boostFieldElement</code>). Se llega con 630 de Espíritu; por encima, hasta el máximo de 999, el campo ya no mejora
+(64 + 999 / 10 serían 163):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Espíritu de quien puso el campo</th>
+<th>MejoraCampo</th>
+<th>Ataque de Fuego (Hot Head)</th>
+<th>Ataque de Agua (debilitado)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>72</td>
+<td>162 × (1 + 72/128) = 253 → <strong>522</strong> (+56 %)</td>
+<td>162 × (1 − 72/256) = 117 → <strong>241</strong> (−28 %)</td>
+</tr>
+<tr>
+<td>200</td>
+<td>84</td>
+<td>162 × (1 + 84/128) = 268 → <strong>553</strong> (+66 %)</td>
+<td>162 × (1 − 84/256) = 109 → <strong>225</strong> (−33 %)</td>
+</tr>
+<tr>
+<td>600</td>
+<td>124</td>
+<td>162 × (1 + 124/128) = 318 → <strong>657</strong> (+97 %)</td>
+<td>162 × (1 − 124/256) = 84 → <strong>173</strong> (−48 %)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los porcentajes se comparan con 334, el daño sin campo. El ataque básico se queda en 130 en los tres casos.</p>
+<p>El juego redondea cada parte hacia abajo por separado (162 − 45 = 117, cuando 162 × 0,719 daría 116), así que un
+resultado puede diferir en 1 del de la fórmula en una línea.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ataque</th>
+<th>Sin campo</th>
+<th>Fire Field</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ataque básico (sin elemento)</td>
+<td>130</td>
+<td>130</td>
+<td>igual</td>
+</tr>
+<tr>
+<td>Fuego (Hot Head)</td>
+<td>334</td>
+<td><strong>522</strong></td>
+<td>+56 %</td>
+</tr>
+<tr>
+<td>Agua (un Hot Head de Agua, para comparar)</td>
+<td>334</td>
+<td><strong>241</strong></td>
+<td>−28 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Estos son los números de un campo que funciona como debería (con el <em>Fixed Field Moves</em> de Harmony). En el juego
+original y en el port de PC el Fire Field potencia el Trueno y debilita la Oscuridad, así que contra Kunemon los tres se
+quedan como sin campo.</p>
+<h3 id="ejemplo-una-tecnica-contra-su-familia">Ejemplo: una técnica contra su familia</h3>
+<p><strong>Bug Buster</strong> (técnica 131: potencia 130, precisión 110, 24 PM, sin elemento, familia Insecto; la aprenden Hookmon y
+Armormon) contra el mismo Kunemon, que <strong>es un Insecto</strong>. El mismo Ataque 91, para comparar.</p>
+<pre><code>base    = Potencia × Ataque(usuario) / Defensa(objetivo)
+familia = base × (1 + 1/2)                 cuando la familia de la técnica es la del objetivo
+
+base    = 130 × 91 / 42  = 281
+familia = 281 × 1,5      = 421
+</code></pre>
+<p>Coincidir con la familia también suma <strong>60/128 a la probabilidad de crítico</strong> (<code>FIGHTSTG_rollCritical</code>), cosa que la
+descripción del juego no dice: <code>(4 + 60) / 128 = 50 %</code> en lugar del 3,1 %.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Hot Head</th>
+<th>Bug Buster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daño sin crítico</td>
+<td>334</td>
+<td><strong>421</strong></td>
+</tr>
+<tr>
+<td>Probabilidad de crítico</td>
+<td>3,1 %</td>
+<td><strong>50 %</strong></td>
+</tr>
+<tr>
+<td>Daño con crítico</td>
+<td>501–829</td>
+<td><strong>631–1045</strong></td>
+</tr>
+<tr>
+<td><strong>Daño medio</strong></td>
+<td>≈ 344</td>
+<td><strong>≈ 630</strong></td>
+</tr>
+<tr>
+<td>Probabilidad de acierto</td>
+<td>100 %</td>
+<td>89 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contra su familia, un Buster hace +50 % y saca un crítico uno de cada dos golpes: de media, casi el doble que una
+técnica con elemento que da en una debilidad. Ninguna técnica tiene a la vez familia y elemento: las 13 técnicas de
+familia no tienen elemento.</p>
+<p>Las familias, con los nombres de las descripciones de las técnicas Buster: 2 Dinosaurio, 3 Maligno, 4 Fantasma,
+5 Máquina, 7 Ave, 8 Insecto, 10 Acuático, 11 Dragón.</p>
+<h3 id="ejemplo-accesorios-de-elemento">Ejemplo: accesorios de elemento</h3>
+<p>Los accesorios Pot. Fuego (Fire Power), Pot. Agua (Water Power), Pot. Hielo (Ice Power), Pot. Viento (Wind Power),
+Pot. Rayo (Bolt Power), Pot. Metal (Metal Power) y Pot. Oscura (Dark Power) dan un elemento al Digimon
+(<code>FIGHTSTG_computeStats</code>). Cada uno tiene tres fuerzas:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Accesorio</th>
+<th>Fuerza de elemento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pot. … (… Power.)</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Pot. 2 … (… Power 2)</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Pot. S … (… Power S)</td>
+<td>24</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Solo se puede llevar uno</strong>: los 21 son un mismo grupo de accesorios, y la pantalla de equipo solo deja llevar uno del
+grupo a la vez (<code>EQUIP_KIND_GROUP_ACCESSORY</code>, <code>src/stitshop/equip.c</code>). Así que no se pueden llevar dos de Fuego, ni uno
+de Fuego y otro de Agua.</p>
+<p>El combate usa el elemento del accesorio <strong>para el ataque básico y las técnicas compartidas sin elemento</strong> (Bug Buster,
+Big Shot, Hammer Rush…). <strong>No</strong> lo usa para las <strong>técnicas propias</strong> de un Digimon (Vee Head Butt, Bear Fist, Terra
+Force…) ni para las <strong>técnicas en pareja</strong>, aunque no tengan elemento. Una técnica con elemento usa el suyo y no hace
+caso del accesorio. El campo elemental solo mira el elemento <strong>de la técnica</strong>, así que nunca potencia el de un accesorio.</p>
+<pre><code>daño = base × (1 + 2 × FuerzaAccesorio / Resistencia(objetivo, elemento del accesorio))
+
+ataque básico, Pot. S Fuego:  130 × (1 + 2 × 24 / 90) = 199
+Bug Buster,    Pot. S Fuego:  421 × (1 + 2 × 24 / 90) = 645      (421 = 281 × 1,5, el bonus de familia)
+</code></pre>
+<p>El mismo Kotemon (Ataque 91) y Kunemon (Defensa 42, resistencia al Fuego 90):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Sin accesorio</th>
+<th>Pot. Fuego (8)</th>
+<th>Pot. 2 Fuego (16)</th>
+<th>Pot. S Fuego (24)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ataque básico</td>
+<td>130</td>
+<td>153</td>
+<td>176</td>
+<td><strong>199</strong></td>
+</tr>
+<tr>
+<td>Hot Head (técnica de Fuego)</td>
+<td>334</td>
+<td>334</td>
+<td>334</td>
+<td>334 — no hace caso del accesorio</td>
+</tr>
+<tr>
+<td>Ataque básico + Fire Field (mejora 72)</td>
+<td>130</td>
+<td>153</td>
+<td>176</td>
+<td>199 — el campo no hace nada</td>
+</tr>
+<tr>
+<td>Hot Head + Fire Field</td>
+<td>522</td>
+<td>522</td>
+<td>522</td>
+<td>522</td>
+</tr>
+<tr>
+<td>Bug Buster (sin elemento, contra un Insecto)</td>
+<td>421</td>
+<td>495</td>
+<td>570</td>
+<td><strong>645</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Los accesorios son flojos al lado del elemento propio de una técnica (Hot Head 48, Burn Slash 64), pero se suman a las
+técnicas Buster, que no tienen elemento: Bug Buster con Pot. S Fuego hace +53 % además de su bonus de familia. Contra
+un enemigo concreto, el accesorio que conviene llevar es el del elemento que menos resiste.</p>
+<h2 id="probabilidad-de-acierto">Probabilidad de acierto</h2>
+<p><code>FIGHTSTG_rollHit</code> — <code>src/fightstg/rolls.c</code></p>
+<pre><code>probabilidad (en 128avos) = Precisión + Precisión × (DifVelocidad / 8 + DifNivel) / 128
+DifVelocidad = Velocidad(usuario) + precisión de los accesorios − Velocidad(objetivo)
+DifNivel     = Nivel(usuario) − Nivel(objetivo)
+</code></pre>
+<p>El juego saca un número del 0 al 127 y el golpe acierta si sale <strong>por debajo</strong> de la probabilidad, así que con 128 o más
+nunca falla. Cada técnica tiene su propia Precisión: un Kotemon de nivel 5 (Velocidad 63, 4 niveles por encima) contra
+Kunemon (Velocidad 48) tiene DifVelocidad = 15, que cuenta como 15 / 8 = 1, y DifNivel = 4:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Precisión</th>
+<th>Probabilidad</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ataque básico</td>
+<td>110</td>
+<td>110 + 110 × (1 + 4) / 128 = 110 + 4 = 114</td>
+<td>89 %</td>
+</tr>
+<tr>
+<td>Hot Head</td>
+<td>127</td>
+<td>127 + 127 × (1 + 4) / 128 = 127 + 4 = 131</td>
+<td>nunca falla</td>
+</tr>
+</tbody>
+</table></div>
+<p>La probabilidad de acierto de un enemigo usa la misma fórmula menos la esquiva del objetivo, y nunca baja de 32 (25 %).</p>
+<h2 id="dano-magico">Daño mágico</h2>
+<p><code>FIGHTSTG_computeMagicDamage</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>poder = Potencia × (Espíritu(usuario) × 50 / Espíritu(objetivo) + 50) / 100
+</code></pre>
+<p>El multiplicador es <code>0,5 + 0,5 × Espíritu(usuario) / Espíritu(objetivo)</code>: ×1 con el mismo Espíritu, ×1,5 con el doble del
+objetivo, ×2 (el máximo) a partir del triple; ×0,75 con la mitad, ×0,625 con una cuarta parte, nunca por debajo de ×0,5.
+El daño físico no tiene ese límite: el doble de Ataque es el doble de daño.</p>
+<p><strong>La Sabiduría no reduce el daño mágico</strong>: el <strong>Espíritu</strong> del objetivo hace el papel que la Defensa hace en los ataques
+físicos. La Sabiduría decide si la magia <strong>acierta</strong> (<code>FIGHTSTG_rollMagicHit</code>):</p>
+<pre><code>probabilidad (en 128avos) = Precisión + Precisión × (DifSabiduría / 8 + DifNivel) / 128
+DifSabiduría = Sabiduría(usuario) − Sabiduría(objetivo)
+</code></pre>
+<p>y también cuenta para los estados alterados y la curación.</p>
+<p>Después: la mejora del campo, y la resistencia del objetivo al elemento:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Resistencia</th>
+<th>Multiplicador de daño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>menos de 100</td>
+<td>(400 − 3 × res) % — hasta ×4</td>
+</tr>
+<tr>
+<td>de 100 a 299</td>
+<td>(125 − res / 4) %</td>
+</tr>
+<tr>
+<td>300 o más</td>
+<td>(65 − res / 20) %</td>
+</tr>
+</tbody>
+</table></div>
+<p>La <em>fuerza de elemento</em> de una técnica mágica no cambia su daño: solo lo cambia el elemento contra esta tabla. Lo que
+sube es su <strong>probabilidad de crítico</strong> (ver más abajo).</p>
+<p>Después, +50 % contra la familia del objetivo, el crítico (de +50 % a +150 %), la reducción de daño, como máximo
+5 × <code>poder</code> y como máximo 9999 (versión europea).</p>
+<h3 id="ejemplo-diamond-storm-de-un-renamon-de-nivel-5-contra-el-primer-kunemon">Ejemplo: Diamond Storm de un Renamon de nivel 5 contra el primer Kunemon</h3>
+<p><strong>Diamond Storm</strong> (técnica 59: mágica, potencia 100, Hielo, fuerza de elemento 32, precisión 127, 30 PM), la técnica
+propia de Renamon desde el principio, contra el mismo Kunemon (nivel 1, Espíritu 40, Sabiduría 50, resistencia al Hielo 90).</p>
+<p><strong>El Espíritu de Renamon a nivel 5.</strong> Empieza en 61 con un crecimiento de Espíritu 5. La tabla de ganancias solo tiene las
+columnas 0–8, así que <code>crecimiento + azar(0–4)</code> puede leer la columna 9, que en la PlayStation es el primer valor de la
+fila siguiente: de vez en cuando, una ganancia mínima. A nivel 5 su Espíritu es <strong>de 64 a 114, 99 de media</strong>.</p>
+<pre><code>poder = Potencia × (Espíritu(usuario) × 50 / Espíritu(objetivo) + 50) / 100       (entre Potencia/2 y Potencia × 2)
+daño  = poder × (400 − 3 × Resistencia) / 100                                     (resistencia de menos de 100)
+
+poder = 100 × (99 × 50 / 40 + 50) / 100 = 100 × (123 + 50) / 100 = 173
+daño  = 173 × (400 − 3 × 90) / 100      = 173 × 1,30              = 224
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Espíritu de Renamon</th>
+<th>poder</th>
+<th>Daño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64 (subidas de nivel con mala suerte)</td>
+<td>130</td>
+<td>169</td>
+</tr>
+<tr>
+<td>99 (media)</td>
+<td>173</td>
+<td>224</td>
+</tr>
+<tr>
+<td>114 (subidas de nivel con buena suerte)</td>
+<td>192</td>
+<td>249</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Probabilidad de acierto</strong>: <code>127 + 127 × (DifSabiduría / 8 + DifNivel) / 128</code>. La Sabiduría de Renamon ronda 92 contra 50,
+así que <code>127 + 127 × (5 + 4) / 128 = 135</code>: nunca falla.</p>
+<p><strong>Crítico.</strong> Un crítico mágico depende del elemento (<code>FIGHTSTG_rollMagicCritical</code>):</p>
+<pre><code>valor        = FuerzaElemento × 100 / Resistencia(objetivo, elemento)      (como máximo 64)
+probabilidad = valor + 4                                                    (en 128avos)
+
+Diamond Storm (fuerza 32) contra Kunemon (Hielo 90): valor = 32 × 100 / 90 = 35  →  39 / 128 = 30 %
+Flame Ball    (fuerza 16) contra Kunemon (Fuego 90): valor = 16 × 100 / 90 = 17  →  21 / 128 = 16 %
+</code></pre>
+<p>Las dos tienen potencia 100 y hacen los mismos 224 a Kunemon, porque la fuerza de elemento de una técnica mágica no
+cambia su daño; Diamond Storm, con el doble de fuerza, saca casi el doble de críticos. Un crítico suma de +50 % a +150 %.</p>
+<p>La probabilidad de crítico de Diamond Storm según la resistencia al Hielo del objetivo:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Resistencia al Hielo</th>
+<th>Valor</th>
+<th>Probabilidad de crítico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>64 (el máximo)</td>
+<td>68/128 = 53 % (lo máximo sin coincidir en familia)</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>35</td>
+<td>30 %</td>
+</tr>
+<tr>
+<td>100</td>
+<td>32</td>
+<td>28 %</td>
+</tr>
+<tr>
+<td>200</td>
+<td>16</td>
+<td>16 %</td>
+</tr>
+<tr>
+<td>300</td>
+<td>10</td>
+<td>11 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Así que la magia de un elemento al que el enemigo es débil hace más daño <strong>y</strong> más críticos.</p>
+<p><strong>Un objetivo con un estado alterado recibe más críticos</strong>, tanto físicos como mágicos, según la fuerza de la técnica que
+se lo provocó:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Objetivo</th>
+<th>Probabilidad de crítico extra (en 128avos)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paralizado o dormido</td>
+<td>+ fuerza / 8</td>
+</tr>
+<tr>
+<td>Confundido</td>
+<td>+ fuerza / 2</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fuerza de la técnica de estado</th>
+<th>Parálisis o sueño</th>
+<th>Confusión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 (Spinal Tap, Stun Shock, Hypno Gas, Panic Bites, Confuse Gas)</td>
+<td>+10 (+8 %)</td>
+<td>+40 (+31 %)</td>
+</tr>
+<tr>
+<td>96 (Brain Freeze, Paralyze Shock, Hypno Nebula)</td>
+<td>+12 (+9 %)</td>
+<td>+48 (+38 %)</td>
+</tr>
+<tr>
+<td>104 (T-Sword)</td>
+<td>+13 (+10 %)</td>
+<td>–</td>
+</tr>
+<tr>
+<td>127 (Mugenhadou, Confuse Stab, Confuse Nebula)</td>
+<td>+15 (+12 %)</td>
+<td>+63 (+49 %)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Diamond Storm contra un Kunemon confundido con Confuse Nebula: <code>39 + 63 = 102</code> → <strong>80 % de críticos</strong>.</p>
+<p>Kunemon tiene 120 PV: Diamond Storm siempre lo mata. Para comparar, el ataque básico de Renamon (Ataque en torno a 61) hace
+<code>60 × 61 / 42 = 87</code>.</p>
+<p>Cómo cambia Diamond Storm (poder 173) según la resistencia del objetivo:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Resistencia al Hielo</th>
+<th>Multiplicador</th>
+<th>Daño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>×2,50</td>
+<td>432</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>×1,30</td>
+<td>224</td>
+</tr>
+<tr>
+<td>100</td>
+<td>×1,00</td>
+<td>173</td>
+</tr>
+<tr>
+<td>160</td>
+<td>×0,85</td>
+<td>147</td>
+</tr>
+<tr>
+<td>200</td>
+<td>×0,75</td>
+<td>129</td>
+</tr>
+<tr>
+<td>300</td>
+<td>×0,50</td>
+<td>86</td>
+</tr>
+</tbody>
+</table></div>
+<p>Al contrario que el elemento de una técnica física, a la magia una resistencia alta la puede dejar <strong>a la mitad</strong>, y una
+baja la puede más que doblar.</p>
+<h2 id="criticos">Críticos</h2>
+<p><code>FIGHTSTG_rollCritical</code> — <code>src/fightstg/rolls.c</code></p>
+<p>Un golpe físico es crítico con esta probabilidad, en 128avos:</p>
+<pre><code>probabilidad = 4                                    (3,1 %)
+             + FuerzaEfecto                         si la técnica tiene el efecto Más críticos
+             + el bonus de crítico del equipo       (×2 para los Digimon especiales) si la técnica no tiene ningún efecto
+             + 60 si la técnica es fuerte contra la familia del objetivo (+16 por la familia de un arma, en su lugar)
+             + más mientras el objetivo está paralizado, dormido o confundido
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Probabilidad de crítico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big Shot</td>
+<td>44/128 = 34 %</td>
+</tr>
+<tr>
+<td>Swing Swing, Captain Cannon, Maltcyclone</td>
+<td>64/128 = 50 %</td>
+</tr>
+<tr>
+<td>Pinpoint Shot</td>
+<td>68/128 = 53 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un crítico suma <code>daño × (32 a 95) / 64</code>: <strong>de +50 % a +148 %</strong>, más o menos el doble de media.</p>
+<p>Un crítico <strong>mágico</strong> (<code>FIGHTSTG_rollMagicCritical</code>) tiene su propia probabilidad, según la fuerza de elemento de la
+técnica contra la resistencia del objetivo:</p>
+<pre><code>probabilidad (en 128avos) = mín(64, FuerzaElemento × 100 / Resistencia(objetivo, elemento)) + 4
+</code></pre>
+<p>(+60 más contra la familia de la técnica), y suma de +50 % a +150 %.</p>
+<h2 id="varios-golpes">Varios golpes</h2>
+<p><code>FIGHTSTG_rollMultiHit</code> — <code>src/fightstg/tech_effects.c</code>; el total en <code>src/fightstg/tech_action.c</code></p>
+<p>El daño se calcula <strong>una vez</strong> (con una sola tirada de crítico) y se multiplica por los golpes que aciertan:</p>
+<pre><code>total = daño × golpes acertados          (como máximo 9999, versión europea)
+</code></pre>
+<p>El primer golpe usa la precisión de la técnica; cada golpe más vuelve a tirar el acierto. Blade Twister (potencia 120,
+3 golpes) es como una técnica de 360 de potencia cuando aciertan los tres.</p>
+<h2 id="curacion">Curación</h2>
+<p><code>FIGHTSTG_computeHeal</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>PV = Potencia × 64 + Sabiduría × Potencia / 8        (como máximo 9999, versión europea)
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Potencia</th>
+<th>Cura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small Heal</td>
+<td>8</td>
+<td>512 + Sabiduría × 1</td>
+</tr>
+<tr>
+<td>Mega Heal / Giga Heal</td>
+<td>32</td>
+<td>2048 + Sabiduría × 4</td>
+</tr>
+<tr>
+<td>Final Heal</td>
+<td>64</td>
+<td>4096 + Sabiduría × 8</td>
+</tr>
+<tr>
+<td>Full Heal</td>
+<td>127</td>
+<td>8128 + Sabiduría × 15,9</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="mejoras-y-debilitaciones">Mejoras y debilitaciones</h2>
+<p><code>FIGHTSTG_changeBoost</code> — <code>src/fightstg/boosts.c</code>; los valores de las técnicas en <code>FIGHTSTG_techBoosts</code> y
+<code>FIGHTSTG_sideBoosts</code> — <code>src/fightstg/tech_action.c</code></p>
+<pre><code>mejora += estadística × FuerzaEfecto / 128        (− en las debilitaciones)
+</code></pre>
+<p>La mejora es una parte de la estadística sin mejoras. <strong>Se acumula</strong> con cada uso, entre <strong>−50 %</strong> y <strong>+100 %</strong> de la
+estadística. Termina al cabo de <code>azar(0–2000) + 2000 + Espíritu × 10</code> unidades de tiempo de combate, y volver a usarla
+reinicia el contador. El Espíritu es el del Digimon que la lleva: una debilitación sobre un enemigo con mucho Espíritu
+dura más.</p>
+<p><strong>En turnos:</strong> los combates van por una línea de tiempo, no por turnos fijos. Un enemigo actúa más o menos cada 1000
+unidades (de 707 a 1414, según la Velocidad de los dos: <code>1000 × Velocidad(otro) / √(Velocidad(propia) × Velocidad(otro))</code>),
+así que una mejora dura <strong>unos 2–4 turnos, más un turno por cada 100 de Espíritu</strong>.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double Power / Mega Strength</td>
+<td>Ataque +37,5 % (quien la usa) / +50 % (todos los aliados)</td>
+</tr>
+<tr>
+<td>Double Guard / Mega Protection</td>
+<td>Defensa +37,5 % (quien la usa) / +50 % (todos los aliados)</td>
+</tr>
+<tr>
+<td>Speed Up / Mega Boost</td>
+<td>Velocidad +25 % (quien la usa) / +37,5 % (todos los aliados)</td>
+</tr>
+<tr>
+<td>Lovely Charm, Grisly Wing</td>
+<td>Ataque del enemigo −18,75 %, −25 %</td>
+</tr>
+<tr>
+<td>Armor Break / Armor Off</td>
+<td>Defensa del enemigo −18,75 % / −37,5 %</td>
+</tr>
+<tr>
+<td>Slow Down / Mega Break</td>
+<td>Velocidad del enemigo −12,5 % / −25 %</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="carga">Carga</h2>
+<p><code>chargeUser</code> — <code>src/fightstg/tech_action.c</code>; la usa <code>FIGHTSTG_adjustDamage</code> como bonus de daño</p>
+<p>Soul Charge (80) y Misshukikou (127) suman <code>FuerzaEfecto / 64</code> al daño de la <strong>siguiente técnica física</strong>: <strong>+125 %</strong> y
+<strong>+198 %</strong>. Esa técnica gasta la carga.</p>
+<h2 id="absorcion">Absorción</h2>
+<p>Las técnicas de absorber PV curan <code>FuerzaEfecto / 128</code> del daño hecho: Energy Leech 50 %, Touch of Evil 62,5 %,
+Energy Drain 99 %. Vampire Jewel absorbe el 6,25 % de los PM máximos del objetivo.</p>
+<h2 id="estados-alterados">Estados alterados</h2>
+<p><code>src/fightstg/rolls.c</code></p>
+<pre><code>probabilidad (en 128avos) = ProbEfecto + Sabiduría(usuario) / 8 − (Resistencia(objetivo) + Sabiduría(objetivo) / 2) / 8
+</code></pre>
+<p>entre 1 y 127, y se tira cuando el golpe acierta. La resistencia es la del objetivo a ese estado (PSN, PAR, CNF, SLP, KO
+en el explorador de enemigos) <strong>más una de sus resistencias elementales</strong>:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Resistencia elemental que se suma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Veneno</td>
+<td>Agua</td>
+</tr>
+<tr>
+<td>Parálisis</td>
+<td>Trueno</td>
+</tr>
+<tr>
+<td>Confusión</td>
+<td>Viento</td>
+</tr>
+<tr>
+<td>Sueño</td>
+<td>Hielo</td>
+</tr>
+<tr>
+<td>KO</td>
+<td>Oscuridad</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="que-hace-cada-estado">Qué hace cada estado</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Veneno</td>
+<td>Quita PV más o menos una vez por turno (cada 1000 unidades de tiempo, un turno a igual velocidad) hasta que se cura o acaba el combate, y puede dejar KO: (fuerza de la técnica / 2 − (res. Veneno + res. Agua) / 10) % de los PV máximos cada vez, como mínimo 1 y como máximo la mitad de los PV máximos</td>
+</tr>
+<tr>
+<td>Parálisis</td>
+<td>Cada turno puede perderlo (fuerza − (res. Parálisis + res. Trueno) / 8 en 128avos, como mínimo 32/128) y no puede contraatacar; se pasa al cabo de un rato (más tarde con más fuerza); críticos contra él +fuerza/8</td>
+</tr>
+<tr>
+<td>Confusión</td>
+<td>Un enemigo confundido pierde sus turnos; un compañero confundido solo puede usar el ataque básico; se pasa al cabo de un rato; críticos contra él +fuerza/2</td>
+</tr>
+<tr>
+<td>Sueño</td>
+<td>No puede actuar (un compañero no puede atacar, usar técnicas ni digievolucionar) hasta que se le pasa o recibe un golpe, que lo despierta; críticos contra él +fuerza/8</td>
+</tr>
+<tr>
+<td>KO</td>
+<td>El objetivo cae al momento, tenga los PV que tenga</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="tecnicas-de-veneno">Técnicas de veneno</h3>
+<p>Cada técnica de veneno tiene dos números: la probabilidad de envenenar (ProbEfecto) y la fuerza del veneno
+(FuerzaEfecto), que decide cuánto daño hace (<code>FIGHTSTG_getDamage</code>, <code>src/fightstg/damage.c</code>):</p>
+<pre><code>PV que quita cada vez = (fuerza / 2 − (res. Veneno + res. Agua) / 10) % de los PV máximos     (mínimo 1, máximo 50 %)
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Tipo</th>
+<th>Potencia</th>
+<th>PM</th>
+<th>Prob. de envenenar</th>
+<th>Fuerza</th>
+<th>Contra Yanmamon (Veneno 99, Agua 91)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poison Bites</td>
+<td>Físico</td>
+<td>75</td>
+<td>18</td>
+<td>72/128 (56 %)</td>
+<td>80</td>
+<td>40 − 19 = <strong>21 %</strong> cada vez</td>
+</tr>
+<tr>
+<td>Evil Poison</td>
+<td>Mágico</td>
+<td>60</td>
+<td>18</td>
+<td>72/128 (56 %)</td>
+<td>80</td>
+<td>21 %</td>
+</tr>
+<tr>
+<td>Venom Stab</td>
+<td>Físico</td>
+<td>200</td>
+<td>36</td>
+<td>80/128 (63 %)</td>
+<td>96</td>
+<td>48 − 19 = <strong>29 %</strong></td>
+</tr>
+<tr>
+<td>Deadly Poison</td>
+<td>Mágico</td>
+<td>360</td>
+<td>90</td>
+<td>112/128 (88 %)</td>
+<td>127</td>
+<td>63 − 19 = <strong>44 %</strong></td>
+</tr>
+<tr>
+<td>Thorn Whipping (solo Rosemon)</td>
+<td>Físico</td>
+<td>340</td>
+<td>130</td>
+<td>127/128 (99 %)</td>
+<td>127</td>
+<td>44 %</td>
+</tr>
+<tr>
+<td>Colmi. Veneno (Venom Fang) (arma, ataque básico)</td>
+<td>Físico</td>
+<td>–</td>
+<td>–</td>
+<td>64/128 (50 %)</td>
+<td>64</td>
+<td>32 − 19 = <strong>13 %</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Quita PV más o menos una vez por turno (cada 1000 unidades de tiempo) hasta que se cura el veneno o acaba el combate; como
+es una parte de los PV máximos, es igual de fuerte contra los jefes. <strong>Envenenar a un objetivo que ya está envenenado
+sustituye su veneno</strong> (<code>FIGHTSTG_inflictPoison</code> sobrescribe el daño en cola): un Poison Bites después de un Deadly Poison lo
+baja del 44 % al 21 %.</p>
+<h3 id="ejemplo-una-tecnica-de-veneno-contra-yanmamon">Ejemplo: una técnica de veneno contra Yanmamon</h3>
+<p>Una técnica con ProbEfecto 64, usada por un Digimon con 100 de Sabiduría, contra Yanmamon (Veneno 99, Agua 91,
+Sabiduría 70):</p>
+<pre><code>64 + 100 / 8 − (99 + 91 + 70 / 2) / 8 = 64 + 12 − 28 = 48   →   48 / 128 = 37,5 %
+</code></pre>
+<p>Cada 8 puntos de tu Sabiduría suman 1/128 (más o menos 0,8 %).</p>
+<h3 id="armas-de-estado">Armas de estado</h3>
+<p>Un arma con un estado (en una ranura de arma, no como accesorio) da su probabilidad al <strong>ataque básico y a las técnicas
+físicas sin efecto propio</strong>, cuando el golpe acierta (nunca a la magia); una técnica con efecto propio usa la probabilidad
+de la técnica. La misma fórmula, con la probabilidad del arma como ProbEfecto:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Arma</th>
+<th>Estado</th>
+<th>Probabilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colmi. Veneno (Venom Fang)</td>
+<td>Veneno</td>
+<td>64/128</td>
+</tr>
+<tr>
+<td>Rompepiedras (Rock Breaker)</td>
+<td>Confusión</td>
+<td>32/128</td>
+</tr>
+<tr>
+<td>Arco Cuervo (Raven Bow)</td>
+<td>Confusión</td>
+<td>24/128</td>
+</tr>
+<tr>
+<td>Guante Agujas (Needle Glove)</td>
+<td>KO</td>
+<td>24/128</td>
+</tr>
+<tr>
+<td>Cort. Alma (Soul Chopper)</td>
+<td>KO</td>
+<td>32/128</td>
+</tr>
+<tr>
+<td>Cuerno Impac. (Shock Horn)</td>
+<td>Parálisis</td>
+<td>0/128 (solo cuenta tu Sabiduría)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="combates-que-los-bloquean">Combates que los bloquean</h3>
+<p>Cada combate puede impedir del todo que provoques cada estado (<code>Encounter.blocks</code>, que se copia a <code>BATTLE_SETUP.blocks</code>),
+sea cual sea la probabilidad. La mayoría de los combates de la historia bloquean alguno: de 150, 39 bloquean el veneno,
+48 la parálisis, 58 la confusión, 53 el sueño y 62 el KO; de los otros 184 combates, solo entre 2 y 10 bloquean cada uno.
+Al primer jefe, Pharaohmon, no se le puede confundir, dormir ni dejar KO. La misma lista bloquea también las absorciones,
+los robos, bajar el ataque, la defensa o la velocidad del enemigo, y huir.</p>
+<h2 id="campos-elementales">Campos elementales</h2>
+<p><code>boostFieldElement</code> — <code>src/fightstg/tech_action.c</code>; <code>FIGHTSTG_getElementBoost</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>mejora = 64 + Espíritu / 10        (como máximo 127)
+</code></pre>
+<ul>
+<li>Técnicas del elemento del campo: <code>+mejora / 128</code> → <strong>+50 %</strong>, hasta +99 %.</li>
+<li>Técnicas cuyo elemento debilita el campo: <code>−mejora / 256</code> → <strong>−25 %</strong>, hasta −50 %.</li>
+<li>El campo dura <code>Espíritu × 12 + 1000</code> unidades de tiempo de combate: más o menos <strong>1 turno, más uno por cada 83 de Espíritu</strong>.</li>
+</ul>
+<p>Qué elemento debilita cada campo, según el código (<code>FIGHTSTG_opposedElements</code>):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Potencia</th>
+<th>Debilita</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire Field</td>
+<td>Fuego</td>
+<td>Agua</td>
+</tr>
+<tr>
+<td>Water Field</td>
+<td>Agua</td>
+<td>Viento</td>
+</tr>
+<tr>
+<td>Ice Field</td>
+<td>Hielo</td>
+<td>Fuego</td>
+</tr>
+<tr>
+<td>Wind Field</td>
+<td>Viento</td>
+<td>Hielo</td>
+</tr>
+<tr>
+<td>Thunder Field</td>
+<td>Trueno</td>
+<td>Oscuridad</td>
+</tr>
+<tr>
+<td>Metal Field</td>
+<td>Máquina</td>
+<td>Trueno</td>
+</tr>
+<tr>
+<td>Dark Field</td>
+<td>Oscuridad</td>
+<td>Máquina</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las descripciones del propio juego nombran otros elementos («Fortalece el fuego, debilita el hielo»); la tabla de arriba es
+lo que hace el código.</p>
+<blockquote>
+<p><strong>Bug del juego original:</strong> <code>boostFieldElement</code> toma el elemento del campo del campo <em>icon</em> de la técnica, que es 6
+(Trueno) en los siete campos. Así que <strong>todos los campos potencian el Trueno</strong> (y debilitan la Oscuridad), diga lo que
+diga su nombre. El parche <em>Fixed Field Moves</em> del mod Harmony lo arregla. El port nativo para PC, hecho a partir del
+código original, mantiene el bug.</p>
+</blockquote>
+<h2 id="aprender-digievoluciones">Aprender digievoluciones</h2>
+<p><code>STFGTREP_learnDigimon</code> — <code>src/stfgtrep/growth.c</code>; las listas en <code>STFGTREP_evolutionLists</code></p>
+<p>Después de un combate, el juego recorre <strong>en orden</strong> la lista de 44 formas del compañero y le da la <strong>primera</strong> forma que no
+tiene y cuyos requisitos se cumplen todos:</p>
+<ul>
+<li>hasta dos formas que el compañero debe tener, cada una con un <strong>nivel DV</strong> mínimo (el nivel de esa forma), y</li>
+<li>una estadística con un mínimo: una estadística de combate, el nivel del compañero o una resistencia.</li>
+</ul>
+<p>La forma ocupa la primera casilla DV libre. Los requisitos de cada forma para cada Rookie están en
+<a href="../data/evolutions.csv"><code>data/evolutions.csv</code></a> y en la <a href="evolutions.html">tabla de digievoluciones</a>.</p>
+<h2 id="notas-por-ordenar">Notas (por ordenar)</h2>
+<h3 id="de-donde-salen-el-ataque-y-la-defensa">De dónde salen el Ataque y la Defensa</h3>
+<p><code>FIGHTSTG_computeStats</code> — <code>src/fightstg/stats.c</code></p>
+<ul>
+<li><strong>Un compañero</strong>: su Fuerza o Defensa, más lo que suman sus armas y armaduras, más las estadísticas de la <strong>forma
+  digievolucionada</strong> (cada forma suma las suyas, como en <code>DIGIMON_DATA</code>), más las mejoras activas. Una estadística que
+  queda en 0 o menos cuenta como 1.</li>
+<li><strong>Un enemigo</strong>: las estadísticas de su tabla de combate × la <strong>fuerza / 16</strong> del combate. El mismo Digimon se hace más
+  fuerte en zonas posteriores: el primer Kunemon tiene fuerza 16 (×1), los siguientes 35, 38 y 45 (de ×2,2 a ×2,8).</li>
+</ul>
+<h3 id="equipo-que-cambia-el-dano-fisico">Equipo que cambia el daño físico</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pot. Fuego (Fire Power), Pot. Agua (Water Power), Pot. Hielo (Ice Power), Pot. Viento (Wind Power), Pot. Rayo (Bolt Power), Pot. Metal (Metal Power), Pot. Oscura (Dark Power) (accesorios)</td>
+<td>Dan al Digimon un <strong>elemento</strong>, que usan el ataque básico y las técnicas compartidas sin elemento (no las técnicas propias de un Digimon ni las técnicas en pareja), con el valor del accesorio como fuerza de elemento</td>
+</tr>
+<tr>
+<td>Multivale (Multi Crest)</td>
+<td><strong>Tres golpes del 40 %</strong> cada uno (120 % si aciertan todos), cada uno tira su acierto. No funciona si se lleva un arma de estado o de absorción, el Colmi. Sable o el Shuriken (igual que el Buscar Vale y el accesorio de contraataque): <code>fightstg/stats.c</code> solo lee esos accesorios si no encuentra ninguna de esas armas</td>
+</tr>
+<tr>
+<td>Buscar Vale (Search Crest); armas Colmi. Sable (Saber Fang), Shuriken</td>
+<td>Suben la <strong>probabilidad de crítico</strong> en su valor (el doble en los Digimon especiales); solo en técnicas sin efecto</td>
+</tr>
+<tr>
+<td>Armas con familia</td>
+<td>+50 % de daño y +16/128 de probabilidad de crítico contra esa familia</td>
+</tr>
+<tr>
+<td>Colmi. Veneno (Venom Fang), Cuerno Impac. (Shock Horn) y las otras armas de estado</td>
+<td>El ataque básico puede provocar su estado</td>
+</tr>
+<tr>
+<td>Gafas (Glasses) / Danza Pluma (Dance Feather)</td>
+<td>Precisión / esquiva</td>
+</tr>
+<tr>
+<td>Proxy PV (HP Proxy) / Mega Proxy PV (HP Mega Proxy)</td>
+<td>Quitan <strong>una cantidad fija</strong> de cada golpe recibido (el mod Harmony lo cambia a un 10 %/20 %)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="contraataques">Contraataques</h3>
+<p><code>FIGHTSTG_computeCounterDamage</code> — <code>src/fightstg/damage.c</code></p>
+<p>Las técnicas de contraataque (Maul Attack, Counter Alert, Counter Strike) devuelven
+<code>daño recibido × FuerzaEfecto / 64</code> (<code>/ 32</code> en los Digimon especiales) y después pasan por los pasos de arriba.</p>
+<h3 id="los-enemigos-atacandote">Los enemigos atacándote</h3>
+<p>La misma fórmula, con la fuerza del combate ya incluida en el Ataque del enemigo y en la potencia de sus técnicas. Un
+enemigo acierta <strong>como mínimo el 25 %</strong> de las veces (una probabilidad de 32/128), por rápido que seas, y sus críticos
+funcionan como los tuyos.</p>
+<h3 id="redondeo-y-limites">Redondeo y límites</h3>
+<p>Cada paso redondea <strong>hacia abajo</strong> por separado, como en la PlayStation. <strong>No hay daño mínimo</strong>: cuando la Defensa es
+mucho mayor que el Ataque, o una reducción de daño lo absorbe, un golpe puede hacer 0.</p>
+<h3 id="los-pasos-despues-del-valor-base">Los pasos después del valor base</h3>
+<p>La técnica de un enemigo también se multiplica por su fuerza / 16 (<code>BATTLE_SETUP.enemies[].strength</code>).</p>
+<p>Después, en este orden:</p>
+<ol>
+<li><strong>Mejora del campo</strong>: si el elemento de la técnica es el del campo, <code>+ base × mejora / 128</code>. Si el campo lo debilita,
+   <code>− base × mejora / 256</code> (ver <a href="#campos-elementales">Campos elementales</a>).</li>
+<li><strong>Familia</strong>: <code>+50 %</code> si la técnica (o, en las técnicas sin familia, una de las armas del usuario) es fuerte contra la
+   familia del objetivo.</li>
+<li><strong>Bonus de daño</strong> (una carga de Soul Charge o Misshukikou): <code>+ daño × bonus / 64</code>.</li>
+<li><strong>Elemento contra resistencia</strong>: <code>+ daño × FuerzaElemento × 2 / Resistencia(objetivo, elemento)</code>. Con resistencia 100 y
+   fuerza 48 eso es ×1,96; con resistencia 300, ×1,32. Una técnica sin elemento usa el elemento del usuario que dé un
+   accesorio, si lo hay (no en las técnicas propias de un Digimon ni en las técnicas en pareja).</li>
+<li>Accesorio de <strong>triple golpe</strong>: cada golpe hace <code>× 4 / 10</code>.</li>
+<li><strong>Crítico</strong>: <code>+ daño × (32 a 95) / 64</code>, es decir, de +50 % a +148 %.</li>
+<li><strong>Reducción de daño</strong> del objetivo: se resta, nunca por debajo de 0.</li>
+<li><strong>Límites</strong>: como máximo 5 × el valor base, y como máximo 9999 (solo la versión europea).</li>
+</ol>
+</div></body></html>

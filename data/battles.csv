@@ -1,0 +1,523 @@
+﻿Battle,Kind,Where,Enemy,Level,HP,MP,Strength (16ths),Strength,Defense,Spirit,Wisdom,Speed,Battle EXP,Battle DV EXP,Battle BIT,Drop,Drop chance %
+1,story,"Protocol Ruins, East Sector (story)",Pharaohmon,12,816,9999,16,170,170,150,170,136,120,12,240,,
+2,story,"Tyranno Valley, East Sector (story)",MasterTyrannomon,14,912,9999,16,190,238,212,190,129,140,14,280,,
+3,story,"Seiryu City, East Sector (story)",Minotarumon,9,504,9999,22,206,171,93,116,93,176,11,475,,
+3,story,"Seiryu City, East Sector (story)",Tyrannomon,11,576,9999,23,158,198,161,135,107,176,11,475,Fire Power,12.6
+3,story,"Seiryu City, East Sector (story)",Apemon,14,684,9999,20,160,160,162,187,225,176,11,475,Wind Power,12.6
+4,story,"Suzaku Hall, Suzaku City (story)",Woodmon,12,612,9999,27,168,168,135,168,135,216,14,675,,
+4,story,"Suzaku Hall, Suzaku City (story)",RedVegiemon,14,684,9999,22,192,192,165,192,192,216,14,675,,
+4,story,"Suzaku Hall, Suzaku City (story)",ShogunGekomon,17,792,200,14,218,218,252,273,175,216,14,675,Chaos Wave,12.6
+5,story,"Byakko Dome, Byakko City (story)",Numemon,27,768,9999,17,318,398,252,270,255,268,27,645,Binder Crest,6.3
+5,story,"Byakko Dome, Byakko City (story)",Numemon,27,768,9999,17,318,398,252,270,255,268,27,645,Binder Crest,6.3
+6,story,"Mirage Room, West Sector (story)",Flymon,29,1224,9999,14,332,282,315,332,332,435,29,870,Glasses,12.6
+6,story,"Mirage Room, West Sector (story)",Tortomon,29,1224,9999,16,340,425,400,340,231,435,29,870,,
+6,story,"Mirage Room, West Sector (story)",Mamemon,29,1088,9999,18,337,506,315,337,270,435,29,870,Search Crest,6.3
+7,story,"Operation Room, West Sector (story)",HiAndromon,32,1776,280,16,370,370,350,462,296,325,32,500,,
+8,story,"Sewers, West Sector (story)",WaruMonzaemon,32,1776,9999,16,555,370,350,370,296,320,32,740,,
+9,story,"Control Room, Asuka City (story)",Datamon,34,1872,9999,16,390,390,462,390,390,340,34,1000,Recover Crest,25.1
+10,story,A (story),Minotarumon,33,912,9999,16,570,475,306,323,258,718,35,1490,Metal Power 2,6.3
+10,story,A (story),Gargoylemon,34,1404,9999,16,400,400,570,400,320,718,35,1490,Dark Power 2,6.3
+10,story,A (story),Persiamon,38,3096,40,16,430,430,410,645,516,718,35,1490,Charm Gas,25.1
+11,story,"Catacomb, South Sector (story) / Jungle Grave, South Sector (story) / Phoenix Bay, South Sector (story)",Zanbamon,40,2160,9999,16,450,450,430,562,360,380,40,800,,
+12,story,"Bug Maze Pit, Network Break (story)",Bulbmon,43,2304,960,16,480,600,460,408,480,440,43,800,,
+13,story,"Protocol Ruins, East Sector (story)",BK MegaGargomon,45,2400,9999,16,625,625,480,500,340,450,45,900,,
+14,story,"Qing Long City, East Sector (story)",Deltamon,40,1620,9999,18,461,461,438,461,369,627,41,1220,Wind Power 2,6.3
+14,story,"Qing Long City, East Sector (story)",Triceramon,41,2484,9999,16,575,460,440,460,313,627,41,1220,,
+14,story,"Qing Long City, East Sector (story)",Kimeramon,44,1764,9999,16,490,735,329,612,392,627,41,1220,Devil Chip,1.7
+15,story,"Tyranno Valley, East Sector (story)",BK Imperialdramon,46,2448,9999,16,510,510,490,765,408,460,46,930,,
+16,story,"Zhu Que Hall, Zhu Que City (story)",Cherrymon,41,1656,9999,16,460,460,440,460,368,649,43,1335,Train Chip,6.3
+16,story,"Zhu Que Hall, Zhu Que City (story)",Scorpiomon,43,1728,9999,16,480,480,575,600,384,649,43,1335,Crimson Cable,12.6
+16,story,"Zhu Que Hall, Zhu Que City (story)",Snimon,46,1836,9999,17,510,433,488,510,510,649,43,1335,,
+17,story,"Catacomb, South Sector, on the Amaterasu server (story)",BK Seraphimon,47,2496,9999,16,442,520,625,780,416,470,47,960,,
+18,story,"Battle Gate, North Sector (story)",Vikemon,45,1800,9999,17,765,433,733,433,408,705,46,1430,,
+18,story,"Battle Gate, North Sector (story)",MetalEtemon,46,1836,296,17,442,780,499,650,416,705,46,1430,Max Charge,6.3
+18,story,"Battle Gate, North Sector (story)",Antylamon,49,1944,9999,18,551,551,661,688,374,705,46,1430,Wind Chip,1.7
+19,story,"Ice Dungeon, North Sector (story)",Frigimon,45,1200,9999,17,610,610,467,488,332,703,46,1410,Ice Chip,1.7
+19,story,"Ice Dungeon, North Sector (story)",MegaSeadramon,46,1224,9999,17,442,442,749,650,416,703,46,1410,Water Power S,3.2
+19,story,"Ice Dungeon, North Sector (story)",Mammothmon,49,1296,9999,17,690,552,664,552,376,703,46,1410,,
+20,story,"Fire Dungeon, North Sector (story)",Meramon,45,1200,9999,17,342,610,701,488,391,715,47,1420,,
+20,story,"Fire Dungeon, North Sector (story)",SkullMeramon,47,1248,9999,17,765,637,415,357,408,715,47,1420,,
+20,story,"Fire Dungeon, North Sector (story)",BlueMeramon,50,1320,1800,17,478,703,812,703,450,715,47,1420,MP Mega Proxy,3.2
+21,story,"Dark Dungeon, North Sector (story)",SkullSatamon,46,1224,9999,19,522,522,623,522,418,719,48,1395,Hack Sticker,12.6
+21,story,"Dark Dungeon, North Sector (story)",Devidramon,48,1272,9999,18,459,540,646,675,432,719,48,1395,,
+21,story,"Dark Dungeon, North Sector (story)",Vilemon,50,1320,9999,17,563,478,677,563,563,719,48,1395,Hack System,3.2
+22,story,"Magasta 1F, Undersea Base (story)",Whamon,47,1872,9999,17,531,531,510,531,425,737,49,1470,Crimson Cable,12.6
+22,story,"Magasta 1F, Undersea Base (story)",Vademon,49,1296,4,17,541,541,442,677,650,737,49,1470,Cursed Puppet,25.1
+22,story,"Magasta 1F, Undersea Base (story)",Machinedramon,51,1344,9999,17,552,552,531,552,442,737,49,1470,Metal Power S,3.2
+23,story,"Operation Room, West Sector (story)",BK WarGrowlmon,55,2880,9999,16,750,510,493,600,600,550,55,1100,,
+24,story,"Sewers, West Sector (story)",BK KingNumemon,57,2976,8,16,620,775,510,527,496,570,57,1300,,
+25,story,"Bai Hu Dome, Bai Hu City (story)",Rockmon,49,1944,9999,18,551,688,528,551,374,757,50,1450,,
+25,story,"Bai Hu Dome, Bai Hu City (story)",Gryphonmon,50,1980,9999,18,478,562,810,562,562,757,50,1450,Wind Power S,3.2
+25,story,"Bai Hu Dome, Bai Hu City (story)",Ebidramon,52,2052,9999,17,563,563,541,563,450,757,50,1450,Train Chip 2,3.2
+26,story,"Battle Gate, North Sector (story)",Boltmon,50,1980,9999,17,844,563,677,394,450,788,52,1560,Power Brace,3.2
+26,story,"Battle Gate, North Sector (story)",SkullMammothmon,52,2052,9999,17,860,717,690,573,320,788,52,1560,,
+26,story,"Battle Gate, North Sector (story)",Puppetmon,54,2124,9999,16,885,502,712,738,472,788,52,1560,,
+27,story,"Ice Dungeon, North Sector (story)",Vikemon,50,1980,9999,17,690,469,664,469,442,783,52,1515,,
+27,story,"Ice Dungeon, North Sector (story)",Antylamon,52,1368,9999,17,573,573,690,717,389,783,52,1515,Ice Power S,3.2
+27,story,"Ice Dungeon, North Sector (story)",Scorpiomon,54,1416,9999,16,590,590,712,738,590,783,52,1515,Train Chip V,1.7
+28,story,"Fire Dungeon, North Sector (story)",Lynxmon,52,1368,9999,17,573,573,552,573,459,795,53,1580,Fire Power S,3.2
+28,story,"Fire Dungeon, North Sector (story)",Lynxmon,52,1368,9999,17,573,573,552,573,459,795,53,1580,Fire Power S,3.2
+28,story,"Fire Dungeon, North Sector (story)",Creepymon,55,1440,9999,16,420,750,870,750,480,795,53,1580,,
+29,story,"Dark Dungeon, North Sector (story)",Ghoulmon,54,1133,9999,17,573,860,690,573,459,842,56,1655,Dark Power S,3.2
+29,story,"Dark Dungeon, North Sector (story)",Piedmon,56,1464,9999,16,610,610,502,762,732,842,56,1655,,
+29,story,"Dark Dungeon, North Sector (story)",Infermon,58,1512,9999,17,637,541,770,637,637,842,56,1655,,
+30,story,"Amaterasu Bridge, Central Sector (story)",Knightmon,99,9999,9999,29,1051,1576,1522,893,714,990,99,1980,,
+31,story,"Control Room, Amaterasu City (story)",BK WarGreymon,53,2784,9999,16,725,580,700,493,580,530,53,1060,,
+32,story,A (story),MetalSeadramon,54,1416,9999,16,502,738,712,738,472,1224,57,2515,,
+32,story,A (story),VenomMyotismon,57,1488,9999,17,796,541,770,637,510,1224,57,2515,,
+32,story,A (story),Raidenmon,60,3120,9999,16,812,812,536,552,520,1224,57,2515,,
+33,story,"Control Room, Spy Satellite (story)",Fujinmon,57,4464,9999,16,620,620,900,620,620,1700,57,3000,,
+33,story,"Control Room, Spy Satellite (story)",Suijinmon,57,2976,9999,16,930,620,600,620,744,1700,57,3000,,
+33,story,"Control Room, Spy Satellite (story)",Raijinmon,57,2976,9999,16,434,930,900,930,496,1700,57,3000,,
+34,random,"Central Park, Central Sector (random) / Central Park, Central Sector (extra chapter) (random) / East Wire Forest, East Sector (random) / West Wire Forest, East Sector (random) / Wire Forest Entrance, Central Sector (random)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+35,random,"Central Park, Central Sector (random) / Central Park, Central Sector (extra chapter) (random) / Wire Forest Entrance, Central Sector (random)",Tapirmon,1,120,9999,16,42,50,40,50,48,5,1,20,,
+36,event/random,"Divermon's Lake, East Sector (event) / Divermon's Lake, East Sector (random) / Shell Beach, Central Sector (extra chapter) (random)",Crabmon,3,168,9999,16,88,60,51,60,80,17,3,30,,
+37,random,"Kicking Forest, East Sector (random) / Shell Beach, Central Sector (random) / Shell Beach, Central Sector (extra chapter) (random)",Gizamon,4,192,9999,16,80,80,70,80,72,19,4,40,,
+38,random,"Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",DemiDevimon,8,312,9999,16,130,110,138,162,104,39,8,80,Dark Power,12.6
+39,random,"Central Park, Central Sector (extra chapter) (random) / Divermon's Lake, East Sector (random) / East Wire Forest, East Sector (random) / Plug Cape, Central Sector (random) / Shell Beach, Central Sector (random) / West Wire Forest, East Sector (random)",Betamon,2,144,9999,16,60,60,50,60,56,10,2,25,Power Charge,18.8
+40,random,"Kicking Forest, East Sector (random) / Plug Cape, Central Sector (random) / Plug Cape, Central Sector (extra chapter) (random) / Shell Beach, Central Sector (random)",Vegiemon,4,192,9999,16,80,80,70,80,90,20,4,40,,
+41,event/random,"Central Park, Central Sector (extra chapter) (random) / East Wire Forest, East Sector (random) / West Wire Forest, East Sector (event) / West Wire Forest, East Sector (random)",Kuwagamon,2,144,9999,16,75,60,42,60,56,11,2,20,,
+42,random,"Shell Beach, Central Sector (extra chapter) (random) / Wind Prairie, East Sector (random)",Yanmamon,3,168,9999,16,70,60,60,70,80,16,3,30,,
+43,random,"Shell Beach, Central Sector (extra chapter) (random) / Wind Prairie, East Sector (random)",Kiwimon,3,168,9999,16,60,70,60,70,80,15,3,35,,
+44,random,"Protocol Forest, East Sector (random) / Protocol Forest, East Sector (extra chapter) (random)",Dokugumon,4,192,9999,16,80,68,70,80,72,21,4,40,Spider Web,12.6
+45,random,"East Wire Forest, East Sector (random) / Plug Cape, Central Sector (extra chapter) (random) / Protocol Forest, East Sector (random) / Protocol Ruins, East Sector (random)",Goburimon,4,192,9999,16,120,80,60,68,61,22,4,45,,
+46,random,"Protocol Ruins, East Sector (random) / Protocol Ruins, East Sector (extra chapter) (random)",Baronmon,16,504,9999,16,262,210,190,210,143,80,16,160,,
+47,event/random,"Protocol Forest, East Sector (extra chapter) (random) / Protocol Ruins, East Sector (event) / Protocol Ruins, East Sector (random)",Minotarumon,5,240,9999,16,150,125,68,85,68,27,5,55,,
+48,random/tree,"Jungle Grave, South Sector (tree) / Phoenix Bay, South Sector (tree) / Shell Beach, Central Sector (extra chapter) (tree) / West Wire Forest, East Sector (random) / Wire Forest Entrance, Central Sector (random)",Flymon,13,432,9999,16,180,153,160,180,180,66,13,130,,
+49,random/tree,"Central Park, Central Sector (tree) / Divermon's Lake, East Sector (tree) / East Wire Forest, East Sector (tree) / Kicking Forest, East Sector (random) / Phoenix Bay, South Sector (random) / Plug Cape, Central Sector (tree) / Shell Beach, Central Sector (tree) / West Wire Forest, East Sector (tree) / Wind Prairie, East Sector (tree) / Wire Forest Entrance, Central Sector (tree) / Wire Forest Entrance, Central Sector (extra chapter) (tree)",Woodmon,5,240,9999,16,100,100,80,100,80,25,5,50,,
+50,random,"Tyranno Valley, East Sector (random) / Tyranno Valley, East Sector (extra chapter) (random)",Tyrannomon,6,264,9999,16,110,138,112,94,75,31,6,60,Fire Power,12.6
+51,random,"Plug Cape, Central Sector (random) / Plug Cape, Central Sector (extra chapter) (random) / Tyranno Valley, East Sector (random)",Triceramon,6,396,9999,16,138,110,90,110,75,30,6,60,TNT Ball,18.8
+52,random,"Plug Cape, Central Sector (extra chapter) (random) / Tyranno Valley, East Sector (random)",Airdramon,6,264,9999,16,77,138,135,110,110,29,6,70,Fire Chip,1.7
+53,random,"Bulk Bridge, South Sector (random) / Bulk Swamp, South Sector (random) / Jungle Grave, South Sector (random) / Tranquil Swamp, South Sector (random) / Wire Forest Entrance, Central Sector (extra chapter) (random)",Gekomon,8,312,9999,16,130,130,138,162,104,41,8,85,Ice Power,12.6
+54,fishing/random,"Amaterasu City, Central Sector (fishing) / Asuka City, Central Sector (fishing) / Bios Swamp, South Sector (random) / Bulk Bridge, South Sector (random) / Bulk Swamp, South Sector (random) / Central Park, Central Sector (fishing) / Jungle Grave, South Sector (random) / Plug Cape, Central Sector (fishing) / Plug Cape, Central Sector (random) / Shell Beach, Central Sector (fishing) / Tranquil Swamp, South Sector (random) / West Wire Forest, East Sector (fishing) / Wire Forest Entrance, Central Sector (fishing)",Coelamon,8,312,9999,16,130,130,110,130,104,40,8,80,Water Chip,1.7
+55,random,"Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",Bakemon,9,336,9999,16,175,175,120,119,168,46,9,90,,
+56,random,"Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",Phantomon,31,864,9999,16,450,450,340,306,288,154,31,310,Ghost Fang,12.6
+57,random,"East Wire Forest, East Sector (random) / Protocol Forest, East Sector (random) / Wire Forest Entrance, Central Sector (extra chapter) (random)",Kokatorimon,13,432,9999,16,180,180,136,180,180,96,13,160,,
+58,random,"Ether Jungle, South Sector (random) / Phoenix Bay, South Sector (random) / Wire Forest Entrance, Central Sector (extra chapter) (random)",Apemon,10,360,9999,16,128,128,130,150,180,50,10,190,Wind Power,12.6
+59,fishing/random,"Ether Jungle, South Sector (fishing) / Plug Cape, Central Sector (random) / Shell Beach, Central Sector (random) / Shell Beach, Central Sector (extra chapter) (fishing) / South Cape, South Sector (fishing) / South Cape, South Sector (random)",Shellmon,18,552,9999,16,230,230,210,230,184,91,18,180,Water Chip,1.7
+60,random,"Bulk Bridge, South Sector (random) / Bulk Swamp, South Sector (random) / Divermon's Lake, East Sector (random) / Jungle Grave, South Sector (random) / Plug Cape, Central Sector (extra chapter) (random)",Tortomon,29,816,9999,16,340,425,400,340,231,145,29,290,,
+61,fishing/random,"North Badland E, West Sector (fishing) / Pelche Oasis, West Sector (fishing) / Seabed, Underground (random) / South Badland, West Sector (fishing) / Wire Forest Entrance, Central Sector (extra chapter) (fishing)",Dolphmon,20,600,120,16,212,250,230,375,250,98,20,200,,
+62,random,"Seabed, Underground (random) / Seabed, Underground (extra chapter) (random)",Gesomon,27,768,9999,16,320,400,255,272,320,136,27,240,Runner Sandal,12.6
+63,random,"Seabed, Underground (random)",Octomon,40,1080,9999,16,450,450,538,562,306,200,40,400,,
+64,fishing/random,"Divermon's Lake, East Sector (fishing) / Divermon's Lake, East Sector (extra chapter) (fishing) / Seabed, Underground (random)",Divermon,24,696,9999,16,290,290,270,362,232,118,24,200,,
+65,random,"Plug Cape, Central Sector (extra chapter) (random) / Suzaku UG Lake, South Sector (random)",ShogunGekomon,20,600,200,16,250,250,288,312,200,101,20,490,Chaos Wave,12.6
+66,fishing/random,"Bios Swamp, South Sector (fishing) / Bios Swamp, South Sector (random) / Bulk Bridge, South Sector (fishing) / Central Park, Central Sector (extra chapter) (fishing) / Divermon's Lake, East Sector (random) / Jungle Grave, South Sector (fishing) / Kicking Forest, East Sector (fishing) / Phoenix Bay, South Sector (fishing) / Tranquil Swamp, South Sector (fishing)",Seadramon,12,408,9999,16,144,212,188,170,116,58,12,120,Water Power,12.6
+67,random,"North Badland W, West Sector (random) / West Wire Forest, East Sector (extra chapter) (random)",Mammothmon,23,672,9999,16,350,280,260,280,190,116,23,220,HP Proxy,12.6
+68,event/random,"North Badland E, West Sector (random) / South Badland, West Sector (event) / South Badland, West Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",Etemon,20,600,64,16,250,250,230,375,200,100,20,205,Super Charge,12.6
+69,random,"North Badland E, West Sector (random) / South Badland, West Sector (random) / West Wire Forest, East Sector (extra chapter) (random)",Ogremon,20,600,9999,16,375,312,196,212,170,102,20,200,Power Chip,1.7
+70,random,"Bullet Valley, West Sector (random) / North Badland W, West Sector (random) / Plug Cape, Central Sector (random) / West Wire Forest, East Sector (extra chapter) (random)",Tuskmon,22,972,9999,16,405,270,212,270,184,112,22,200,Counter Crest,6.3
+71,random,"Circuit Board, Underground (random)",Rockmon,44,1176,9999,16,490,612,470,490,333,220,44,400,,
+72,random,"Kicking Forest, East Sector (extra chapter) (random) / Mirage Tower, West Sector (random) / Mobius Desert, West Sector (random) / S Noise Desert, West Sector (random)",Quetzalmon,45,1200,9999,16,425,500,480,625,340,223,45,440,,
+73,random,"Circuit Board, Underground (random) / Mobius Desert, West Sector (random)",Vademon,22,648,9999,16,270,270,212,270,270,109,22,220,Bolt Power,12.6
+74,random,"Circuit Board, Underground (random) / Mobius Desert, West Sector (random)",Maildramon,22,648,9999,16,270,338,375,270,184,110,22,225,Thunder Chip,1.7
+75,random,"Circuit Board, Underground (random) / Duct Room 01, West Sector (random) / Duct Room 02, West Sector (random) / Duct Room 03, West Sector (random) / Duct Room 04, West Sector (random) / Operation Room, West Sector (random) / Secret Stairs, West Sector (random)",Mamemon,25,480,9999,16,300,450,280,300,240,125,25,250,Search Crest,6.3
+76,random,"Circuit Board, Underground (random)",Guardromon,29,816,9999,16,425,510,320,340,190,147,29,290,,
+77,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random)",Thundermon,23,672,150,16,238,350,325,280,280,115,23,235,Pulse Guard,12.6
+78,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random)",Hagurumon,23,672,336,16,420,280,260,280,336,117,23,230,Metal Power,12.6
+79,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random)",Clockmon,24,696,9999,16,290,290,338,362,197,123,24,250,Multi Crest,6.3
+80,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random) / Operation Room, West Sector (random) / Secret Stairs, West Sector (random)",Andromon,24,696,9999,16,290,246,230,290,232,120,24,200,Machinegun,12.6
+81,random,"Circuit Board, Underground (random) / Sewers, West Sector (random)",Numemon,25,720,9999,16,300,375,238,255,240,124,25,300,Binder Crest,6.3
+82,random,"Circuit Board, Underground (random) / Sewers, West Sector (random)",Sukamon,26,744,9999,16,310,388,246,310,248,129,26,190,Wisdom Chip,1.7
+83,random,"Circuit Board, Underground (random) / Sewers, West Sector (random)",Garbagemon,47,1248,9999,16,520,650,425,442,520,235,47,470,Goggles,3.2
+84,random,"Circuit Board, Underground (random) / Sewers, West Sector (random)",Roachmon,47,1248,9999,16,442,520,425,442,624,234,47,100,,
+85,random,"Asuka Sewers, Asuka City (random) / Circuit Board, Underground (random)",Raremon,27,768,270,16,320,480,300,320,256,135,27,270,Armor Chip,1.7
+86,random,"Asuka Sewers, Asuka City (random) / Circuit Board, Underground (random)",Cyclonemon,27,768,9999,16,272,320,375,400,256,134,27,270,Wisdom Chip,1.7
+87,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random)",Megadramon,46,1224,9999,16,510,510,735,765,408,233,46,450,,
+88,random,"Amaterasu Sewer, Amaterasu City (extra chapter) (random)",Monzaemon,29,816,9999,16,340,340,400,425,231,145,29,320,,
+89,random,"Circuit Board, Underground (random)",Tankmon,30,840,9999,16,438,525,330,350,196,152,30,300,,
+90,random,"Amaterasu Sewer, Amaterasu City (extra chapter) (random)",Nanimon,29,816,9999,16,510,238,480,510,340,146,29,280,,
+91,event/random,"Catacomb, South Sector (event) / Catacomb, South Sector (random) / Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",Musyamon,31,864,9999,16,360,360,510,360,140,155,31,330,MP Chip,1.7
+92,random,"Bug Maze Pit, Network Break (random) / Bug Maze, Network Break (random) / Circuit Board, Underground (random)",Kurisarimon,36,984,9999,16,512,512,390,410,279,225,36,770,Drill Horn,12.6
+93,event/random/tree,"Central Park, Central Sector (tree) / Plug Cape, Central Sector (random) / Plug Cape, Central Sector (tree) / Shell Beach, Central Sector (tree) / West Wire Forest, East Sector (event) / West Wire Forest, East Sector (random) / West Wire Forest, East Sector (tree) / Wind Prairie, East Sector (extra chapter) (random) / Wire Forest Entrance, Central Sector (random) / Wire Forest Entrance, Central Sector (tree)",Snimon,43,1152,9999,16,480,408,460,480,480,215,43,420,,
+94,random,"East Wire Forest, East Sector (random) / East Wire Forest, East Sector (extra chapter) (random) / Wind Prairie, East Sector (random)",Blossomon,34,936,9999,16,390,332,370,390,312,168,34,340,,
+95,random,"Ether Jungle, South Sector (random) / Kicking Forest, East Sector (extra chapter) (random) / South Cape, South Sector (random) / West Wire Forest, East Sector (random)",Cherrymon,38,1032,9999,16,430,430,410,430,344,189,38,380,Recover Crest,6.3
+96,random,"Protocol Forest, East Sector (random) / Protocol Ruins, East Sector (random) / Protocol Ruins, East Sector (extra chapter) (random)",Gargoylemon,35,960,9999,16,400,400,570,400,320,176,35,350,Dark Power 2,6.3
+97,event/random,"Protocol Ruins, East Sector (event) / Protocol Ruins, East Sector (random) / Protocol Ruins, East Sector (extra chapter) (random)",Mummymon,35,960,9999,16,400,400,475,400,320,175,35,400,Mind Chip,1.7
+98,random,"Bullet Valley, West Sector (random) / Kicking Forest, East Sector (extra chapter) (random) / North Badland W, West Sector (random) / Plug Cape, Central Sector (random)",Arukenimon,45,1200,9999,16,500,500,480,500,400,225,45,450,Charm Gas,25.1
+99,random/tree,"Divermon's Lake, East Sector (tree) / East Wire Forest, East Sector (tree) / East Wire Forest, East Sector (extra chapter) (tree) / Kicking Forest, East Sector (random) / Protocol Forest, East Sector (random) / Wind Prairie, East Sector (tree)",Okuwamon,34,936,9999,16,488,390,314,390,312,172,34,320,,
+100,event/random,"Kicking Forest, East Sector (event) / Tyranno Valley, East Sector (random) / Tyranno Valley, East Sector (extra chapter) (random) / Wind Prairie, East Sector (random)",MetalTyrannomon,36,984,9999,16,410,615,585,287,230,183,36,400,Metal Chip,1.7
+101,event/random,"East Wire Forest, East Sector (extra chapter) (random) / Kicking Forest, East Sector (event) / Tyranno Valley, East Sector (random)",Deltamon,36,984,9999,16,410,410,390,410,328,179,36,360,Wind Power 2,6.3
+102,random,"Magasta B2F, Undersea Base (random)",Whamon,45,1800,9999,16,500,500,480,500,400,225,45,420,Crimson Cable,12.6
+103,random,"Seabed, Underground (random) / Seabed, Underground (extra chapter) (random)",MarineDevimon,37,1008,9999,16,357,420,340,357,420,185,37,370,,
+104,random,"Seabed, Underground (random)",Dragomon,44,1176,9999,16,490,612,705,735,333,221,44,440,,
+105,random,"Bulk Bridge, South Sector (random) / Bulk Swamp, South Sector (random) / Jungle Grave, South Sector (random) / Seabed, Underground (random)",MegaSeadramon,35,960,9999,16,340,340,475,500,320,174,35,350,Thunder Chip,1.7
+106,fishing/random,"Bios Swamp, South Sector (fishing) / Bulk Bridge, South Sector (fishing) / Divermon's Lake, East Sector (random) / Ether Jungle, South Sector (fishing) / Jungle Grave, South Sector (fishing) / Kicking Forest, East Sector (fishing) / Kicking Forest, East Sector (random) / Phoenix Bay, South Sector (fishing) / Seabed, Underground (random) / South Cape, South Sector (fishing) / Tranquil Swamp, South Sector (fishing)",Ebidramon,34,936,9999,16,390,390,314,390,312,170,34,340,Water Power 2,6.3
+107,random,"Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",Vilemon,36,984,96,16,410,348,488,410,410,180,36,360,Devil Chip,1.7
+108,event/random,"Catacomb, South Sector, on the Amaterasu server (event) / Catacomb, South Sector, on the Amaterasu server (random) / Circuit Board, Underground (random)",SkullSatamon,39,1056,9999,16,440,440,525,440,352,196,39,390,Hack Sticker,12.6
+109,random,"Divermon's Lake, East Sector (extra chapter) (random) / Ether Jungle, South Sector (random) / Phoenix Bay, South Sector (random)",Brachiomon,36,984,9999,16,410,348,488,512,279,180,36,360,Ultra Charge,6.3
+110,random,"Circuit Board, Underground (random) / Kulon Mine, North Sector (random) / Kulon Pit, North Sector (random)",Drimogemon,41,1104,9999,16,575,460,374,391,368,205,41,450,Drill Horn,12.6
+111,random,"Boot Mountain, North Sector (random) / Circuit Board, Underground (random) / Fire Dungeon, North Sector (random)",Flarerizamon,41,1104,9999,16,391,460,660,460,460,204,41,400,Fire Power 2,6.3
+112,random,"Boot Mountain, North Sector (random) / Circuit Board, Underground (random)",Meramon,41,1104,9999,16,322,575,660,460,368,205,41,410,,
+113,random,"Circuit Board, Underground (random) / Freeze Mountain, North Sector (random) / Snow Mountain, North Sector (random)",Mojyamon,41,1104,9999,16,460,460,660,460,368,205,41,420,,
+114,random/tree,"Circuit Board, Underground (random) / Freeze Mountain, North Sector (random) / Lake of Ice, North Sector (tree) / Snow Mountain, North Sector (random) / Snow Mountain, North Sector (tree)",Frigimon,41,1104,9999,16,575,575,440,460,313,206,41,420,Ice Chip,1.7
+115,random,"Circuit Board, Underground (random) / Lake of Ice, North Sector (random)",Icemon,43,1152,9999,16,480,600,460,408,384,215,43,420,Ice Power 2,6.3
+116,random,"Circuit Board, Underground (random) / Duct Room 01, West Sector (random) / Duct Room 02, West Sector (random) / Duct Room 03, West Sector (random) / Duct Room 04, West Sector (random) / Operation Room, West Sector (random) / Secret Stairs, West Sector (random)",Giromon,46,1224,9999,16,510,510,490,638,347,230,46,460,,
+117,random,"Circuit Board, Underground (random) / Ice Dungeon, North Sector (random)",Vikemon,43,1152,9999,16,720,408,690,408,384,218,43,430,,
+118,random,"Circuit Board, Underground (random) / Fire Dungeon, North Sector (random)",Lynxmon,49,1296,9999,16,540,540,520,540,432,244,49,490,Fire Power S,3.2
+119,random,"Circuit Board, Underground (random) / Fire Dungeon, North Sector (random)",SkullMeramon,43,1152,9999,16,720,600,391,336,384,217,43,430,,
+120,random,"Circuit Board, Underground (random) / Dark Dungeon, North Sector (random)",Devidramon,43,1152,9999,16,408,480,575,600,384,214,43,390,,
+121,random,"Circuit Board, Underground (random) / Dark Dungeon, North Sector (random)",Kimeramon,44,1176,9999,16,490,735,329,612,392,223,44,420,Devil Chip,1.7
+122,random,"Magasta B2F, Undersea Base (random)",Pukumon,44,1176,9999,16,612,735,329,343,490,221,44,470,Crimson Cable,12.6
+123,random,"Magasta B1F, Undersea Base (random) / Magasta B2F, Undersea Base (random)",MetalSeadramon,44,1176,9999,16,490,612,588,612,333,223,44,460,Crimson Cable,12.6
+124,random,"Magasta B1F, Undersea Base (random)",Tylomon,43,1152,9999,16,480,600,391,408,480,215,43,430,Crimson Cable,12.6
+125,random,"Magasta B1F, Undersea Base (random)",Scorpiomon,43,1152,9999,16,480,480,575,600,384,216,43,480,Crimson Cable,12.6
+126,random,"Central Park, Central Sector (random) / Shell Beach, Central Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",Antylamon,44,1176,9999,16,490,490,588,612,333,220,44,450,Wind Chip,1.7
+127,random/tree,"Central Park, Central Sector (random) / Divermon's Lake, East Sector (extra chapter) (tree) / Kulon Mine, North Sector (tree) / Wire Forest Entrance, Central Sector (random)",H-Kabuterimon,44,1176,9999,16,612,416,470,490,490,222,44,610,,
+128,random,"Kicking Forest, East Sector (extra chapter) (random)",Puppetmon,54,1416,9999,16,885,502,712,738,472,273,54,520,,
+129,random,"Circuit Board, Underground (random) / Ice Dungeon, North Sector (random)",SkullMammothmon,49,1296,9999,16,810,675,650,540,302,247,49,490,,
+130,random,"Bullet Valley, West Sector (random) / North Badland W, West Sector (random) / Tyranno Valley, East Sector (extra chapter) (random)",Valkyrimon,45,1200,9999,16,500,500,408,500,600,225,45,460,Dance Wing,3.2
+131,random,"Bullet Valley, West Sector (random) / North Badland W, West Sector (random) / Tyranno Valley, East Sector (extra chapter) (random)",LadyDevimon,45,1200,9999,16,625,425,480,425,400,224,45,440,Charm Gas,25.1
+132,random,"North Badland E, West Sector (random) / South Badland, West Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",MetalEtemon,44,1176,296,16,416,735,470,612,392,222,44,460,Max Charge,6.3
+133,random,"North Badland E, West Sector (random) / South Badland, West Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",KingEtemon,45,1200,9999,16,500,500,480,750,400,226,45,500,Charisma Chip,12.6
+134,random,"Noise Desert, West Sector (random) / Pelche Oasis, West Sector (random) / Tyranno Valley, East Sector (extra chapter) (random)",Gryphonmon,45,1200,9999,16,425,500,720,500,500,227,45,440,Wind Power S,3.2
+135,random,"Circuit Board, Underground (random) / Gunslinger 1F, Spy Satellite (random)",Infermon,55,1440,9999,16,600,510,725,600,600,276,55,530,,
+136,random,"Boot Mountain, North Sector (random) / Circuit Board, Underground (random) / Fire Dungeon, North Sector (random)",Shadramon,47,1248,9999,16,520,520,500,520,416,235,47,440,,
+137,random,"Circuit Board, Underground (random) / Kulon Mine, North Sector (random) / Kulon Pit, North Sector (random)",Boltmon,48,1272,9999,16,795,530,638,371,424,243,48,500,Power Brace,3.2
+138,random,"Kicking Forest, East Sector (extra chapter) (random)",Piedmon,56,1464,9999,16,610,610,502,762,732,280,56,560,,
+139,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random)",Machinedramon,47,1248,9999,16,520,520,500,520,416,235,47,500,Metal Power S,3.2
+140,random,"Circuit Board, Underground (random) / Gunslinger 1F, Spy Satellite (random)",VenomMyotismon,55,1440,9999,16,750,510,725,600,480,277,55,530,,
+141,random,"Circuit Board, Underground (random)",Apokarimon,56,1464,9999,16,518,762,885,762,488,282,56,550,,
+142,random,"Circuit Board, Underground (random) / Dark Dungeon, North Sector (random)",Ghoulmon,49,1037,9999,16,540,810,650,540,432,246,49,490,Dark Power S,3.2
+143,random,"Circuit Board, Underground (random)",Creepymon,55,1440,9999,16,420,750,870,750,480,277,55,540,,
+144,event,"Gunslinger 2F, Spy Satellite (event)",Armageddemon,56,2196,9999,16,610,762,502,518,610,279,56,600,,
+145,random,"Ether Jungle, South Sector (random) / Kicking Forest, East Sector (random) / Phoenix Bay, South Sector (random) / Wire Forest Entrance, Central Sector (extra chapter) (random)",RedVegiemon,9,336,9999,16,140,140,120,140,140,45,9,90,,
+146,random,"East Wire Forest, East Sector (random) / East Wire Forest, East Sector (extra chapter) (random) / West Wire Forest, East Sector (random) / Wire Forest Entrance, Central Sector (random)",Kuwagamon,30,840,9999,16,438,350,280,350,280,150,30,290,Chain Saw,12.6
+147,random/tree,"Bios Swamp, South Sector (tree) / Bulk Bridge, South Sector (random) / Bulk Swamp, South Sector (random) / Bulk Swamp, South Sector (tree) / Central Park, Central Sector (extra chapter) (tree) / Jungle Grave, South Sector (random) / Kicking Forest, East Sector (tree) / Tranquil Swamp, South Sector (random) / Tranquil Swamp, South Sector (tree)",Yanmamon,8,312,9999,16,130,110,110,130,130,40,8,80,,
+148,random,"Noise Desert, West Sector (random) / Pelche Oasis, West Sector (random) / Protocol Forest, East Sector (extra chapter) (random)",Dokugumon,21,624,9999,16,260,221,240,260,260,105,21,210,Spider Web,12.6
+149,random,"Bullet Valley, West Sector (random) / North Badland W, West Sector (random) / Protocol Forest, East Sector (extra chapter) (random)",Goburimon,22,648,9999,16,405,270,212,230,216,112,22,220,Naginata,12.6
+150,random,"Bug Maze Pit, Network Break (random) / Bug Maze, Network Break (random) / Protocol Ruins, East Sector (extra chapter) (random)",Minotarumon,33,608,9999,16,570,475,306,323,258,167,33,350,Metal Power 2,6.3
+151,random,"Divermon's Lake, East Sector (random) / East Wire Forest, East Sector (random) / East Wire Forest, East Sector (extra chapter) (random) / Wind Prairie, East Sector (random)",Flymon,33,912,9999,16,380,323,360,380,380,165,33,330,Glasses,12.6
+152,random/tree,"Ether Jungle, South Sector (random) / Ether Jungle, South Sector (tree) / South Cape, South Sector (random) / West Wire Forest, East Sector (extra chapter) (tree)",Woodmon,19,576,9999,16,240,240,220,240,192,76,19,190,,
+153,random,"Boot Mountain, North Sector (random) / Kulon Mine, North Sector (random) / Wind Prairie, East Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",Triceramon,41,1656,9999,16,575,460,440,460,313,205,41,400,,
+154,random,"Noise Desert, West Sector (random) / Pelche Oasis, West Sector (random) / West Wire Forest, East Sector (extra chapter) (random)",Airdramon,21,624,9999,16,182,325,360,260,260,104,21,215,Magician Rod,12.6
+155,random,"Circuit Board, Underground (random) / Jungle Grave, South Sector (random)",Phantomon,37,1008,9999,16,525,630,400,294,420,186,37,370,HP Chip,1.7
+156,random/tree,"Bullet Valley, West Sector (tree) / Mirage Tower, West Sector (random) / Mobius Desert, West Sector (random) / North Badland W, West Sector (tree) / Plug Cape, Central Sector (extra chapter) (tree) / S Noise Desert, West Sector (random)",Kokatorimon,22,648,9999,16,270,270,212,270,324,158,22,300,Over Clocked,12.6
+157,random,"Divermon's Lake, East Sector (extra chapter) (random) / Phoenix Bay, South Sector (random) / South Cape, South Sector (random)",Tortomon,36,984,9999,16,410,512,488,410,279,180,36,360,,
+158,random,"Divermon's Lake, East Sector (extra chapter) (random) / Zhu Que UG Lake, South Sector (random)",ShogunGekomon,37,1008,360,16,420,420,600,630,336,184,37,370,Chaos Wave,12.6
+159,random,"Bios Swamp, South Sector (random) / Bulk Bridge, South Sector (random) / Jungle Grave, South Sector (random) / Seabed, Underground (random) / Tranquil Swamp, South Sector (random)",Seadramon,35,960,9999,16,340,500,570,500,272,175,35,350,,
+160,random,"Freeze Mountain, North Sector (random) / Kicking Forest, East Sector (extra chapter) (random) / Lake of Ice, North Sector (random) / Snow Mountain, North Sector (random)",Mammothmon,47,1248,9999,16,650,520,625,520,354,236,47,460,,
+161,random,"Kulon Mine, North Sector (random) / Kulon Pit, North Sector (random) / Wind Prairie, East Sector (extra chapter) (random)",Fugamon,42,1128,9999,16,705,588,382,400,376,210,42,430,,
+162,random,"Circuit Board, Underground (random) / Mobius Desert, West Sector (random)",Vademon,46,1224,4,16,510,510,416,638,612,232,46,460,Cursed Puppet,25.1
+163,random,"Circuit Board, Underground (random) / Kulon Mine, North Sector (random) / Kulon Pit, North Sector (random)",Maildramon,48,1272,9999,16,530,662,638,530,424,242,48,480,Bolt Power S,3.2
+164,random,"Circuit Board, Underground (random) / Dum Dum Factory, West Sector (random) / Operation Room, West Sector (random) / Secret Stairs, West Sector (random)",Guardromon,46,1224,9999,16,638,765,490,510,347,231,46,460,,
+165,event/random,"Bug Maze Pit, Network Break (random) / Bug Maze, Network Break (random) / Circuit Board, Underground (random) / Jungle Shrine, South Sector (event) / Jungle Shrine, South Sector (random)",Numemon,31,864,9999,16,360,450,289,306,360,222,31,660,Dance Feather,12.6
+166,event/random,"Circuit Board, Underground (random) / Jungle Shrine, South Sector (event) / Jungle Shrine, South Sector (random)",Numemon,39,1056,9999,16,440,550,357,374,440,299,39,770,Training Book,12.6
+167,random,"Circuit Board, Underground (random) / Ice Dungeon, North Sector (random)",Numemon,43,1152,9999,16,480,600,391,408,480,344,43,880,,
+168,event/random/tree,"Boot Mountain, North Sector (tree) / Circuit Board, Underground (random) / Fire Dungeon, North Sector (event) / Fire Dungeon, North Sector (random)",Numemon,43,1152,9999,16,480,600,391,408,480,366,43,990,Over Load,3.2
+169,event/random,"Circuit Board, Underground (random) / North Badland E, West Sector (random) / South Badland, West Sector (event) / South Badland, West Sector (random)",Numemon,44,1176,9999,16,490,735,400,416,588,399,44,1110,Boost Chip,1.7
+170,random,"Circuit Board, Underground (random)",Raremon,40,1080,9999,16,450,675,430,450,360,201,40,400,Bolt Power 2,6.3
+171,random,"Circuit Board, Underground (random) / Dark Dungeon, North Sector (random)",Cyclonemon,43,1152,9999,16,480,480,460,480,384,215,43,430,,
+172,random,"Circuit Board, Underground (random) / Noise Desert, West Sector (random) / Pelche Oasis, West Sector (random)",Tankmon,45,1200,9999,16,625,750,480,500,280,227,45,470,Runner Shoes,3.2
+173,random,"Bug Maze Pit, Network Break (random) / Bug Maze, Network Break (random) / Circuit Board, Underground (random)",Musyamon,32,888,9999,16,370,370,525,370,296,160,32,330,MP Proxy,12.6
+174,random,"Circuit Board, Underground (random)",Kurisarimon,40,1080,9999,16,450,562,430,562,360,250,40,800,,
+175,tree,"Boot Mountain, North Sector (tree) / Bullet Valley, West Sector (tree) / Kulon Mine, North Sector (tree) / North Badland W, West Sector (tree) / Wind Prairie, East Sector (extra chapter) (tree)",Snimon,48,1272,9999,16,662,450,510,530,530,241,48,480,Train Chip 3,3.2
+176,random,"Divermon's Lake, East Sector (extra chapter) (random) / Ether Jungle, South Sector (random) / Phoenix Bay, South Sector (random)",Blossomon,36,984,9999,16,410,410,390,410,328,179,36,360,,
+177,tree,"Bios Swamp, South Sector (tree) / Bulk Swamp, South Sector (tree) / Ether Jungle, South Sector (tree) / Jungle Grave, South Sector (tree) / Kicking Forest, East Sector (tree) / Kicking Forest, East Sector (extra chapter) (tree) / Phoenix Bay, South Sector (tree) / Tranquil Swamp, South Sector (tree)",Cherrymon,41,1104,9999,16,460,460,440,460,368,203,41,410,Train Chip,6.3
+178,fishing/random,"Amaterasu City, Central Sector (fishing) / Seabed, Underground (random)",Whamon,47,1872,9999,16,520,520,500,520,416,235,47,420,HP Mega Proxy,3.2
+179,fishing/random,"Amaterasu Sewer, Amaterasu City (random) / Lake of Ice, North Sector (fishing) / Plug Cape, Central Sector (random) / Plug Cape, Central Sector (extra chapter) (fishing) / Seabed, Underground (random) / Shell Beach, Central Sector (random)",MegaSeadramon,44,1176,9999,16,416,416,705,612,392,221,44,450,Water Power S,3.2
+180,fishing,"Central Park, Central Sector (fishing) / Kicking Forest, East Sector (extra chapter) (fishing) / North Badland E, West Sector (fishing) / Pelche Oasis, West Sector (fishing) / Plug Cape, Central Sector (fishing) / Shell Beach, Central Sector (fishing) / South Badland, West Sector (fishing) / West Wire Forest, East Sector (fishing) / Wire Forest Entrance, Central Sector (fishing)",Ebidramon,48,1272,9999,16,530,530,510,530,424,240,48,480,Train Chip 2,3.2
+181,random,"Circuit Board, Underground (random) / Dark Dungeon, North Sector (random)",Vilemon,48,1272,9999,16,530,450,638,530,530,239,48,480,Hack System,3.2
+182,random,"Circuit Board, Underground (random)",Drimogemon,44,1176,9999,16,612,490,400,416,392,220,44,500,,
+183,random,"Boot Mountain, North Sector (random) / Circuit Board, Underground (random) / Fire Dungeon, North Sector (random)",BlueMeramon,48,1272,1800,16,450,662,765,662,424,243,48,480,MP Mega Proxy,3.2
+184,random,"Circuit Board, Underground (random) / Freeze Mountain, North Sector (random) / Snow Mountain, North Sector (random)",Vikemon,47,1872,9999,16,650,442,625,442,416,236,47,460,,
+185,random,"Gunslinger 1F, Spy Satellite (random) / Seabed, Underground (random)",MetalSeadramon,54,1416,9999,16,502,738,712,738,472,271,54,550,,
+186,fishing,"Lake of Ice, North Sector (fishing) / West Wire Forest, East Sector (extra chapter) (fishing)",Scorpiomon,54,1416,9999,16,590,590,712,738,590,272,54,510,Train Chip V,1.7
+187,random/tree,"Circuit Board, Underground (random) / Ice Dungeon, North Sector (random) / Lake of Ice, North Sector (tree) / Snow Mountain, North Sector (tree)",Antylamon,49,1296,9999,16,540,540,650,675,367,245,49,490,Ice Power S,3.2
+188,story,"Asuka City, Central Sector (story) / Main Lobby, Asuka City (story) / Secret Room, West Sector (story)",Monzaemon,29,816,9999,16,340,340,400,425,231,291,29,600,,
+188,story,"Asuka City, Central Sector (story) / Main Lobby, Asuka City (story) / Secret Room, West Sector (story)",Nanimon,29,816,9999,16,510,238,480,510,340,291,29,600,,
+189,story,"Admin Center 1F, Asuka City (story) / Admin Center 2F, Asuka City (story) / Basement Stairs, Asuka City (story)",Guardromon,29,816,9999,16,425,510,320,340,190,299,29,590,,
+189,story,"Admin Center 1F, Asuka City (story) / Admin Center 2F, Asuka City (story) / Basement Stairs, Asuka City (story)",Tankmon,30,840,9999,16,438,525,330,350,196,299,29,590,,
+190,story,"Admin Center 2F, Asuka City (story)",Guardromon,29,816,9999,16,425,510,320,340,190,451,29,890,,
+190,story,"Admin Center 2F, Asuka City (story)",Tankmon,30,840,9999,16,438,525,330,350,196,451,29,890,,
+190,story,"Admin Center 2F, Asuka City (story)",Tankmon,30,840,9999,16,438,525,330,350,196,451,29,890,,
+191,story,A (story),Maildramon,32,888,9999,22,371,464,515,371,253,160,32,325,Thunder Chip,1.7
+192,story,"Admin Center B1F, Asuka City (story)",Raremon,29,816,270,17,340,510,318,340,272,289,29,580,Armor Chip,1.7
+192,story,"Admin Center B1F, Asuka City (story)",Cyclonemon,29,816,9999,17,289,340,398,425,272,289,29,580,Wisdom Chip,1.7
+193,story,"Magasta B2F, Undersea Base (story)",Dragomon,44,1176,9999,16,490,612,705,735,333,672,44,1370,,
+193,story,"Magasta B2F, Undersea Base (story)",Pukumon,44,1176,9999,16,612,735,329,343,490,672,44,1370,Crimson Cable,12.6
+193,story,"Magasta B2F, Undersea Base (story)",Giromon,46,1224,9999,16,510,510,490,638,347,672,44,1370,,
+194,story,"Gunslinger 2F, Spy Satellite (story)",Infermon,55,1440,9999,16,600,510,725,600,600,558,55,1080,,
+194,story,"Gunslinger 2F, Spy Satellite (story)",Apokarimon,56,1464,9999,16,518,762,885,762,488,558,55,1080,,
+195,story,"Admin Center B1F, Amaterasu City (story) / Amaterasu City, Central Sector (story) / Main Lobby, Amaterasu City (story)",MegaSeadramon,48,1272,9999,17,442,442,749,650,416,493,49,990,Water Power S,3.2
+195,story,"Admin Center B1F, Amaterasu City (story) / Amaterasu City, Central Sector (story) / Main Lobby, Amaterasu City (story)",Maildramon,50,1320,9999,17,563,703,677,563,450,493,49,990,Bolt Power S,3.2
+196,story,"Admin Center 1F, Amaterasu City (story) / Admin Center 2F, Amaterasu City (story) / Basement Stairs, Amaterasu City (story)",Maildramon,50,1320,9999,17,563,703,677,563,450,503,50,1000,Bolt Power S,3.2
+196,story,"Admin Center 1F, Amaterasu City (story) / Admin Center 2F, Amaterasu City (story) / Basement Stairs, Amaterasu City (story)",Guardromon,50,1320,9999,17,677,812,520,541,368,503,50,1000,,
+197,story,"Admin Center 1F, Amaterasu City (story) / Admin Center 2F, Amaterasu City (story)",Puppetmon,50,1320,9999,15,829,470,667,691,442,770,51,1500,,
+197,story,"Admin Center 1F, Amaterasu City (story) / Admin Center 2F, Amaterasu City (story)",Piedmon,51,1344,9999,15,571,571,470,714,686,770,51,1500,,
+197,story,"Admin Center 1F, Amaterasu City (story) / Admin Center 2F, Amaterasu City (story)",Creepymon,52,1368,9999,15,393,703,815,703,450,770,51,1500,,
+198,story,A (story),Knightmon,53,2784,9999,16,580,870,840,493,394,530,53,1060,,
+199,story,"Admin Center B1F, Amaterasu City (story)",Puppetmon,50,1320,9999,15,829,470,667,691,442,508,50,990,,
+199,story,"Admin Center B1F, Amaterasu City (story)",Piedmon,51,1344,9999,15,571,571,470,714,686,508,50,990,,
+200,story,"Asuka City, Central Sector (story)",Kuwagamon,1,100,9999,12,56,45,31,45,42,4,1,50,,
+201,story,"Central Park, Central Sector (story)",Betamon,4,192,9999,21,78,78,65,78,73,65,4,145,Power Charge,18.8
+201,story,"Central Park, Central Sector (story)",Vegiemon,4,192,9999,16,80,80,70,80,90,65,4,145,,
+201,story,"Central Park, Central Sector (story)",Kiwimon,5,240,9999,23,86,100,86,100,115,65,4,145,,
+202,story,"Wire Forest Entrance, Central Sector (story)",Yanmamon,40,1080,9999,103,450,386,386,450,515,661,41,1250,,
+202,story,"Wire Forest Entrance, Central Sector (story)",Kuwagamon,40,1080,9999,120,562,450,315,450,420,661,41,1250,,
+202,story,"Wire Forest Entrance, Central Sector (story)",Flymon,45,1200,9999,44,495,420,440,495,495,661,41,1250,,
+203,story,"West Wire Forest, East Sector (story)",Kunemon,6,264,9999,35,109,91,87,109,105,125,7,220,,
+203,story,"West Wire Forest, East Sector (story)",Kunemon,7,288,9999,38,118,99,95,118,114,125,7,220,,
+203,story,"West Wire Forest, East Sector (story)",Dokugumon,9,336,9999,28,140,119,122,140,126,125,7,220,Spider Web,12.6
+204,story,"East Wire Forest, East Sector (story)",Goburimon,7,288,9999,24,180,120,90,102,91,79,7,155,,
+204,story,"East Wire Forest, East Sector (story)",Ogremon,8,312,9999,8,187,156,98,106,85,79,7,155,Power Chip,1.7
+205,story,"East Wire Forest, East Sector (story)",Crabmon,6,264,9999,25,137,93,79,93,125,103,6,200,,
+205,story,"East Wire Forest, East Sector (story)",Gizamon,7,288,9999,24,120,120,105,120,108,103,6,200,,
+205,story,"East Wire Forest, East Sector (story)",Gekomon,7,288,9999,15,121,121,129,151,97,103,6,200,Ice Power,12.6
+206,story,"Wind Prairie, East Sector (story)",Tapirmon,9,336,9999,45,118,140,112,140,135,45,9,180,,
+207,story,"Kicking Forest, East Sector (story)",Coelamon,40,1080,9999,55,446,446,378,446,357,737,43,1475,Water Chip,1.7
+207,story,"Kicking Forest, East Sector (story)",Kokatorimon,40,1080,9999,40,450,450,340,450,450,737,43,1475,,
+207,story,"Kicking Forest, East Sector (story)",Airdramon,50,1320,9999,80,385,690,675,550,550,737,43,1475,Fire Chip,1.7
+208,story,"East Station, East Sector (story)",Betamon,6,264,9999,29,108,108,90,108,101,100,6,225,Power Charge,18.8
+208,story,"East Station, East Sector (story)",Kiwimon,7,288,9999,27,101,118,101,118,135,100,6,225,,
+208,story,"East Station, East Sector (story)",RedVegiemon,7,288,9999,14,122,122,105,122,122,100,6,225,,
+209,story,"Seiryu City, East Sector (story)",Kuwagamon,7,288,9999,32,150,120,84,120,112,109,7,210,,
+209,story,"Seiryu City, East Sector (story)",Flymon,7,288,9999,11,123,105,110,123,123,109,7,210,,
+209,story,"Seiryu City, East Sector (story)",Yanmamon,7,288,9999,15,121,103,103,121,121,109,7,210,,
+210,story,"South Station, South Sector (story)",Triceramon,10,540,9999,22,189,151,123,151,103,101,10,190,TNT Ball,18.8
+210,story,"South Station, South Sector (story)",Tuskmon,10,540,9999,9,227,151,119,151,103,101,10,190,Counter Crest,6.3
+211,story,"Bulk Swamp, South Sector (story)",Vademon,10,360,9999,9,151,151,119,151,151,105,10,210,Bolt Power,12.6
+211,story,"Bulk Swamp, South Sector (story)",Thundermon,11,384,150,9,133,196,182,157,157,105,10,210,Pulse Guard,12.6
+212,story,"Bulk Bridge, South Sector (story)",DemiDevimon,10,360,9999,18,146,123,155,182,117,100,10,200,Dark Power,12.6
+212,story,"Bulk Bridge, South Sector (story)",Bakemon,10,360,9999,17,185,185,127,126,178,100,10,200,,
+213,story,"Tranquil Swamp, South Sector (story)",Seadramon,40,1080,9999,42,378,556,493,446,304,700,40,1305,Water Power,12.6
+213,story,"Tranquil Swamp, South Sector (story)",Kokatorimon,42,1128,9999,42,472,472,357,472,472,700,40,1305,,
+213,story,"Tranquil Swamp, South Sector (story)",Shellmon,39,1056,9999,31,445,445,406,445,356,700,40,1305,Water Chip,1.7
+214,story,"South Cape, South Sector (story)",Crabmon,17,528,9999,50,275,187,159,187,250,269,17,530,,
+214,story,"South Cape, South Sector (story)",Gizamon,17,528,9999,44,220,220,192,220,198,269,17,530,,
+214,story,"South Cape, South Sector (story)",Gekomon,18,552,9999,28,227,227,241,283,182,269,17,530,Ice Power,12.6
+215,story,"Suzaku City, South Sector (story)",Kunemon,9,336,9999,45,140,118,112,140,135,158,9,290,,
+215,story,"Suzaku City, South Sector (story)",Dokugumon,10,360,9999,30,150,127,131,150,135,158,9,290,Spider Web,12.6
+215,story,"Suzaku City, South Sector (story)",Dokugumon,10,360,9999,30,150,127,131,150,135,158,9,290,Spider Web,12.6
+216,story,"Mirage Hall, West Sector (story)",Tapirmon,41,1104,9999,147,385,459,367,459,441,205,41,820,,
+217,story,"Boot Mountain, North Sector (story)",Vilemon,37,1008,96,16,410,348,488,410,410,569,38,1195,Devil Chip,1.7
+217,story,"Boot Mountain, North Sector (story)",Phantomon,38,1032,9999,19,534,534,403,363,342,569,38,1195,Ghost Fang,12.6
+217,story,"Boot Mountain, North Sector (story)",Mummymon,39,1056,9999,18,450,450,534,450,360,569,38,1195,Mind Chip,1.7
+218,story,"Snow Mountain, North Sector (story)",Dolphmon,37,1008,120,27,357,421,388,632,421,565,38,1175,,
+218,story,"Snow Mountain, North Sector (story)",Monzaemon,38,1032,9999,20,425,425,500,531,288,565,38,1175,,
+218,story,"Snow Mountain, North Sector (story)",ShogunGekomon,39,1056,360,17,446,446,637,669,357,565,38,1175,Chaos Wave,12.6
+219,story,"Freeze Mountain, North Sector (story)",Kuwagamon,36,984,9999,109,510,408,286,408,381,595,38,1110,,
+219,story,"Freeze Mountain, North Sector (story)",Kuwagamon,39,1056,9999,20,547,437,350,437,350,595,38,1110,Chain Saw,12.6
+219,story,"Freeze Mountain, North Sector (story)",Okuwamon,40,1080,9999,18,549,438,353,438,351,595,38,1110,,
+220,story,"Kulon Mine, North Sector (story)",Brachiomon,40,1080,9999,18,461,391,549,576,313,607,40,1255,Ultra Charge,6.3
+220,story,"Kulon Mine, North Sector (story)",Deltamon,40,1080,9999,18,461,461,438,461,369,607,40,1255,Wind Power 2,6.3
+220,story,"Kulon Mine, North Sector (story)",MetalTyrannomon,41,1104,9999,18,461,691,658,322,258,607,40,1255,Metal Chip,1.7
+221,story,"Kulon Mine, North Sector (story)",Kokatorimon,38,1032,9999,25,421,421,331,421,506,682,40,1335,Over Clocked,12.6
+221,story,"Kulon Mine, North Sector (story)",Seadramon,41,1104,9999,18,382,562,641,562,306,682,40,1335,,
+221,story,"Kulon Mine, North Sector (story)",Cherrymon,41,1104,9999,17,456,456,435,456,365,682,40,1335,Recover Crest,6.3
+222,story,"Legendary Gym, North Sector (story)",Crabmon,41,1104,9999,105,577,393,334,393,525,642,41,1265,,
+222,story,"Legendary Gym, North Sector (story)",Gizamon,41,1104,9999,92,460,460,402,460,414,642,41,1265,,
+222,story,"Legendary Gym, North Sector (story)",Gekomon,42,1128,9999,58,471,471,500,587,377,642,41,1265,Ice Power,12.6
+223,story,"Kulon Pit, North Sector (story)",Tapirmon,42,1128,9999,150,393,468,375,468,450,210,42,840,,
+224,story,"Central Park, Central Sector (story)",Kuwagamon,57,1488,9999,165,773,618,433,618,577,904,58,1730,,
+224,story,"Central Park, Central Sector (story)",Yanmamon,58,1512,9999,78,633,536,536,633,633,904,58,1730,,
+224,story,"Central Park, Central Sector (story)",Kuwagamon,60,1560,9999,30,821,656,525,656,525,904,58,1730,Chain Saw,12.6
+225,story,"West Wire Forest, East Sector (story)",Triceramon,42,1692,9999,68,586,467,382,467,318,641,42,1220,TNT Ball,18.8
+225,story,"West Wire Forest, East Sector (story)",Tuskmon,42,1692,9999,28,708,472,371,472,322,641,42,1220,Counter Crest,6.3
+225,story,"West Wire Forest, East Sector (story)",Tyrannomon,42,1128,9999,68,467,586,476,399,318,641,42,1220,Fire Power,12.6
+226,story,"West Wire Forest, East Sector (story)",Dokugumon,41,1104,9999,92,460,391,402,460,414,638,42,1145,Spider Web,12.6
+226,story,"West Wire Forest, East Sector (story)",Dokugumon,43,1152,9999,30,487,414,450,487,487,638,42,1145,Spider Web,12.6
+226,story,"West Wire Forest, East Sector (story)",Sukamon,42,1128,9999,24,465,582,369,465,372,638,42,1145,Wisdom Chip,1.7
+227,story,"Wind Prairie, East Sector (story)",Dolphmon,34,936,120,25,331,390,359,585,390,342,34,725,,
+227,story,"Wind Prairie, East Sector (story)",Monzaemon,35,960,9999,19,403,403,475,504,274,342,34,725,,
+228,story,"Kicking Forest, East Sector (story)",Shellmon,35,960,9999,28,402,402,367,402,322,524,35,990,Water Chip,1.7
+228,story,"Kicking Forest, East Sector (story)",Divermon,34,936,9999,22,398,398,371,497,319,524,35,990,,
+228,story,"Kicking Forest, East Sector (story)",Ebidramon,36,984,9999,17,414,414,333,414,331,524,35,990,Water Power 2,6.3
+229,story,"Bulk Swamp, South Sector (story)",Bakemon,35,960,9999,46,503,503,345,342,483,533,35,1110,,
+229,story,"Bulk Swamp, South Sector (story)",Phantomon,35,960,9999,18,506,506,382,344,324,533,35,1110,Ghost Fang,12.6
+229,story,"Bulk Swamp, South Sector (story)",Mummymon,36,984,9999,16,400,400,475,400,320,533,35,1110,Mind Chip,1.7
+230,story,"Bulk Bridge, South Sector (story)",Hagurumon,35,960,336,23,603,402,373,402,483,357,35,715,Metal Power,12.6
+230,story,"Bulk Bridge, South Sector (story)",Clockmon,35,960,9999,22,398,398,464,497,270,357,35,715,Multi Crest,6.3
+231,story,"Tranquil Swamp, South Sector (story)",MegaSeadramon,35,960,9999,16,340,340,475,500,320,523,35,1050,Thunder Chip,1.7
+231,story,"Tranquil Swamp, South Sector (story)",Seadramon,35,960,9999,16,340,500,570,500,272,523,35,1050,,
+231,story,"Tranquil Swamp, South Sector (story)",Cherrymon,35,960,9999,15,403,403,384,403,322,523,35,1050,Recover Crest,6.3
+232,story,"Zhu Que City, South Sector (story)",Gesomon,36,984,9999,20,400,500,318,340,400,361,36,680,Runner Sandal,12.6
+232,story,"Zhu Que City, South Sector (story)",Octomon,36,984,9999,15,421,421,504,526,286,361,36,680,,
+233,story,"Zhu Que City, South Sector (story)",Brachiomon,36,984,9999,16,410,348,488,512,279,544,35,1110,Ultra Charge,6.3
+233,story,"Zhu Que City, South Sector (story)",Tyrannomon,34,936,9999,57,391,491,399,334,267,544,35,1110,Fire Power,12.6
+233,story,"Zhu Que City, South Sector (story)",MetalTyrannomon,37,1008,9999,16,410,615,585,287,230,544,35,1110,Metal Chip,1.7
+234,story,"South Badland, West Sector (story)",Vilemon,44,1176,96,19,486,413,579,486,486,665,44,1330,Devil Chip,1.7
+234,story,"South Badland, West Sector (story)",Phantomon,44,1176,9999,22,618,618,467,420,396,665,44,1330,Ghost Fang,12.6
+234,story,"South Badland, West Sector (story)",Phantomon,45,1200,9999,19,623,748,475,349,498,665,44,1330,HP Chip,1.7
+235,story,"Noise Desert, West Sector (story)",Betamon,44,1176,9999,131,491,491,409,491,458,664,44,1510,Power Charge,18.8
+235,story,"Noise Desert, West Sector (story)",Kiwimon,44,1176,9999,112,420,490,420,490,560,664,44,1510,,
+235,story,"Noise Desert, West Sector (story)",Blossomon,45,1200,9999,20,512,512,487,512,410,664,44,1510,,
+236,story,"North Badland W, West Sector (story)",Dolphmon,43,1152,120,31,410,484,445,726,484,656,44,1375,,
+236,story,"North Badland W, West Sector (story)",Monzaemon,44,1176,9999,23,488,488,575,610,332,656,44,1375,,
+236,story,"North Badland W, West Sector (story)",Valkyrimon,45,1200,9999,16,500,500,408,500,600,656,44,1375,Dance Wing,3.2
+237,story,"North Badland E, West Sector (story)",Dokugumon,45,1200,9999,31,503,428,465,503,503,454,45,545,Spider Web,12.6
+237,story,"North Badland E, West Sector (story)",Roachmon,46,1224,9999,16,442,520,425,442,624,454,45,545,,
+238,story,"S Noise Desert, West Sector (story)",Brachiomon,44,1176,9999,19,486,413,579,608,331,671,44,1320,Ultra Charge,6.3
+238,story,"S Noise Desert, West Sector (story)",Deltamon,45,1200,9999,20,512,512,487,512,410,671,44,1320,Wind Power 2,6.3
+238,story,"S Noise Desert, West Sector (story)",Mammothmon,45,1200,9999,29,634,507,471,507,344,671,44,1320,HP Proxy,12.6
+239,story,"Mirage Tower, West Sector (story)",Vademon,44,1176,9999,29,489,489,384,489,489,669,44,1380,Bolt Power,12.6
+239,story,"Mirage Tower, West Sector (story)",Thundermon,44,1176,150,28,416,612,568,490,490,669,44,1380,Pulse Guard,12.6
+239,story,"Mirage Tower, West Sector (story)",Pukumon,46,1224,9999,17,650,780,349,364,520,669,44,1380,Crimson Cable,12.6
+240,story,"Mirage Hall, West Sector (story)",Kuwagamon,44,1176,9999,22,602,481,385,481,385,680,45,1485,Chain Saw,12.6
+240,story,"Mirage Hall, West Sector (story)",Okuwamon,45,1200,9999,21,640,511,412,511,409,680,45,1485,,
+240,story,"Mirage Hall, West Sector (story)",H-Kabuterimon,46,1224,9999,17,650,442,499,520,520,680,45,1485,,
+241,story,"Mirage Hall, West Sector (story)",MarineDevimon,45,1200,9999,19,423,498,403,423,498,456,45,910,,
+241,story,"Mirage Hall, West Sector (story)",Dragomon,46,1224,9999,17,520,650,749,780,353,456,45,910,,
+242,fishing,"Mirage Hall, West Sector (fishing)",Cyclonemon,45,1200,9999,17,510,510,488,510,408,458,45,900,,
+242,fishing,"Mirage Hall, West Sector (fishing)",Megadramon,46,1224,9999,16,510,510,735,765,408,458,45,900,,
+243,story,"Boot Mountain, North Sector (story)",Thundermon,52,1368,150,33,490,721,670,577,577,791,52,1625,Pulse Guard,12.6
+243,story,"Boot Mountain, North Sector (story)",Pukumon,53,1392,9999,19,726,872,390,407,581,791,52,1625,Crimson Cable,12.6
+243,story,"Boot Mountain, North Sector (story)",Giromon,53,1392,9999,18,573,573,551,717,390,791,52,1625,,
+244,story,"Boot Mountain, North Sector (story)",Triceramon,52,2052,9999,83,715,570,466,570,389,800,52,1565,TNT Ball,18.8
+244,story,"Boot Mountain, North Sector (story)",Tyrannomon,52,1368,9999,83,570,715,581,487,389,800,52,1565,Fire Power,12.6
+244,story,"Boot Mountain, North Sector (story)",Mammothmon,54,1416,9999,18,731,585,703,585,398,800,52,1565,,
+245,story,"Snow Mountain, North Sector (story)",Tapirmon,52,1368,9999,182,477,568,455,568,546,525,52,1570,,
+245,story,"Snow Mountain, North Sector (story)",Arukenimon,53,1392,9999,19,593,593,570,593,475,525,52,1570,Charm Gas,25.1
+246,story,"Snow Mountain, North Sector (story)",Crabmon,52,1368,9999,130,715,487,414,487,650,814,52,1600,,
+246,story,"Snow Mountain, North Sector (story)",Gizamon,52,1368,9999,114,570,570,498,570,513,814,52,1600,,
+246,story,"Snow Mountain, North Sector (story)",Gekomon,53,1392,9999,71,576,576,612,718,461,814,52,1600,Ice Power,12.6
+247,story,"Freeze Mountain, North Sector (story)",MarineDevimon,52,1368,9999,22,490,577,467,490,577,786,52,1570,,
+247,story,"Freeze Mountain, North Sector (story)",Dragomon,52,1368,9999,19,581,726,837,872,395,786,52,1570,,
+247,story,"Freeze Mountain, North Sector (story)",Tylomon,53,1392,9999,19,570,712,464,484,570,786,52,1570,Crimson Cable,12.6
+248,story,"Freeze Mountain, North Sector (story)",Okuwamon,52,1368,9999,23,701,560,451,560,448,791,52,1740,,
+248,story,"Freeze Mountain, North Sector (story)",H-Kabuterimon,52,1368,9999,19,726,494,558,581,581,791,52,1740,,
+248,story,"Freeze Mountain, North Sector (story)",Snimon,53,1392,9999,18,744,506,573,596,596,791,52,1740,Train Chip 3,3.2
+249,story,"Legendary Gym, North Sector (story)",Hagurumon,53,1392,336,33,866,577,536,577,693,813,53,1680,Metal Power,12.6
+249,story,"Legendary Gym, North Sector (story)",Clockmon,53,1392,9999,32,580,580,676,724,394,813,53,1680,Multi Crest,6.3
+249,story,"Legendary Gym, North Sector (story)",KingEtemon,54,1416,9999,19,593,593,570,890,475,813,53,1680,Charisma Chip,12.6
+250,story,"Legendary Gym, North Sector (story)",Kokatorimon,55,1440,9999,36,607,607,477,607,729,977,57,1920,Over Clocked,12.6
+250,story,"Legendary Gym, North Sector (story)",Cherrymon,57,1488,9999,22,632,632,605,632,506,977,57,1920,Train Chip,6.3
+250,story,"Legendary Gym, North Sector (story)",Ebidramon,60,1560,9999,20,662,662,637,662,530,977,57,1920,Train Chip 2,3.2
+251,story,"Xuan Wu City, North Sector (story)",Mummymon,53,1392,9999,23,575,575,682,575,460,529,53,1120,Mind Chip,1.7
+251,story,"Xuan Wu City, North Sector (story)",LadyDevimon,53,1392,9999,19,742,504,570,504,475,529,53,1120,Charm Gas,25.1
+252,story,"Xuan Wu City, North Sector (story)",Tapirmon,53,1392,9999,186,488,581,465,581,558,535,53,1600,,
+252,story,"Xuan Wu City, North Sector (story)",Arukenimon,54,1416,9999,19,593,593,570,593,475,535,53,1600,Charm Gas,25.1
+253,arena,"Digimon Arena, Asuka City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+254,arena,"Digimon Arena, Asuka City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+255,arena,"Digimon Arena, Asuka City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+256,tree,"Digimon Arena, Asuka City (tree)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+257,fishing,"Digimon Arena, Asuka City (fishing)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+258,arena,"Digimon Arena, Amaterasu City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+259,arena,"Digimon Arena, Amaterasu City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+260,arena,"Digimon Arena, Amaterasu City (arena)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+261,tree,"Digimon Arena, Amaterasu City (tree)",Kunemon,1,120,9999,16,50,42,40,50,48,6,1,10,,
+262,arena/fishing,"Digimon Arena, Amaterasu City (fishing) / Digimon Arena, Amaterasu City (extra chapter) (arena)",Datamon,90,4560,9999,39,950,950,1126,950,950,2365,94,5475,Recover Crest,25.1
+262,arena/fishing,"Digimon Arena, Amaterasu City (fishing) / Digimon Arena, Amaterasu City (extra chapter) (arena)",Bulbmon,95,4800,960,33,990,1237,948,841,990,2365,94,5475,,
+262,arena/fishing,"Digimon Arena, Amaterasu City (fishing) / Digimon Arena, Amaterasu City (extra chapter) (arena)",Armageddemon,99,7488,9999,27,1029,1285,847,874,1029,2365,94,5475,,
+263,story,"Asuka Bridge, Central Sector (story)",Triceramon,14,684,9999,28,241,192,157,192,131,161,10,300,TNT Ball,18.8
+263,story,"Asuka Bridge, Central Sector (story)",Kuwagamon,10,360,9999,40,187,150,105,150,140,161,10,300,,
+263,story,"Asuka Bridge, Central Sector (story)",Kunemon,6,264,9999,35,109,91,87,109,105,161,10,300,,
+264,story,"Bulk Swamp, South Sector (story)",MetalGreymon,17,1056,9999,16,220,275,250,187,150,160,17,340,,
+265,story,"Ether Jungle, South Sector (story)",WarGrowlmon,26,1488,9999,16,388,264,246,310,310,250,26,520,,
+266,story,"South Badland, West Sector (story)",MagnaAngemon,28,1584,9999,16,231,330,388,495,224,280,28,560,,
+267,story,"North Badland W, West Sector (story)",Taomon,29,1632,9999,16,289,238,480,425,272,300,29,580,,
+268,story,"Suzaku UG Lake, South Sector (story)",Kyukimon,28,1584,9999,16,412,330,310,280,264,280,28,560,,
+269,story,"Ether Jungle, South Sector (story)",GrapLeomon,28,1584,9999,16,495,495,217,231,330,280,28,560,,
+270,story,"Duel Island, East Sector (story)",Armormon,28,1584,9999,16,412,330,264,280,330,280,28,560,,
+271,story,"Bulk Bridge, South Sector (story)",Paildramon,19,1152,9999,16,240,204,220,300,192,200,19,380,,
+272,story,"Asuka City, Central Sector (story) / Central Park, Central Sector (story)",Kuwagamon,5,240,9999,27,126,101,70,101,94,63,6,115,,
+272,story,"Asuka City, Central Sector (story) / Central Park, Central Sector (story)",Kuwagamon,7,288,9999,5,136,109,87,109,87,63,6,115,Chain Saw,12.6
+273,event/random,"Seabed, Underground (random) / West Wire Forest, East Sector (event)",Tylomon,43,1152,9999,16,480,600,391,408,480,215,43,430,Crimson Cable,12.6
+274,random,"Seabed, Underground (random)",Scorpiomon,43,1152,9999,16,480,480,575,600,384,216,43,480,Crimson Cable,12.6
+275,event/random,"Seabed, Underground (random) / Wind Prairie, East Sector (event)",MetalSeadramon,44,1176,9999,16,490,612,588,612,333,223,44,460,Crimson Cable,12.6
+276,event/random,"Kicking Forest, East Sector (event) / Seabed, Underground (random)",Pukumon,44,1176,9999,16,612,735,329,343,490,221,44,470,Crimson Cable,12.6
+277,event/random,"Bulk Swamp, South Sector (event) / Seabed, Underground (random)",Whamon,45,1800,9999,16,500,500,480,500,400,225,45,420,Crimson Cable,12.6
+278,story,"Bulk Bridge, South Sector (story)",Hagurumon,23,672,336,16,420,280,260,280,336,240,23,480,Metal Power,12.6
+278,story,"Bulk Bridge, South Sector (story)",Clockmon,24,696,9999,16,290,290,338,362,197,240,23,480,Multi Crest,6.3
+279,story,"Tranquil Swamp, South Sector (story)",MegaSeadramon,35,960,9999,16,340,340,475,500,320,538,36,1080,Thunder Chip,1.7
+279,story,"Tranquil Swamp, South Sector (story)",Seadramon,35,960,9999,16,340,500,570,500,272,538,36,1080,,
+279,story,"Tranquil Swamp, South Sector (story)",Cherrymon,38,1032,9999,16,430,430,410,430,344,538,36,1080,Recover Crest,6.3
+280,story,"Zhu Que City, South Sector (story)",Gesomon,27,768,9999,16,320,400,255,272,320,336,33,640,Runner Sandal,12.6
+280,story,"Zhu Que City, South Sector (story)",Octomon,40,1080,9999,16,450,450,538,562,306,336,33,640,,
+281,tree,"Zhu Que City, South Sector (tree)",Brachiomon,36,984,9999,16,410,348,488,512,279,394,26,820,Ultra Charge,6.3
+281,tree,"Zhu Que City, South Sector (tree)",Tyrannomon,6,264,9999,16,110,138,112,94,75,394,26,820,Fire Power,12.6
+281,tree,"Zhu Que City, South Sector (tree)",MetalTyrannomon,36,984,9999,16,410,615,585,287,230,394,26,820,Metal Chip,1.7
+282,story,"South Badland, West Sector (story)",Vilemon,36,984,96,16,410,348,488,410,410,520,34,1040,Devil Chip,1.7
+282,story,"South Badland, West Sector (story)",Phantomon,31,864,9999,16,450,450,340,306,288,520,34,1040,Ghost Fang,12.6
+282,story,"South Badland, West Sector (story)",Phantomon,37,1008,9999,16,525,630,400,294,420,520,34,1040,HP Chip,1.7
+283,story,"Noise Desert, West Sector (story)",Betamon,2,144,9999,16,60,60,50,60,56,204,13,420,Power Charge,18.8
+283,story,"Noise Desert, West Sector (story)",Kiwimon,3,168,9999,16,60,70,60,70,80,204,13,420,,
+283,story,"Noise Desert, West Sector (story)",Blossomon,36,984,9999,16,410,410,390,410,328,204,13,420,,
+284,story,"North Badland W, West Sector (story)",Dolphmon,20,600,120,16,212,250,230,375,250,468,31,980,,
+284,story,"North Badland W, West Sector (story)",Monzaemon,29,816,9999,16,340,340,400,425,231,468,31,980,,
+284,story,"North Badland W, West Sector (story)",Valkyrimon,45,1200,9999,16,500,500,408,500,600,468,31,980,Dance Wing,3.2
+285,story,"North Badland E, West Sector (story)",Dokugumon,21,624,9999,16,260,221,240,260,260,339,34,310,Spider Web,12.6
+285,story,"North Badland E, West Sector (story)",Roachmon,47,1248,9999,16,442,520,425,442,624,339,34,310,,
+286,story,"S Noise Desert, West Sector (story)",Brachiomon,36,984,9999,16,410,348,488,512,279,475,31,940,Ultra Charge,6.3
+286,story,"S Noise Desert, West Sector (story)",Deltamon,36,984,9999,16,410,410,390,410,328,475,31,940,Wind Power 2,6.3
+286,story,"S Noise Desert, West Sector (story)",Mammothmon,23,672,9999,16,350,280,260,280,190,475,31,940,HP Proxy,12.6
+287,story,"Mirage Tower, West Sector (story)",Vademon,22,648,9999,16,270,270,212,270,270,445,29,925,Bolt Power,12.6
+287,story,"Mirage Tower, West Sector (story)",Thundermon,23,672,150,16,238,350,325,280,280,445,29,925,Pulse Guard,12.6
+287,story,"Mirage Tower, West Sector (story)",Pukumon,44,1176,9999,16,612,735,329,343,490,445,29,925,Crimson Cable,12.6
+288,story,"Mirage Hall, West Sector (story)",Kuwagamon,30,840,9999,16,438,350,280,350,280,544,36,1220,Chain Saw,12.6
+288,story,"Mirage Hall, West Sector (story)",Okuwamon,34,936,9999,16,488,390,314,390,312,544,36,1220,,
+288,story,"Mirage Hall, West Sector (story)",H-Kabuterimon,44,1176,9999,16,612,416,470,490,490,544,36,1220,,
+289,tree,"Mirage Hall, West Sector (tree)",MarineDevimon,37,1008,9999,16,357,420,340,357,420,406,40,810,,
+289,tree,"Mirage Hall, West Sector (tree)",Dragomon,44,1176,9999,16,490,612,705,735,333,406,40,810,,
+290,story,"Mirage Hall, West Sector (story)",Cyclonemon,43,1152,9999,16,480,480,460,480,384,448,44,880,,
+290,story,"Mirage Hall, West Sector (story)",Megadramon,46,1224,9999,16,510,510,735,765,408,448,44,880,,
+291,story,"Boot Mountain, North Sector (story)",Thundermon,23,672,150,16,238,350,325,280,280,566,37,1165,Pulse Guard,12.6
+291,story,"Boot Mountain, North Sector (story)",Pukumon,44,1176,9999,16,612,735,329,343,490,566,37,1165,Crimson Cable,12.6
+291,story,"Boot Mountain, North Sector (story)",Giromon,46,1224,9999,16,510,510,490,638,347,566,37,1165,,
+292,story,,Triceramon,6,396,9999,16,138,110,90,110,75,297,19,580,TNT Ball,18.8
+292,story,,Tyrannomon,6,264,9999,16,110,138,112,94,75,297,19,580,Fire Power,12.6
+292,story,,Mammothmon,47,1248,9999,16,650,520,625,520,354,297,19,580,,
+293,story,"Snow Mountain, North Sector (story)",Tapirmon,1,120,9999,16,42,50,40,50,48,230,23,470,,
+293,story,"Snow Mountain, North Sector (story)",Arukenimon,45,1200,9999,16,500,500,480,500,400,230,23,470,Charm Gas,25.1
+294,story,,Crabmon,3,168,9999,16,88,60,51,60,80,77,5,155,,
+294,story,,Gizamon,4,192,9999,16,80,80,70,80,72,77,5,155,,
+294,story,,Gekomon,8,312,9999,16,130,130,138,162,104,77,5,155,Ice Power,12.6
+295,story,"Freeze Mountain, North Sector (story)",MarineDevimon,37,1008,9999,16,357,420,340,357,420,621,41,1240,,
+295,story,"Freeze Mountain, North Sector (story)",Dragomon,44,1176,9999,16,490,612,705,735,333,621,41,1240,,
+295,story,"Freeze Mountain, North Sector (story)",Tylomon,43,1152,9999,16,480,600,391,408,480,621,41,1240,Crimson Cable,12.6
+296,tree,"Freeze Mountain, North Sector (tree)",Okuwamon,34,936,9999,16,488,390,314,390,312,635,42,1410,,
+296,tree,"Freeze Mountain, North Sector (tree)",H-Kabuterimon,44,1176,9999,16,612,416,470,490,490,635,42,1410,,
+296,tree,"Freeze Mountain, North Sector (tree)",Snimon,48,1272,9999,16,662,450,510,530,530,635,42,1410,Train Chip 3,3.2
+297,story,"Legendary Gym, North Sector (story)",Hagurumon,23,672,336,16,420,280,260,280,336,466,30,980,Metal Power,12.6
+297,story,"Legendary Gym, North Sector (story)",Clockmon,24,696,9999,16,290,290,338,362,197,466,30,980,Multi Crest,6.3
+297,story,"Legendary Gym, North Sector (story)",KingEtemon,45,1200,9999,16,500,500,480,750,400,466,30,980,Charisma Chip,12.6
+298,tree,"Legendary Gym, North Sector (tree)",Kokatorimon,22,648,9999,16,270,270,212,270,324,601,37,1190,Over Clocked,12.6
+298,tree,"Legendary Gym, North Sector (tree)",Cherrymon,41,1104,9999,16,460,460,440,460,368,601,37,1190,Train Chip,6.3
+298,tree,"Legendary Gym, North Sector (tree)",Ebidramon,48,1272,9999,16,530,530,510,530,424,601,37,1190,Train Chip 2,3.2
+299,story,"Xuan Wu City, North Sector (story)",Mummymon,35,960,9999,16,400,400,475,400,320,399,40,840,Mind Chip,1.7
+299,story,"Xuan Wu City, North Sector (story)",LadyDevimon,45,1200,9999,16,625,425,480,425,400,399,40,840,Charm Gas,25.1
+300,tree,"Xuan Wu City, North Sector (tree)",Tapirmon,1,120,9999,16,42,50,40,50,48,230,23,470,,
+300,tree,"Xuan Wu City, North Sector (tree)",Arukenimon,45,1200,9999,16,500,500,480,500,400,230,23,470,Charm Gas,25.1
+301,story,"Circuit Board, Underground (story) / Seiryu City, East Sector (story)",MetalGreymon,60,3120,9999,47,646,807,734,549,440,565,60,1200,,
+302,story,"Circuit Board, Underground (story) / Suzaku Hall, Suzaku City (story)",WarGrowlmon,60,3120,9999,34,824,561,522,658,658,577,60,1200,,
+303,story,"Byakko Dome, Byakko City (story) / Circuit Board, Underground (story)",Paildramon,65,3360,9999,47,705,599,646,881,564,684,65,1300,,
+304,story,"Battle Gate, North Sector (story) / Circuit Board, Underground (story)",Taomon,60,3120,9999,31,559,461,930,823,527,621,60,1200,,
+305,story,"Qing Long City, East Sector (story) / Qing Long City, East Sector (extra chapter) (story)",Pharaohmon,70,3600,9999,71,754,754,665,754,603,1855,75,3660,,
+305,story,"Qing Long City, East Sector (story) / Qing Long City, East Sector (extra chapter) (story)",MasterTyrannomon,75,3840,9999,67,795,996,887,795,540,1855,75,3660,,
+305,story,"Qing Long City, East Sector (story) / Qing Long City, East Sector (extra chapter) (story)",Kimeramon,80,4080,9999,28,857,1286,575,1071,686,1855,75,3660,Devil Chip,1.7
+306,story,"Protocol Ruins, East Sector (extra chapter) (story) / Zhu Que Hall, Zhu Que City (story)",Cherrymon,70,2700,9999,26,747,747,715,747,598,1857,75,3875,Train Chip,6.3
+306,story,"Protocol Ruins, East Sector (extra chapter) (story) / Zhu Que Hall, Zhu Que City (story)",Persiamon,75,5760,40,30,806,806,768,1209,967,1857,75,3875,Charm Gas,25.1
+306,story,"Protocol Ruins, East Sector (extra chapter) (story) / Zhu Que Hall, Zhu Que City (story)",Zanbamon,80,4080,9999,30,843,843,806,1053,675,1857,75,3875,,
+307,story,"Bai Hu Dome, Bai Hu City (story) / Protocol Ruins, East Sector (extra chapter) (story)",Gryphonmon,70,2700,9999,24,637,750,1080,750,750,1541,75,2695,Wind Power S,3.2
+307,story,"Bai Hu Dome, Bai Hu City (story) / Protocol Ruins, East Sector (extra chapter) (story)",MetalSeadramon,75,2880,9999,22,690,1014,979,1014,649,1541,75,2695,,
+307,story,"Bai Hu Dome, Bai Hu City (story) / Protocol Ruins, East Sector (extra chapter) (story)",HiAndromon,80,4080,280,37,855,855,809,1068,684,1541,75,2695,,
+308,story,"Battle Gate, North Sector (story) / Tyranno Valley, East Sector (extra chapter) (story)",SkullMammothmon,70,2700,9999,22,1113,928,893,742,415,1503,75,3180,,
+308,story,"Battle Gate, North Sector (story) / Tyranno Valley, East Sector (extra chapter) (story)",WaruMonzaemon,75,3840,9999,35,1214,809,765,809,647,1503,75,3180,,
+308,story,"Battle Gate, North Sector (story) / Tyranno Valley, East Sector (extra chapter) (story)",Whamon,80,6120,9999,27,843,843,810,843,675,1503,75,3180,Crimson Cable,12.6
+309,story,"Circuit Board, Underground (story) / Protocol Ruins, East Sector (story)",MagnaAngemon,60,3120,9999,32,462,660,776,990,448,600,60,1200,,
+310,story,"Circuit Board, Underground (story) / Tyranno Valley, East Sector (story)",Kyukimon,70,3600,9999,36,927,742,697,630,594,700,70,1400,,
+311,fishing/story/tree,"Circuit Board, Underground (fishing) / Circuit Board, Underground (story) / Circuit Board, Underground (tree) / Operation Room, West Sector (story)",Armormon,70,3600,9999,36,927,742,594,630,742,700,70,1400,,
+312,fishing/story/tree,"Circuit Board, Underground (fishing) / Circuit Board, Underground (story) / Circuit Board, Underground (tree) / Sewers, West Sector (story)",GrapLeomon,70,1776,9999,16,495,495,217,231,330,320,70,740,,
+313,story,"Control Room, Asuka City (story)",Datamon,34,1872,9999,16,390,390,462,390,390,340,34,1000,Recover Crest,25.1
+314,story,"Catacomb, South Sector (story)",Zanbamon,40,2160,9999,16,450,450,430,562,360,380,40,800,,
+315,story,"Bug Maze Pit, Network Break (story)",Bulbmon,44,2352,960,16,480,600,460,408,480,450,44,815,,
+316,story,"Circuit Board, Underground (story) / Protocol Ruins, East Sector (story)",BK MegaGargomon,65,3360,9999,22,859,859,660,687,467,650,65,1300,,
+317,story,"Circuit Board, Underground (story) / Tyranno Valley, East Sector (story)",BK Imperialdramon,65,3360,9999,22,701,701,673,1051,561,650,65,1310,,
+318,story,"Catacomb, South Sector, on the Amaterasu server (story) / Circuit Board, Underground (story)",BK Seraphimon,70,3600,9999,23,635,747,898,1121,598,700,70,1430,,
+319,story,"Circuit Board, Underground (story) / Operation Room, West Sector (story)",BK WarGrowlmon,70,3600,9999,20,937,637,616,750,750,700,70,1400,,
+320,story,"Circuit Board, Underground (story) / Sewers, West Sector (story)",BK KingNumemon,75,3840,8,21,813,1017,669,691,651,750,75,1710,,
+321,story/tree,"Circuit Board, Underground (tree) / Control Room, Amaterasu City (story)",BK WarGreymon,75,3840,9999,22,996,797,962,677,797,750,75,1500,,
+322,story,"Admin Center 2F, Asuka City (story)",Vemmon,28,792,9999,16,231,412,310,330,330,144,28,0,,
+323,story,"Deeper Crevice, East Sector (story)",Bulbmon,15,960,960,7,210,262,201,178,210,153,15,275,,
+324,story,"Control Room, Spy Satellite (story)",Galacticmon,65,5040,9999,16,700,700,680,700,560,4,68,0,,
+324,story,"Control Room, Spy Satellite (story)",Galacticmon,70,3600,9999,16,750,750,730,750,600,4,68,0,,
+324,story,"Control Room, Spy Satellite (story)",Galacticmon,70,5400,9999,16,750,750,730,750,600,4,68,0,,
+325,story,"Control Room, Spy Satellite (story)",Galacticmon,70,3600,9999,16,750,750,730,750,600,4,70,0,,
+326,tree,"Control Room, Spy Satellite (tree)",Galacticmon,70,5400,9999,16,750,750,730,750,600,4,70,0,,
+327,tree,"Central Park, Central Sector (tree) / Divermon's Lake, East Sector (tree) / East Wire Forest, East Sector (tree) / Kicking Forest, East Sector (tree) / Plug Cape, Central Sector (tree) / Shell Beach, Central Sector (tree) / Shell Beach, Central Sector (extra chapter) (tree) / West Wire Forest, East Sector (tree) / Wind Prairie, East Sector (tree) / Wire Forest Entrance, Central Sector (tree) / Wire Forest Entrance, Central Sector (extra chapter) (tree)",Cardmon,7,288,9999,16,120,120,100,120,96,35,7,70,,
+328,fishing,"Amaterasu City, Central Sector (fishing) / Asuka City, Central Sector (fishing) / Bios Swamp, South Sector (fishing) / Bulk Bridge, South Sector (fishing) / Central Park, Central Sector (fishing) / Divermon's Lake, East Sector (fishing) / Ether Jungle, South Sector (fishing) / Jungle Grave, South Sector (fishing) / Kicking Forest, East Sector (fishing) / Phoenix Bay, South Sector (fishing) / Plug Cape, Central Sector (fishing) / Shell Beach, Central Sector (fishing) / Shell Beach, Central Sector (extra chapter) (fishing) / South Cape, South Sector (fishing) / Tranquil Swamp, South Sector (fishing) / West Wire Forest, East Sector (fishing) / Wire Forest Entrance, Central Sector (fishing)",Cardmon,12,408,9999,16,170,170,150,170,136,60,12,120,,
+329,tree,"Bios Swamp, South Sector (tree) / Bulk Swamp, South Sector (tree) / Bullet Valley, West Sector (tree) / Central Park, Central Sector (tree) / Central Park, Central Sector (extra chapter) (tree) / Divermon's Lake, East Sector (tree) / East Wire Forest, East Sector (tree) / Ether Jungle, South Sector (tree) / Jungle Grave, South Sector (tree) / North Badland W, West Sector (tree) / Phoenix Bay, South Sector (tree) / Plug Cape, Central Sector (tree) / Plug Cape, Central Sector (extra chapter) (tree) / Shell Beach, Central Sector (tree) / Tranquil Swamp, South Sector (tree) / West Wire Forest, East Sector (tree) / Wind Prairie, East Sector (tree) / Wire Forest Entrance, Central Sector (tree)",Cardmon,17,528,9999,16,220,220,200,220,176,85,17,170,,
+330,fishing,"Amaterasu City, Central Sector (fishing) / Central Park, Central Sector (fishing) / Central Park, Central Sector (extra chapter) (fishing) / Divermon's Lake, East Sector (fishing) / Kicking Forest, East Sector (fishing) / North Badland E, West Sector (fishing) / Pelche Oasis, West Sector (fishing) / Plug Cape, Central Sector (fishing) / Shell Beach, Central Sector (fishing) / South Badland, West Sector (fishing) / West Wire Forest, East Sector (fishing) / Wire Forest Entrance, Central Sector (fishing) / Wire Forest Entrance, Central Sector (extra chapter) (fishing)",Cardmon,27,768,9999,16,320,320,300,320,256,135,27,270,,
+331,tree,"Bios Swamp, South Sector (tree) / Bulk Swamp, South Sector (tree) / Divermon's Lake, East Sector (extra chapter) (tree) / East Wire Forest, East Sector (extra chapter) (tree) / Ether Jungle, South Sector (tree) / Jungle Grave, South Sector (tree) / Kicking Forest, East Sector (tree) / Phoenix Bay, South Sector (tree) / Tranquil Swamp, South Sector (tree) / West Wire Forest, East Sector (extra chapter) (tree)",Cardmon,37,1008,9999,16,420,420,400,420,420,185,37,370,,
+332,fishing,"Bios Swamp, South Sector (fishing) / Bulk Bridge, South Sector (fishing) / Divermon's Lake, East Sector (extra chapter) (fishing) / Ether Jungle, South Sector (fishing) / Jungle Grave, South Sector (fishing) / Lake of Ice, North Sector (fishing) / Phoenix Bay, South Sector (fishing) / Plug Cape, Central Sector (extra chapter) (fishing) / South Cape, South Sector (fishing) / Tranquil Swamp, South Sector (fishing)",Cardmon,42,1128,9999,16,470,470,450,470,470,210,42,420,,
+333,tree,"Boot Mountain, North Sector (tree) / Bullet Valley, West Sector (tree) / Kicking Forest, East Sector (extra chapter) (tree) / Kulon Mine, North Sector (tree) / Lake of Ice, North Sector (tree) / North Badland W, West Sector (tree) / Snow Mountain, North Sector (tree) / Wind Prairie, East Sector (extra chapter) (tree)",Cardmon,47,1248,9999,16,520,520,500,520,624,235,47,470,,
+334,fishing,"Kicking Forest, East Sector (extra chapter) (fishing) / Lake of Ice, North Sector (fishing) / North Badland E, West Sector (fishing) / Pelche Oasis, West Sector (fishing) / South Badland, West Sector (fishing) / West Wire Forest, East Sector (extra chapter) (fishing)",Cardmon,47,1248,9999,16,520,520,500,520,624,235,47,470,,

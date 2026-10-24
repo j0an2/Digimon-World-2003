@@ -1,0 +1,72 @@
+{
+  "name": "50 IDramon NOT Recomended",
+  "partner": "Veemon",
+  "steps": [
+    {
+      "f": "Veemon",
+      "lv": 5
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 37
+    },
+    {
+      "f": "Paildramon",
+      "lv": 20,
+      "note": "Load Mega Tornado"
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "Paildramon",
+      "lv": 35
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

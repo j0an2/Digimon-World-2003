@@ -1,0 +1,79 @@
+{
+  "name": "60 Diaboromon",
+  "partner": "Renamon",
+  "steps": [
+    {
+      "f": "Renamon",
+      "lv": 5
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 35
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 20
+    },
+    {
+      "f": "Taomon",
+      "lv": 20
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "Sakuyamon",
+      "lv": 10
+    },
+    {
+      "f": "Devimon",
+      "lv": 50
+    },
+    {
+      "f": "Myotismon",
+      "lv": 20
+    },
+    {
+      "f": "Grizzmon",
+      "lv": 30
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

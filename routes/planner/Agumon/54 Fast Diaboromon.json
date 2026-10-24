@@ -1,0 +1,74 @@
+{
+  "name": "54 Fast Diaboromon",
+  "partner": "Agumon",
+  "steps": [
+    {
+      "f": "Agumon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "Growlmon",
+      "lv": 25,
+      "note": "Learn Picking Claw "
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 30
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Growlmon",
+      "lv": 40,
+      "note": "Train until Agumon is Lvl 40"
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 90,
+      "note": "Train until Agumon is Lvl 40"
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 50
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

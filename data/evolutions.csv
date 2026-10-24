@@ -1,0 +1,353 @@
+﻿Rookie,Form,Stage,Requirement 1,DV level 1,Requirement 2,DV level 2,Minimum stat,Minimum value,Order in the list
+Kotemon,Dinohumon,Champion,,,,,Level,5,1
+Kotemon,Hookmon,Champion,Growlmon,20,,,,,2
+Kotemon,Grizzmon,Champion,Growlmon,30,,,Speed,280,3
+Kotemon,Greymon,Champion,Dinohumon,20,,,,,4
+Kotemon,ExVeemon,Champion,Greymon,10,,,,,5
+Kotemon,Growlmon,Champion,Taomon,50,,,Fire res.,200,6
+Kotemon,Kyubimon,Champion,GuardiAngemon,20,,,,,7
+Kotemon,Angemon,Champion,Taomon,30,,,Wind res.,200,8
+Kotemon,Devimon,Champion,Digitamamon,20,,,,,9
+Kotemon,Stingmon,Champion,GuardiAngemon,10,,,,,10
+Kotemon,Angewomon,Champion,Taomon,20,,,Water res.,360,11
+Kotemon,Kyukimon,Ultimate,,,,,Level,20,12
+Kotemon,Armormon,Ultimate,Hookmon,50,,,,,13
+Kotemon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Kotemon,MetalGreymon,Ultimate,Greymon,40,,,Level,15,15
+Kotemon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,140,16
+Kotemon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Kotemon,WarGrowlmon,Ultimate,Growlmon,50,,,,,18
+Kotemon,Taomon,Ultimate,Kyubimon,40,,,,,19
+Kotemon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Kotemon,Myotismon,Ultimate,Devimon,40,,,,,21
+Kotemon,MetalMamemon,Ultimate,Kyukimon,20,,,Machine res.,140,22
+Kotemon,Kabuterimon,Ultimate,Stingmon,40,,,,,23
+Kotemon,Digitamamon,Ultimate,Taomon,40,,,Wisdom,280,24
+Kotemon,GuardiAngemon,Mega,,,,,Level,40,25
+Kotemon,Cannondramon,Mega,Armormon,99,,,,,26
+Kotemon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Kotemon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Kotemon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Kotemon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Kotemon,Sakuyamon,Mega,Taomon,99,,,,,31
+Kotemon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Kotemon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,200,33
+Kotemon,Rosemon,Mega,Angewomon,40,,,,,34
+Kotemon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Kotemon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Kotemon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Kotemon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Kotemon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Kotemon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Kotemon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Kotemon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Kotemon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Kotemon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Kumamon,Dinohumon,Champion,MetalGreymon,30,,,,,1
+Kumamon,Hookmon,Champion,Kabuterimon,20,,,,,2
+Kumamon,Grizzmon,Champion,,,,,Level,5,3
+Kumamon,Greymon,Champion,WarGrowlmon,20,,,Fire res.,200,4
+Kumamon,ExVeemon,Champion,Kyubimon,10,,,,,5
+Kumamon,Growlmon,Champion,Marsmon,20,,,Strength,480,6
+Kumamon,Kyubimon,Champion,Grizzmon,20,,,Spirit,80,7
+Kumamon,Angemon,Champion,Myotismon,20,,,Wind res.,280,8
+Kumamon,Devimon,Champion,Marsmon,10,,,,,9
+Kumamon,Stingmon,Champion,Marsmon,30,,,Speed,400,10
+Kumamon,Angewomon,Champion,Angemon,20,,,Water res.,280,11
+Kumamon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Kumamon,Armormon,Ultimate,Hookmon,50,,,,,13
+Kumamon,GrapLeomon,Ultimate,,,,,Level,20,14
+Kumamon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Kumamon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,160,16
+Kumamon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Kumamon,WarGrowlmon,Ultimate,Growlmon,50,,,,,18
+Kumamon,Taomon,Ultimate,Kyubimon,40,,,Level,15,19
+Kumamon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Kumamon,Myotismon,Ultimate,Devimon,50,,,,,21
+Kumamon,MetalMamemon,Ultimate,GrapLeomon,20,,,Machine res.,150,22
+Kumamon,Kabuterimon,Ultimate,Stingmon,50,,,,,23
+Kumamon,Digitamamon,Ultimate,Grizzmon,30,,,Wisdom,80,24
+Kumamon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Kumamon,Cannondramon,Mega,Armormon,99,,,,,26
+Kumamon,Marsmon,Mega,,,,,Level,40,27
+Kumamon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Kumamon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Kumamon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Kumamon,Sakuyamon,Mega,Taomon,99,,,,,31
+Kumamon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Kumamon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,200,33
+Kumamon,Rosemon,Mega,Angewomon,40,,,,,34
+Kumamon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Kumamon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Kumamon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Kumamon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Kumamon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Kumamon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Kumamon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Kumamon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Kumamon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Kumamon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Monmon,Dinohumon,Champion,MetalGreymon,20,,,Strength,250,1
+Monmon,Hookmon,Champion,,,,,Level,5,2
+Monmon,Grizzmon,Champion,Growlmon,20,,,Defense,460,3
+Monmon,Greymon,Champion,Cannondramon,10,,,,,4
+Monmon,ExVeemon,Champion,Hookmon,20,,,,,5
+Monmon,Growlmon,Champion,Kyukimon,20,,,Speed,320,6
+Monmon,Kyubimon,Champion,Angewomon,10,,,Spirit,200,7
+Monmon,Angemon,Champion,Armormon,40,,,Wind res.,120,8
+Monmon,Devimon,Champion,SkullGreymon,20,,,Spirit,300,9
+Monmon,Stingmon,Champion,MetalGreymon,30,,,Thunder res.,200,10
+Monmon,Angewomon,Champion,MagnaAngemon,30,,,Water res.,110,11
+Monmon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Monmon,Armormon,Ultimate,,,,,Level,20,13
+Monmon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Monmon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Monmon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,300,16
+Monmon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Monmon,WarGrowlmon,Ultimate,Growlmon,50,,,,,18
+Monmon,Taomon,Ultimate,Kyubimon,40,,,,,19
+Monmon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Monmon,Myotismon,Ultimate,Devimon,40,,,,,21
+Monmon,MetalMamemon,Ultimate,Armormon,20,,,Machine res.,180,22
+Monmon,Kabuterimon,Ultimate,Stingmon,50,,,,,23
+Monmon,Digitamamon,Ultimate,Armormon,30,,,Strength,160,24
+Monmon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Monmon,Cannondramon,Mega,,,,,Level,40,26
+Monmon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Monmon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Monmon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Monmon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Monmon,Sakuyamon,Mega,Taomon,99,,,,,31
+Monmon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Monmon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,240,33
+Monmon,Rosemon,Mega,Angewomon,40,,,,,34
+Monmon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Monmon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Monmon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Monmon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Monmon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Monmon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Monmon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Monmon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Monmon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Monmon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Agumon,Dinohumon,Champion,WarGreymon,20,,,,,1
+Agumon,Hookmon,Champion,WarGrowlmon,30,,,,,2
+Agumon,Grizzmon,Champion,MetalGarurumon,30,,,Defense,400,3
+Agumon,Greymon,Champion,,,,,Level,5,4
+Agumon,ExVeemon,Champion,MetalGreymon,30,,,Ice res.,100,5
+Agumon,Growlmon,Champion,Greymon,20,,,,,6
+Agumon,Kyubimon,Champion,MetalGreymon,20,,,Spirit,300,7
+Agumon,Angemon,Champion,Kabuterimon,20,,,Wisdom,300,8
+Agumon,Devimon,Champion,MagnaAngemon,30,,,Dark res.,250,9
+Agumon,Stingmon,Champion,WarGreymon,30,,,Speed,260,10
+Agumon,Angewomon,Champion,MagnaAngemon,20,,,,,11
+Agumon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Agumon,Armormon,Ultimate,Hookmon,50,,,,,13
+Agumon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Agumon,MetalGreymon,Ultimate,,,,,Level,20,15
+Agumon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,130,16
+Agumon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Agumon,WarGrowlmon,Ultimate,Growlmon,40,,,Level,15,18
+Agumon,Taomon,Ultimate,Kyubimon,40,,,,,19
+Agumon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Agumon,Myotismon,Ultimate,Devimon,40,,,,,21
+Agumon,MetalMamemon,Ultimate,WarGreymon,10,,,,,22
+Agumon,Kabuterimon,Ultimate,Stingmon,50,,,,,23
+Agumon,Digitamamon,Ultimate,MetalGarurumon,20,,,,,24
+Agumon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Agumon,Cannondramon,Mega,Armormon,99,,,,,26
+Agumon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Agumon,WarGreymon,Mega,,,,,Level,40,28
+Agumon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Agumon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Agumon,Sakuyamon,Mega,Taomon,99,,,,,31
+Agumon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Agumon,MetalGarurumon,Mega,MetalMamemon,40,,,,,33
+Agumon,Rosemon,Mega,Angewomon,40,,,,,34
+Agumon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Agumon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Agumon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Agumon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Agumon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Agumon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Agumon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Agumon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Agumon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Agumon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Veemon,Dinohumon,Champion,Imperialdramon,30,,,,,1
+Veemon,Hookmon,Champion,Imperialdramon,35,,,Machine res.,160,2
+Veemon,Grizzmon,Champion,Imperialdramon,45,,,Defense,200,3
+Veemon,Greymon,Champion,Paildramon,35,,,Defense,200,4
+Veemon,ExVeemon,Champion,,,,,Level,5,5
+Veemon,Growlmon,Champion,Paildramon,30,,,Fire res.,90,6
+Veemon,Kyubimon,Champion,Paildramon,40,,,Ice res.,200,7
+Veemon,Angemon,Champion,Paildramon,45,,,Wisdom,230,8
+Veemon,Devimon,Champion,Paildramon,25,,,Dark res.,160,9
+Veemon,Stingmon,Champion,ExVeemon,30,,,,,10
+Veemon,Angewomon,Champion,MagnaAngemon,20,,,,,11
+Veemon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Veemon,Armormon,Ultimate,Hookmon,50,,,,,13
+Veemon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Veemon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Veemon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,190,16
+Veemon,Paildramon,Ultimate,Stingmon,5,,,Level,20,17
+Veemon,WarGrowlmon,Ultimate,Growlmon,50,,,,,18
+Veemon,Taomon,Ultimate,Kyubimon,50,,,,,19
+Veemon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Veemon,Myotismon,Ultimate,Devimon,40,,,,,21
+Veemon,MetalMamemon,Ultimate,Paildramon,20,,,Machine res.,100,22
+Veemon,Kabuterimon,Ultimate,Stingmon,40,,,,,23
+Veemon,Digitamamon,Ultimate,Imperialdramon,20,,,Wisdom,300,24
+Veemon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Veemon,Cannondramon,Mega,Armormon,99,,,,,26
+Veemon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Veemon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Veemon,Imperialdramon,Mega,Paildramon,50,,,Level,40,29
+Veemon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Veemon,Sakuyamon,Mega,Taomon,99,,,,,31
+Veemon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Veemon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,140,33
+Veemon,Rosemon,Mega,Angewomon,40,,,,,34
+Veemon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Veemon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Veemon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Veemon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Veemon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Veemon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Veemon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Veemon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Veemon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Veemon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Guilmon,Dinohumon,Champion,MetalGreymon,20,,,Strength,400,1
+Guilmon,Hookmon,Champion,Dinohumon,20,,,,,2
+Guilmon,Grizzmon,Champion,Gallantmon,10,,,,,3
+Guilmon,Greymon,Champion,Gallantmon,30,,,Fire res.,280,4
+Guilmon,ExVeemon,Champion,Gallantmon,20,,,Wind res.,300,5
+Guilmon,Growlmon,Champion,,,,,Level,5,6
+Guilmon,Kyubimon,Champion,Angewomon,10,,,Spirit,200,7
+Guilmon,Angemon,Champion,WarGrowlmon,20,,,Spirit,180,8
+Guilmon,Devimon,Champion,GrapLeomon,20,,,Dark res.,160,9
+Guilmon,Stingmon,Champion,Growlmon,30,,,Thunder res.,80,10
+Guilmon,Angewomon,Champion,WarGrowlmon,40,,,Water res.,140,11
+Guilmon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Guilmon,Armormon,Ultimate,Hookmon,50,,,,,13
+Guilmon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Guilmon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Guilmon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,140,16
+Guilmon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Guilmon,WarGrowlmon,Ultimate,,,,,Level,20,18
+Guilmon,Taomon,Ultimate,Kyubimon,40,,,,,19
+Guilmon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Guilmon,Myotismon,Ultimate,Devimon,50,,,,,21
+Guilmon,MetalMamemon,Ultimate,Growlmon,20,,,Defense,100,22
+Guilmon,Kabuterimon,Ultimate,Stingmon,40,,,,,23
+Guilmon,Digitamamon,Ultimate,WarGrowlmon,30,,,Dark res.,120,24
+Guilmon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Guilmon,Cannondramon,Mega,Armormon,99,,,,,26
+Guilmon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Guilmon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Guilmon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Guilmon,Gallantmon,Mega,,,,,Level,40,30
+Guilmon,Sakuyamon,Mega,Taomon,99,,,,,31
+Guilmon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Guilmon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,190,33
+Guilmon,Rosemon,Mega,Angewomon,40,,,,,34
+Guilmon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Guilmon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Guilmon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Guilmon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Guilmon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Guilmon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Guilmon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Guilmon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Guilmon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Guilmon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Renamon,Dinohumon,Champion,Grizzmon,20,,,,,1
+Renamon,Hookmon,Champion,Kyukimon,20,,,,,2
+Renamon,Grizzmon,Champion,Myotismon,20,,,Strength,300,3
+Renamon,Greymon,Champion,Grizzmon,30,,,Defense,280,4
+Renamon,ExVeemon,Champion,Taomon,20,,,Wind res.,120,5
+Renamon,Growlmon,Champion,Stingmon,20,,,Defense,80,6
+Renamon,Kyubimon,Champion,,,,,Level,5,7
+Renamon,Angemon,Champion,Sakuyamon,30,,,Wind res.,150,8
+Renamon,Devimon,Champion,Sakuyamon,10,,,,,9
+Renamon,Stingmon,Champion,Kyubimon,20,,,Strength,80,10
+Renamon,Angewomon,Champion,Kyubimon,30,,,Spirit,160,11
+Renamon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Renamon,Armormon,Ultimate,Hookmon,50,,,,,13
+Renamon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Renamon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Renamon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,250,16
+Renamon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Renamon,WarGrowlmon,Ultimate,Growlmon,40,,,Level,25,18
+Renamon,Taomon,Ultimate,,,,,Level,20,19
+Renamon,MagnaAngemon,Ultimate,Angemon,50,,,,,20
+Renamon,Myotismon,Ultimate,Devimon,50,,,,,21
+Renamon,MetalMamemon,Ultimate,Taomon,30,,,Machine res.,100,22
+Renamon,Kabuterimon,Ultimate,Stingmon,40,,,,,23
+Renamon,Digitamamon,Ultimate,Sakuyamon,20,,,Wisdom,400,24
+Renamon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Renamon,Cannondramon,Mega,Armormon,99,,,,,26
+Renamon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Renamon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Renamon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Renamon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Renamon,Sakuyamon,Mega,,,,,Level,40,31
+Renamon,Seraphimon,Mega,MagnaAngemon,99,,,,,32
+Renamon,MetalGarurumon,Mega,MetalMamemon,40,,,Machine res.,120,33
+Renamon,Rosemon,Mega,Angewomon,40,,,Level,15,34
+Renamon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Renamon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Renamon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Renamon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Renamon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Renamon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Renamon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Renamon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Renamon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Renamon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44
+Patamon,Dinohumon,Champion,Growlmon,20,,,,,1
+Patamon,Hookmon,Champion,Seraphimon,10,,,,,2
+Patamon,Grizzmon,Champion,Growlmon,40,,,Strength,240,3
+Patamon,Greymon,Champion,MagnaAngemon,30,,,Fire res.,140,4
+Patamon,ExVeemon,Champion,Growlmon,30,,,Wind res.,320,5
+Patamon,Growlmon,Champion,MetalMamemon,20,,,,,6
+Patamon,Kyubimon,Champion,Armormon,40,,,Spirit,300,7
+Patamon,Angemon,Champion,,,,,Level,5,8
+Patamon,Devimon,Champion,Armormon,30,,,Dark res.,300,9
+Patamon,Stingmon,Champion,MagnaAngemon,20,,,Thunder res.,100,10
+Patamon,Angewomon,Champion,Angemon,30,,,Wisdom,180,11
+Patamon,Kyukimon,Ultimate,Dinohumon,50,,,,,12
+Patamon,Armormon,Ultimate,Hookmon,50,,,,,13
+Patamon,GrapLeomon,Ultimate,Grizzmon,50,,,,,14
+Patamon,MetalGreymon,Ultimate,Greymon,40,,,,,15
+Patamon,SkullGreymon,Ultimate,Greymon,50,,,Dark res.,220,16
+Patamon,Paildramon,Ultimate,ExVeemon,5,Stingmon,5,,,17
+Patamon,WarGrowlmon,Ultimate,Growlmon,50,,,,,18
+Patamon,Taomon,Ultimate,Kyubimon,40,,,,,19
+Patamon,MagnaAngemon,Ultimate,,,,,Level,20,20
+Patamon,Myotismon,Ultimate,Devimon,50,,,,,21
+Patamon,MetalMamemon,Ultimate,Armormon,20,,,Machine res.,140,22
+Patamon,Kabuterimon,Ultimate,Stingmon,40,,,,,23
+Patamon,Digitamamon,Ultimate,Angemon,20,,,Strength,100,24
+Patamon,GuardiAngemon,Mega,Kyukimon,99,,,,,25
+Patamon,Cannondramon,Mega,Armormon,99,,,,,26
+Patamon,Marsmon,Mega,GrapLeomon,99,,,,,27
+Patamon,WarGreymon,Mega,MetalGreymon,99,,,,,28
+Patamon,Imperialdramon,Mega,Paildramon,50,,,,,29
+Patamon,Gallantmon,Mega,WarGrowlmon,99,,,,,30
+Patamon,Sakuyamon,Mega,Taomon,99,,,,,31
+Patamon,Seraphimon,Mega,,,,,Level,40,32
+Patamon,MetalGarurumon,Mega,MetalMamemon,50,,,,,33
+Patamon,Rosemon,Mega,Angewomon,40,,,Level,15,34
+Patamon,BK WarGreymon,Mega,SkullGreymon,99,,,,,35
+Patamon,Imperialdramon FM,Mega,Imperialdramon,99,,,,,36
+Patamon,MaloMyotismon,Mega,Myotismon,99,,,,,37
+Patamon,MegaGargomon,Mega,MetalGarurumon,99,,,,,38
+Patamon,GranKuwagamon,Mega,Imperialdramon,40,Kabuterimon,40,,,39
+Patamon,Phoenixmon,Mega,Rosemon,99,,,,,40
+Patamon,Omnimon,Super Mega,WarGreymon,40,MetalGarurumon,40,,,41
+Patamon,Imperialdramon PM,Super Mega,Imperialdramon FM,40,Omnimon,40,,,42
+Patamon,Beelzemon,Super Mega,MaloMyotismon,40,Gallantmon,40,,,43
+Patamon,Diaboromon,Super Mega,GranKuwagamon,99,BK WarGreymon,99,,,44

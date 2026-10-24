@@ -1,0 +1,109 @@
+{
+  "name": "64 Fast IDramon",
+  "partner": "Monmon",
+  "steps": [
+    {
+      "f": "Monmon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 20
+    },
+    {
+      "f": "Hookmon",
+      "lv": 40,
+      "note": "Load Bug Buster"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 75,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 7,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "Armormon",
+      "lv": 20
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40,
+      "note": "Load Mechanical Bash"
+    },
+    {
+      "f": "Armormon",
+      "lv": 40,
+      "note": "Load Fish, Dino and Dramon Buster"
+    },
+    {
+      "f": "Angemon",
+      "lv": 50
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 35,
+      "note": "Load Small Heal"
+    },
+    {
+      "f": "Angewomon",
+      "lv": 33
+    },
+    {
+      "f": "Cannondramon",
+      "lv": 10
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 99
+    },
+    {
+      "f": "Imperialdramon FM",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 40
+    },
+    {
+      "f": "Imperialdramon PM",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

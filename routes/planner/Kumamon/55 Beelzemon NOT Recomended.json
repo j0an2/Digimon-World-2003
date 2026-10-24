@@ -1,0 +1,97 @@
+{
+  "name": "55 Beelzemon NOT Recomended",
+  "partner": "Kumamon",
+  "steps": [
+    {
+      "f": "Kumamon",
+      "lv": 5
+    },
+    {
+      "f": "Grizzmon",
+      "lv": 20
+    },
+    {
+      "f": "Grizzmon",
+      "lv": 75,
+      "note": "Load Hammer Rush"
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 20
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 40,
+      "note": "Train until Kumamon is Lvl20"
+    },
+    {
+      "f": "Taomon",
+      "lv": 11
+    },
+    {
+      "f": "GrapLeomon",
+      "lv": 20
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 25,
+      "note": "Load Mechanical Bash"
+    },
+    {
+      "f": "GrapLeomon",
+      "lv": 60,
+      "note": "Load Soul Charge"
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 99,
+      "note": "Train until Kumamon is Lvl40"
+    },
+    {
+      "f": "MegaGargomon",
+      "lv": 94,
+      "note": "Train until Kumamon is Lvl40"
+    },
+    {
+      "f": "Marsmon",
+      "lv": 20
+    },
+    {
+      "f": "Growlmon",
+      "lv": 50
+    },
+    {
+      "f": "Devimon",
+      "lv": 50
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 99
+    },
+    {
+      "f": "Myotismon",
+      "lv": 99
+    },
+    {
+      "f": "Gallantmon",
+      "lv": 40
+    },
+    {
+      "f": "MaloMyotismon",
+      "lv": 40
+    },
+    {
+      "f": "Beelzemon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

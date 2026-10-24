@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DW2003: constructor de rutas</title>
+<style>
+:root { --ground:#0b1424; --panel:#12203a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --lime:#8be07b; --amber:#ffbf47; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; padding:24px; background:var(--ground); color:var(--ink); font-family:system-ui,"Segoe UI",sans-serif; }
+h1 { margin:0 0 6px; font-size:24px; }
+.lede { color:var(--soft); font-size:14px; margin:0 0 18px; }
+button { background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:6px 10px; cursor:pointer; font:inherit; font-size:13px; }
+button:hover { border-color:var(--cyan); }
+input, select, textarea { background:#0b1830; color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:6px 8px; font:inherit; font-size:13px; }
+.rookies { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.rookies button.on, .inst button.on { border-color:var(--cyan); color:var(--cyan); }
+.bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:16px; }
+.bar .spacer { flex:1; }
+.inst { display:flex; gap:6px; flex-wrap:wrap; }
+.inst button.on { color:var(--lime); border-color:var(--lime); }
+.wrap { display:grid; grid-template-columns: minmax(0, 1fr) 300px; gap:16px; align-items:start; }
+.routes { display:grid; gap:16px; min-width:0; }
+.route { min-width:0; } /* each route scrolls sideways in its own box; the page stays as wide as the window */
+.rhead { display:flex; align-items:center; gap:8px; margin:0 0 10px; }
+.rhead h2 { margin:0; font-size:18px; color:var(--cyan); flex:1; }
+.rhead button { padding:3px 8px; font-size:12px; }
+.rhead button:disabled { opacity:.35; cursor:default; }
+.route.cur > .tree { border-color:var(--cyan); }
+.tree { overflow-x:auto; padding:16px; background:var(--panel); border:1px solid var(--line); border-radius:10px; min-height:220px; }
+.fx { display:flex; align-items:center; }
+.kids { display:flex; flex-direction:column; gap:14px; border-left:2px solid var(--line); padding-left:0; margin-left:0; }
+.kid { display:flex; align-items:center; }
+.kid > .conn { width:26px; flex:none; border-top:2px solid var(--line); }
+.node { flex:0 0 240px; display:flex; gap:10px; align-items:flex-start; background:#0b1830; border:1px solid var(--line); border-radius:10px; padding:8px 10px; width:240px; min-height:132px; cursor:pointer; margin-left:0; }
+.node.sel { border-color:var(--cyan); }
+.node.t-rookie { background:#1b2a46; border-color:#8a96ad; }
+.node.t-champion { background:#3a3216; border-color:#d9b44a; }
+.node.t-champion-s { background:#5c4a0c; border-color:#ffd84a; }
+.node.t-ultimate { background:#16304f; border-color:#6fa3e0; }
+.node.t-ultimate-s { background:#0b2a52; border-color:#9fd0ff; }
+.node.t-mega { background:#3f1d24; border-color:#e07b7b; }
+.node.t-mega2 { background:#14301c; border-color:#6fd28a; }
+.node.t-super { background:#2e2245; border-color:#a98ae0; }
+.node.start { border-color:var(--lime); }
+.node img { width:44px; height:44px; object-fit:contain; background:var(--ground); border-radius:6px; flex:none; }
+.node .t { font-weight:700; font-size:14px; }
+.node .t .big { font-size:22px; font-weight:800; color:var(--cyan); margin-left:4px; vertical-align:-2px; }
+.node .s { color:var(--soft); font-size:12px; }
+.node .j { color:var(--cyan); font-size:12px; margin-top:3px; }
+.node .j.or { color:var(--amber); }
+.tree { position:relative; }
+.canvas { position:relative; }
+.cell { position:absolute; }
+.cell .node { margin:0; }
+svg.joins { position:absolute; left:0; top:0; pointer-events:none; overflow:visible; }
+.node .n { color:var(--amber); font-size:12px; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.node .acts { margin-top:6px; display:flex; gap:6px; flex-wrap:wrap; }
+.node .acts button { padding:2px 7px; font-size:12px; }
+.add { margin-left:0; padding:8px; background:#0b1830; border:1px dashed var(--line); border-radius:8px; display:grid; gap:6px; width:260px; }
+.add .row { display:flex; gap:6px; flex-wrap:wrap; }
+.side { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; position:sticky; top:12px; max-height:calc(100vh - 24px); overflow:auto; }
+.side h2 { font-size:16px; margin:0 0 6px; }
+.pill { display:inline-flex; align-items:center; gap:6px; background:#0b1830; border:1px solid var(--line); border-radius:999px; padding:3px 10px 3px 4px; font-size:12px; cursor:pointer; white-space:nowrap; }
+.pill img { width:22px; height:22px; object-fit:contain; border-radius:50%; background:var(--ground); }
+.pill.sel { border-color:var(--cyan); }
+.side .acts { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+.side .muted { color:var(--soft); font-size:12px; margin-bottom:10px; }
+.opt { display:flex; align-items:center; gap:8px; width:100%; margin-bottom:6px; text-align:left; }
+.opt img { width:28px; height:28px; object-fit:contain; background:var(--ground); border-radius:4px; }
+.opt small { color:var(--soft); }
+.note { color:var(--soft); font-size:13px; margin-top:12px; }
+</style></head>
+<body><a href="../routes.html" lang="en" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="English">EN</a>
+<h1>Constructor de rutas</h1>
+<p class="lede">Cada Digimon puede tener varias rutas, una debajo de otra. Haz clic en un paso para seleccionarlo; el panel de la derecha muestra las formas disponibles desde ese paso. Un segundo paso desde el mismo punto es una rama paralela, dibujada debajo de la primera.</p>
+<div class="rookies" id="rookies"></div>
+<div class="bar">
+  <div class="inst" id="instances"></div>
+  <button id="newInst">+ Nueva ruta</button>
+  <span class="spacer"></span>
+  <button id="undo" disabled title="Ctrl+Z">Deshacer</button>
+  <button id="loadEx" title="Añade las rutas del autor a las tuyas (las que ya tienes se conservan)">Cargar rutas de ejemplo</button>
+  <button id="exp">Exportar archivo</button>
+  <button id="imp">Importar archivo</button>
+  <input type="file" id="impFile" accept="application/json" hidden>
+</div>
+<div class="wrap">
+  <div class="routes" id="tree"></div>
+  <div class="side" id="side"></div>
+</div>
+<p class="note">Se guarda automáticamente en este navegador. Usa Exportar archivo para tener una copia.</p>
+<script src="../routes/examples.js"></script>
+<script>
+const DATA = {"PARTNERS": {"Kotemon": [{"form": "Dinohumon", "level": 5, "needs": []}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Growlmon", "level": 20}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Growlmon", "level": 30}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "Dinohumon", "level": 20}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Greymon", "level": 10}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Taomon", "level": 50}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "GuardiAngemon", "level": 20}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "Taomon", "level": 30}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "Digitamamon", "level": 20}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "GuardiAngemon", "level": 10}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "Taomon", "level": 20}]}, {"form": "Kyukimon", "level": 20, "needs": []}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 15, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 0, "needs": [{"form": "Growlmon", "level": 50}]}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 40}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 40}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Taomon", "level": 40}]}, {"form": "GuardiAngemon", "level": 40, "needs": []}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Kumamon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 30}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Kabuterimon", "level": 20}]}, {"form": "Grizzmon", "level": 5, "needs": []}, {"form": "Greymon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 20}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Kyubimon", "level": 10}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Marsmon", "level": 20}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "Grizzmon", "level": 20}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "Myotismon", "level": 20}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "Marsmon", "level": 10}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "Marsmon", "level": 30}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "Angemon", "level": 20}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 20, "needs": []}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 0, "needs": [{"form": "Growlmon", "level": 50}]}, {"form": "Taomon", "level": 15, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 50}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 50}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Grizzmon", "level": 30}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 40, "needs": []}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Monmon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 20}]}, {"form": "Hookmon", "level": 5, "needs": []}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Growlmon", "level": 20}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "Cannondramon", "level": 10}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Hookmon", "level": 20}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Kyukimon", "level": 20}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "Angewomon", "level": 10}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "Armormon", "level": 40}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 20}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 30}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 30}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 20, "needs": []}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 0, "needs": [{"form": "Growlmon", "level": 50}]}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 40}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Armormon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 50}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Armormon", "level": 30}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 40, "needs": []}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Agumon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "WarGreymon", "level": 20}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 30}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 30}]}, {"form": "Greymon", "level": 5, "needs": []}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 30}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Greymon", "level": 20}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 20}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "Kabuterimon", "level": 20}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 30}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "WarGreymon", "level": 30}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 20}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 20, "needs": []}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 15, "needs": [{"form": "Growlmon", "level": 40}]}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 40}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "WarGreymon", "level": 10}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 50}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 20}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 40, "needs": []}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Veemon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 30}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 35}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 45}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "Paildramon", "level": 35}]}, {"form": "ExVeemon", "level": 5, "needs": []}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Paildramon", "level": 30}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "Paildramon", "level": 40}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "Paildramon", "level": 45}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "Paildramon", "level": 25}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "ExVeemon", "level": 30}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 20}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 20, "needs": [{"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 0, "needs": [{"form": "Growlmon", "level": 50}]}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 50}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 40}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Paildramon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 40}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 20}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 40, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Guilmon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 20}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Dinohumon", "level": 20}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Gallantmon", "level": 10}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "Gallantmon", "level": 30}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Gallantmon", "level": 20}]}, {"form": "Growlmon", "level": 5, "needs": []}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "Angewomon", "level": 10}]}, {"form": "Angemon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 20}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 20}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "Growlmon", "level": 30}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 40}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 20, "needs": []}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 50}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Growlmon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 40}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 30}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 40, "needs": []}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 0, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Renamon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "Grizzmon", "level": 20}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Kyukimon", "level": 20}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Myotismon", "level": 20}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "Grizzmon", "level": 30}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Taomon", "level": 20}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "Stingmon", "level": 20}]}, {"form": "Kyubimon", "level": 5, "needs": []}, {"form": "Angemon", "level": 0, "needs": [{"form": "Sakuyamon", "level": 30}]}, {"form": "Devimon", "level": 0, "needs": [{"form": "Sakuyamon", "level": 10}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "Kyubimon", "level": 20}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 30}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 25, "needs": [{"form": "Growlmon", "level": 40}]}, {"form": "Taomon", "level": 20, "needs": []}, {"form": "MagnaAngemon", "level": 0, "needs": [{"form": "Angemon", "level": 50}]}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 50}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Taomon", "level": 30}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 40}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Sakuyamon", "level": 20}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 40, "needs": []}, {"form": "Seraphimon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 99}]}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 40}]}, {"form": "Rosemon", "level": 15, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}], "Patamon": [{"form": "Dinohumon", "level": 0, "needs": [{"form": "Growlmon", "level": 20}]}, {"form": "Hookmon", "level": 0, "needs": [{"form": "Seraphimon", "level": 10}]}, {"form": "Grizzmon", "level": 0, "needs": [{"form": "Growlmon", "level": 40}]}, {"form": "Greymon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 30}]}, {"form": "ExVeemon", "level": 0, "needs": [{"form": "Growlmon", "level": 30}]}, {"form": "Growlmon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 20}]}, {"form": "Kyubimon", "level": 0, "needs": [{"form": "Armormon", "level": 40}]}, {"form": "Angemon", "level": 5, "needs": []}, {"form": "Devimon", "level": 0, "needs": [{"form": "Armormon", "level": 30}]}, {"form": "Stingmon", "level": 0, "needs": [{"form": "MagnaAngemon", "level": 20}]}, {"form": "Angewomon", "level": 0, "needs": [{"form": "Angemon", "level": 30}]}, {"form": "Kyukimon", "level": 0, "needs": [{"form": "Dinohumon", "level": 50}]}, {"form": "Armormon", "level": 0, "needs": [{"form": "Hookmon", "level": 50}]}, {"form": "GrapLeomon", "level": 0, "needs": [{"form": "Grizzmon", "level": 50}]}, {"form": "MetalGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 40}]}, {"form": "SkullGreymon", "level": 0, "needs": [{"form": "Greymon", "level": 50}]}, {"form": "Paildramon", "level": 0, "needs": [{"form": "ExVeemon", "level": 5}, {"form": "Stingmon", "level": 5}]}, {"form": "WarGrowlmon", "level": 0, "needs": [{"form": "Growlmon", "level": 50}]}, {"form": "Taomon", "level": 0, "needs": [{"form": "Kyubimon", "level": 40}]}, {"form": "MagnaAngemon", "level": 20, "needs": []}, {"form": "Myotismon", "level": 0, "needs": [{"form": "Devimon", "level": 50}]}, {"form": "MetalMamemon", "level": 0, "needs": [{"form": "Armormon", "level": 20}]}, {"form": "Kabuterimon", "level": 0, "needs": [{"form": "Stingmon", "level": 40}]}, {"form": "Digitamamon", "level": 0, "needs": [{"form": "Angemon", "level": 20}]}, {"form": "GuardiAngemon", "level": 0, "needs": [{"form": "Kyukimon", "level": 99}]}, {"form": "Cannondramon", "level": 0, "needs": [{"form": "Armormon", "level": 99}]}, {"form": "Marsmon", "level": 0, "needs": [{"form": "GrapLeomon", "level": 99}]}, {"form": "WarGreymon", "level": 0, "needs": [{"form": "MetalGreymon", "level": 99}]}, {"form": "Imperialdramon", "level": 0, "needs": [{"form": "Paildramon", "level": 50}]}, {"form": "Gallantmon", "level": 0, "needs": [{"form": "WarGrowlmon", "level": 99}]}, {"form": "Sakuyamon", "level": 0, "needs": [{"form": "Taomon", "level": 99}]}, {"form": "Seraphimon", "level": 40, "needs": []}, {"form": "MetalGarurumon", "level": 0, "needs": [{"form": "MetalMamemon", "level": 50}]}, {"form": "Rosemon", "level": 15, "needs": [{"form": "Angewomon", "level": 40}]}, {"form": "BK WarGreymon", "level": 0, "needs": [{"form": "SkullGreymon", "level": 99}]}, {"form": "Imperialdramon FM", "level": 0, "needs": [{"form": "Imperialdramon", "level": 99}]}, {"form": "MaloMyotismon", "level": 0, "needs": [{"form": "Myotismon", "level": 99}]}, {"form": "MegaGargomon", "level": 0, "needs": [{"form": "MetalGarurumon", "level": 99}]}, {"form": "GranKuwagamon", "level": 0, "needs": [{"form": "Imperialdramon", "level": 40}, {"form": "Kabuterimon", "level": 40}]}, {"form": "Phoenixmon", "level": 0, "needs": [{"form": "Rosemon", "level": 99}]}, {"form": "Omnimon", "level": 0, "needs": [{"form": "WarGreymon", "level": 40}, {"form": "MetalGarurumon", "level": 40}]}, {"form": "Imperialdramon PM", "level": 0, "needs": [{"form": "Imperialdramon FM", "level": 40}, {"form": "Omnimon", "level": 40}]}, {"form": "Beelzemon", "level": 0, "needs": [{"form": "MaloMyotismon", "level": 40}, {"form": "Gallantmon", "level": 40}]}, {"form": "Diaboromon", "level": 0, "needs": [{"form": "GranKuwagamon", "level": 99}, {"form": "BK WarGreymon", "level": 99}]}]}, "IMG": {"Kotemon": "img/1056.png", "Kumamon": "img/0585.png", "Monmon": "img/0581.png", "Agumon": "img/0499.png", "Veemon": "img/0526.png", "Guilmon": "img/0356.png", "Renamon": "img/0511.png", "Patamon": "img/0591.png", "Dinohumon": "img/1366.png", "Hookmon": "img/1146.png", "Grizzmon": "img/0704.png", "Greymon": "img/0637.png", "ExVeemon": "img/0575.png", "Growlmon": "img/0625.png", "Kyubimon": "img/0927.png", "Angemon": "img/1054.png", "Devimon": "img/0622.png", "Stingmon": "img/0576.png", "Angewomon": "img/0691.png", "Kyukimon": "img/1832.png", "Armormon": "img/1105.png", "GrapLeomon": "img/0821.png", "MetalGreymon": "img/0597.png", "SkullGreymon": "img/0634.png", "Paildramon": "img/0601.png", "WarGrowlmon": "img/1103.png", "Taomon": "img/1112.png", "MagnaAngemon": "img/0724.png", "Myotismon": "img/1148.png", "MetalMamemon": "img/0668.png", "Kabuterimon": "img/1213.png", "Digitamamon": "img/1147.png", "GuardiAngemon": "img/1834.png", "Cannondramon": "img/1836.png", "Marsmon": "img/1214.png", "WarGreymon": "img/0506.png", "Imperialdramon": "img/0503.png", "Gallantmon": "img/1063.png", "Sakuyamon": "img/1091.png", "Seraphimon": "img/1104.png", "MetalGarurumon": "img/0550.png", "Rosemon": "img/1739.png", "BK WarGreymon": "img/0729.png", "Imperialdramon FM": "img/0849.png", "MaloMyotismon": "img/1766.png", "MegaGargomon": "img/1618.png", "GranKuwagamon": "img/0508.png", "Phoenixmon": "img/0682.png", "Omnimon": "img/0604.png", "Imperialdramon PM": "img/0512.png", "Beelzemon": "img/1546.png", "Diaboromon": "img/1057.png"}, "ROOKIES": ["Kotemon", "Kumamon", "Monmon", "Agumon", "Veemon", "Guilmon", "Renamon", "Patamon"], "TIER": {"Kotemon": "rookie", "Kumamon": "rookie", "Monmon": "rookie", "Agumon": "rookie", "Veemon": "rookie", "Guilmon": "rookie", "Renamon": "rookie", "Patamon": "rookie", "Dinohumon": "champion", "Hookmon": "champion", "Grizzmon": "champion", "Greymon": "champion", "ExVeemon": "champion", "Growlmon": "champion", "Kyubimon": "champion", "Angemon": "champion", "Devimon": "champion-s", "Stingmon": "champion", "Angewomon": "champion", "Kyukimon": "ultimate", "Armormon": "ultimate", "GrapLeomon": "ultimate", "MetalGreymon": "ultimate", "SkullGreymon": "ultimate", "Paildramon": "ultimate", "WarGrowlmon": "ultimate", "Taomon": "ultimate", "MagnaAngemon": "ultimate", "Myotismon": "ultimate-s", "MetalMamemon": "champion-s", "Kabuterimon": "ultimate", "Digitamamon": "ultimate", "GuardiAngemon": "mega", "Cannondramon": "mega", "Marsmon": "mega", "WarGreymon": "mega", "Imperialdramon": "mega", "Gallantmon": "mega", "Sakuyamon": "mega", "Seraphimon": "mega", "MetalGarurumon": "ultimate-s", "Rosemon": "ultimate-s", "BK WarGreymon": "mega", "Imperialdramon FM": "mega2", "MaloMyotismon": "mega2", "MegaGargomon": "mega2", "GranKuwagamon": "mega2", "Phoenixmon": "mega", "Omnimon": "mega2", "Imperialdramon PM": "super", "Beelzemon": "super", "Diaboromon": "super"}};
+const PARTNERS = DATA.PARTNERS, IMG = DATA.IMG, ROOKIES = DATA.ROOKIES, TIER = DATA.TIER;
+const KEY = "dw3-routes-v1";
+/* Agumon routes from Documents\DW2003\Rutes\Agumon, added to the browser's saved routes once (the flag below) */
+const SEED_KEY = "dw3-routes-seed-agumon-1";
+let seedN = 0;
+function seedRoute(name, notes, steps) {
+  const mk = o => ({ id: "seed" + (seedN++).toString(36), note: "", children: [], ...o });
+  const root = mk({ kind: "start", note: notes }); let parent = root;
+  for (const [form, value, note] of steps) { const s = mk({ kind: "form", form, value, note: note || "" }); parent.children.push(s); parent = s; }
+  return { id: "seed" + (seedN++).toString(36), rookie: "Agumon", name, root };
+}
+const SEED = [
+  seedRoute("54 Fast Diaboromon", "", [["Greymon", 50], ["Growlmon", 25, "Learn Picking Claw"], ["SkullGreymon", 99], ["BK WarGreymon", 99], ["MetalGreymon", 30], ["ExVeemon", 5], ["Growlmon", 40, "Train until Agumon is Lvl 40"], ["WarGrowlmon", 90, "Train until Agumon is Lvl 40"], ["WarGreymon", 30], ["Stingmon", 50], ["Paildramon", 50], ["Imperialdramon", 40], ["Kabuterimon", 40], ["GranKuwagamon", 99], ["Diaboromon", 1]]),
+  seedRoute("54 Fast IDramon", "", [["Greymon", 50], ["Growlmon", 25, "Learn Picking Claw"], ["SkullGreymon", 99], ["BK WarGreymon", 99], ["MetalGreymon", 30], ["ExVeemon", 5], ["Growlmon", 40, "Train until Agumon is Lvl 40"], ["WarGrowlmon", 90, "Train until Agumon is Lvl 40"], ["WarGreymon", 40], ["Stingmon", 5], ["Paildramon", 50], ["Imperialdramon", 99], ["Imperialdramon FM", 40], ["MetalMamemon", 40], ["MetalGarurumon", 40], ["Omnimon", 40], ["Imperialdramon PM", 1]]),
+  seedRoute("55 Ice + Thunder + Dark + Fire Beelzemon", "Before Taomon, it's a no-damage build", [["Greymon", 20], ["Growlmon", 41], ["WarGrowlmon", 58], ["MetalGreymon", 20], ["Kyubimon", 40], ["Taomon", 99], ["Sakuyamon", 75], ["Sakuyamon", 90, "Load Lightning Bolt / Giga Freeze"], ["WarGrowlmon", 99], ["Gallantmon", 40], ["WarGreymon", 30], ["WarGreymon", 40, "Load Flame Breath + Omnimon"], ["Stingmon", 50], ["Kabuterimon", 20], ["Angemon", 50], ["MagnaAngemon", 30], ["Devimon", 40], ["Myotismon", 99], ["MaloMyotismon", 40], ["Beelzemon", 1], ["MetalMamemon", 40], ["MetalGarurumon", 40], ["Omnimon", 85]]),
+];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let data = load();
+let cur = ROOKIES[0], curInst = null, openAdd = null, sel = null, addPrefill = null;
+
+function load() {
+  let d = null; try { d = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+  if (!d || !Array.isArray(d.instances)) d = { instances: [] };
+  if (!localStorage.getItem(SEED_KEY)) { d.instances.push(...JSON.parse(JSON.stringify(SEED))); localStorage.setItem(SEED_KEY, "1"); localStorage.setItem(KEY, JSON.stringify(d)); }
+  return d;
+}
+/* Undo: the saved state before each change is kept (the last UNDO_MAX of them, in the browser) */
+const UNDO_KEY = "dw3-routes-undo-v1", UNDO_MAX = 20;
+let undoStack = [];
+try { undoStack = JSON.parse(localStorage.getItem(UNDO_KEY)) || []; } catch (e) {}
+function persist() {
+  for (;;) {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); localStorage.setItem(UNDO_KEY, JSON.stringify(undoStack)); return; }
+    catch (e) { if (!undoStack.length) throw e; undoStack.shift(); } // browser storage full: drop the oldest step
+  }
+}
+function save() {
+  const json = JSON.stringify(data), before = localStorage.getItem(KEY);
+  if (before !== null && before !== json) { undoStack.push(before); while (undoStack.length > UNDO_MAX) undoStack.shift(); }
+  persist();
+  updateUndo();
+}
+function undo() {
+  if (!undoStack.length) return;
+  data = JSON.parse(undoStack.pop());
+  if (!data.instances.some(i => i.id === curInst)) curInst = null;
+  sel = null; openAdd = null; addPrefill = null;
+  persist(); renderAll();
+}
+function updateUndo() { const b = document.getElementById("undo"); if (b) b.disabled = !undoStack.length; }
+let nid = Date.now();
+const newId = () => "n" + (nid++).toString(36);
+const instancesOf = r => data.instances.filter(i => i.rookie === r);
+let drawInst = null; // the route being drawn (nodeCard's estimates)
+const instOf = id => instancesOf(cur).find(i => find(i.root, id)) || null;
+function currentInst() {
+  const list = instancesOf(cur);
+  if (!list.find(i => i.id === curInst)) curInst = list.length ? list[0].id : null;
+  return list.find(i => i.id === curInst) || null;
+}
+function findPath(node, id, path = []) {
+  path = [...path, node];
+  if (node.id === id) return path;
+  for (const c of node.children || []) { const p = findPath(c, id, path); if (p) return p; }
+  return null;
+}
+function find(node, id) { return findPath(node, id) ? findPath(node, id).slice(-1)[0] : null; }
+function parentOf(root, id) { const p = findPath(root, id); return p && p.length > 1 ? p[p.length - 2] : null; }
+
+/* The partner's level along a route, estimated as the route planner does: random battles against enemies of its
+   level (EXP 5 × level, DV EXP 10, level ÷ 5 past 50), the partner fighting alone; the route starts with it at
+   level 5. EXP per level: (L³ + 5L − 6) × expRate / 10 + 0 / 50 / 800 / 3000 (stfgtrep/growth.c) */
+const EXP_RATE = {"Kotemon": 8, "Kumamon": 10, "Monmon": 6, "Agumon": 9, "Veemon": 8, "Guilmon": 7, "Renamon": 7, "Patamon": 9}, EXP_LEVEL = {"Kotemon":100,"Kumamon":100,"Monmon":100,"Agumon":100,"Veemon":100,"Guilmon":100,"Renamon":100,"Patamon":100,"Dinohumon":100,"Hookmon":100,"Grizzmon":100,"Greymon":100,"ExVeemon":100,"Growlmon":100,"Kyubimon":100,"Angemon":100,"Devimon":95,"Stingmon":100,"Angewomon":95,"Kyukimon":95,"Armormon":95,"GrapLeomon":95,"MetalGreymon":95,"SkullGreymon":95,"Paildramon":95,"WarGrowlmon":95,"Taomon":95,"MagnaAngemon":95,"Myotismon":90,"MetalMamemon":95,"Kabuterimon":95,"Digitamamon":90,"GuardiAngemon":90,"Cannondramon":90,"Marsmon":90,"WarGreymon":90,"Imperialdramon":90,"Gallantmon":90,"Sakuyamon":90,"Seraphimon":90,"MetalGarurumon":90,"Rosemon":90,"BK WarGreymon":90,"Imperialdramon FM":80,"MaloMyotismon":80,"MegaGargomon":80,"GranKuwagamon":80,"Phoenixmon":80,"Omnimon":60,"Imperialdramon PM":60,"Beelzemon":60,"Diaboromon":60};
+const dvNeed = (k, el) => k <= el - 1 ? k * 10 : (el - 1) * 10 + (k - (el - 1)) * 50;
+const lvOf = (pts, el) => { let lv = 1; while (lv < 99 && pts >= dvNeed(lv, el)) lv++; return lv; };
+function simulate(path) {
+  const rate = EXP_RATE[cur] || 10;
+  const expTo = L => (L * L * L + L * 5 - 6) * rate / 10 + (L < 5 ? 0 : L < 20 ? 50 : L < 40 ? 800 : 3000);
+  let L = 1, exp = 0;
+  const pts = {}, dv = {}, battle = () => { exp += 5 * L; while (L < 99 && exp > expTo(L + 1)) L++; };
+  const levelTo = v => { let n = 0; while (L < v && L < 99 && n++ < 200000) battle(); };
+  levelTo(5);
+  for (const n of path) {
+    if (n.kind === "level") levelTo(n.value);
+    if (n.kind === "form") {
+      const e = EXP_LEVEL[n.form] || 100;
+      pts[n.form] = pts[n.form] || 0;
+      let k = 0;
+      while (lvOf(pts[n.form], e) < n.value && k++ < 200000) {
+        const cap = lvOf(pts[n.form], e) < e ? 10 : 50;
+        pts[n.form] += Math.max(1, Math.min(cap, L <= 50 ? 10 : Math.floor(L / 5)));
+        battle();
+      }
+      dv[n.form] = Math.max(dv[n.form] || 0, n.value);
+    }
+  }
+  return { level: L, dv };
+}
+/* state at a step: the partner's estimated level and DV levels along the route from the start */
+function stateAt(inst, id) {
+  return simulate(fullPath(inst, id));
+}
+/* the steps up to a step, with those of the branches it joins (node.join: another step's id), each once */
+function fullPath(inst, id, seen = new Set()) {
+  const out = [];
+  for (const n of findPath(inst.root, id) || [inst.root]) {
+    if (n.join && n.joinMode !== "or" && find(inst.root, n.join)) for (const m of fullPath(inst, n.join, seen)) out.push(m);
+    if (!seen.has(n.id)) { seen.add(n.id); out.push(n); }
+  }
+  return out.filter((n, i) => out.indexOf(n) === i);
+}
+const stepLabel = n => n.kind === "start" ? cur : n.kind === "form" ? `${n.form} ${n.value}` : `${cur} Nv ${n.value}`;
+function ok(entry, st, rookie) {
+  if (entry.level && st.level < entry.level) return false;
+  return entry.needs.every(nd => (nd.form === rookie ? st.level : (st.dv[nd.form] || 0)) >= nd.level);
+}
+function available(inst, id) {
+  const st = stateAt(inst, id);
+  return PARTNERS[cur].filter(e => e.form !== cur && ok(e, st, cur)).map(e => ({ form: e.form, dv: st.dv[e.form] || 0 }));
+}
+
+function renderRookies() {
+  document.getElementById("rookies").innerHTML = ROOKIES.map(r =>
+    `<button class="${r === cur ? "on" : ""}" data-r="${esc(r)}"><img src="${esc(IMG[r])}" alt="" style="width:22px;height:22px;vertical-align:middle;margin-right:4px">${esc(r)}</button>`).join("");
+}
+function renderInstances() {
+  document.getElementById("instances").innerHTML = ""; return; // the routes are all drawn, one under the other
+  const list = instancesOf(cur);
+  document.getElementById("instances").innerHTML = list.map(i =>
+    `<button class="${i.id === curInst ? "on" : ""}" data-i="${i.id}">${esc(i.name)}</button>`).join("") || `<span class="note">Aún no hay rutas.</span>`;
+}
+function nodeCard(node, isRoot) {
+  const img = `<img src="${esc(IMG[node.form || cur])}" alt="">`;
+  const inst = drawInst || currentInst(), lv = inst ? stateAt(inst, node.id).level : 5;
+  const title = (isRoot ? esc(cur) : node.kind === "form" ? esc(node.form) : esc(cur)) +
+    ` <span class="big">${isRoot ? 5 : node.value}</span>`;
+  const sub = isRoot ? "Inicio · compañero a nivel 5" : node.kind === "level" ? `Nivel del compañero ${node.value}` : `Nivel DV ${node.value} · ${esc(cur)} Nv ~${lv}`;
+  const acts = `<button data-add="${node.id}" title="Añade aquí el siguiente paso (un segundo paso desde el mismo es una rama paralela)">+ Paso</button>` + (isRoot ? "" : ` <button data-lv="${node.id}">Editar</button> <button data-edit="${node.id}">Nota</button> <button data-del="${node.id}">Borrar</button>`);
+  return `<div class="node t-${TIER[node.form || cur]} ${isRoot ? "start" : ""} ${sel === node.id ? "sel" : ""}" data-sel="${node.id}">${img}<div><div class="t">${title}</div><div class="s">${sub}</div>` +
+    (node.join && find(inst.root, node.join) ? `<div class="j${node.joinMode === "or" ? " or" : ""}">⤶ ${node.joinMode === "or" ? "o después de" : "también después de"} ${esc(stepLabel(find(inst.root, node.join)))}</div>` : "") +
+    (node.note ? `<div class="n">${esc(node.note)}</div>` : "") + `<div class="acts">${acts}</div></div></div>`;
+}
+function pill(node) {
+  const title = node.kind === "form" ? esc(node.form) : "Partner";
+  const sub = node.kind === "level" ? `Lv ${node.value}` : `DV ${node.value}`;
+  return `<div class="pill ${sel === node.id ? "sel" : ""}" data-sel="${node.id}"><img src="${esc(IMG[node.form || cur])}" alt=""><span>${title} · ${sub}</span></div>`;
+}
+function compact(node) {
+  const kids = node.children || [];
+  let h = `<div class="fx">${pill(node)}`;
+  if (openAdd === node.id) h += `<div style="margin-left:14px">${addFormHTML(node.id)}</div>`;
+  if (kids.length) h += `<div class="kids" style="margin-left:14px">` + kids.map(c => `<div class="kid"><div class="conn"></div>${compact(c)}</div>`).join("") + `</div>`;
+  return h + `</div>`;
+}
+/* each step's column: one after its previous step's, and after the step it joins (so a joining step stands to the right
+   of both branches) */
+let COLS = {};
+function columns(inst) {
+  const col = {}, busy = new Set();
+  const of = n => {
+    if (col[n.id] !== undefined) return col[n.id];
+    if (busy.has(n.id)) return 0;
+    busy.add(n.id);
+    const par = parentOf(inst.root, n.id), j = n.join && find(inst.root, n.join);
+    col[n.id] = Math.max(par ? of(par) + 1 : 0, j ? of(j) + 1 : 0);
+    busy.delete(n.id);
+    return col[n.id];
+  };
+  (function walk(n) { of(n); (n.children || []).forEach(walk); })(inst.root);
+  return col;
+}
+const COL_W = 282; // a column: the card (240), the branch's margin (14) and line (2) and the connector (26)
+function flow(node, isRoot) {
+  const kids = node.children || [];
+  let h = `<div class="fx">${nodeCard(node, isRoot)}`;
+  if (openAdd === node.id) h += `<div style="margin-left:14px">${addFormHTML(node.id)}</div>`;
+  const gap = c => Math.max(0, (COLS[c.id] ?? 0) - (COLS[node.id] ?? 0) - 1) * COL_W;
+  if (kids.length) h += `<div class="kids" style="margin-left:14px">` + kids.map(c => `<div class="kid"><div class="conn" style="width:${26 + gap(c)}px"></div>${flow(c, false)}</div>`).join("") + `</div>`;
+  return h + `</div>`;
+}
+function addFormHTML(parentId) {
+  const opts = PARTNERS[cur].map(e => `<option value="${esc(e.form)}" ${addPrefill === e.form ? "selected" : ""}>${esc(e.form)}</option>`).join("");
+  const isForm = addPrefill ? "form" : "level";
+  return `<div class="add" data-parent="${parentId}">
+    <div class="row"><select data-k="kind"><option value="level" ${isForm === "level" ? "selected" : ""}>Nivel del compañero</option><option value="form" ${isForm === "form" ? "selected" : ""}>Entrenar forma</option></select>
+    <select data-k="form" ${isForm === "form" ? "" : "hidden"}>${opts}</select></div>
+    <div class="row"><input data-k="value" type="number" min="1" max="99" placeholder="Nivel" style="width:100px"></div>
+    <textarea data-k="note" rows="2" placeholder="Nota (opcional)"></textarea>
+    <div class="row"><button data-save="${parentId}">Guardar paso</button><button data-cancel>Cancelar</button></div></div>`;
+}
+/* Two rows, top and bottom: a step stays in its previous step's row, a parallel branch (a second next step) takes the
+   other one. The cards are laid out at their column and row, then measured, and the lines drawn between them. */
+const COL_X = 290, ROW_GAP = 24, PAD = 16;
+function rows(inst) {
+  const row = {};
+  (function walk(n, r) { row[n.id] = r; (n.children || []).forEach((c, i) => walk(c, i === 0 ? r : 1 - r)); })(inst.root, 0);
+  return row;
+}
+function renderTree() {
+  const inst = currentInst(), box = document.getElementById("tree");
+  if (!inst) { box.innerHTML = `<p class="note">Pulsa + Nueva ruta para empezar una ruta de ${esc(cur)}.</p>`; renderSide(null); return; }
+  if (!sel || !find(inst.root, sel)) sel = inst.root.id;
+  // drawing the routes again would send each one's scroll bar back to the start: keep where they were
+  const scroll = {};
+  box.querySelectorAll(".tree[data-inst]").forEach(tr => scroll[tr.dataset.inst] = [tr.scrollLeft, tr.scrollTop]);
+  const all = instancesOf(cur);
+  box.innerHTML = all.map((i, k) => {
+    drawInst = i; COLS = columns(i);
+    const row = rows(i), cells = [];
+    (function walk(n) {
+      cells.push(`<div class="cell" data-row="${row[n.id]}" style="left:${PAD + COLS[n.id] * COL_X}px">${nodeCard(n, n === i.root)}</div>`);
+      (n.children || []).forEach(walk);
+    })(i.root);
+    const width = PAD * 2 + (Math.max(...Object.values(COLS)) + 1) * COL_X;
+    const h = `<section class="route ${i.id === inst.id ? "cur" : ""}"><div class="rhead"><h2>${esc(i.name)}</h2>` +
+      `<button data-up="${i.id}" title="Subir" ${k === 0 ? "disabled" : ""}>↑</button><button data-down="${i.id}" title="Bajar" ${k === all.length - 1 ? "disabled" : ""}>↓</button>` +
+      `<button data-ren="${i.id}">Renombrar</button><button data-dup="${i.id}">Duplicar</button><button data-delinst="${i.id}">Borrar ruta</button></div>` +
+      `<div class="tree" data-inst="${i.id}"><div class="canvas" style="width:${width}px">${cells.join("")}</div></div></section>`;
+    drawInst = null;
+    return h;
+  }).join("");
+  box.querySelectorAll(".tree[data-inst]").forEach(tr => { layoutRows(tr); const s = scroll[tr.dataset.inst]; if (s) { tr.scrollLeft = s[0]; tr.scrollTop = s[1]; } });
+  renderSide(inst);
+}
+/* Each row as tall as its tallest card; then the lines: a step to its next ones (solid, from the right side's middle to
+   the next card's), and a joined branch to the step that joins it (dashed, with an arrow) */
+function layoutRows(tree) {
+  const inst = data.instances.find(i => i.id === tree.dataset.inst), canvas = tree.querySelector(".canvas");
+  const cells = [...canvas.querySelectorAll(".cell")];
+  const tall = [0, 1].map(r => Math.max(0, ...cells.filter(c => +c.dataset.row === r).map(c => c.offsetHeight)));
+  const top = [PAD, PAD + tall[0] + ROW_GAP];
+  cells.forEach(c => c.style.top = top[+c.dataset.row] + "px");
+  canvas.style.height = (tall[1] ? top[1] + tall[1] : top[0] + tall[0]) + PAD + "px";
+  const at = id => { const el = canvas.querySelector(`[data-sel="${id}"]`); if (!el) return null;
+    const c = el.parentElement; return {l: c.offsetLeft, r: c.offsetLeft + c.offsetWidth, t: c.offsetTop, b: c.offsetTop + c.offsetHeight, m: c.offsetTop + Math.min(c.offsetHeight, 132) / 2}; };
+  const lines = [], ands = [], ors = [];
+  (function walk(n) {
+    const a = at(n.id);
+    for (const c of n.children || []) {
+      const b = at(c.id);
+      if (a && b) lines.push(a.m === b.m ? `<path d="M${a.r},${a.m} H${b.l}"/>` : `<path d="M${a.r},${a.m} H${b.l - 22} V${b.m} H${b.l}"/>`);
+      walk(c);
+    }
+    if (n.join) {
+      const s = at(n.join), b = at(n.id);
+      if (s && b) {
+        const joins = n.joinMode === "or" ? ors : ands;
+        if (s.r + 24 <= b.l) joins.push(`<path d="M${s.r},${s.m} H${b.l - 12} V${b.m} H${b.l - 2}"/>`);
+        else if (s.l - 24 >= b.r) joins.push(`<path d="M${s.l},${s.m} H${b.r + 12} V${b.m} H${b.r + 2}"/>`);
+        else { const x = Math.max(s.l, b.l) + 60; joins.push(s.b < b.t ? `<path d="M${x},${s.b} V${b.t - 2}"/>` : `<path d="M${x},${s.t} V${b.b + 2}"/>`); }
+      }
+    }
+  })(inst.root);
+  canvas.insertAdjacentHTML("afterbegin", `<svg class="joins" width="${canvas.offsetWidth}" height="${canvas.offsetHeight}">` +
+    `<defs><marker id="jh-${inst.id}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#48d3f0"/></marker></defs>` +
+    `<g fill="none" stroke="#2a4170" stroke-width="2">${lines.join("")}</g>` +
+    `<marker id="jo-${inst.id}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#ffbf47"/></marker>` +
+    `<g fill="none" stroke="#48d3f0" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#jh-${inst.id})">${ands.join("")}</g>` +
+    `<g fill="none" stroke="#ffbf47" stroke-width="2" stroke-dasharray="2 4" marker-end="url(#jo-${inst.id})">${ors.join("")}</g></svg>`);
+}
+function renderSide(inst) {
+  const box = document.getElementById("side");
+  if (!inst) { box.innerHTML = ""; return; }
+  const node = find(inst.root, sel);
+  const st = stateAt(inst, sel);
+  const list = available(inst, sel);
+  const dvLines = Object.keys(st.dv).length ? Object.entries(st.dv).map(([f, v]) => `${esc(f)} DV ${v}`).join(" · ") : "no forms trained yet";
+  box.innerHTML = `<h2>Disponible desde aquí</h2>
+    <div class="muted">Partner level ~${st.level} (estimated) · ${dvLines}</div>` +
+    (list.length ? list.map(o => `<button class="opt" data-pick="${esc(o.form)}"><img src="${esc(IMG[o.form])}" alt=""><span>${esc(o.form)}<br><small>${o.dv ? "DV " + o.dv + " en esta ruta" : "aún sin entrenar"}</small></span></button>`).join("")
+      : `<div class="muted">En este punto no se desbloquea nada nuevo.</div>`) +
+    (node ? `<div class="muted" style="margin-top:10px">Añade un paso después del seleccionado. Si ya tiene un paso siguiente, este va en paralelo.</div>` : "") + (node ? addFormHTML(sel) : "") + (node ? `<div class="muted" style="margin-top:10px">Seleccionado: ${node.kind === "start" ? esc(cur) : node.kind === "form" ? esc(node.form) + " hasta DV " + node.value : "nivel del compañero " + node.value}${node.note ? "<br>Nota: " + esc(node.note) : ""}</div>${joinPicker(inst, node)}<div class="acts"><button data-add="${node.id}">+ Paso aquí</button><button data-upto="${node.id}">Nueva ruta hasta aquí</button>${node.kind === "start" ? "" : `<button data-lv="${node.id}">Editar</button><button data-edit="${node.id}">Nota</button><button data-del="${node.id}">Borrar</button>`}</div>` : "");
+}
+function joinPicker(inst, node) {
+  if (node.kind === "start") return "";
+  const before = new Set((findPath(inst.root, node.id) || []).map(n => n.id)), after = new Set(), all = [];
+  (function mark(n) { after.add(n.id); (n.children || []).forEach(mark); })(node);
+  (function walk(n) { if (!before.has(n.id) && !after.has(n.id)) all.push(n); (n.children || []).forEach(walk); })(inst.root);
+  if (!all.length) return "";
+  return `<div class="muted" style="margin-top:10px">Se une a otra rama (también la necesita hecha):</div>
+    <select data-join="${node.id}" style="width:100%"><option value="">— ninguna —</option>` +
+    all.map(n => `<option value="${n.id}" ${node.join === n.id ? "selected" : ""}>${esc(stepLabel(n))}</option>`).join("") + `</select>` +
+    (node.join ? `<select data-joinmode="${node.id}" style="width:100%;margin-top:6px"><option value="and" ${node.joinMode !== "or" ? "selected" : ""}>Y: necesita las dos ramas</option>` +
+      `<option value="or" ${node.joinMode === "or" ? "selected" : ""}>O: le basta cualquiera de las dos</option></select>` : "");
+}
+/* A copy of a route (or of the steps up to one of its steps) with new ids; joins keep pointing inside the copy, and
+   those to steps left out are dropped */
+function copyRoute(inst, name, upTo) {
+  const keep = upTo ? new Set((findPath(inst.root, upTo) || []).map(n => n.id)) : null, map = {};
+  const clone = n => { const c = {...n, id: newId(), children: []}; map[n.id] = c.id;
+    c.children = (n.children || []).filter(k => !keep || keep.has(k.id)).map(clone); return c; };
+  const root = clone(inst.root);
+  (function fix(n) { if (n.join) { if (map[n.join]) n.join = map[n.join]; else { delete n.join; delete n.joinMode; } } n.children.forEach(fix); })(root);
+  const copy = { id: newId(), rookie: inst.rookie, name, root };
+  data.instances.push(copy);
+  curInst = copy.id; sel = null; save(); renderAll();
+}
+/* Moves a route up or down among its partner's (the others' keep their places) */
+function moveRoute(id, dir) {
+  const mine = data.instances.map((r, i) => [r, i]).filter(([r]) => r.rookie === cur);
+  const k = mine.findIndex(([r]) => r.id === id), other = mine[k + dir];
+  if (k < 0 || !other) return;
+  const a = mine[k][1], b = other[1];
+  [data.instances[a], data.instances[b]] = [data.instances[b], data.instances[a]];
+  save(); renderAll();
+}
+function renderAll() { renderRookies(); renderInstances(); renderTree(); updateUndo(); }
+
+document.addEventListener("click", ev => {
+  const t = ev.target.closest("button, [data-sel]"); if (!t) return;
+  { const id = t.dataset.sel || t.dataset.add || t.dataset.del || t.dataset.edit || t.dataset.lv || t.dataset.save; const i = id && instOf(id); if (i) curInst = i.id; }
+  if (t.dataset.up) { moveRoute(t.dataset.up, -1); return; }
+  if (t.dataset.down) { moveRoute(t.dataset.down, 1); return; }
+  if (t.dataset.dup) { const inst = data.instances.find(i => i.id === t.dataset.dup); const name = prompt("Título de la copia:", inst.name + " (copia)"); if (!name) return; copyRoute(inst, name.trim()); return; }
+  if (t.dataset.upto) { const inst = currentInst(); if (!inst) return; const n = find(inst.root, t.dataset.upto); const name = prompt("Título de la nueva ruta:", inst.name + " → " + stepLabel(n)); if (!name) return; copyRoute(inst, name.trim(), n.id); return; }
+  if (t.dataset.ren) { const inst = data.instances.find(i => i.id === t.dataset.ren); const name = prompt("Título de la ruta:", inst.name); if (!name) return; inst.name = name.trim(); save(); renderAll(); return; }
+  if (t.dataset.delinst) { const inst = data.instances.find(i => i.id === t.dataset.delinst); if (!confirm(`¿Borrar «${inst.name}» y toda su ruta?`)) return; data.instances = data.instances.filter(i => i.id !== inst.id); if (curInst === inst.id) curInst = null; sel = null; save(); renderAll(); return; }
+  if (t.dataset.r) { cur = t.dataset.r; curInst = null; openAdd = null; sel = null; renderAll(); return; }
+  if (t.dataset.i) { curInst = t.dataset.i; openAdd = null; sel = null; renderAll(); return; }
+  if (t.dataset.pick) { addPrefill = t.dataset.pick; renderSide(currentInst()); return; }
+  if (t.dataset.sel && !ev.target.closest("button")) { sel = t.dataset.sel; openAdd = null; renderTree(); return; }
+  if (t.dataset.add) { sel = t.dataset.add; addPrefill = null; renderTree(); return; }
+  if (t.hasAttribute("data-cancel")) { openAdd = null; addPrefill = null; renderTree(); return; }
+  if (t.dataset.del) {
+    const inst = currentInst(); const par = parentOf(inst.root, t.dataset.del);
+    if (par && confirm("¿Borrar este paso y todo lo que viene después?")) { par.children = par.children.filter(c => c.id !== t.dataset.del);
+      (function clear(n) { if (n.join && !find(inst.root, n.join)) delete n.join; (n.children || []).forEach(clear); })(inst.root); if (sel === t.dataset.del) sel = par.id; save(); renderTree(); }
+    return;
+  }
+  if (t.dataset.lv) {
+    const inst = currentInst(); const n = find(inst.root, t.dataset.lv); if (!n) return;
+    const what = n.kind === "form" ? `el nivel DV de ${n.form}` : `el nivel de ${cur}`;
+    const v = prompt(`Nuevo valor para ${what} en este paso:`, n.value); if (v === null) return;
+    const lv = parseInt(v, 10);
+    if (!(lv >= 1 && lv <= 99)) { alert("Escribe un nivel entre 1 y 99."); return; }
+    n.value = lv; sel = n.id; save(); renderTree(); return;
+  }
+  if (t.dataset.edit) {
+    const inst = currentInst(); const n = find(inst.root, t.dataset.edit); if (!n) return;
+    const note = prompt("Nota de este paso:", n.note || ""); if (note === null) return;
+    n.note = note.trim(); save(); renderTree(); return;
+  }
+  if (t.dataset.save) {
+    const box = t.closest(".add"); const kind = box.querySelector('[data-k="kind"]').value;
+    const form = box.querySelector('[data-k="form"]').value; const value = parseInt(box.querySelector('[data-k="value"]').value, 10);
+    const note = box.querySelector('[data-k="note"]').value.trim();
+    if (!(value >= 1 && value <= 99)) { alert("Escribe un nivel entre 1 y 99."); return; }
+    const inst = currentInst(); const parent = find(inst.root, t.dataset.save);
+    const step = { id: newId(), kind, value, note, children: [] };
+    if (kind === "form") step.form = form;
+    parent.children.push(step); openAdd = null; addPrefill = null; sel = step.id; save(); renderTree(); return;
+  }
+  if (t.id === "newInst") {
+    const name = prompt("Título de esta ruta:", "Ruta de " + cur + " " + (instancesOf(cur).length + 1)); if (!name) return;
+    const inst = { id: newId(), rookie: cur, name: name.trim(), root: { id: newId(), kind: "start", children: [] } };
+    data.instances.push(inst); curInst = inst.id; sel = null; save(); renderAll(); return;
+  }
+  if (t.id === "renInst") { const inst = currentInst(); if (!inst) return; const name = prompt("Nuevo nombre:", inst.name); if (!name) return; inst.name = name.trim(); save(); renderAll(); return; }
+  if (t.id === "delInst") { const inst = currentInst(); if (!inst) return; if (!confirm(`¿Borrar «${inst.name}» y toda su ruta?`)) return; data.instances = data.instances.filter(i => i.id !== inst.id); curInst = null; save(); renderAll(); return; }
+  if (t.id === "undo") { undo(); return; }
+  if (t.id === "loadEx") {
+    const ex = window.DW3_EXAMPLES && window.DW3_EXAMPLES.builder;
+    if (!ex || !Array.isArray(ex.instances)) { alert("Faltan las rutas de ejemplo (routes/examples.js)."); return; }
+    const have = new Set(data.instances.map(i => i.id)), add = ex.instances.filter(i => !have.has(i.id));
+    if (!add.length) { alert("Ya tienes todas las rutas de ejemplo."); return; }
+    if (!confirm(`¿Añadir ${add.length} rutas de ejemplo a las tuyas? Las tuyas se conservan.`)) return;
+    data.instances.push(...JSON.parse(JSON.stringify(add))); curInst = null; sel = null; save(); renderAll(); return;
+  }
+  if (t.id === "exp") { const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "dw2003-routes.json"; a.click(); return; }
+  if (t.id === "imp") { document.getElementById("impFile").click(); return; }
+});
+document.addEventListener("change", ev => {
+  if (ev.target.matches("[data-joinmode]")) {
+    const inst = currentInst(), n = inst && find(inst.root, ev.target.dataset.joinmode); if (!n) return;
+    if (ev.target.value === "or") n.joinMode = "or"; else delete n.joinMode;
+    save(); renderTree(); return;
+  }
+  if (ev.target.matches("[data-join]")) {
+    const inst = currentInst(), n = inst && find(inst.root, ev.target.dataset.join); if (!n) return;
+    if (ev.target.value) n.join = ev.target.value; else delete n.join;
+    save(); renderTree(); return;
+  }
+  if (ev.target.matches('[data-k="kind"]')) { ev.target.closest(".add").querySelector('[data-k="form"]').hidden = ev.target.value !== "form"; return; }
+  if (ev.target.id === "impFile" && ev.target.files[0]) {
+    ev.target.files[0].text().then(txt => { const d = JSON.parse(txt); if (!d || !Array.isArray(d.instances)) { alert("No es un archivo de rutas."); return; } data = d; save(); curInst = null; sel = null; renderAll(); });
+  }
+});
+renderAll();
+document.addEventListener("keydown", ev => {
+  if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "z" && !ev.target.matches("input, textarea, select")) { ev.preventDefault(); undo(); }
+});
+</script>
+</body></html>

@@ -1,0 +1,60 @@
+{
+  "name": "40 Base",
+  "partner": "Guilmon",
+  "steps": [
+    {
+      "f": "Guilmon",
+      "lv": 5
+    },
+    {
+      "f": "Growlmon",
+      "lv": 25,
+      "note": "Learn Picking Claw"
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "Growlmon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 5
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 25
+    },
+    {
+      "f": "Stingmon",
+      "lv": 40
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 90,
+      "note": "Load Hammer Rush"
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "WarGrowlmon",
+      "lv": 40,
+      "note": "Whatever until Guilmon LV 40"
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40,
+      "note": "Whatever until Guilmon LV 40"
+    },
+    {
+      "f": "Rosemon",
+      "lv": 50,
+      "note": "Whatever until Guilmon LV 40"
+    }
+  ],
+  "notes": ""
+}

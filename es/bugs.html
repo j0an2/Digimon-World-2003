@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bugs de DW2003</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono&display=swap">
+<style>
+:root { --ground:#0b1424; --panel:#12203a; --panel-2:#182a4a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --amber:#ffbf47;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--ground); color:var(--ink); font:16px/1.6 var(--body); }
+.wrap { max-width:860px; margin:0 auto; padding:40px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px)); }
+a { color:var(--cyan); } .back { font-family:var(--display); font-size:14px; text-decoration:none; }
+h1 { font-family:var(--display); font-size:clamp(28px,4.5vw,40px); line-height:1.1; margin:16px 0 12px; text-wrap:balance; }
+h2 { font-family:var(--display); font-size:23px; margin:40px 0 8px; color:var(--cyan); padding-top:16px; border-top:1px solid var(--line); }
+p, li { color:var(--ink); } p { margin:10px 0; }
+code { font-family:var(--mono); font-size:.88em; background:var(--panel-2); padding:1px 5px; border-radius:4px; color:var(--amber); }
+pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
+pre code { background:none; padding:0; color:var(--ink); font-size:14px; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; font-variant-numeric:tabular-nums; }
+.tbl { overflow-x:auto; }
+th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--soft); font-weight:400; font-size:13px; }
+blockquote { margin:16px 0; padding:10px 16px; background:color-mix(in srgb, var(--amber) 10%, var(--panel)); border:1px solid color-mix(in srgb, var(--amber) 45%, transparent); border-radius:10px; }
+blockquote p { margin:4px 0; }
+</style></head><body><a href="../bugs.html" lang="en" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="English">EN</a><div class="wrap"><a class="back" href="index.html">← Digimon World 2003: datos</a>
+<h1 id="digimon-world-2003-bugs-del-juego-original">Digimon World 2003: bugs del juego original</h1>
+<p>Bugs y rarezas de la versión europea original (SLES-03936) encontrados leyendo su código descompilado
+(<a href="https://github.com/ReGame-Labs/dw3_decomp">dw3_decomp</a>). Cada entrada dice de qué código sale. El port nativo para PC
+está hecho a partir de ese mismo código, así que también los tiene, salvo que se diga lo contrario.</p>
+<h2 id="bugs-confirmados">Bugs confirmados</h2>
+<h3 id="1-todos-los-campos-elementales-potencian-el-trueno">1. Todos los campos elementales potencian el Trueno</h3>
+<p><code>boostFieldElement</code> — <code>src/fightstg/tech_action.c</code></p>
+<p>El elemento del campo se toma del campo <em>icon</em> de la técnica (<code>boostElement = tech-&gt;icon</code>), que es 6 (Trueno) en las
+siete técnicas de campo, en lugar de su elemento. Así que Fire Field, Water Field, … Dark Field potencian todos el Trueno
+y debilitan la Oscuridad. El mensaje sigue nombrando el elemento correcto (usa <code>tech-&gt;element</code>).</p>
+<p><em>Lo arregla:</em> el mod Harmony (<em>Fixed Field Moves</em>).</p>
+<h3 id="2-un-crecimiento-de-5-crece-menos-que-uno-de-4-estadisticas">2. Un crecimiento de 5 crece menos que uno de 4 (estadísticas)</h3>
+<p><code>STFGTREP_raiseStats</code> — <code>src/stfgtrep/growth.c</code></p>
+<p>En cada nivel, una estadística sube <code>STFGTREP_statGains[tramo][crecimiento + azar(0–4)]</code>. La tabla tiene 9 columnas
+(0–8), así que un crecimiento de 5 puede pedir la columna 9, que no existe; la PlayStation lee en su lugar el primer valor
+de la fila siguiente, que es 0 o 1. Una subida de nivel de cada cinco, la estadística que más debería crecer no sube casi
+nada:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Niveles</th>
+<th>Ganancia media, crecimiento 4</th>
+<th>Ganancia media, crecimiento 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2–4</td>
+<td>11,4</td>
+<td>10,0</td>
+</tr>
+<tr>
+<td>5–19</td>
+<td>8,8</td>
+<td>7,6</td>
+</tr>
+<tr>
+<td>20–39</td>
+<td>5,6</td>
+<td>4,8</td>
+</tr>
+<tr>
+<td>40–59</td>
+<td>4,6</td>
+<td>4,0</td>
+</tr>
+<tr>
+<td>60–79</td>
+<td>3,0</td>
+<td>2,6</td>
+</tr>
+</tbody>
+</table></div>
+<p>A partir del nivel 80 la última fila lee más allá de toda la tabla, en las ganancias de resistencia, cuyo primer valor
+también es 0.</p>
+<p>Rookies afectados: <strong>Kumamon</strong> (Fuerza y Defensa), <strong>Renamon</strong> (Espíritu), <strong>Monmon</strong> (Velocidad), <strong>Veemon</strong> (Sabiduría
+y Carisma). Justo las estadísticas en las que cada uno debía destacar crecen un 13 % más despacio que con un 4.</p>
+<h3 id="3-un-crecimiento-de-5-crece-menos-que-uno-de-4-resistencias">3. Un crecimiento de 5 crece menos que uno de 4 (resistencias)</h3>
+<p><code>STFGTREP_raiseStats</code> — <code>src/stfgtrep/growth.c</code></p>
+<p>Hasta el nivel 40, cada resistencia sube <code>STFGTREP_resistGains[crecimiento + azar(0–3)]</code>, una tabla de 8 valores
+(<code>0 0 0 1 1 1 2 2</code>). Un crecimiento de 5 puede pedir el valor 8, fuera de la tabla; en el disco la palabra siguiente es 0.
+Un crecimiento de 5 da de media <strong>1,25</strong> por nivel, uno de 4 <strong>1,5</strong>.</p>
+<p>Siete de los ocho Rookies tienen una resistencia con crecimiento 5: Kotemon (Agua), Monmon (Máquina), Agumon (Fuego),
+Veemon (Hielo), Guilmon (Viento), Renamon (Trueno), Patamon (Oscuridad). Kumamon no tiene ninguna.</p>
+<h3 id="4-la-magia-sin-elemento-lee-la-velocidad-del-objetivo-como-resistencia">4. La magia sin elemento lee la Velocidad del objetivo como resistencia</h3>
+<p><code>FIGHTSTG_rollMagicCritical</code> — <code>src/fightstg/rolls.c</code></p>
+<p>La probabilidad de crítico mágico es <code>mín(64, FuerzaElemento × 100 / resist[elemento − 2]) + 4</code>. En una técnica sin
+elemento, <code>elemento − 2</code> es −1, y el valor que se lee es el que está guardado justo antes de las resistencias: la
+<strong>Velocidad</strong> del objetivo. Así que la probabilidad de crítico de la magia sin elemento depende de la Velocidad del
+objetivo:</p>
+<ul>
+<li>La mayoría de estas técnicas (las de estados alterados y absorción) tienen una fuerza de elemento de 1: <code>100 / Velocidad</code>
+  da más o menos 0–2, un 3–5 % de críticos.</li>
+<li><strong>Gate of Destiny</strong> (64), <strong>KongouKaimandara</strong> (72) y <strong>Back Storm</strong> (72) tienen una fuerza de elemento alta pero ningún
+  elemento: contra un objetivo con una Velocidad de hasta unos 100 llegan al máximo del 53 % (<code>64 × 100 / 100 = 64</code>), y al
+  28 % con Velocidad 200.</li>
+</ul>
+<h2 id="rarezas">Rarezas</h2>
+<p>Comportamientos que parecen no intencionados, o al menos sorprendentes, pero que pueden ser a propósito.</p>
+<ul>
+<li><strong>Las debilitaciones duran según el Espíritu del objetivo, no el de quien las usa.</strong> <code>FIGHTSTG_queueBoostEnd</code> calcula la
+  duración de una mejora con el Espíritu del Digimon que la lleva. En una mejora es quien la usa; en una debilitación
+  (Armor Break, AncientGreymon…) es el enemigo, así que las debilitaciones duran más en enemigos con mucho Espíritu.</li>
+<li><strong>Los elementos que debilita cada campo no coinciden con las descripciones.</strong> «Fire Field: fortalece el fuego, debilita
+  el hielo», pero <code>FIGHTSTG_opposedElements</code> hace que el Fire Field debilite el Agua (el Ice Field debilita el Fuego, y así
+  con los demás). Ver <a href="formulas.html#campos-elementales">Fórmulas</a>.</li>
+<li><strong>Un campo nunca potencia el elemento de un accesorio.</strong> <code>FIGHTSTG_getElementBoost</code> solo mira el elemento de la técnica,
+  así que un ataque básico con Pot. Fuego (Fire Power) no gana nada con un Fire Field.</li>
+<li><strong>Un objeto de críticos baja la precisión.</strong> En <code>FIGHTSTG_rollHit</code> a la diferencia de nivel del jugador se le resta el
+  bonus de crítico, así que Buscar Vale (Search Crest), Colmi. Sable (Saber Fang) o Shuriken cuestan algo de precisión.</li>
+<li><strong>Las técnicas de varios golpes tiran un solo crítico para todos</strong>: o todos los golpes son críticos, o ninguno.</li>
+<li><strong>No hay daño mínimo</strong>: un golpe puede hacer 0.</li>
+<li><strong>Dos Digimon reparten más EXP de digievolución que uno.</strong> <code>STFGTREP_getDigimonExp</code> da a las formas usadas en un combate
+  el 100 % de la DV EXP si se usó una, <strong>el 60 % a cada una si son dos</strong> (un 120 % en total) y un reparto a partes iguales
+  si son tres o más. Usar exactamente dos formas por combate es lo que más DV EXP da.</li>
+<li><strong>Huir cuesta al principio</strong>: el primer intento tiene una probabilidad base de 8/128 (6 %), el segundo 16/128, y así
+  sucesivamente, más las diferencias de nivel y de Velocidad (<code>FIGHTSTG_testRunAway</code>).</li>
+</ul>
+<h2 id="arreglados-en-la-version-europea">Arreglados en la versión europea</h2>
+<ul>
+<li>
+<p><strong>Medidores de campo</strong> (<code>src/fieldstg/data/fieldstg.c</code>): la versión de EE. UU. no tiene la fila 8 en <code>FIELDSTG_gaugeRows</code>
+  y lee fuera de la tabla (un puntero nulo) cuando se acaba <code>GAME.randomGauges</code>. La versión europea añade la fila.</p>
+</li>
+<li>
+<p><strong>Un enemigo dormido podía huir</strong> (EE. UU.). El <code>FIGHTSTG_testRunAway</code> europeo lo impide.</p>
+</li>
+<li><strong>Mostr. Vales (Counter Crest) contraatacaba todos los golpes</strong> (EE. UU.). La versión europea tira
+  <code>25 % + 50 % × daño / PV máximos</code> (<code>FIGHTSTG_rollCounter</code>) antes del contraataque.</li>
+</ul>
+<h2 id="latentes">Latentes</h2>
+<ul>
+<li><strong>Casilla de mejora 3</strong> (<code>FIGHTSTG_boostStats</code>): una cuarta mejora se calcularía a partir del Ataque, se sumaría al
+  Espíritu de un enemigo y no se tendría en cuenta en los compañeros. Ninguna técnica la usa.</li>
+</ul>
+<h2 id="mencionados-en-otros-sitios">Mencionados en otros sitios</h2>
+<ul>
+<li><strong>Picking Claw y Snapping Claw cuando el enemigo queda KO</strong>: el mod Harmony lo da como arreglado; su causa no se ha
+  rastreado aquí.</li>
+</ul>
+</div></body></html>

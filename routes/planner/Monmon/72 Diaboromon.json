@@ -1,0 +1,111 @@
+{
+  "name": "72 Diaboromon",
+  "partner": "Monmon",
+  "steps": [
+    {
+      "f": "Monmon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 20
+    },
+    {
+      "f": "Hookmon",
+      "lv": 40,
+      "note": "Load Bug Buster"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Hookmon",
+      "lv": 75,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 7,
+      "note": "Nothing to do until Monmon is Lvl 20"
+    },
+    {
+      "f": "Armormon",
+      "lv": 20
+    },
+    {
+      "f": "Armormon",
+      "lv": 30
+    },
+    {
+      "f": "Armormon",
+      "lv": 40
+    },
+    {
+      "f": "Armormon",
+      "lv": 90,
+      "note": "Load Fish, Dino, Dramon Buster"
+    },
+    {
+      "f": "Angemon",
+      "lv": 50
+    },
+    {
+      "f": "MagnaAngemon",
+      "lv": 30
+    },
+    {
+      "f": "Angewomon",
+      "lv": 40
+    },
+    {
+      "f": "Rosemon",
+      "lv": 30
+    },
+    {
+      "f": "Cannondramon",
+      "lv": 10
+    },
+    {
+      "f": "Greymon",
+      "lv": 50
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 30
+    },
+    {
+      "f": "Stingmon",
+      "lv": 50
+    },
+    {
+      "f": "Kabuterimon",
+      "lv": 40
+    },
+    {
+      "f": "Paildramon",
+      "lv": 50
+    },
+    {
+      "f": "Imperialdramon",
+      "lv": 40
+    },
+    {
+      "f": "GranKuwagamon",
+      "lv": 99
+    },
+    {
+      "f": "SkullGreymon",
+      "lv": 99
+    },
+    {
+      "f": "BK WarGreymon",
+      "lv": 99
+    },
+    {
+      "f": "Diaboromon",
+      "lv": 1
+    }
+  ],
+  "notes": ""
+}

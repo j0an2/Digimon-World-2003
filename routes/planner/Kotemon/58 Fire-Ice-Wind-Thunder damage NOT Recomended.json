@@ -1,0 +1,95 @@
+{
+  "name": "58 Fire-Ice-Wind-Thunder damage NOT Recomended",
+  "partner": "Kotemon",
+  "steps": [
+    {
+      "f": "Kotemon",
+      "lv": 5
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 20
+    },
+    {
+      "f": "Dinohumon",
+      "lv": 30,
+      "note": "Load Frost Cutter"
+    },
+    {
+      "f": "Greymon",
+      "lv": 10
+    },
+    {
+      "f": "ExVeemon",
+      "lv": 5
+    },
+    {
+      "f": "Greymon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 35
+    },
+    {
+      "f": "Kyukimon",
+      "lv": 80,
+      "note": "Load Burn/Cold Slash"
+    },
+    {
+      "f": "MetalMamemon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 25,
+      "note": "Load Mechanical Bash"
+    },
+    {
+      "f": "MetalGarurumon",
+      "lv": 40
+    },
+    {
+      "f": "MetalGreymon",
+      "lv": 99
+    },
+    {
+      "f": "WarGreymon",
+      "lv": 40
+    },
+    {
+      "f": "Omnimon",
+      "lv": 30
+    },
+    {
+      "f": "GuardiAngemon",
+      "lv": 20
+    },
+    {
+      "f": "Kyubimon",
+      "lv": 40
+    },
+    {
+      "f": "Taomon",
+      "lv": 50
+    },
+    {
+      "f": "Growlmon",
+      "lv": 30
+    },
+    {
+      "f": "Grizzmon",
+      "lv": 50
+    },
+    {
+      "f": "GrapLeomon",
+      "lv": 99
+    },
+    {
+      "f": "Marsmon",
+      "lv": 99,
+      "note": "Load Heaven Hit + Vaccum Cannon + Missihukikou"
+    }
+  ],
+  "notes": "All elemental physical Techniques: Fire + Ice + Wind + Thunder "
+}
