@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digimon World 2003 Data</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: the DigiLab look of the two tools; a short intro, then one card per tool or file. */
+:root { --ground:#0b1424; --panel:#12203a; --panel-2:#182a4a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --amber:#ffbf47;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--ground); color:var(--ink); font:16px/1.5 var(--body);
+  background-image:linear-gradient(color-mix(in srgb, var(--line) 45%, transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb, var(--line) 45%, transparent) 1px,transparent 1px); background-size:32px 32px; }
+.wrap { max-width:1000px; margin:0 auto; padding:48px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px)); display:grid; gap:28px; }
+.eyebrow { font-family:var(--display); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+h1 { font-family:var(--display); font-size:clamp(30px,5vw,48px); line-height:1.05; margin:6px 0 0; text-wrap:balance; } h1 span { color:var(--cyan); }
+p { margin:0; } .lede { color:var(--soft); max-width:65ch; }
+.rookies { display:flex; gap:4px; flex-wrap:wrap; }
+.rookies img { width:72px; height:72px; object-fit:contain; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:14px; }
+a.card { display:grid; gap:6px; text-decoration:none; color:inherit; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; transition:border-color .15s, transform .15s; }
+a.card:hover { border-color:var(--cyan); transform:translateY(-2px); }
+a.card:focus-visible { outline:2px solid var(--amber); outline-offset:2px; }
+a.card h2 { font-family:var(--display); font-size:21px; margin:0; color:var(--cyan); }
+a.card p { color:var(--soft); font-size:14.5px; }
+a.card .tag { font-size:12px; font-family:var(--display); letter-spacing:.06em; }
+div.card { display:grid; gap:6px; background:var(--panel); border:1px dashed var(--line); border-radius:14px; padding:18px; opacity:.6; }
+div.card h2 { font-family:var(--display); font-size:21px; margin:0; color:var(--soft); }
+div.card p { color:var(--soft); font-size:14.5px; }
+div.card .tag { font-size:12px; font-family:var(--display); letter-spacing:.06em; }
+.tag { color:var(--amber); }
+.tag.t-int { color:#7be0a0; }
+.tag.t-ref { color:#ffbf47; }
+.tag.t-tool { color:#a98ae0; }
+.tag.t-sheet { color:#9fb2d6; }
+.tag.t-wip { color:#ff7b7b; }
+footer { color:var(--soft); font-size:13px; display:grid; gap:6px; max-width:80ch; }
+footer a { color:var(--cyan); }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style></head><body><a href="es/index.html" lang="es" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="Español">ES</a><div class="wrap">
+<header style="display:grid;gap:12px">
+  <div class="eyebrow">PlayStation · Europe · SLES-03936</div>
+  <h1>Digimon World 2003 <span>Data</span></h1>
+  <p class="lede">Evolution requirements, techniques and battle formulas taken straight from the game's decompiled code, so the numbers are the ones the game actually uses.</p>
+  <div class="rookies" aria-hidden="true">
+    <img src="img/1056.png" alt=""><img src="img/0585.png" alt=""><img src="img/0581.png" alt=""><img src="img/0499.png" alt="">
+    <img src="img/0526.png" alt=""><img src="img/0356.png" alt=""><img src="img/0511.png" alt=""><img src="img/0591.png" alt="">
+  </div>
+</header>
+<main class="cards">
+  <a class="card" href="trees.html"><span class="tag t-int">INTERACTIVE</span><h2>Evolution trees</h2><p>One diagram per Rookie: every form, the level it needs from the form before it, and the full route to any form.</p></a>
+  <a class="card" href="evolutions.html"><span class="tag t-ref">REFERENCE</span><h2>Evolution chart</h2><p>Every form each Rookie can learn, its requirements, full route, techniques, stats and resistances.</p></a>
+  <a class="card" href="dna.html"><span class="tag t-ref">REFERENCE</span><h2>DNA techniques</h2><p>Every pair technique: the two Digimon that perform it, what it does and the Digimon it summons.</p></a>
+  <a class="card" href="routes.html"><span class="tag t-tool">TOOL</span><h2>Route builder</h2><p>Lay out whole routes with parallel branches and joins, one under the other, with notes, and export them to a file.</p></a>
+  <a class="card" href="planner.html"><span class="tag t-tool">TOOL</span><h2>Route planner</h2><p>Build a partner's route step by step: the level it reaches, the forms each step unlocks and the techniques you can load.</p></a>
+  <a class="card" href="map_asuka.html"><span class="tag t-wip">INTERACTIVE · WIP</span><h2>Asuka Map</h2><p>The Asuka server map: enemies by area and how they appear (random, fishing and trees, story). Still being finished.</p></a>
+  <div class="card"><span class="tag t-wip">WIP</span><h2>Amaterasu Map</h2><p>Not made yet.</p></div>
+  <a class="card" href="enemies.html"><span class="tag t-int">INTERACTIVE</span><h2>Enemies</h2><p>All 193 enemies with their pictures: stats, resistances, techniques, drops and every battle they are in. Searchable.</p></a>
+  <a class="card" href="enemies.html?tab=calc"><span class="tag t-int">INTERACTIVE</span><h2>Damage calculator</h2><p>Work out the damage a technique does against any enemy, with your own stats and equipment.</p></a>
+  <a class="card" href="techniques.html"><span class="tag t-int">INTERACTIVE</span><h2>Technique explorer</h2><p>All 443 techniques. Sort, filter by type, element and effect, and see each effect's real numbers.</p></a>
+  <a class="card" href="formulas.html#physical-damage"><span class="tag t-ref">REFERENCE</span><h2>Damage formula</h2><p>How damage is calculated, step by step, with worked examples.</p></a>
+  <a class="card" href="formulas.html"><span class="tag t-ref">REFERENCE</span><h2>Battle formulas</h2><p>Damage, healing, buffs, status chances, elemental fields (and their bug), and how digivolutions are learned.</p></a>
+  <a class="card" href="bugs.html"><span class="tag t-ref">REFERENCE</span><h2>Bugs</h2><p>Bugs and oddities of the original game found in its code: the Thunder fields, the growth-5 stats and more.</p></a>
+  <a class="card" href="data/techniques.csv"><span class="tag t-sheet">SPREADSHEET</span><h2>techniques.csv</h2><p>The 443 techniques with every field, the effect amounts and the game's descriptions.</p></a>
+  <a class="card" href="data/evolutions.csv"><span class="tag t-sheet">SPREADSHEET</span><h2>evolutions.csv</h2><p>The 8 Rookies × 44 forms: required forms with their DV levels, and stat minimums.</p></a>
+</main>
+<footer>
+  <p>Data from <a href="https://github.com/ReGame-Labs/dw3_decomp">dw3_decomp</a>; Digimon renders made with <a href="https://github.com/Feerdus95/dw3-model-viewer">dw3-model-viewer</a>. This covers the original game, which is also what the <a href="https://github.com/Feerdus95/dw3-native-port">native PC port</a> runs.</p>
+  <p>A non-commercial fan project, not affiliated with Bandai Namco. Digimon © Bandai / Bandai Namco, Akiyoshi Hongo, Toei Animation.</p>
+</footer>
+</div></body></html>

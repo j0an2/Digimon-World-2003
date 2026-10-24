@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DW2003 Bugs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono&display=swap">
+<style>
+:root { --ground:#0b1424; --panel:#12203a; --panel-2:#182a4a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --amber:#ffbf47;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--ground); color:var(--ink); font:16px/1.6 var(--body); }
+.wrap { max-width:860px; margin:0 auto; padding:40px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px)); }
+a { color:var(--cyan); } .back { font-family:var(--display); font-size:14px; text-decoration:none; }
+h1 { font-family:var(--display); font-size:clamp(28px,4.5vw,40px); line-height:1.1; margin:16px 0 12px; text-wrap:balance; }
+h2 { font-family:var(--display); font-size:23px; margin:40px 0 8px; color:var(--cyan); padding-top:16px; border-top:1px solid var(--line); }
+p, li { color:var(--ink); } p { margin:10px 0; }
+code { font-family:var(--mono); font-size:.88em; background:var(--panel-2); padding:1px 5px; border-radius:4px; color:var(--amber); }
+pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
+pre code { background:none; padding:0; color:var(--ink); font-size:14px; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; font-variant-numeric:tabular-nums; }
+.tbl { overflow-x:auto; }
+th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--soft); font-weight:400; font-size:13px; }
+blockquote { margin:16px 0; padding:10px 16px; background:color-mix(in srgb, var(--amber) 10%, var(--panel)); border:1px solid color-mix(in srgb, var(--amber) 45%, transparent); border-radius:10px; }
+blockquote p { margin:4px 0; }
+</style></head><body><a href="es/bugs.html" lang="es" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="Español">ES</a><div class="wrap"><a class="back" href="index.html">← Digimon World 2003 Data</a>
+<h1 id="digimon-world-2003-bugs-in-the-original-game">Digimon World 2003 — bugs in the original game</h1>
+<p>Bugs and oddities of the original European version (SLES-03936) found by reading its decompiled code
+(<a href="https://github.com/ReGame-Labs/dw3_decomp">dw3_decomp</a>). Each entry names the code it comes from. The native PC
+port is built from that same code, so it has them too unless noted.</p>
+<h2 id="confirmed-bugs">Confirmed bugs</h2>
+<h3 id="1-every-elemental-field-boosts-thunder">1. Every elemental field boosts Thunder</h3>
+<p><code>boostFieldElement</code> — <code>src/fightstg/tech_action.c</code></p>
+<p>The field's element is taken from the technique's <em>icon</em> field (<code>boostElement = tech-&gt;icon</code>), which is 6 (Thunder)
+for all seven field techniques, instead of its element. So Fire Field, Water Field, … Dark Field all boost Thunder
+and weaken Dark. The message still names the right element (it uses <code>tech-&gt;element</code>).</p>
+<p><em>Fixed by:</em> the Harmony mod (<em>Fixed Field Moves</em>).</p>
+<h3 id="2-a-growth-of-5-grows-less-than-a-growth-of-4-stats">2. A growth of 5 grows less than a growth of 4 (stats)</h3>
+<p><code>STFGTREP_raiseStats</code> — <code>src/stfgtrep/growth.c</code></p>
+<p>Each level, a stat gains <code>STFGTREP_statGains[tier][growth + random(0–4)]</code>. The table has 9 columns (0–8), so a
+growth of 5 can ask for column 9, which doesn't exist; the PlayStation reads the first value of the next row instead,
+which is 0 or 1. One level-up in five, the stat that should grow the most gains almost nothing:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Levels</th>
+<th>Average gain, growth 4</th>
+<th>Average gain, growth 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2–4</td>
+<td>11.4</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>5–19</td>
+<td>8.8</td>
+<td>7.6</td>
+</tr>
+<tr>
+<td>20–39</td>
+<td>5.6</td>
+<td>4.8</td>
+</tr>
+<tr>
+<td>40–59</td>
+<td>4.6</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>60–79</td>
+<td>3.0</td>
+<td>2.6</td>
+</tr>
+</tbody>
+</table></div>
+<p>From level 80 the last row reads past the whole table, into the resistance gains, whose first value is also 0.</p>
+<p>Affected Rookies: <strong>Kumamon</strong> (Strength and Defense), <strong>Renamon</strong> (Spirit), <strong>Monmon</strong> (Speed), <strong>Veemon</strong> (Wisdom and
+Charisma). The very stats each was designed to excel at grow about 13% slower than a 4 would.</p>
+<h3 id="3-a-growth-of-5-grows-less-than-a-growth-of-4-resistances">3. A growth of 5 grows less than a growth of 4 (resistances)</h3>
+<p><code>STFGTREP_raiseStats</code> — <code>src/stfgtrep/growth.c</code></p>
+<p>Up to level 40, each resistance gains <code>STFGTREP_resistGains[growth + random(0–3)]</code>, a table of 8 values
+(<code>0 0 0 1 1 1 2 2</code>). A growth of 5 can ask for value 8, past the end; on the disc the next word is 0. A growth of 5
+averages <strong>1.25</strong> a level, a growth of 4 <strong>1.5</strong>.</p>
+<p>Seven of the eight Rookies have one resistance with growth 5: Kotemon (Water), Monmon (Machine), Agumon (Fire),
+Veemon (Ice), Guilmon (Wind), Renamon (Thunder), Patamon (Dark). Kumamon has none.</p>
+<h3 id="4-magic-without-an-element-reads-the-targets-speed-as-a-resistance">4. Magic without an element reads the target's Speed as a resistance</h3>
+<p><code>FIGHTSTG_rollMagicCritical</code> — <code>src/fightstg/rolls.c</code></p>
+<p>The magic critical chance is <code>min(64, ElementStrength × 100 / resist[element − 2]) + 4</code>. For a technique with no
+element, <code>element − 2</code> is −1, and the value read is the one stored just before the resistances: the target's
+<strong>Speed</strong>. So the critical chance of element-less magic depends on the target's Speed:</p>
+<ul>
+<li>Most of these techniques (the status and drain spells) have an element strength of 1: <code>100 / Speed</code> is about 0–2,
+  for a 3–5% critical chance.</li>
+<li><strong>Gate of Destiny</strong> (64), <strong>KongouKaimandara</strong> (72) and <strong>Back Storm</strong> (72) have a high element strength but no
+  element: against a target with Speed up to about 100 they reach the 53% cap (<code>64 × 100 / 100 = 64</code>), and 28% at
+  Speed 200.</li>
+</ul>
+<h2 id="oddities">Oddities</h2>
+<p>Behaviour that looks unintended, or at least surprising, but may be by design.</p>
+<ul>
+<li><strong>Debuffs last according to the target's Spirit, not the user's.</strong> <code>FIGHTSTG_queueBoostEnd</code> times a boost by the
+  Spirit of the Digimon it is on. For a buff that is the user; for a debuff (Armor Break, AncientGreymon…) it is the
+  enemy, so debuffs last longer on high-Spirit enemies.</li>
+<li><strong>The field elements the code weakens don't match the descriptions.</strong> "Fire Field: strengthen fire, weaken ice",
+  but <code>FIGHTSTG_opposedElements</code> makes the Fire Field weaken Water (Ice Field weakens Fire, and so on). See
+  <a href="FORMULAS.md#elemental-fields">FORMULAS.md</a>.</li>
+<li><strong>A field never boosts an accessory's element.</strong> <code>FIGHTSTG_getElementBoost</code> only looks at the technique's element,
+  so a basic attack with Fire Power gets nothing from a Fire Field.</li>
+<li><strong>A critical-chance item lowers accuracy.</strong> In <code>FIGHTSTG_rollHit</code> the player's level difference has the critical
+  bonus taken off it, so Search Crest, Saber Fang or Shuriken cost some accuracy.</li>
+<li><strong>Multi-hit techniques roll one critical for all their hits</strong>: all hits are critical, or none.</li>
+<li><strong>No minimum damage</strong>: a hit can do 0.</li>
+<li><strong>Two Digimon share more digivolution EXP than one.</strong> <code>STFGTREP_getDigimonExp</code> gives the forms used in a battle
+  100% of the DV EXP if one was used, <strong>60% each if two</strong> (120% in all) and an equal split if three or more. Using
+  exactly two forms a battle earns the most DV EXP.</li>
+<li><strong>Running away starts hard</strong>: the first attempt has a base chance of 8/128 (6%), the second 16/128, and so on, plus
+  the level and Speed differences (<code>FIGHTSTG_testRunAway</code>).</li>
+</ul>
+<h2 id="fixed-in-the-european-version">Fixed in the European version</h2>
+<ul>
+<li>
+<p><strong>Field gauges</strong> (<code>src/fieldstg/data/fieldstg.c</code>): the USA version has no row 8 in <code>FIELDSTG_gaugeRows</code> and reads
+  past the table (a null pointer) once <code>GAME.randomGauges</code> is used up. The European version adds the row.</p>
+</li>
+<li>
+<p><strong>An asleep enemy could run away</strong> (USA). The European <code>FIGHTSTG_testRunAway</code> stops it.</p>
+</li>
+<li><strong>The Counter Crest countered every hit</strong> (USA). The European version rolls <code>25% + 50% × damage / max HP</code>
+  (<code>FIGHTSTG_rollCounter</code>) before the counterattack.</li>
+</ul>
+<h2 id="latent">Latent</h2>
+<ul>
+<li><strong>Boost slot 3</strong> (<code>FIGHTSTG_boostStats</code>): a fourth boost would be worked out from Attack, added to an enemy's
+  Spirit, and ignored for partners. No technique uses it.</li>
+</ul>
+<h2 id="reported-elsewhere">Reported elsewhere</h2>
+<ul>
+<li><strong>Picking Claw and Snapping Claw when the enemy is knocked out</strong>: listed as fixed by the Harmony mod; its cause is
+  not traced here.</li>
+</ul>
+</div></body></html>

@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DW2003 Battle Formulas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono&display=swap">
+<style>
+:root { --ground:#0b1424; --panel:#12203a; --panel-2:#182a4a; --line:#2a4170; --ink:#e6eefc; --soft:#9fb2d6; --cyan:#48d3f0; --amber:#ffbf47;
+  --display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--ground); color:var(--ink); font:16px/1.6 var(--body); }
+.wrap { max-width:860px; margin:0 auto; padding:40px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px)); }
+a { color:var(--cyan); } .back { font-family:var(--display); font-size:14px; text-decoration:none; }
+h1 { font-family:var(--display); font-size:clamp(28px,4.5vw,40px); line-height:1.1; margin:16px 0 12px; text-wrap:balance; }
+h2 { font-family:var(--display); font-size:23px; margin:40px 0 8px; color:var(--cyan); padding-top:16px; border-top:1px solid var(--line); }
+p, li { color:var(--ink); } p { margin:10px 0; }
+code { font-family:var(--mono); font-size:.88em; background:var(--panel-2); padding:1px 5px; border-radius:4px; color:var(--amber); }
+pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; overflow-x:auto; }
+pre code { background:none; padding:0; color:var(--ink); font-size:14px; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:14.5px; font-variant-numeric:tabular-nums; }
+.tbl { overflow-x:auto; }
+th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--soft); font-weight:400; font-size:13px; }
+blockquote { margin:16px 0; padding:10px 16px; background:color-mix(in srgb, var(--amber) 10%, var(--panel)); border:1px solid color-mix(in srgb, var(--amber) 45%, transparent); border-radius:10px; }
+blockquote p { margin:4px 0; }
+</style></head><body><a href="es/formulas.html" lang="es" style="position:fixed;top:10px;right:12px;z-index:50;font:700 13px system-ui,sans-serif;color:#48d3f0;background:#12203a;border:1px solid #2a4170;border-radius:999px;padding:4px 11px;text-decoration:none" title="Español">ES</a><div class="wrap"><a class="back" href="index.html">← Digimon World 2003 Data</a>
+<h1 id="digimon-world-2003-battle-formulas">Digimon World 2003 — battle formulas</h1>
+<p>How the original European version (SLES-03936) computes damage, healing, buffs and fields, read from its
+decompiled C code (<a href="https://github.com/ReGame-Labs/dw3_decomp">dw3_decomp</a>). Each section names the function and
+file it comes from, so you can check it yourself.</p>
+<p>Integer division rounds down everywhere, as on the PlayStation. Many values are stored in 128ths or 64ths: a value
+of 64 in 128ths is 50%.</p>
+<h2 id="what-each-stat-does">What each stat does</h2>
+<p>Where the battle code reads each stat:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Stat</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strength</strong> (Attack)</td>
+<td>Physical damage dealt</td>
+</tr>
+<tr>
+<td><strong>Defense</strong></td>
+<td>Reduces physical damage taken, and only that</td>
+</tr>
+<tr>
+<td><strong>Spirit</strong></td>
+<td>Magic damage dealt <strong>and</strong> taken · the strength of the elemental fields you set · how long your buffs last (and the debuffs put on you) · how long the status ailments you inflict last</td>
+</tr>
+<tr>
+<td><strong>Wisdom</strong></td>
+<td>Magic accuracy and evasion · inflicting and resisting status ailments · the HP your healing restores · resisting an enemy's stat raises</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Physical accuracy and evasion · how often a Digimon acts · running away</td>
+</tr>
+<tr>
+<td><strong>Charisma</strong></td>
+<td>Not used in battle: it is a requirement for some digivolutions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Defense, Spirit and Wisdom are three different defenses: Defense against physical damage, Spirit against magic
+damage, Wisdom against being hit by magic and against status ailments.</p>
+<p>What Wisdom does, in detail:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Yours (attacking)</th>
+<th>The target's (defending)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magic hit chance</td>
+<td>+ Wisdom / 8</td>
+<td>− Wisdom / 8</td>
+</tr>
+<tr>
+<td>Inflicting a status ailment</td>
+<td>+ Wisdom / 8</td>
+<td>− Wisdom / 16</td>
+</tr>
+<tr>
+<td>Healing</td>
+<td>+ Wisdom × Power / 8 HP</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="physical-damage">Physical damage</h2>
+<p><code>FIGHTSTG_computeDamage</code>, <code>FIGHTSTG_adjustDamage</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>base = Power × Attack(user) / Defense(target)
+</code></pre>
+<h3 id="example-level-5-kotemon-vs-the-first-kunemon">Example: level-5 Kotemon vs the first Kunemon</h3>
+<p>Kotemon's basic attack (technique 1: power 60, accuracy 110, no element) against the Kunemon of the first areas
+(level 1, 120 HP, strength 16/16, from <code>src/fieldstg/data/fieldstg.c</code>). Kotemon has no equipment.</p>
+<p><strong>Kotemon's Attack at level 5.</strong> A new game starts it at 48 Strength (<code>DIGIMON_DATA</code>, <code>initNewGameData</code> in
+<code>src/main/game/party.c</code>). Each level adds <code>STFGTREP_statGains[tier][growth + random(0–4)]</code>
+(<code>STFGTREP_raiseStats</code>, <code>src/stfgtrep/growth.c</code>): with Kotemon's Strength growth 4, +8 to +14 for levels 2–4 and
++6 to +11 for level 5. So at level 5 its Attack is <strong>78 to 101, 91 on average</strong>.</p>
+<p><strong>Kunemon's Defense.</strong> 42 in the enemy table, × strength 16 / 16 = <strong>42</strong>.</p>
+<pre><code>damage = Power × Attack(user) / Defense(target)
+       = 60 × 91 / 42 = 130
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Kotemon's Attack</th>
+<th>Damage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>78 (unlucky level-ups)</td>
+<td>111</td>
+</tr>
+<tr>
+<td>91 (average)</td>
+<td>130</td>
+</tr>
+<tr>
+<td>101 (lucky level-ups)</td>
+<td>144</td>
+</tr>
+</tbody>
+</table></div>
+<p>None of the other steps apply: no field, no family, no charge, no element.</p>
+<p><strong>Hit chance</strong>: <code>110 + 110 × (SpeedDiff / 8 + LevelDiff) / 128</code> in 128ths (<code>FIGHTSTG_rollHit</code>). With Kotemon's
+Speed about 63 against 48 and 4 levels more: <code>110 + 110 × (1 + 4) / 128 = 114</code> → <strong>89%</strong>.</p>
+<p><strong>Critical</strong>: 4/128 = <strong>3.1%</strong>, for ×1.5 to ×2.5.</p>
+<p>Kunemon has 120 HP, so a level-5 Kotemon's basic attack <strong>kills it in one hit 96% of the time</strong> when it lands.</p>
+<h3 id="example-an-elemental-physical-technique">Example: an elemental physical technique</h3>
+<p>The same level-5 Kotemon (Attack 91) and Kunemon (Defense 42), now with Kotemon's own technique <strong>Hot Head</strong>
+(technique 53: power 75, Fire, element strength 48, accuracy 127, 20 MP). Kunemon's Fire resistance is 90.</p>
+<pre><code>base   = Power × Attack(user) / Defense(target)
+damage = base + base × 2 × ElementStrength / Resistance(target, element)
+       = base × (1 + 2 × ElementStrength / Resistance)
+
+base   = 75 × 91 / 42                = 162
+damage = 162 × (1 + 2 × 48 / 90)     = 334
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Basic attack</th>
+<th>Hot Head</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>130</td>
+<td>162</td>
+</tr>
+<tr>
+<td>Element</td>
+<td>–</td>
+<td>×2.07</td>
+</tr>
+<tr>
+<td><strong>Damage</strong></td>
+<td><strong>130</strong></td>
+<td><strong>334</strong></td>
+</tr>
+<tr>
+<td>Hit chance</td>
+<td>89% (accuracy 110)</td>
+<td>100% (accuracy 127, see <a href="#hit-chance">Hit chance</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The element multiplier is <code>1 + 2 × ElementStrength / Resistance</code>, so with Hot Head's 48:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Target's Fire resistance</th>
+<th>Multiplier</th>
+<th>Damage on this Kunemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>×2.92</td>
+<td>473</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>×2.07</td>
+<td>334</td>
+</tr>
+<tr>
+<td>160</td>
+<td>×1.60</td>
+<td>259</td>
+</tr>
+<tr>
+<td>300</td>
+<td>×1.32</td>
+<td>213</td>
+</tr>
+</tbody>
+</table></div>
+<p>A physical technique's element only ever adds damage; a high resistance just adds less. (Magic is different: a
+high resistance can halve it.)</p>
+<h3 id="example-a-fire-field">Example: a Fire Field</h3>
+<p>The same Kotemon (Attack 91) and Kunemon (Defense 42, Fire and Water resistance 90) with a <strong>Fire Field</strong> set by a
+Digimon with 80 Spirit. The field acts <strong>before</strong> the element, on the base value
+(<code>FIGHTSTG_getElementBoost</code>, see <a href="#elemental-fields">Elemental fields</a>):</p>
+<pre><code>FieldBoost = 64 + Spirit(whoever set the field) / 10          (at most 127)
+
+technique of the field's element:  boosted  = base × (1 + FieldBoost / 128)
+technique the field weakens:       weakened = base × (1 − FieldBoost / 256)
+technique with no element:         unchanged
+then the element step:             damage   = boosted × (1 + 2 × ElementStrength / Resistance)
+</code></pre>
+<pre><code>FieldBoost = 64 + 80 / 10 = 72
+base       = 75 × 91 / 42  = 162          (Hot Head's power; the basic attack's base is 130)
+
+Fire attack (Hot Head):   162 × (1 + 72 / 128) = 253  →  253 × (1 + 2 × 48 / 90) = 522
+Water attack (weakened):  162 × (1 − 72 / 256) = 117  →  117 × (1 + 2 × 48 / 90) = 241
+Basic attack:             no element, so the field does nothing  →  130
+</code></pre>
+<p>With more Spirit the field is stronger, but the code caps FieldBoost at 127 (<code>if (element &gt;= 0x80) element = 0x7F</code>
+in <code>boostFieldElement</code>). That is reached at 630 Spirit; above it, up to the maximum of 999, the field does not
+improve (64 + 999 / 10 would be 163):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Spirit of whoever set the field</th>
+<th>FieldBoost</th>
+<th>Fire attack (Hot Head)</th>
+<th>Water attack (weakened)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>72</td>
+<td>162 × (1 + 72/128) = 253 → <strong>522</strong> (+56%)</td>
+<td>162 × (1 − 72/256) = 117 → <strong>241</strong> (−28%)</td>
+</tr>
+<tr>
+<td>200</td>
+<td>84</td>
+<td>162 × (1 + 84/128) = 268 → <strong>553</strong> (+66%)</td>
+<td>162 × (1 − 84/256) = 109 → <strong>225</strong> (−33%)</td>
+</tr>
+<tr>
+<td>600</td>
+<td>124</td>
+<td>162 × (1 + 124/128) = 318 → <strong>657</strong> (+97%)</td>
+<td>162 × (1 − 124/256) = 84 → <strong>173</strong> (−48%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The percentages compare with 334, the damage without a field. The basic attack stays at 130 in all three.</p>
+<p>The game rounds each part down on its own (162 − 45 = 117, where 162 × 0.719 would give 116), so a result can
+differ by 1 from the one-line formula.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Attack</th>
+<th>No field</th>
+<th>Fire Field</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic attack (no element)</td>
+<td>130</td>
+<td>130</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Fire (Hot Head)</td>
+<td>334</td>
+<td><strong>522</strong></td>
+<td>+56%</td>
+</tr>
+<tr>
+<td>Water (a Hot Head made Water, for comparison)</td>
+<td>334</td>
+<td><strong>241</strong></td>
+<td>−28%</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are the numbers of a field that works as intended (with Harmony's <em>Fixed Field Moves</em>). In the original game
+and the PC port the Fire Field boosts Thunder and weakens Dark instead, so against Kunemon all three stay as without
+a field.</p>
+<h3 id="example-a-technique-against-its-family">Example: a technique against its family</h3>
+<p><strong>Bug Buster</strong> (technique 131: power 130, accuracy 110, 24 MP, no element, family Insect; learned by Hookmon and
+Armormon) against the same Kunemon, which <strong>is an Insect</strong>. Same Attack 91, to compare.</p>
+<pre><code>base   = Power × Attack(user) / Defense(target)
+family = base × (1 + 1/2)                 when the technique's family is the target's
+
+base   = 130 × 91 / 42  = 281
+family = 281 × 1.5      = 421
+</code></pre>
+<p>The family match also adds <strong>60/128 to the critical chance</strong> (<code>FIGHTSTG_rollCritical</code>), which the game's
+description doesn't mention: <code>(4 + 60) / 128 = 50%</code> instead of 3.1%.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>Hot Head</th>
+<th>Bug Buster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Damage without critical</td>
+<td>334</td>
+<td><strong>421</strong></td>
+</tr>
+<tr>
+<td>Critical chance</td>
+<td>3.1%</td>
+<td><strong>50%</strong></td>
+</tr>
+<tr>
+<td>Damage with a critical</td>
+<td>501–829</td>
+<td><strong>631–1045</strong></td>
+</tr>
+<tr>
+<td><strong>Average damage</strong></td>
+<td>≈ 344</td>
+<td><strong>≈ 630</strong></td>
+</tr>
+<tr>
+<td>Hit chance</td>
+<td>100%</td>
+<td>89%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Against its family a Buster does +50% and lands a critical every other hit: on average almost twice an elemental
+technique that hits a weakness. No technique has both a family and an element: the 13 family techniques have none.</p>
+<p>Families, named from the Buster techniques' descriptions: 2 Dinosaur, 3 Evil, 4 Ghost, 5 Machine, 7 Bird,
+8 Insect, 10 Aquatic, 11 Dragon.</p>
+<h3 id="example-elemental-accessories">Example: elemental accessories</h3>
+<p>The accessories Fire Power, Water Power, Ice Power, Wind Power, Bolt Power, Metal Power and Dark Power give the
+Digimon an element (<code>FIGHTSTG_computeStats</code>). Each comes in three strengths:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Accessory</th>
+<th>Element strength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>… Power.</td>
+<td>8</td>
+</tr>
+<tr>
+<td>… Power 2</td>
+<td>16</td>
+</tr>
+<tr>
+<td>… Power S</td>
+<td>24</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Only one can be worn</strong>: all 21 are one accessory group, and the equipment screen allows one of a group at a time
+(<code>EQUIP_KIND_GROUP_ACCESSORY</code>, <code>src/stitshop/equip.c</code>). So two Fire, or Fire and Water, is not possible.</p>
+<p>The battle uses the accessory's element <strong>for the basic attack and the shared techniques without an element</strong>
+(Bug Buster, Big Shot, Hammer Rush…). It does <strong>not</strong> use it for a Digimon's <strong>own techniques</strong> (Vee Head Butt,
+Bear Fist, Terra Force…) or <strong>pair techniques</strong>, even when they have no element. A technique with an element
+uses its own and ignores the accessory. The elemental
+field looks at the <strong>technique's</strong> element only, so it never boosts an accessory's element.</p>
+<pre><code>damage = base × (1 + 2 × AccessoryStrength / Resistance(target, accessory's element))
+
+basic attack, Fire Power S:  130 × (1 + 2 × 24 / 90) = 199
+Bug Buster,  Fire Power S:   421 × (1 + 2 × 24 / 90) = 645      (421 = 281 × 1.5, the family bonus)
+</code></pre>
+<p>Same Kotemon (Attack 91) and Kunemon (Defense 42, Fire resistance 90):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>No accessory</th>
+<th>Fire Power. (8)</th>
+<th>Fire Power 2 (16)</th>
+<th>Fire Power S (24)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic attack</td>
+<td>130</td>
+<td>153</td>
+<td>176</td>
+<td><strong>199</strong></td>
+</tr>
+<tr>
+<td>Hot Head (Fire technique)</td>
+<td>334</td>
+<td>334</td>
+<td>334</td>
+<td>334 — the accessory is ignored</td>
+</tr>
+<tr>
+<td>Basic attack + Fire Field (boost 72)</td>
+<td>130</td>
+<td>153</td>
+<td>176</td>
+<td>199 — the field does nothing</td>
+</tr>
+<tr>
+<td>Hot Head + Fire Field</td>
+<td>522</td>
+<td>522</td>
+<td>522</td>
+<td>522</td>
+</tr>
+<tr>
+<td>Bug Buster (no element, against an Insect)</td>
+<td>421</td>
+<td>495</td>
+<td>570</td>
+<td><strong>645</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>The accessories are weak next to a technique's own element (Hot Head 48, Burn Slash 64), but they add to the
+Buster techniques, which have none: Bug Buster with Fire Power S does +53% on top of its family bonus. Against a
+given enemy, the accessory worth wearing is the one of the element it resists least.</p>
+<h2 id="hit-chance">Hit chance</h2>
+<p><code>FIGHTSTG_rollHit</code> — <code>src/fightstg/rolls.c</code></p>
+<pre><code>chance (in 128ths) = Accuracy + Accuracy × (SpeedDiff / 8 + LevelDiff) / 128
+SpeedDiff = Speed(user) + accessories' accuracy − Speed(target)
+LevelDiff = Level(user) − Level(target)
+</code></pre>
+<p>The game draws a number from 0 to 127 and the hit lands if it is <strong>below</strong> the chance, so a chance of 128 or more
+never misses. Each technique has its own Accuracy: a level-5 Kotemon (Speed 63, 4 levels above) against Kunemon
+(Speed 48) gets SpeedDiff = 15, which counts as 15 / 8 = 1, and LevelDiff = 4:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Accuracy</th>
+<th>Chance</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic attack</td>
+<td>110</td>
+<td>110 + 110 × (1 + 4) / 128 = 110 + 4 = 114</td>
+<td>89%</td>
+</tr>
+<tr>
+<td>Hot Head</td>
+<td>127</td>
+<td>127 + 127 × (1 + 4) / 128 = 127 + 4 = 131</td>
+<td>never misses</td>
+</tr>
+</tbody>
+</table></div>
+<p>An enemy's hit chance uses the same formula minus the target's evasion, and is never below 32 (25%).</p>
+<h2 id="magic-damage">Magic damage</h2>
+<p><code>FIGHTSTG_computeMagicDamage</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>power = Power × (Spirit(user) × 50 / Spirit(target) + 50) / 100
+</code></pre>
+<p>The multiplier is <code>0.5 + 0.5 × Spirit(user) / Spirit(target)</code>: ×1 with equal Spirit, ×1.5 with twice the target's,
+×2 (the cap) from three times; ×0.75 with half, ×0.625 with a quarter, never below ×0.5. Physical damage
+has no such bound: twice the Attack is twice the damage.</p>
+<p><strong>Wisdom does not reduce magic damage</strong>: the target's <strong>Spirit</strong> plays the part Defense plays for physical attacks.
+Wisdom decides whether magic <strong>lands</strong> (<code>FIGHTSTG_rollMagicHit</code>):</p>
+<pre><code>chance (in 128ths) = Accuracy + Accuracy × (WisdomDiff / 8 + LevelDiff) / 128
+WisdomDiff = Wisdom(user) − Wisdom(target)
+</code></pre>
+<p>and also counts for status chances and healing.</p>
+<p>Then: the field boost, and the target's resistance
+to the element:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Resistance</th>
+<th>Damage multiplier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>under 100</td>
+<td>(400 − 3 × res) % — up to ×4</td>
+</tr>
+<tr>
+<td>100 to 299</td>
+<td>(125 − res / 4) %</td>
+</tr>
+<tr>
+<td>300 and up</td>
+<td>(65 − res / 20) %</td>
+</tr>
+</tbody>
+</table></div>
+<p>A magic technique's <em>element strength</em> does not change its damage: only the element against this table does. It
+raises its <strong>critical chance</strong> instead (see below).</p>
+<p>Then +50% against the target's family, the critical hit (+50% to +150%), the damage cut, at most 5 × <code>power</code>, and
+at most 9999 (European version).</p>
+<h3 id="example-level-5-renamons-diamond-storm-vs-the-first-kunemon">Example: level-5 Renamon's Diamond Storm vs the first Kunemon</h3>
+<p><strong>Diamond Storm</strong> (technique 59: magic, power 100, Ice, element strength 32, accuracy 127, 30 MP), Renamon's own
+technique from the start, against the same Kunemon (level 1, Spirit 40, Wisdom 50, Ice resistance 90).</p>
+<p><strong>Renamon's Spirit at level 5.</strong> It starts at 61 with Spirit growth 5. The gain table only has columns 0–8, so
+<code>growth + random(0–4)</code> can read column 9, which on the PlayStation is the first value of the next row: a tiny gain
+now and then. At level 5 its Spirit is <strong>64 to 114, 99 on average</strong>.</p>
+<pre><code>power  = Power × (Spirit(user) × 50 / Spirit(target) + 50) / 100       (kept between Power/2 and Power × 2)
+damage = power × (400 − 3 × Resistance) / 100                            (resistance under 100)
+
+power  = 100 × (99 × 50 / 40 + 50) / 100 = 100 × (123 + 50) / 100 = 173
+damage = 173 × (400 − 3 × 90) / 100      = 173 × 1.30              = 224
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Renamon's Spirit</th>
+<th>power</th>
+<th>Damage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64 (unlucky level-ups)</td>
+<td>130</td>
+<td>169</td>
+</tr>
+<tr>
+<td>99 (average)</td>
+<td>173</td>
+<td>224</td>
+</tr>
+<tr>
+<td>114 (lucky level-ups)</td>
+<td>192</td>
+<td>249</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Hit chance</strong>: <code>127 + 127 × (WisdomDiff / 8 + LevelDiff) / 128</code>. Renamon's Wisdom is about 92 against 50, so
+<code>127 + 127 × (5 + 4) / 128 = 135</code>: it never misses.</p>
+<p><strong>Critical.</strong> A magic critical depends on the element (<code>FIGHTSTG_rollMagicCritical</code>):</p>
+<pre><code>value  = ElementStrength × 100 / Resistance(target, element)        (at most 64)
+chance = value + 4                                                  (in 128ths)
+
+Diamond Storm (strength 32) vs Kunemon (Ice 90):  value = 32 × 100 / 90 = 35  →  39 / 128 = 30%
+Flame Ball    (strength 16) vs Kunemon (Fire 90): value = 16 × 100 / 90 = 17  →  21 / 128 = 16%
+</code></pre>
+<p>Both have power 100 and do the same 224 to Kunemon, since a magic technique's element strength doesn't change its
+damage; Diamond Storm, with twice the strength, lands almost twice as many criticals. A critical adds +50% to
++150%.</p>
+<p>Diamond Storm's critical chance by the target's Ice resistance:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ice resistance</th>
+<th>Value</th>
+<th>Critical chance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>64 (the cap)</td>
+<td>68/128 = 53% (the most without a family match)</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>35</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>100</td>
+<td>32</td>
+<td>28%</td>
+</tr>
+<tr>
+<td>200</td>
+<td>16</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>300</td>
+<td>10</td>
+<td>11%</td>
+</tr>
+</tbody>
+</table></div>
+<p>So magic of an element the enemy is weak to gets more damage <strong>and</strong> more criticals.</p>
+<p><strong>A target with a status ailment takes more criticals</strong>, physical and magic alike, by the strength of the technique
+that inflicted it:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Extra critical chance (in 128ths)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paralyzed or asleep</td>
+<td>+ strength / 8</td>
+</tr>
+<tr>
+<td>Confused</td>
+<td>+ strength / 2</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Status technique's strength</th>
+<th>Paralysis or sleep</th>
+<th>Confusion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 (Spinal Tap, Stun Shock, Hypno Gas, Panic Bites, Confuse Gas)</td>
+<td>+10 (+8%)</td>
+<td>+40 (+31%)</td>
+</tr>
+<tr>
+<td>96 (Brain Freeze, Paralyze Shock, Hypno Nebula)</td>
+<td>+12 (+9%)</td>
+<td>+48 (+38%)</td>
+</tr>
+<tr>
+<td>104 (T-Sword)</td>
+<td>+13 (+10%)</td>
+<td>–</td>
+</tr>
+<tr>
+<td>127 (Mugenhadou, Confuse Stab, Confuse Nebula)</td>
+<td>+15 (+12%)</td>
+<td>+63 (+49%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Diamond Storm against a Kunemon confused by Confuse Nebula: <code>39 + 63 = 102</code> → <strong>80% criticals</strong>.</p>
+<p>Kunemon has 120 HP: Diamond Storm always kills it. For comparison, Renamon's basic attack (Attack about 61) does
+<code>60 × 61 / 42 = 87</code>.</p>
+<p>How the target's resistance changes Diamond Storm (power 173):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ice resistance</th>
+<th>Multiplier</th>
+<th>Damage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>×2.50</td>
+<td>432</td>
+</tr>
+<tr>
+<td>90 (Kunemon)</td>
+<td>×1.30</td>
+<td>224</td>
+</tr>
+<tr>
+<td>100</td>
+<td>×1.00</td>
+<td>173</td>
+</tr>
+<tr>
+<td>160</td>
+<td>×0.85</td>
+<td>147</td>
+</tr>
+<tr>
+<td>200</td>
+<td>×0.75</td>
+<td>129</td>
+</tr>
+<tr>
+<td>300</td>
+<td>×0.50</td>
+<td>86</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unlike a physical technique's element, magic can be <strong>halved</strong> by a high resistance, and more than doubled by a low
+one.</p>
+<h2 id="critical-hits">Critical hits</h2>
+<p><code>FIGHTSTG_rollCritical</code> — <code>src/fightstg/rolls.c</code></p>
+<p>A physical hit is critical with this chance, in 128ths:</p>
+<pre><code>chance = 4                                  (3.1%)
+       + EffectStrength                     if the technique has the Higher critical effect
+       + the equipment's critical bonus     (×2 for special Digimon) if the technique has no effect at all
+       + 60 if the technique is strong against the target's family (+16 for a weapon's family instead)
+       + more while the target is paralyzed, asleep or confused
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Critical chance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big Shot</td>
+<td>44/128 = 34%</td>
+</tr>
+<tr>
+<td>Swing Swing, Captain Cannon, Maltcyclone</td>
+<td>64/128 = 50%</td>
+</tr>
+<tr>
+<td>Pinpoint Shot</td>
+<td>68/128 = 53%</td>
+</tr>
+</tbody>
+</table></div>
+<p>A critical adds <code>damage × (32 to 95) / 64</code>: <strong>+50% to +148%</strong>, about double on average.</p>
+<p>A <strong>magic</strong> critical (<code>FIGHTSTG_rollMagicCritical</code>) has its own chance, from the technique's element strength
+against the target's resistance:</p>
+<pre><code>chance (in 128ths) = min(64, ElementStrength × 100 / Resistance(target, element)) + 4
+</code></pre>
+<p>(+60 more against the technique's family), and adds +50% to +150%.</p>
+<h2 id="multi-hit">Multi-hit</h2>
+<p><code>FIGHTSTG_rollMultiHit</code> — <code>src/fightstg/tech_effects.c</code>; the total in <code>src/fightstg/tech_action.c</code></p>
+<p>The damage is computed <strong>once</strong> (with one critical roll) and multiplied by the hits that land:</p>
+<pre><code>total = damage × hits landed          (at most 9999, European version)
+</code></pre>
+<p>The first hit uses the technique's accuracy; each further hit rolls accuracy again. Blade Twister (power 120,
+3 hits) is like a 360-power technique when all three land.</p>
+<h2 id="healing">Healing</h2>
+<p><code>FIGHTSTG_computeHeal</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>HP = Power × 64 + Wisdom × Power / 8        (at most 9999, European version)
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Power</th>
+<th>Heals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small Heal</td>
+<td>8</td>
+<td>512 + Wisdom × 1</td>
+</tr>
+<tr>
+<td>Mega Heal / Giga Heal</td>
+<td>32</td>
+<td>2048 + Wisdom × 4</td>
+</tr>
+<tr>
+<td>Final Heal</td>
+<td>64</td>
+<td>4096 + Wisdom × 8</td>
+</tr>
+<tr>
+<td>Full Heal</td>
+<td>127</td>
+<td>8128 + Wisdom × 15.9</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="buffs-and-debuffs">Buffs and debuffs</h2>
+<p><code>FIGHTSTG_changeBoost</code> — <code>src/fightstg/boosts.c</code>; the techniques' amounts in <code>FIGHTSTG_techBoosts</code> and
+<code>FIGHTSTG_sideBoosts</code> — <code>src/fightstg/tech_action.c</code></p>
+<pre><code>boost += stat × EffectStrength / 128        (− for debuffs)
+</code></pre>
+<p>The boost is a share of the stat without boosts. It <strong>stacks</strong> with each use, between <strong>−50%</strong> and <strong>+100%</strong> of the
+stat. It ends after <code>random(0–2000) + 2000 + Spirit × 10</code> battle time units, and using it again resets the timer.
+The Spirit is that of the Digimon the boost is on: a debuff on a high-Spirit enemy lasts longer.</p>
+<p><strong>In turns:</strong> battles run on a timeline, not fixed turns. An enemy acts about every 1000 units (707 to 1414,
+from both sides' Speed: <code>1000 × Speed(other) / √(Speed(own) × Speed(other))</code>), so a buff lasts <strong>about 2–4
+turns, plus one turn per 100 Spirit</strong>.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double Power / Mega Strength</td>
+<td>Attack +37.5% (the user) / +50% (all allies)</td>
+</tr>
+<tr>
+<td>Double Guard / Mega Protection</td>
+<td>Defense +37.5% (the user) / +50% (all allies)</td>
+</tr>
+<tr>
+<td>Speed Up / Mega Boost</td>
+<td>Speed +25% (the user) / +37.5% (all allies)</td>
+</tr>
+<tr>
+<td>Lovely Charm, Grisly Wing</td>
+<td>Enemy attack −18.75%, −25%</td>
+</tr>
+<tr>
+<td>Armor Break / Armor Off</td>
+<td>Enemy defense −18.75% / −37.5%</td>
+</tr>
+<tr>
+<td>Slow Down / Mega Break</td>
+<td>Enemy speed −12.5% / −25%</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="charge">Charge</h2>
+<p><code>chargeUser</code> — <code>src/fightstg/tech_action.c</code>; used by <code>FIGHTSTG_adjustDamage</code> as the damage bonus</p>
+<p>Soul Charge (80) and Misshukikou (127) add <code>EffectStrength / 64</code> to the <strong>next physical technique's</strong> damage:
+<strong>+125%</strong> and <strong>+198%</strong>. The charge is spent by that technique.</p>
+<h2 id="drains">Drains</h2>
+<p>Drain HP techniques heal <code>EffectStrength / 128</code> of the damage dealt: Energy Leech 50%, Touch of Evil 62.5%,
+Energy Drain 99%. Vampire Jewel drains 6.25% of the target's max MP.</p>
+<h2 id="status-ailments">Status ailments</h2>
+<p><code>src/fightstg/rolls.c</code></p>
+<pre><code>chance (in 128ths) = EffectChance + Wisdom(user) / 8 − (Resistance(target) + Wisdom(target) / 2) / 8
+</code></pre>
+<p>kept between 1 and 127, rolled when the hit lands. The resistance is the target's resistance to that ailment
+(PSN, PAR, CNF, SLP, KO on the enemy explorer) <strong>plus one of its element resistances</strong>:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ailment</th>
+<th>Element resistance added</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poison</td>
+<td>Water</td>
+</tr>
+<tr>
+<td>Paralysis</td>
+<td>Thunder</td>
+</tr>
+<tr>
+<td>Confusion</td>
+<td>Wind</td>
+</tr>
+<tr>
+<td>Sleep</td>
+<td>Ice</td>
+</tr>
+<tr>
+<td>Knock-out</td>
+<td>Dark</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-each-ailment-does">What each ailment does</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ailment</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poison</td>
+<td>Takes HP away about once a turn (every 1000 time units, a turn at equal speed) until cured or the battle ends, and can knock out: (technique strength / 2 − (Poison res. + Water res.) / 10)% of the max HP each time, at least 1 and at most half the max HP</td>
+</tr>
+<tr>
+<td>Paralysis</td>
+<td>Each turn it may lose it (strength − (Paralysis res. + Thunder res.) / 8 in 128ths, at least 32/128), and it can't counterattack; it wears off after a while (later with more strength); criticals against it +strength/8</td>
+</tr>
+<tr>
+<td>Confusion</td>
+<td>A confused enemy loses its turns; a confused partner can only use the plain attack; it wears off after a while; criticals against it +strength/2</td>
+</tr>
+<tr>
+<td>Sleep</td>
+<td>It can't act (a partner can't attack, use techniques or digivolve) until it wears off or is hit, which wakes it up; criticals against it +strength/8</td>
+</tr>
+<tr>
+<td>Knock-out</td>
+<td>The target falls at once, whatever its HP</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="poison-techniques">Poison techniques</h3>
+<p>Each poison technique has two numbers: the chance to poison (EffectChance) and the poison's strength
+(EffectStrength), which sets how much it hurts (<code>FIGHTSTG_getDamage</code>, <code>src/fightstg/damage.c</code>):</p>
+<pre><code>HP lost each tick = (strength / 2 − (Poison res. + Water res.) / 10)% of the max HP     (at least 1, at most 50%)
+</code></pre>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Kind</th>
+<th>Power</th>
+<th>MP</th>
+<th>Chance to poison</th>
+<th>Strength</th>
+<th>vs Yanmamon (Poison 99, Water 91)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poison Bites</td>
+<td>Physical</td>
+<td>75</td>
+<td>18</td>
+<td>72/128 (56%)</td>
+<td>80</td>
+<td>40 − 19 = <strong>21%</strong> a tick</td>
+</tr>
+<tr>
+<td>Evil Poison</td>
+<td>Magic</td>
+<td>60</td>
+<td>18</td>
+<td>72/128 (56%)</td>
+<td>80</td>
+<td>21%</td>
+</tr>
+<tr>
+<td>Venom Stab</td>
+<td>Physical</td>
+<td>200</td>
+<td>36</td>
+<td>80/128 (63%)</td>
+<td>96</td>
+<td>48 − 19 = <strong>29%</strong></td>
+</tr>
+<tr>
+<td>Deadly Poison</td>
+<td>Magic</td>
+<td>360</td>
+<td>90</td>
+<td>112/128 (88%)</td>
+<td>127</td>
+<td>63 − 19 = <strong>44%</strong></td>
+</tr>
+<tr>
+<td>Thorn Whipping (Rosemon only)</td>
+<td>Physical</td>
+<td>340</td>
+<td>130</td>
+<td>127/128 (99%)</td>
+<td>127</td>
+<td>44%</td>
+</tr>
+<tr>
+<td>Venom Fang (weapon, plain attack)</td>
+<td>Physical</td>
+<td>–</td>
+<td>–</td>
+<td>64/128 (50%)</td>
+<td>64</td>
+<td>32 − 19 = <strong>13%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>A tick comes about once a turn (every 1000 time units) until the poison is cured or the battle ends; as a share of
+the max HP, it is as strong against bosses. <strong>Poisoning a target that is already poisoned replaces its poison</strong>
+(<code>FIGHTSTG_inflictPoison</code> overwrites the queued damage): a Poison Bites after a Deadly Poison brings it down from 44%
+to 21%.</p>
+<h3 id="example-a-poison-technique-vs-yanmamon">Example: a poison technique vs Yanmamon</h3>
+<p>A technique with EffectChance 64, used by a Digimon with Wisdom 100, against Yanmamon (Poison 99, Water 91,
+Wisdom 70):</p>
+<pre><code>64 + 100 / 8 − (99 + 91 + 70 / 2) / 8 = 64 + 12 − 28 = 48   →   48 / 128 = 37.5%
+</code></pre>
+<p>Every 8 points of your Wisdom add 1/128 (about 0.8%).</p>
+<h3 id="status-weapons">Status weapons</h3>
+<p>A weapon with a status (worn in a weapon slot, not as an accessory) gives its chance to the <strong>basic attack and the
+physical techniques with no effect of their own</strong>, when the hit lands (never to magic); a technique with its own effect uses the technique's chance instead. The
+same formula, with the weapon's chance as EffectChance:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Weapon</th>
+<th>Ailment</th>
+<th>Chance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Venom Fang</td>
+<td>Poison</td>
+<td>64/128</td>
+</tr>
+<tr>
+<td>Rock Breaker</td>
+<td>Confusion</td>
+<td>32/128</td>
+</tr>
+<tr>
+<td>Raven Bow</td>
+<td>Confusion</td>
+<td>24/128</td>
+</tr>
+<tr>
+<td>Needle Glove</td>
+<td>Knock-out</td>
+<td>24/128</td>
+</tr>
+<tr>
+<td>Soul Chopper</td>
+<td>Knock-out</td>
+<td>32/128</td>
+</tr>
+<tr>
+<td>Shock Horn</td>
+<td>Paralysis</td>
+<td>0/128 (only your Wisdom counts)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="battles-that-block-them">Battles that block them</h3>
+<p>Each battle can keep you from inflicting each ailment at all (<code>Encounter.blocks</code>, copied to <code>BATTLE_SETUP.blocks</code>),
+whatever the chance. Most story battles block some: of 150, 39 block poison, 48 paralysis, 58 confusion, 53 sleep
+and 62 knock-out; of the other 184 battles, only 2 to 10 block each. The first boss, Pharaohmon, cannot be
+confused, put to sleep or knocked out. The same list also blocks drains, steals, lowering the enemy's
+attack, defense or speed, and running away.</p>
+<h2 id="elemental-fields">Elemental fields</h2>
+<p><code>boostFieldElement</code> — <code>src/fightstg/tech_action.c</code>; <code>FIGHTSTG_getElementBoost</code> — <code>src/fightstg/damage.c</code></p>
+<pre><code>boost = 64 + Spirit / 10        (at most 127)
+</code></pre>
+<ul>
+<li>Techniques of the field's element: <code>+boost / 128</code> → <strong>+50%</strong>, up to +99%.</li>
+<li>Techniques whose element the field weakens: <code>−boost / 256</code> → <strong>−25%</strong>, down to −50%.</li>
+<li>The field lasts <code>Spirit × 12 + 1000</code> battle time units: about <strong>1 turn, plus one per 83 Spirit</strong>.</li>
+</ul>
+<p>Which element each field weakens, according to the code (<code>FIGHTSTG_opposedElements</code>):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Boosts</th>
+<th>Weakens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire Field</td>
+<td>Fire</td>
+<td>Water</td>
+</tr>
+<tr>
+<td>Water Field</td>
+<td>Water</td>
+<td>Wind</td>
+</tr>
+<tr>
+<td>Ice Field</td>
+<td>Ice</td>
+<td>Fire</td>
+</tr>
+<tr>
+<td>Wind Field</td>
+<td>Wind</td>
+<td>Ice</td>
+</tr>
+<tr>
+<td>Thunder Field</td>
+<td>Thunder</td>
+<td>Dark</td>
+</tr>
+<tr>
+<td>Metal Field</td>
+<td>Machine</td>
+<td>Thunder</td>
+</tr>
+<tr>
+<td>Dark Field</td>
+<td>Dark</td>
+<td>Machine</td>
+</tr>
+</tbody>
+</table></div>
+<p>The game's own descriptions name other elements ("Strengthen fire, weaken ice"); the table above is what the code
+does.</p>
+<blockquote>
+<p><strong>Bug in the original game:</strong> <code>boostFieldElement</code> takes the field's element from the technique's <em>icon</em> field,
+which is 6 (Thunder) for all seven fields. So <strong>every field boosts Thunder</strong> (and weakens Dark), whatever its name
+says. The Harmony mod's <em>Fixed Field Moves</em> patch fixes it. The native PC port, built from the original code,
+keeps the bug.</p>
+</blockquote>
+<h2 id="learning-digivolutions">Learning digivolutions</h2>
+<p><code>STFGTREP_learnDigimon</code> — <code>src/stfgtrep/growth.c</code>; the lists in <code>STFGTREP_evolutionLists</code></p>
+<p>After a battle the game walks the partner's list of 44 forms <strong>in order</strong> and gives it the <strong>first</strong> form it doesn't
+have whose requirements are all met:</p>
+<ul>
+<li>up to two forms the partner must have, each at a minimum <strong>DV level</strong> (that form's own level), and</li>
+<li>one stat at a minimum: a battle stat, the partner's level, or a resistance.</li>
+</ul>
+<p>The form takes the first free DV slot. The requirements of every form for every Rookie are in
+<a href="data/evolutions.csv"><code>data/evolutions.csv</code></a> and on the <a href="evolutions.html">evolution chart</a>.</p>
+<h2 id="notes-to-place">Notes (to place)</h2>
+<h3 id="where-attack-and-defense-come-from">Where Attack and Defense come from</h3>
+<p><code>FIGHTSTG_computeStats</code> — <code>src/fightstg/stats.c</code></p>
+<ul>
+<li><strong>A partner</strong>: its own Strength or Defense, plus what its weapons and armor add, plus the <strong>digivolved form's</strong>
+  stats (each form adds its own, as in <code>DIGIMON_DATA</code>), plus active buffs. A stat that ends at 0 or less counts as 1.</li>
+<li><strong>An enemy</strong>: its battle table stats × the battle's <strong>strength / 16</strong>. The same Digimon gets stronger in later
+  areas: the first Kunemon has strength 16 (×1), later ones 35, 38 and 45 (×2.2 to ×2.8).</li>
+</ul>
+<h3 id="equipment-that-changes-physical-damage">Equipment that changes physical damage</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire Power, Water Power, Ice Power, Wind Power, Bolt Power, Metal Power, Dark Power (accessories)</td>
+<td>Give the Digimon an <strong>element</strong>, used by the basic attack and the shared techniques with no element (not by a Digimon's own techniques or pair techniques), with the accessory's amount as element strength</td>
+</tr>
+<tr>
+<td>Multi Crest</td>
+<td><strong>Three hits of 40%</strong> each (120% if all land), each rolling accuracy. Ignored while a status or drain weapon, Saber Fang or Shuriken is worn (as are the Search Crest and the counter accessory): <code>fightstg/stats.c</code> only reads those accessories when no such weapon was found</td>
+</tr>
+<tr>
+<td>Search Crest; weapons Saber Fang, Shuriken</td>
+<td>Raise the <strong>critical chance</strong> by their amount (doubled for special Digimon); only for techniques with no effect</td>
+</tr>
+<tr>
+<td>Weapons with a family</td>
+<td>+50% damage and +16/128 critical chance against that family</td>
+</tr>
+<tr>
+<td>Venom Fang, Shock Horn and other status weapons</td>
+<td>The plain attack can inflict their status</td>
+</tr>
+<tr>
+<td>Glasses / Dance Feather</td>
+<td>Accuracy / evasion</td>
+</tr>
+<tr>
+<td>HP Proxy / HP Mega Proxy</td>
+<td>Take <strong>a fixed amount</strong> off every hit received (the Harmony mod makes it 10%/20%)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="counterattacks">Counterattacks</h3>
+<p><code>FIGHTSTG_computeCounterDamage</code> — <code>src/fightstg/damage.c</code></p>
+<p>Counter techniques (Maul Attack, Counter Alert, Counter Strike) hit back for
+<code>damage received × EffectStrength / 64</code> (<code>/ 32</code> for special Digimon), then go through the steps above.</p>
+<h3 id="enemies-attacking-you">Enemies attacking you</h3>
+<p>Same formula, with the battle's strength already in the enemy's Attack and in its techniques' power. An enemy hits
+<strong>at least 25%</strong> of the time (a chance of 32/128), however fast you are, and its criticals work like yours.</p>
+<h3 id="rounding-and-limits">Rounding and limits</h3>
+<p>Every step rounds <strong>down</strong> on its own, as on the PlayStation. There is <strong>no minimum damage</strong>: when Defense is much
+higher than Attack, or a damage cut absorbs it, a hit can do 0.</p>
+<h3 id="the-steps-after-the-base-value">The steps after the base value</h3>
+<p>An enemy's technique is also multiplied by its strength / 16 (<code>BATTLE_SETUP.enemies[].strength</code>).</p>
+<p>Then, in this order:</p>
+<ol>
+<li><strong>Field boost</strong>: if the technique's element is the field's, <code>+ base × boost / 128</code>. If the field weakens it,
+   <code>− base × boost / 256</code> (see <a href="#elemental-fields">Elemental fields</a>).</li>
+<li><strong>Family</strong>: <code>+50%</code> if the technique (or, for techniques with no family, one of the user's weapons) is strong
+   against the target's family.</li>
+<li><strong>Damage bonus</strong> (a charge from Soul Charge or Misshukikou): <code>+ damage × bonus / 64</code>.</li>
+<li><strong>Element vs resistance</strong>: <code>+ damage × ElementStrength × 2 / Resistance(target, element)</code>. With resistance 100 and
+   strength 48 that is ×1.96; with resistance 300, ×1.32. A technique without an
+   element uses the user's element from an accessory, if any (not for a Digimon's own techniques or pair
+   techniques).</li>
+<li><strong>Triple hit</strong> accessory: each hit does <code>× 4 / 10</code>.</li>
+<li><strong>Critical hit</strong>: <code>+ damage × (32 to 95) / 64</code>, i.e. +50% to +148%.</li>
+<li><strong>Damage cut</strong> of the target: subtracted, never below 0.</li>
+<li><strong>Caps</strong>: at most 5 × the base value, and at most 9999 (European version only).</li>
+</ol>
+</div></body></html>
