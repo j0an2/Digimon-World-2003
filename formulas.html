@@ -736,6 +736,124 @@ against the target's resistance:</p>
 <pre><code>chance (in 128ths) = min(64, ElementStrength × 100 / Resistance(target, element)) + 4
 </code></pre>
 <p>(+60 more against the technique's family), and adds +50% to +150%.</p>
+<h3 id="critical-equipment-search-crest-saber-fang-shuriken">Critical equipment: Search Crest, Saber Fang, Shuriken</h3>
+<p><code>FIGHTSTG_computeStats</code> (<code>src/fightstg/stats.c</code>) and <code>FIGHTSTG_rollCritical</code></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Kind</th>
+<th>Critical bonus</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search Crest</td>
+<td>Accessory</td>
+<td>+32</td>
+<td>Every Rookie</td>
+</tr>
+<tr>
+<td>Shuriken</td>
+<td>Weapon (both hands)</td>
+<td>+32</td>
+<td>Monmon</td>
+</tr>
+<tr>
+<td>Saber Fang</td>
+<td>Weapon</td>
+<td>+64</td>
+<td>Agumon, Veemon, Guilmon</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>When it counts.</strong> Only for the <strong>basic attack and physical techniques with no effect of their own</strong>. A technique with
+an effect uses its own and ignores the equipment:</p>
+<ul>
+<li><strong>Higher critical</strong> techniques (Big Shot, Pinpoint Shot…) keep their own chance: Big Shot is 34% with or without the
+  crest. The two never add up.</li>
+<li><strong>Multi-hit</strong> techniques (Hammer Rush, Impact Rush…) and status techniques get no bonus.</li>
+<li><strong>Magic</strong> has its own critical roll (above) and ignores it.</li>
+</ul>
+<p><strong>They don't stack.</strong> A critical weapon (or any status or drain weapon) makes the game skip the accessories, so a
+Search Crest does nothing next to a Shuriken or a Saber Fang. Two Search Crests count as one.</p>
+<p><strong>Aura Plug doubles it.</strong> The Aura Plug item puts the partner in its <em>special state</em> until it is switched out or
+knocked out, and the equipment's bonus counts twice: <code>bonus × 2 + 4</code>.</p>
+<p><strong>The cost: accuracy.</strong> In <code>FIGHTSTG_rollHit</code> the bonus is taken off the level difference, for the same techniques it
+helps (see <a href="bugs.html">Bugs</a>):</p>
+<pre><code>hit chance = Accuracy + Accuracy × (SpeedDiff / 8 + LevelDiff − CriticalBonus) / 128
+</code></pre>
+<p>A +32 costs a technique with accuracy 110 about 27/128 (21 points of hit chance), unless you are so far above the
+enemy that it still hits every time.</p>
+<h3 id="example-the-buster-techniques">Example: the Buster techniques</h3>
+<p>The Buster techniques (Bug Buster, Wing Buster, Fish Buster, Dino Buster, Dramon Buster, Devil Buster; Hookmon,
+Armormon and Cannondramon learn them) have <strong>no effect</strong>, so the crest counts, and against their own family they
+already add +60 to the critical chance:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Bug Buster against an Insect</th>
+<th>Critical chance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing</td>
+<td>4 + 60 = 64/128 = <strong>50%</strong></td>
+</tr>
+<tr>
+<td>Search Crest (or Monmon's Shuriken)</td>
+<td>4 + 32 + 60 = 96/128 = <strong>75%</strong></td>
+</tr>
+<tr>
+<td>Search Crest + Aura Plug</td>
+<td>4 + 64 + 60 = 128/128 = <strong>100%: every hit is a critical</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>With the <a href="#example-a-technique-against-its-family">family example</a>'s numbers (Bug Buster does 421 against Kunemon, about
+838 with a critical), the average damage of one use, counting the hits that miss. <em>Advantage</em> is
+<code>SpeedDiff / 8 + LevelDiff</code>, how far above the enemy the user is:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Nothing</th>
+<th>Search Crest</th>
+<th>Search Crest + Aura Plug</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 (an even fight)</td>
+<td>89% hits → <strong>561</strong></td>
+<td>68% → 499</td>
+<td>68% → 570</td>
+</tr>
+<tr>
+<td>20</td>
+<td>99% → <strong>625</strong></td>
+<td>78% → 574</td>
+<td>78% → 655</td>
+</tr>
+<tr>
+<td>40</td>
+<td>100% → 630</td>
+<td>91% → 665</td>
+<td>91% → <strong>760</strong></td>
+</tr>
+<tr>
+<td>60 or more</td>
+<td>100% → 630</td>
+<td>100% → 734</td>
+<td>100% → <strong>839</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>75% or 100% criticals look huge, but in an even fight the misses cost more than the criticals give: the crest only
+pays off when you clearly outclass the enemy. Then a Buster with Search Crest and Aura Plug is a guaranteed critical,
+about <strong>1.3 times</strong> the damage without them.</p>
 <h2 id="multi-hit">Multi-hit</h2>
 <p><code>FIGHTSTG_rollMultiHit</code> — <code>src/fightstg/tech_effects.c</code>; the total in <code>src/fightstg/tech_action.c</code></p>
 <p>The damage is computed <strong>once</strong> (with one critical roll) and multiplied by the hits that land:</p>

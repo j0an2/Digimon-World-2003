@@ -399,6 +399,67 @@ chance (in 128ths) = min(64, ElementStrength × 100 / Resistance(target, element
 
 (+60 more against the technique's family), and adds +50% to +150%.
 
+### Critical equipment: Search Crest, Saber Fang, Shuriken
+
+`FIGHTSTG_computeStats` (`src/fightstg/stats.c`) and `FIGHTSTG_rollCritical`
+
+| Item | Kind | Critical bonus | Who |
+|---|---|---|---|
+| Search Crest | Accessory | +32 | Every Rookie |
+| Shuriken | Weapon (both hands) | +32 | Monmon |
+| Saber Fang | Weapon | +64 | Agumon, Veemon, Guilmon |
+
+**When it counts.** Only for the **basic attack and physical techniques with no effect of their own**. A technique with
+an effect uses its own and ignores the equipment:
+
+* **Higher critical** techniques (Big Shot, Pinpoint Shot…) keep their own chance: Big Shot is 34% with or without the
+  crest. The two never add up.
+* **Multi-hit** techniques (Hammer Rush, Impact Rush…) and status techniques get no bonus.
+* **Magic** has its own critical roll (above) and ignores it.
+
+**They don't stack.** A critical weapon (or any status or drain weapon) makes the game skip the accessories, so a
+Search Crest does nothing next to a Shuriken or a Saber Fang. Two Search Crests count as one.
+
+**Aura Plug doubles it.** The Aura Plug item puts the partner in its *special state* until it is switched out or
+knocked out, and the equipment's bonus counts twice: `bonus × 2 + 4`.
+
+**The cost: accuracy.** In `FIGHTSTG_rollHit` the bonus is taken off the level difference, for the same techniques it
+helps (see [Bugs](bugs.html)):
+
+```
+hit chance = Accuracy + Accuracy × (SpeedDiff / 8 + LevelDiff − CriticalBonus) / 128
+```
+
+A +32 costs a technique with accuracy 110 about 27/128 (21 points of hit chance), unless you are so far above the
+enemy that it still hits every time.
+
+### Example: the Buster techniques
+
+The Buster techniques (Bug Buster, Wing Buster, Fish Buster, Dino Buster, Dramon Buster, Devil Buster; Hookmon,
+Armormon and Cannondramon learn them) have **no effect**, so the crest counts, and against their own family they
+already add +60 to the critical chance:
+
+| Bug Buster against an Insect | Critical chance |
+|---|---|
+| Nothing | 4 + 60 = 64/128 = **50%** |
+| Search Crest (or Monmon's Shuriken) | 4 + 32 + 60 = 96/128 = **75%** |
+| Search Crest + Aura Plug | 4 + 64 + 60 = 128/128 = **100%: every hit is a critical** |
+
+With the [family example](#example-a-technique-against-its-family)'s numbers (Bug Buster does 421 against Kunemon, about
+838 with a critical), the average damage of one use, counting the hits that miss. *Advantage* is
+`SpeedDiff / 8 + LevelDiff`, how far above the enemy the user is:
+
+| Advantage | Nothing | Search Crest | Search Crest + Aura Plug |
+|---|---|---|---|
+| 5 (an even fight) | 89% hits → **561** | 68% → 499 | 68% → 570 |
+| 20 | 99% → **625** | 78% → 574 | 78% → 655 |
+| 40 | 100% → 630 | 91% → 665 | 91% → **760** |
+| 60 or more | 100% → 630 | 100% → 734 | 100% → **839** |
+
+75% or 100% criticals look huge, but in an even fight the misses cost more than the criticals give: the crest only
+pays off when you clearly outclass the enemy. Then a Buster with Search Crest and Aura Plug is a guaranteed critical,
+about **1.3 times** the damage without them.
+
 ## Multi-hit
 
 `FIGHTSTG_rollMultiHit` — `src/fightstg/tech_effects.c`; the total in `src/fightstg/tech_action.c`

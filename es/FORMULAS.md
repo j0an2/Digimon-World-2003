@@ -400,6 +400,67 @@ probabilidad (en 128avos) = mín(64, FuerzaElemento × 100 / Resistencia(objetiv
 
 (+60 más contra la familia de la técnica), y suma de +50 % a +150 %.
 
+### Equipo de críticos: Buscar Vale, Colmi. Sable, Shuriken
+
+`FIGHTSTG_computeStats` (`src/fightstg/stats.c`) y `FIGHTSTG_rollCritical`
+
+| Objeto | Tipo | Bonus de crítico | Quién |
+|---|---|---|---|
+| Buscar Vale (Search Crest) | Accesorio | +32 | Todos los Rookies |
+| Shuriken | Arma (dos manos) | +32 | Monmon |
+| Colmi. Sable (Saber Fang) | Arma | +64 | Agumon, Veemon, Guilmon |
+
+**Cuándo cuenta.** Solo en el **ataque básico y las técnicas físicas sin efecto propio**. Una técnica con efecto usa el
+suyo y no hace caso del equipo:
+
+* Las técnicas de **Más críticos** (Big Shot, Pinpoint Shot…) se quedan con su probabilidad: Big Shot tiene un 34 % con
+  vale o sin él. Nunca se suman.
+* Las técnicas de **varios golpes** (Hammer Rush, Impact Rush…) y las de estados alterados no reciben el bonus.
+* La **magia** tiene su propia tirada de crítico (justo arriba) y no lo usa.
+
+**No se acumulan.** Con un arma de críticos (o cualquier arma de estado o de absorción) el juego no lee los accesorios,
+así que el Buscar Vale no hace nada junto a un Shuriken o un Colmi. Sable. Dos Buscar Vale cuentan como uno.
+
+**La Conexión Aura (Aura Plug) lo dobla.** Este objeto pone al compañero en su *estado especial* hasta que se cambia o
+cae KO, y el bonus del equipo cuenta doble: `bonus × 2 + 4`.
+
+**El precio: la precisión.** En `FIGHTSTG_rollHit` el bonus se resta a la diferencia de nivel, en las mismas técnicas a
+las que ayuda (ver [Bugs](bugs.html)):
+
+```
+probabilidad de acierto = Precisión + Precisión × (DifVelocidad / 8 + DifNivel − BonusCrítico) / 128
+```
+
+Un +32 le cuesta a una técnica de precisión 110 unos 27/128 (21 puntos de probabilidad de acierto), salvo que estés tan
+por encima del enemigo que siga acertando siempre.
+
+### Ejemplo: las técnicas Buster
+
+Las técnicas Buster (Bug Buster, Wing Buster, Fish Buster, Dino Buster, Dramon Buster, Devil Buster; las aprenden
+Hookmon, Armormon y Cannondramon) **no tienen efecto**, así que el vale cuenta, y contra su propia familia ya suman +60
+a la probabilidad de crítico:
+
+| Bug Buster contra un Insecto | Probabilidad de crítico |
+|---|---|
+| Nada | 4 + 60 = 64/128 = **50 %** |
+| Buscar Vale (o el Shuriken de Monmon) | 4 + 32 + 60 = 96/128 = **75 %** |
+| Buscar Vale + Conexión Aura | 4 + 64 + 60 = 128/128 = **100 %: todos los golpes son críticos** |
+
+Con los números del [ejemplo de familia](#ejemplo-una-tecnica-contra-su-familia) (Bug Buster hace 421 a Kunemon, unos 838
+con crítico), el daño medio de un uso, contando los golpes que fallan. La *ventaja* es `DifVelocidad / 8 + DifNivel`,
+cuánto está quien ataca por encima del enemigo:
+
+| Ventaja | Nada | Buscar Vale | Buscar Vale + Conexión Aura |
+|---|---|---|---|
+| 5 (un combate igualado) | 89 % de aciertos → **561** | 68 % → 499 | 68 % → 570 |
+| 20 | 99 % → **625** | 78 % → 574 | 78 % → 655 |
+| 40 | 100 % → 630 | 91 % → 665 | 91 % → **760** |
+| 60 o más | 100 % → 630 | 100 % → 734 | 100 % → **839** |
+
+Un 75 % o un 100 % de críticos parece mucho, pero en un combate igualado los fallos cuestan más de lo que dan los
+críticos: el vale solo compensa cuando superas claramente al enemigo. Entonces un Buster con Buscar Vale y Conexión Aura
+es un crítico seguro, unas **1,3 veces** el daño sin ellos.
+
 ## Varios golpes
 
 `FIGHTSTG_rollMultiHit` — `src/fightstg/tech_effects.c`; el total en `src/fightstg/tech_action.c`
