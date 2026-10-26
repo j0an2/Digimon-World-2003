@@ -62,6 +62,15 @@ element, `element − 2` is −1, and the value read is the one stored just befo
   element: against a target with Speed up to about 100 they reach the 53% cap (`64 × 100 / 100 = 64`), and 28% at
   Speed 200.
 
+### 5. The Shock Horn never paralyzes
+
+`FIGHTSTG_applyTechEffect` — `src/fightstg/tech_effects.c`; `WEAPON_DATA` — `src/main/game/items.c`
+
+"Horn that paralyzes the body", but its record has a status chance of **0** and a strength of 0. The plain attack only
+tries a weapon's status when that chance isn't 0 (`if (stats[0].statuses[HIT_PARALYSIS].chance) FIGHTSTG_tryParalysis()`),
+so the Shock Horn never paralyzes: it is a horn of Strength +90 and nothing else. The other status weapons have
+24–64/128.
+
 ## Oddities
 
 Behaviour that looks unintended, or at least surprising, but may be by design.

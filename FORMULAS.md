@@ -245,6 +245,34 @@ never misses. Each technique has its own Accuracy: a level-5 Kotemon (Speed 63, 
 
 An enemy's hit chance uses the same formula minus the target's evasion, and is never below 32 (25%).
 
+### Evasion: Dance Feather and Dance Wing
+
+The evasion accessories, **Dance Feather (Evasion +10)** and **Dance Wing (Evasion +20, Charisma +1)**, are in the
+same group, so only one can be worn. Armor with evasion adds to it the same way. Evasion is taken off the enemy's
+SpeedDiff, so a Dance Feather is **10 more Speed, for dodging only**:
+
+```
+enemy's chance = Accuracy + Accuracy × ((Speed(enemy) − Speed(you) − Evasion) / 8 + LevelDiff) / 128
+```
+
+Because the Speed difference is divided by 8 and everything is then divided by 128 and rounded, the gain is tiny.
+An enemy technique with accuracy 100:
+
+| Situation | Nothing | Dance Feather | Dance Wing |
+|---|---|---|---|
+| Same Speed and level | 78.1% | 78.1% (no change) | 77.3% |
+| Enemy 20 Speed slower | 77.3% | 76.6% | 75.8% |
+| Enemy 50 Speed faster, 5 levels above | 84.4% | 83.6% | 82.8% |
+
+About **1 point less** with the Feather (sometimes none, from the rounding) and **1.5 points** with the Wing. It does
+nothing against:
+
+* **magic**: `FIGHTSTG_rollMagicHit` only looks at Wisdom and level;
+* enemies that already hit **more than 100%** of the time, or that are at the **25% floor**;
+* your own attacks: the enemy's evasion isn't counted when you attack, and yours only when you are attacked.
+
+Almost decorative: an element accessory, an HP Proxy or, on a Buster, a Search Crest does more.
+
 ## Magic damage
 
 `FIGHTSTG_computeMagicDamage` — `src/fightstg/damage.c`
@@ -602,7 +630,7 @@ same formula, with the weapon's chance as EffectChance:
 | Raven Bow | Confusion | 24/128 |
 | Needle Glove | Knock-out | 24/128 |
 | Soul Chopper | Knock-out | 32/128 |
-| Shock Horn | Paralysis | 0/128 (only your Wisdom counts) |
+| Shock Horn | Paralysis | 0/128: **never** (see [Bugs](BUGS.md#5-the-shock-horn-never-paralyzes)) |
 
 ### Battles that block them
 
@@ -677,7 +705,7 @@ The form takes the first free DV slot. The requirements of every form for every 
 | Search Crest; weapons Saber Fang, Shuriken | Raise the **critical chance** by their amount (doubled for special Digimon); only for techniques with no effect |
 | Weapons with a family | +50% damage and +16/128 critical chance against that family |
 | Venom Fang, Shock Horn and other status weapons | The plain attack can inflict their status |
-| Glasses / Dance Feather | Accuracy / evasion |
+| Glasses / Dance Feather, Dance Wing | Accuracy / evasion (see [Evasion](#evasion-dance-feather-and-dance-wing)) |
 | HP Proxy / HP Mega Proxy | Take **a fixed amount** off every hit received (the Harmony mod makes it 10%/20%) |
 
 ### Counterattacks

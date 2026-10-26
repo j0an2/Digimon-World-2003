@@ -472,6 +472,52 @@ never misses. Each technique has its own Accuracy: a level-5 Kotemon (Speed 63, 
 </tbody>
 </table></div>
 <p>An enemy's hit chance uses the same formula minus the target's evasion, and is never below 32 (25%).</p>
+<h3 id="evasion-dance-feather-and-dance-wing">Evasion: Dance Feather and Dance Wing</h3>
+<p>The evasion accessories, <strong>Dance Feather (Evasion +10)</strong> and <strong>Dance Wing (Evasion +20, Charisma +1)</strong>, are in the
+same group, so only one can be worn. Armor with evasion adds to it the same way. Evasion is taken off the enemy's
+SpeedDiff, so a Dance Feather is <strong>10 more Speed, for dodging only</strong>:</p>
+<pre><code>enemy's chance = Accuracy + Accuracy × ((Speed(enemy) − Speed(you) − Evasion) / 8 + LevelDiff) / 128
+</code></pre>
+<p>Because the Speed difference is divided by 8 and everything is then divided by 128 and rounded, the gain is tiny.
+An enemy technique with accuracy 100:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Nothing</th>
+<th>Dance Feather</th>
+<th>Dance Wing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same Speed and level</td>
+<td>78.1%</td>
+<td>78.1% (no change)</td>
+<td>77.3%</td>
+</tr>
+<tr>
+<td>Enemy 20 Speed slower</td>
+<td>77.3%</td>
+<td>76.6%</td>
+<td>75.8%</td>
+</tr>
+<tr>
+<td>Enemy 50 Speed faster, 5 levels above</td>
+<td>84.4%</td>
+<td>83.6%</td>
+<td>82.8%</td>
+</tr>
+</tbody>
+</table></div>
+<p>About <strong>1 point less</strong> with the Feather (sometimes none, from the rounding) and <strong>1.5 points</strong> with the Wing. It does
+nothing against:</p>
+<ul>
+<li><strong>magic</strong>: <code>FIGHTSTG_rollMagicHit</code> only looks at Wisdom and level;</li>
+<li>enemies that already hit <strong>more than 100%</strong> of the time, or that are at the <strong>25% floor</strong>;</li>
+<li>your own attacks: the enemy's evasion isn't counted when you attack, and yours only when you are attacked.</li>
+</ul>
+<p>Almost decorative: an element accessory, an HP Proxy or, on a Buster, a Search Crest does more.</p>
 <h2 id="magic-damage">Magic damage</h2>
 <p><code>FIGHTSTG_computeMagicDamage</code> — <code>src/fightstg/damage.c</code></p>
 <pre><code>power = Power × (Spirit(user) × 50 / Spirit(target) + 50) / 100
@@ -1140,7 +1186,7 @@ same formula, with the weapon's chance as EffectChance:</p>
 <tr>
 <td>Shock Horn</td>
 <td>Paralysis</td>
-<td>0/128 (only your Wisdom counts)</td>
+<td>0/128: <strong>never</strong> (see <a href="BUGS.md#5-the-shock-horn-never-paralyzes">Bugs</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1263,8 +1309,8 @@ have whose requirements are all met:</p>
 <td>The plain attack can inflict their status</td>
 </tr>
 <tr>
-<td>Glasses / Dance Feather</td>
-<td>Accuracy / evasion</td>
+<td>Glasses / Dance Feather, Dance Wing</td>
+<td>Accuracy / evasion (see <a href="#evasion-dance-feather-and-dance-wing">Evasion</a>)</td>
 </tr>
 <tr>
 <td>HP Proxy / HP Mega Proxy</td>

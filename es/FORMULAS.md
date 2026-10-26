@@ -248,6 +248,34 @@ Kunemon (Velocidad 48) tiene DifVelocidad = 15, que cuenta como 15 / 8 = 1, y Di
 
 La probabilidad de acierto de un enemigo usa la misma fórmula menos la esquiva del objetivo, y nunca baja de 32 (25 %).
 
+### Esquiva: Danza Pluma y Danza del Ala
+
+Los accesorios de esquiva, **Danza Pluma (Dance Feather, Esquiva +10)** y **Danza del Ala (Dance Wing, Esquiva +20,
+Carisma +1)**, son del mismo grupo, así que solo se puede llevar uno. La armadura con esquiva suma igual. La esquiva se
+resta a la DifVelocidad del enemigo, así que una Danza Pluma es **10 de Velocidad más, solo para esquivar**:
+
+```
+probabilidad del enemigo = Precisión + Precisión × ((Velocidad(enemigo) − Velocidad(tú) − Esquiva) / 8 + DifNivel) / 128
+```
+
+Como la diferencia de Velocidad se divide entre 8 y luego todo entre 128, redondeando, lo que se gana es muy poco.
+Una técnica enemiga de precisión 100:
+
+| Situación | Sin nada | Danza Pluma | Danza del Ala |
+|---|---|---|---|
+| Misma Velocidad y nivel | 78,1 % | 78,1 % (sin cambio) | 77,3 % |
+| Enemigo 20 de Velocidad más lento | 77,3 % | 76,6 % | 75,8 % |
+| Enemigo 50 de Velocidad más rápido, 5 niveles por encima | 84,4 % | 83,6 % | 82,8 % |
+
+Alrededor de **1 punto menos** con la Pluma (a veces ninguno, por el redondeo) y **1,5 puntos** con el Ala. No sirve
+de nada contra:
+
+* **la magia**: `FIGHTSTG_rollMagicHit` solo mira la Sabiduría y el nivel;
+* enemigos que ya aciertan **más del 100 %** de las veces, o que están en el **mínimo del 25 %**;
+* tus propios ataques: la esquiva del enemigo no cuenta cuando atacas tú, y la tuya solo cuando te atacan.
+
+Casi decorativos: un accesorio de elemento, un Proxy PV o, en un Buster, el Buscar Vale hacen más.
+
 ## Daño mágico
 
 `FIGHTSTG_computeMagicDamage` — `src/fightstg/damage.c`
@@ -604,7 +632,7 @@ de la técnica. La misma fórmula, con la probabilidad del arma como ProbEfecto:
 | Arco Cuervo (Raven Bow) | Confusión | 24/128 |
 | Guante Agujas (Needle Glove) | KO | 24/128 |
 | Cort. Alma (Soul Chopper) | KO | 32/128 |
-| Cuerno Impac. (Shock Horn) | Parálisis | 0/128 (solo cuenta tu Sabiduría) |
+| Cuerno Impac. (Shock Horn) | Parálisis | 0/128: **nunca** (ver [Bugs](BUGS.md#5-el-cuerno-impac-shock-horn-nunca-paraliza)) |
 
 ### Combates que los bloquean
 
@@ -680,7 +708,7 @@ La forma ocupa la primera casilla DV libre. Los requisitos de cada forma para ca
 | Buscar Vale (Search Crest); armas Colmi. Sable (Saber Fang), Shuriken | Suben la **probabilidad de crítico** en su valor (el doble en los Digimon especiales); solo en técnicas sin efecto |
 | Armas con familia | +50 % de daño y +16/128 de probabilidad de crítico contra esa familia |
 | Colmi. Veneno (Venom Fang), Cuerno Impac. (Shock Horn) y las otras armas de estado | El ataque básico puede provocar su estado |
-| Gafas (Glasses) / Danza Pluma (Dance Feather) | Precisión / esquiva |
+| Gafas (Glasses) / Danza Pluma (Dance Feather), Danza del Ala (Dance Wing) | Precisión / esquiva (ver [Esquiva](#esquiva-danza-pluma-y-danza-del-ala)) |
 | Proxy PV (HP Proxy) / Mega Proxy PV (HP Mega Proxy) | Quitan **una cantidad fija** de cada golpe recibido (el mod Harmony lo cambia a un 10 %/20 %) |
 
 ### Contraataques

@@ -475,6 +475,52 @@ Kunemon (Velocidad 48) tiene DifVelocidad = 15, que cuenta como 15 / 8 = 1, y Di
 </tbody>
 </table></div>
 <p>La probabilidad de acierto de un enemigo usa la misma fórmula menos la esquiva del objetivo, y nunca baja de 32 (25 %).</p>
+<h3 id="esquiva-danza-pluma-y-danza-del-ala">Esquiva: Danza Pluma y Danza del Ala</h3>
+<p>Los accesorios de esquiva, <strong>Danza Pluma (Dance Feather, Esquiva +10)</strong> y <strong>Danza del Ala (Dance Wing, Esquiva +20,
+Carisma +1)</strong>, son del mismo grupo, así que solo se puede llevar uno. La armadura con esquiva suma igual. La esquiva se
+resta a la DifVelocidad del enemigo, así que una Danza Pluma es <strong>10 de Velocidad más, solo para esquivar</strong>:</p>
+<pre><code>probabilidad del enemigo = Precisión + Precisión × ((Velocidad(enemigo) − Velocidad(tú) − Esquiva) / 8 + DifNivel) / 128
+</code></pre>
+<p>Como la diferencia de Velocidad se divide entre 8 y luego todo entre 128, redondeando, lo que se gana es muy poco.
+Una técnica enemiga de precisión 100:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Sin nada</th>
+<th>Danza Pluma</th>
+<th>Danza del Ala</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Misma Velocidad y nivel</td>
+<td>78,1 %</td>
+<td>78,1 % (sin cambio)</td>
+<td>77,3 %</td>
+</tr>
+<tr>
+<td>Enemigo 20 de Velocidad más lento</td>
+<td>77,3 %</td>
+<td>76,6 %</td>
+<td>75,8 %</td>
+</tr>
+<tr>
+<td>Enemigo 50 de Velocidad más rápido, 5 niveles por encima</td>
+<td>84,4 %</td>
+<td>83,6 %</td>
+<td>82,8 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Alrededor de <strong>1 punto menos</strong> con la Pluma (a veces ninguno, por el redondeo) y <strong>1,5 puntos</strong> con el Ala. No sirve
+de nada contra:</p>
+<ul>
+<li><strong>la magia</strong>: <code>FIGHTSTG_rollMagicHit</code> solo mira la Sabiduría y el nivel;</li>
+<li>enemigos que ya aciertan <strong>más del 100 %</strong> de las veces, o que están en el <strong>mínimo del 25 %</strong>;</li>
+<li>tus propios ataques: la esquiva del enemigo no cuenta cuando atacas tú, y la tuya solo cuando te atacan.</li>
+</ul>
+<p>Casi decorativos: un accesorio de elemento, un Proxy PV o, en un Buster, el Buscar Vale hacen más.</p>
 <h2 id="dano-magico">Daño mágico</h2>
 <p><code>FIGHTSTG_computeMagicDamage</code> — <code>src/fightstg/damage.c</code></p>
 <pre><code>poder = Potencia × (Espíritu(usuario) × 50 / Espíritu(objetivo) + 50) / 100
@@ -1142,7 +1188,7 @@ de la técnica. La misma fórmula, con la probabilidad del arma como ProbEfecto:
 <tr>
 <td>Cuerno Impac. (Shock Horn)</td>
 <td>Parálisis</td>
-<td>0/128 (solo cuenta tu Sabiduría)</td>
+<td>0/128: <strong>nunca</strong> (ver <a href="BUGS.md#5-el-cuerno-impac-shock-horn-nunca-paraliza">Bugs</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1266,8 +1312,8 @@ tiene y cuyos requisitos se cumplen todos:</p>
 <td>El ataque básico puede provocar su estado</td>
 </tr>
 <tr>
-<td>Gafas (Glasses) / Danza Pluma (Dance Feather)</td>
-<td>Precisión / esquiva</td>
+<td>Gafas (Glasses) / Danza Pluma (Dance Feather), Danza del Ala (Dance Wing)</td>
+<td>Precisión / esquiva (ver <a href="#esquiva-danza-pluma-y-danza-del-ala">Esquiva</a>)</td>
 </tr>
 <tr>
 <td>Proxy PV (HP Proxy) / Mega Proxy PV (HP Mega Proxy)</td>

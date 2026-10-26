@@ -100,6 +100,12 @@ objetivo:</p>
   elemento: contra un objetivo con una Velocidad de hasta unos 100 llegan al máximo del 53 % (<code>64 × 100 / 100 = 64</code>), y al
   28 % con Velocidad 200.</li>
 </ul>
+<h3 id="5-el-cuerno-impac-shock-horn-nunca-paraliza">5. El Cuerno Impac. (Shock Horn) nunca paraliza</h3>
+<p><code>FIGHTSTG_applyTechEffect</code> — <code>src/fightstg/tech_effects.c</code>; <code>WEAPON_DATA</code> — <code>src/main/game/items.c</code></p>
+<p>«Cuerno que paraliza el cuerpo», pero su ficha tiene una probabilidad de estado de <strong>0</strong> y una fuerza de 0. El ataque
+normal solo prueba el estado de un arma cuando esa probabilidad no es 0
+(<code>if (stats[0].statuses[HIT_PARALYSIS].chance) FIGHTSTG_tryParalysis()</code>), así que el Cuerno Impac. nunca paraliza: es un
+cuerno de Fuerza +90 y nada más. Las otras armas de estado tienen 24–64/128.</p>
 <h2 id="rarezas">Rarezas</h2>
 <p>Comportamientos que parecen no intencionados, o al menos sorprendentes, pero que pueden ser a propósito.</p>
 <ul>
